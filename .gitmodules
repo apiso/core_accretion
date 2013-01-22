@@ -1,0 +1,6 @@
+[submodule "dat_andrew"]
+	path = dat_andrew
+	url = ssh://git@bitbucket.org/youdin/dat_andrew.git
+[submodule "dat_ana"]
+	path = dat_ana
+	url = ssh://git@bitbucket.org/apiso/dat_ana.git
