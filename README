@@ -1,0 +1,8 @@
+Core accretion project
+
+Goal: understand time and mass scales for the accretion of atmospheres in the absence of planetesimal accretion.  Thereby establish meaningful minimum core masses.
+
+Usage: To use the python modules interactively it helps to add the /python folder to the PYTHONPATH environment variable, e.g. by adding to ~/.profile the line:
+export PYTHONPATH="/path-to-repo/python:$PYTHONPATH"
+
+Current contributors: Andrew Youdin, Ana-Maria Piso

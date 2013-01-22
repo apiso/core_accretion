@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{enumitem,subeqnarray}
+
+\newcommand{\delad}{{\nabla_{\rm ad}}}
+\newcommand{\Rg}{\mathcal{R}}
+
+
+\newcommand{\vcs}[1]{\mbox{\boldmath{$\scriptstyle{#1}$}}}
+\newcommand{\vc}[1]{\mbox{\boldmath{$#1$}}}
+\newcommand{\nab}{\vc{\nabla}}
+\DeclareMathSymbol{\varOmega}{\mathord}{letters}{"0A}
+\DeclareMathSymbol{\varSigma}{\mathord}{letters}{"06}
+\DeclareMathSymbol{\varPsi}{\mathord}{letters}{"09}
+
+\newcommand{\Eq}[1]{Equation\,(\ref{#1})}
+\newcommand{\Eqs}[2]{Equations (\ref{#1}) and~(\ref{#2})}
+\newcommand{\Eqss}[2]{Equations (\ref{#1})--(\ref{#2})}
+\newcommand{\App}[1]{Appendix~\ref{#1}}
+\newcommand{\Fig}[1]{Fig.~\ref{#1}}
+\newcommand{\Figs}[2]{Figs.~\ref{#1} and \ref{#2}}
+\newcommand{\Tab}[1]{Table \ref{#1}}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Atmosphere Calculations}
+%\author{Andrew}
+\date{\today}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\begin{enumerate}
+\item {\bf Adiabats} The thermodynamic state of a gas is in general determined by two thermodynamic variables.  For instance any two of pressure $P$, density $\rho$, and temperature $T$ is a complete description since the third follows from an equation of state (EOS).  The most common is the ideal gas law
+\begin{equation}
+P = \rho \mathcal{R} T ~,
+\end{equation} 
+where the specific gas constant $\mathcal{R} = n R = k_B/\mu$ can also be expressed in terms of the number of moles per unit mass $n$, the universal gas constant $R$, Boltzmann's constant $k_B$ and the mean molecular weight, $\mu$.
+
+If another constraint exists then you only need one thermodynamic variable to determine the state of the gas.  In this case one has a so-called barotropic equation of state $P(\rho)$ where $\rho$ determines $P$ (and vice versa).  The more general EOS (i.e.\ ideal gas) then determines $T$.  Concrete examples of barotropic relations include an isothermal ($T = $ constant) and an adiabatic (constant entropy $S$) atmosphere.  The simplest forms of an adiabat are
+\begin{subeqnarray}\label{eq:adiabats}
+P &=& K \rho^\gamma \slabel{ada}\\
+T &=& K_{TP} ~P^\delad \slabel{adb}
+\end{subeqnarray} 
+where $K$ and $K_T$ are constants related to the entropy.  The exponents are the adiabatic index, $\gamma$, and the adiabatic gradient $\delad$ (or just ``del-ad").  Note that the real adiabats of non-ideal gases don't follow simple powerlaws like this, as we'll get to below.
+\begin{enumerate}
+\item \Eqs{ada}{adb} are redundant, i.e.\ equivalent.  Using the ideal gas law, relate $\gamma$ and $\delad$.  (You could also relate $K$ and $K_T$ but that's less significant, so I wouldn't bother.)
+\item Show also that
+\begin{equation}
+T = K_{T\rho} ~\rho^{\gamma - 1}
+\end{equation} 
+\end{enumerate}
+The first law of thermodynamics expresses energy conservation in terms of internal energy, heat and work as
+\begin{equation}
+dU = dQ - P dV = dQ - P d (1/\rho)
+\end{equation}
+For an ideal gas the internal energy changes as $dU = C_V dT$ for the specific heat at constant (specific) volume (i.e.\ density), $C_V$.  Combining the first law and the ideal gas EOS you can show (see 10.4 in Carroll and Ostlie) that the specific heat at constant pressure is
+\begin{equation}
+C_P = C_V + \mathcal{R}
+\end{equation} 
+\begin{enumerate}[resume]
+\item Use the first law with $dQ = T dS$ to show
+\begin{subeqnarray} \label{eq:dS}
+dS &=& C_V{dT \over T} - \mathcal{R} {d \rho \over \rho} \\
+&=& C_P {dT \over T} - \mathcal{R} {d P \over P} \slabel{b}\\
+&=& C_V {d P \over P} - C_P {d \rho \over \rho} \slabel{c}
+\end{subeqnarray} 
+\item For an adiabatic process $dS = 0$.   Derive the adiabatic relations in \Eq{eq:adiabats} by integrating \Eqs{b}{c} with $dS = 0$.  This will determine $\gamma$ and $\delad$ in terms of the specific heats and $\mathcal{R}$, e.g.\
+\begin{equation}
+\delad = {\Rg \over C_P} = {\gamma - 1 \over \gamma}
+\end{equation} 
+\item Now integrate the \Eqs{b}{c} to find the relative entropy, e.g.\ 
+\begin{equation}
+\int dS = \Delta S = C_P \ln T - \mathcal{R} \ln P - const 
+\end{equation} 
+and the constant on the RHS can be ignored/absorbed into $\Delta S$ (by changing the reference entropy that's unknown anyway).  Arrange the above result to get $\Delta S$ in terms of $K$. Does increasing $K$ give a higher or lower entropy?  Starting with \Eq{c} determine this for $K_T$ also.
+\item For an ideal gas $C_V = 3 \mathcal{R} /2$ for a monatomic gas and  $C_V = 5 \mathcal{R} /2$ for a diatomic gas, i.e.\ 3 vs.\ 5 degrees of freedom.  Calculate $\gamma$ and $\delad$ for both cases.
+\end{enumerate}
+Note that the differential forms of an adiabat, given by \Eq{eq:dS}, are more fundamental than \Eq{eq:adiabats} because they do not require the specific heats and adiabatic indices to be constant.  Since these quantities are not constant for real gases, the distinction is important.
+
+\item {\bf Structure of Plane Parallel Atmospheres} A static atmosphere is in hydrostatic balance
+\begin{equation}\label{eq:HB}
+{dP \over dr} = - \rho g(r)
+\end{equation} 
+In general the atmsopheric structure also requires an energy equation to determine $T$.  However for a barotropic equation of state $P(\rho)$ such as an isotherm or an adiabat no energy equation is required.  There are several levels of approximation for computing $g$.  The simplest is the plane-parallel approximation, where $g$ is treated as constant.  This is valid near the surface of planet or in any thin layer.  In this case its common to replace $r$ with $z$ (i.e. $dP/dz = - \rho g$) and take $z = 0$ as the surface. 
+\begin{enumerate}
+\item  Show that the column density of a plane-parallel atmosphere
+\begin{equation}
+\varSigma = \int_0^\infty \rho dz = P_o/g
+\end{equation} 
+where $P_o$ is the pressure at the base ($z = 0$).  To do this change variables from $z$ to $P$ and use $P = 0$ at the top of the atmosphere ($z = \infty$).  This important result is completely independent of the atmosphere's structure (adiabatic, isothermal, or anthing else) or EOS (it need not be an ideal gas!).  However it only applies for plane-parallel atmospheres.
+\item Define the scale height as $H_o =  \Rg T_o/g$, where $T_o$ is the temperature at the base of the atmosphere.  For an ideal gas show that $\varSigma = \rho_o H_o$, where $\rho_o$ is the density at the base.  This result is still independent of structure.
+\item Calculate the density profile of an {\bf isothermal, plane-parallel}, ideal gas atmosphere at temperature $T$.  Assume that the density is $\rho_o$ at the base of the atmosphere, so the pressure is $P_o = \rho_o \Rg T$.  This calculation will show that $H = \Rg T/g$ (a constant for the assumptions made) actually is the scale height.
+\item You could also calculate the structure of an adiabatic atmosphere, maybe it's best to move on to the more relevant (for us) spherical case first...
+
+\end{enumerate}
+
+\item {\bf Structure of Spherical Atmospheres}
+For spherical atmospheres $g = G M/r^2$ is no longer constant.  However if the mass of the atmosphere is small, then can be held fixed at the core mass $M = M_c$ so that $g \propto 1/r^2$ exactly.  This is a non-self-gravitating atmosphere.  To include the mass of the atmosphere, hydrostatic balance must be supplemented with the mass equation
+\begin{equation}
+{d M \over dr} = 4 \pi \rho r^2\, .
+\end{equation} 
+
+\begin{enumerate}
+\item  Calculate the density profile of a non-self-gravitating, isothermal atmosphere, with density $\rho_b$ at the bottom $r = r_b$.  Express in the form
+\begin{equation}\label{eq:rhoiso}
+\rho(r) = \rho_b \exp\left[{r_b \over H_b}\left({r_b \over r} - 1 \right)\right]\, .
+\end{equation} 
+What's $H_b$?  Show that \Eq{eq:rhoiso} is consistent with the plane parallel result for $r - r_c \ll 1$.
+
+\item The Bondi radius
+\begin{equation}
+R_B = {G M \over \Rg T}
+\end{equation} 
+defines the typical scale at which the atmosphere matches onto the surrounding disk.  To see this express \Eq{eq:rhoiso} as
+\begin{equation}\label{eq:rhoisoB}
+\rho(r) = \rho_b \exp \left[ R_B \left( {1 \over r} - {1 \over r_b} \right) \right]\, .
+\end{equation} 
+
+Then associate the disk density with $\rho(r \rightarrow \infty) = \rho_d$ to get
+\begin{equation}\label{eq:rhoisod}
+\rho(r) = \rho_d \exp[R_B/r]
+\end{equation} 
+which makes it clear that $R_B$ is indeed the right length scale for matching onto the disk.
+
+\item The mass of the isothermal atmosphere includes all the mass from the bottom ($r_b$) to the Bondi radius $R_B$.   The analytic integral is messy, but for the case $r_b \ll R_B$, a series expansion gives
+\begin{equation}
+M_{iso} \approx 4 \pi \rho_d {r_b^4 \over R_B} \exp[R_B/r_b]
+\end{equation} 
+Mathematica is the easiest way to get this.  Instead show that this result is consistent with the estimate based on plane-parallel atmospheres $M_{iso} = \varSigma 4 \pi r_b^2$.  Recall that we're calculating the mass of the atmosphere even though we neglected that mass in computing hydrostatic balance.
+
+\item Now consider adiabatic atmospheres.  Show that hydrostatic balance along an adiabat gives
+\begin{equation}
+{dT \over dr} = - \delad{G M \over  \Rg r^2}\, .
+\end{equation} 
+This is valid even for non-constant $\delad$.  
+\item Now assume $\delad$ (and again $M$) are constant and integrate from the core, $T(r_c) = T_c$ to get
+\begin{equation}\label{eq:Tad}
+T = T_c - \delad{G M \over  \Rg} \left({1 \over r_c} - {1 \over r}\right) \, .
+\end{equation} 
+This gives the radius $r_b = r(T_d)$ at which the adiabat intersects the isotherm.  Show that $r_b$ ranges from $r_c$ (no convective zone) to $R_B/\delad$ (convective beyond the Bondi radius) as $T_c$ ranges from $T_d$ to
+\begin{equation}
+T_{\rm max} = \delad {G M \over  \Rg r_c}
+\end{equation} 
+Note that we won't know $T_{\rm max}$ exactly when $\delad$ varies throughout the atmosphere.  In any even $T_{\rm max}$ is only the maximum temperature we are interested in.  Note that the core could be even hotter,  with convection extending well beyond $R_B$ (e.g. Rafikov 2006) but these low density atmospheres aren't relevant to giant planet formation.
+
+\end{enumerate}
+\item {\bf Matching} Consider an atmosphere with a core temperature $T(r_c) = T_c$.  We want to find the core density $\rho_c$ (and thus the pressure and adiabat.  To do this match the density at the boundary of the convective and isothermal (at disk temperature $T_c$) layers.  The density atop the convective layer is
+\begin{equation}
+\rho_b^- = \rho_c\left(T_d \over T_c\right)^{1 \over \gamma - 1}
+\end{equation} 
+and the density at the base of the isothermal layer is given by \Eq{eq:rhoisod} at the radius determined by the solution of \Eq{eq:Tad}.  Check whether this gives
+\begin{equation}
+\rho_b^+ = \rho_d\exp(R_B/r_c) \exp\left[ - {1 \over \delad} \left( {T_c \over T_d} - 1\right)\right] \, ,
+\end{equation} 
+The first exponential factor ($\gg 1$) would give the core density if the atmosphere was completely isothermal.  Provided $T_c > T_d$ the second factor $\ll 1$, as it must.  Note that $\rho_c$ trivially follows from $\rho_b^- = \rho_b^+$. 
+\end{enumerate}
+\begin{enumerate}[resume]
+\item Write a numerical algorithm that iteratively solves for $\rho_c$ for a given $T_c$, $T_d$, $\rho_d$, core mass, etc.  Before trying to code anything, just write it as a flowchart and we'll go over it.  Think of ways that each analytic step can be replaced by the result of a numerical (shooting) calculation.  My thought is that we will want to take the unusual approach of using temperature as the effective vertical coordinate along the adiabat (it's more common to do this with pressure or mass).
+
+\item {\bf Absolute Entropy} The absolute entropy (per mass) of an ideal gas is given by the Sacker-Tetrode formula as
+\begin{equation}
+S = \Rg \left[- \ln\left( n \Lambda^3\right) + {5 \over 2} \right] = \Rg \left[{5 \over 2} \ln T - \ln P +  \ln \left\{ (2 \pi)^{3/2} \Rg^{5/2} \mu^4 \over h^3 \right\} + {5 \over 2}\right] 
+\end{equation} 
+Check that the final result follows from the first for the number density $n$ and the deBroglie wavelength $\Lambda = h/\sqrt{2 \pi \mu k_B T}$.  Check that this result reproduces the entropy values at low $T$ and $P$ in the S95 Helium tables, using $\mu_{\rm He} = 6.646442\times 10^{-24}~{\rm g}$.  (Agreement should be to a part in $10^4$.)
+\end{enumerate}
+
+\end{document}  

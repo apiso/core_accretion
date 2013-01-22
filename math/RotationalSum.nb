@@ -1,0 +1,94 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2319,         85]
+NotebookOptionsPosition[      1938,         66]
+NotebookOutlinePosition[      2314,         83]
+CellTagsIndexPosition[      2271,         80]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Assuming", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[Theta]", " ", ">", " ", "0"}], " ", "&&", " ", 
+    RowBox[{"jmax", " ", ">", " ", "0"}]}], ",", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "j"}], " ", "+", " ", "1"}], ")"}], 
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "j"}], 
+        RowBox[{"(", 
+         RowBox[{"j", " ", "+", " ", "1"}], ")"}], "\[Theta]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "0", ",", "jmax"}], "}"}]}], "]"}]}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.54696117085478*^9, 3.5469612703505383`*^9}, {
+  3.546961396237009*^9, 3.5469613976120768`*^9}, {3.5469614537450113`*^9, 
+  3.54696145984643*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", 
+   RowBox[{"j", "=", "0"}], "jmax"], 
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", "j"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", "j"}], ")"}], " ", "\[Theta]"}]], " ", 
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{"2", " ", "j"}]}], ")"}]}]}]], "Output",
+ CellChangeTimes->{{3.54696125678148*^9, 3.546961272328999*^9}, 
+   3.5469614225096073`*^9, 3.5469614955796213`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.546961504700122*^9, 3.5469615097702007`*^9}}]
+},
+WindowSize->{740, 867},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (February 23, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 763, 22, 29, "Input"],
+Cell[1345, 46, 480, 14, 64, "Output"]
+}, Open  ]],
+Cell[1840, 63, 94, 1, 29, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

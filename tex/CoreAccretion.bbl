@@ -1,0 +1,61 @@
+\begin{thebibliography}{16}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Arras} \& {Bildsten}(2006)}]{ab06}
+{Arras}, P., \& {Bildsten}, L. 2006, \apj, 650, 394
+
+\bibitem[{{Bell} \& {Lin}(1994)}]{bl94}
+{Bell}, K.~R., \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
+
+\bibitem[{{Bodenheimer} \& {Pollack}(1986)}]{BodPol86}
+{Bodenheimer}, P., \& {Pollack}, J.~B. 1986, \icarus, 67, 391
+
+\bibitem[{{Chiang} \& {Youdin}(2010)}]{cy10}
+{Chiang}, E., \& {Youdin}, A.~N. 2010, Annual Review of Earth and Planetary
+  Sciences, 38, 493
+
+\bibitem[{{D'Angelo} \& {Lubow}(2008)}]{DAnLub08}
+{D'Angelo}, G., \& {Lubow}, S.~H. 2008, \apj, 685, 560
+
+\bibitem[{{Harris}(1978)}]{Har78}
+{Harris}, A.~W. 1978, in Lunar and Planetary Institute Science Conference
+  Abstracts, Vol.~9, Lunar and Planetary Institute Science Conference
+  Abstracts, 459--461
+
+\bibitem[{{Hubickyj} {et~al.}(2005){Hubickyj}, {Bodenheimer}, \&
+  {Lissauer}}]{HubBod05}
+{Hubickyj}, O., {Bodenheimer}, P., \& {Lissauer}, J.~J. 2005, \icarus, 179, 415
+
+\bibitem[{{Ikoma} {et~al.}(2000){Ikoma}, {Nakazawa}, \& {Emori}}]{IkoNak00}
+{Ikoma}, M., {Nakazawa}, K., \& {Emori}, H. 2000, \apj, 537, 1013
+
+\bibitem[{{Kippenhahn} \& {Weigert}(1994)}]{KipWei94}
+{Kippenhahn}, R., \& {Weigert}, A. 1994, {Stellar Structure and Evolution}
+
+\bibitem[{{Mizuno}(1980)}]{Miz80}
+{Mizuno}, H. 1980, Progress of Theoretical Physics, 64, 544
+
+\bibitem[{{Mizuno} {et~al.}(1978){Mizuno}, {Nakazawa}, \& {Hayashi}}]{MizNak78}
+{Mizuno}, H., {Nakazawa}, K., \& {Hayashi}, C. 1978, Progress of Theoretical
+  Physics, 60, 699
+
+\bibitem[{{Perri} \& {Cameron}(1974)}]{PerCam74}
+{Perri}, F., \& {Cameron}, A.~G.~W. 1974, \icarus, 22, 416
+
+\bibitem[{{Pollack} {et~al.}(1996){Pollack}, {Hubickyj}, {Bodenheimer},
+  {Lissauer}, {Podolak}, \& {Greenzweig}}]{pollack96}
+{Pollack}, J.~B., {Hubickyj}, O., {Bodenheimer}, P., {Lissauer}, J.~J.,
+  {Podolak}, M., \& {Greenzweig}, Y. 1996, Icarus, 124, 62
+
+\bibitem[{{Sasaki}(1989)}]{Sas89}
+{Sasaki}, S. 1989, \aap, 215, 177
+
+\bibitem[{{Semenov} {et~al.}(2003){Semenov}, {Henning}, {Helling}, {Ilgner}, \&
+  {Sedlmayr}}]{SemHen03}
+{Semenov}, D., {Henning}, T., {Helling}, C., {Ilgner}, M., \& {Sedlmayr}, E.
+  2003, \aap, 410, 611
+
+\bibitem[{{Youdin} \& {Mitchell}(2010)}]{ym10}
+{Youdin}, A.~N., \& {Mitchell}, J.~L. 2010, \apj, 721, 1113
+
+\end{thebibliography}

@@ -1,0 +1,160 @@
+\documentclass[12pt, preprint,numberedappendix]{emulateapj}
+%\documentclass[12pt, preprint]{aastex}
+
+\newcommand\submitms{n}		% set to y to follow AAS ``ms'' names, etc.
+\newcommand\bibinc{n}		% set to y if bib pasted in .tex, set to n to use bibtex
+
+
+\usepackage{pdfsync}
+\usepackage{subeqnarray}
+\usepackage{natbib}
+\usepackage{color}
+
+
+\bibliographystyle{apj}
+
+\newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ }
+\newcommand{\p}{\partial}
+\newcommand{\brak}[1]{\langle #1\rangle}
+
+
+\newcommand{\gcc}{\;\mathrm{g\; cm^{-3}}}
+\newcommand{\gsc}{\;\mathrm{g\; cm^{-2}}}
+\newcommand{\cm}{\; {\rm cm}}
+\newcommand{\mm}{\; {\rm mm}}
+%\newcommand{\ps}{\; {\rm s^{-1}}}
+\newcommand{\km}{\; {\rm km}}
+\newcommand{\au}{\; \varpi_{\rm AU}}
+\newcommand{\AU}{\; {\rm AU}}
+\def\K{\; {\rm K}}
+
+\newcommand{\vcs}[1]{\mbox{\boldmath{$\scriptstyle{#1}$}}}
+\newcommand{\vc}[1]{\mbox{\boldmath{$#1$}}}
+\newcommand{\nab}{\vc{\nabla}}
+\DeclareMathSymbol{\varOmega}{\mathord}{letters}{"0A}
+\DeclareMathSymbol{\varSigma}{\mathord}{letters}{"06}
+\DeclareMathSymbol{\varPsi}{\mathord}{letters}{"09}
+
+\newcommand{\Eq}[1]{Equation\,(\ref{#1})}
+\newcommand{\Eqs}[2]{Equations (\ref{#1}) and~(\ref{#2})}
+\newcommand{\Eqss}[2]{Equations (\ref{#1})--(\ref{#2})}
+\newcommand{\App}[1]{Appendix~\ref{#1}}
+\newcommand{\Sec}[1]{Sect.~\ref{#1}}
+\newcommand{\Chap}[1]{Chapter~\ref{#1}}
+\newcommand{\Fig}[1]{Fig.~\ref{#1}}
+\newcommand{\Figs}[2]{Figs.~\ref{#1} and \ref{#2}}
+\newcommand{\Figss}[2]{Figs.~\ref{#1}--\ref{#2}} 
+\newcommand{\Tab}[1]{Table \ref{#1}}
+
+\definecolor{gray}{gray}{0.5}
+\newcommand{\emgr}[1]{\emph{ \color{gray} #1}}
+
+
+\newenvironment{packed_item}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{document}
+
+\slugcomment{Draft Modified \today}
+
+
+\shorttitle{Critical Core Mass at Wide Separations}
+\shortauthors{Piso \& Youdin}
+
+\title{Lower Limits on the Core Mass for Giant Planets}
+%\title{The Critical Core Mass of Wide-Separation Giant Planets:  Lower Limits from Kelvin-Helmholtz Cooling}
+\author{Ana-Maria Piso}
+\affil{Harvard Smithsonian Center for Astrophysics}
+\author{ Andrew N.\ Youdin}
+\affil{JILA, University of Colorado}
+%\begin{abstract}
+%\end{abstract}
+
+\section{Introduction}
+\emgr{Background topics to mention include: core accretion history, giant planets at wide separations and theoretical challenges posed (GI probably to big, core accretion maybe to slow).}
+
+\emgr{Describe goals and approach of this paper.}
+
+This paper is organized as follows: \emgr{(section summaries)}.
+
+
+\section{Quasistatic Two Layer Model}\label{sec:model}
+
+\subsection{Model Assumptions}
+\emgr{Describe basic assumptions, perhaps in list format. Will need to describe basic scales and idea that atmosphere is 1D and matches smoothly onto disk.  However we may want to separate these standard assumptions from our more unique ones that are part of the two layer model.}
+
+\subsection{Structure Equations}
+\emgr{Give in pressure coordinates.  Put EOS (polytrope and detailed) and opacity laws (noting that we only consider cool radiative zones with dust opacities).}
+
+\subsection{Boundary Conditions: Core and Disk} 
+
+%\subsection{Convective Zone}
+%\emgr{might not need a (sub)section}
+
+\subsection{Radiative Zone Solutions}
+\emgr{Give analytic solution valid for power law opacity and lack of self-gravity.}
+
+\subsection{Matching at the Radiative-Convective Boundary (RCB)}
+\emgr{Include figure of an example atmospheric profile.}
+
+\subsection{The Gravothermal Catastrophe}
+\emgr{Show and explain double valued solutions, including caveat that upper branch breaks several model assumptions.}
+
+\section{Cooling History}
+\emgr{start with basic idea of quasistatic contraction and $L = -\dot{E}$}
+\subsection{Role of Finite Pressure}
+ \emgr{Give more more general result, but defer derivation to \App{sec:virial}.}
+\subsection{Estimating a Critical Core Mass}
+\emgr{Describe how and why we use the time to gravothermal catastrophe as estimate of minimum core mass}
+
+\section{Critical Core Mass}
+\emgr{These are the take home results!}
+
+\subsection{Role of Disk Temperature and Pressure}
+
+\subsection{Core Mass vs. Disk Radius}
+
+\subsection{Opacity Dependence}
+
+\subsection{EOS Tables}
+\emgr{compare polytrope vs. real EOS, this could go first or last.}
+
+\section{Conclusions}
+
+
+
+%\begin{figure}[tb!] %  figure placement: here, top, bottom, or page
+%\if\submitms y
+% 	\includegraphics[width=6in]{f.eps}
+% \else
+%	\hspace{-1cm}
+%   	\includegraphics[width=3.9in]{../figs/.pdf} 
+%      \includegraphics[width=3.9in]{../figs/.eps} 
+%\fi
+%   	\caption{}
+%   	\label{fig:}
+%\end{figure}
+
+
+\acknowledgements
+\emgr{Acknowledge Ruth, Scott, Jonathan Fortney \& Didier Saumon.}  Portions of this project were supported by the {\it NASA} {\it Astrophysics Theory Program} and  {\it Origins of Solar Systems Program}  through grant NNX10AF35G. \emgr{JILA, Ruth's grants?}\\
+
+\appendix
+\section{Extending the EOS tables}\label{sec:EOSext}
+\section{Virial Equilibrium and Cooling}\label{sec:virial}
+\section{Analytic Cooling Model}
+\if\bibinc n
+\bibliography{refs}
+\fi
+
+\if\bibinc y
+\begin{thebibliography}
+\end{thebibliography}
+\fi
+
+\end{document}
