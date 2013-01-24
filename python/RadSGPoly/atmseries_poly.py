@@ -102,7 +102,7 @@ def atmseries(a, rhoc, delad, Y, Mcomin, Mcomax, nMco, n = 500, \
 
 
 
-def mcrit_disktime(Mcseries, tseries, disklife = 3 * 10**6 * (365 * 24 * 3600)):
+def mcrit_disktime(Mcseries, tseries, disklife = (365 * 24 * 3600)):
 
     """
 
@@ -116,7 +116,7 @@ def mcrit_disktime(Mcseries, tseries, disklife = 3 * 10**6 * (365 * 24 * 3600)):
     tseries:
         list or array of pre-calculated cooling times for Mcseries
     disklife:
-        disk lifetime in seconds; default 3Myrs
+        disk lifetime in years; default 3Myrs
 
 
     Output
