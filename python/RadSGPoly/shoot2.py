@@ -677,7 +677,7 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
         if abs(err0[1]) > abs(errg[1]):
             x0, err0 = xg, errg
             if verbose:
-                print "using supplied guess for M = " , M
+                print "using supplied guess for M = {:.3f} M_E".format(M/Me)
     if verbose:
         print "initial guess error ", err0
 #find time dependent solution based on guessed values
