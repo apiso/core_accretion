@@ -15,7 +15,7 @@ from RadSGPoly.cooling_poly import cooling_global as cg, cooling_local as cl,\
      critical
 from RadSGPoly.atmseries_poly import mcrit_disktime as mcd
 
-def t_vs_Mc_fixed_a(delad, Y, a):
+def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
 
     """
     Uses already generated atmosphere profiles to calculate the atmosphere
@@ -29,6 +29,9 @@ def t_vs_Mc_fixed_a(delad, Y, a):
         helium mass fraction
     a:
         distance in the disk
+    returnt:
+        option to also return dt  and cumuluative cooling time at each mass
+        increase for every atmosphere series; set to 0 by default
 
     Output
     ------
@@ -36,6 +39,14 @@ def t_vs_Mc_fixed_a(delad, Y, a):
         core masses for the (already generated) atmospheres, in Earth masses
     t:
         cumulative cooling time ( = time for the atmosphere to become critical),
+        in years
+    Mtotcrit:
+        optional; total mass at the critical point
+    dtarr:
+        optional; array of instantaneous dt for each atmosphere series, in
+        years
+    tarr:
+        optional; array of cumulative cooling times for each atmosphere series
         in years
     
     """
@@ -45,7 +56,10 @@ def t_vs_Mc_fixed_a(delad, Y, a):
                   Td = Tdisk(a, FT), kappa = kdust)
 
     t = 0 * numpy.ndarray(shape = (10), dtype = float)
-
+    dtarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+    tarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+    Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+    
     for i in range(len(t)):
 
         if delad == 2./7 and Y == 0.0:
@@ -60,10 +74,19 @@ def t_vs_Mc_fixed_a(delad, Y, a):
         prof = atm[2]
 
         temp = critical(param, prof, model)
+        Mtotcrit[i] = temp[0].MB[-1]
         dt = temp[-1]
         t[i] = sum(dt)
 
-    return Mc, t / (365 * 24 * 3600)
+        for j in range(len(dt)):
+            dtarr[i, j] = dt[j]
+            tarr[i, j] = sum(dt[:j])
+
+    if returnt == 0:
+        return Mc, t / (365 * 24 * 3600)
+    else:
+        return Mc, t / (365 * 24 * 3600), Mtotcrit, dtarr / (365 * 24 * 3600), \
+               tarr / (365 * 24 * 3600)
 
 
 def t_vs_a_fixed_Mc(delad, Y, Mc):
