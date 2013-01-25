@@ -13,17 +13,17 @@ from RadSGPoly.cooling_poly import cooling_global as cg, cooling_local as cl, cr
 
 os.chdir(userpath + '/python/Atmscripts')
 
-delad = 2./7
+delad = 2./5
 
 
 load = 1
 cool = 1
 savefig = 0
-nofixeddisk = 1
+nofixeddisk = 0
 
 if nofixeddisk == 0:
-    Y = 0.0
-    a = 100.0
+    Y = 0.3
+    a = 30.0
 
 prms = params(Me, Re, a, delad, Y, gamma = gammafn(delad), R = Rfn(Y), \
               Cv = Cvfn(Y, delad), Pd = Pdisk(a, mstar, FSigma, FT), \

@@ -67,6 +67,9 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
 
         elif delad == 2./7 and Y == 0.3:
             Mc = numpy.linspace(1, 10, 10)
+            
+        elif delad == 2./5 and Y == 0.3:
+            Mc = numpy.linspace(1, 10, 10)
         
         atm = atmload('Mc' + str(Mc[i]) + '.npz', prms = prms)
         model = atm[0]
