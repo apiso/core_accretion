@@ -14,7 +14,7 @@ import os
 user = os.environ['USER']
 
 if user == 'youd':
-    userpath = '/Users/youd/Documents/Work/Repositories/core_accretion'
+    userpath = '/Users/youd/Documents/Work/Repositories/aacore'
 elif user == 'ana-mariapiso':
     userpath ='/Users/ana-mariapiso/Documents/core_accretion'
 elif user == 'apiso':
