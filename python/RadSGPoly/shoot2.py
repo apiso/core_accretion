@@ -533,13 +533,25 @@ def error2D(x, Mtot, prev, prms=prms, Lnorm=0, full_out=0, dt_log=1,
     else: #return full solution
         y = odeint(f, bc, rrange, args=stargs)
     Mcint , Lcint = y[-1,0] , y[-1,3] #core mass, Luminosity
+
+    #set scale luminosity errors
     if Lnorm == 0:
         Lnorm = 10**lL
     elif Lnorm < 1e6: #multiply previous error by factor Lnorm
         Lnorm = 10**lL/Lnorm
-    else: #use a constant Lum value for normalization (let supplied Lnorm pass)
+    else: #let supplied Lnorm pass
         Lnorm = 1*Lnorm
     err = (Mcint/prms.mco - 1, Lcint/Lnorm)
+    
+    #track guesses if lists have been initialized elsewhere
+    try:
+       #np.append(error2D.guessHist, [x], axis=0)
+       error2D.guessHist.append(list(x))
+       error2D.errHist.append(list(err))
+    except (NameError, AttributeError):
+       pass
+    
+    #return statments as set by output flag
     if not full_out: 
         return err
     elif full_out == 1: #give standard odeint messages
@@ -584,11 +596,10 @@ def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0):
         `hybr` known to work.
 
     Example:
-        >>> from utils.mynumsci import Me, Myr
         >>> Mold, Mnew = 5.8*s2.Me, 5.808*s2.Me
         >>> prev = s2.makeprev(Mold)
         >>> xg = s2.staticguess(Mnew, prev)*array([1.002])
-        >>> #slihgtly higher luminosity guesses avoid neg L
+        >>> #slightly higher luminosity guesses avoid neg L
         >>> s2.root2D(xg, Mnew, prev)
     """
 
