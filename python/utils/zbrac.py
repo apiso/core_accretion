@@ -1,8 +1,13 @@
 import sys
 
-def zbrac(func, x1, x2, factor = 1.6, ntry = 50, tighten = True , args=() , full_output = 0):
+def zbrac(func, x1, x2, factor=1.6, ntry=50, tighten=True, args=(),
+          full_output=0):
     """
-    Based on Numerical Recipes' zbrac to bracket a root by outward expansion.  This version adds an option to tighten the bracketing interval as the bracketing search proceeds.  Using this option gives a much slower growth of the bracketing interval.  With extra coding the original interval could be used for step-sizes while keeping track of the two best guesses.
+    Based on Numerical Recipes' zbrac to bracket a root by outward expansion.
+    This version adds an option to tighten the bracketing interval as the
+    bracketing search proceeds.  Using this option gives a much slower growth
+    of the bracketing interval.  With extra coding the original interval could
+    be used for step-sizes while keeping track of the two best guesses.
 
     Parameters
     ----------

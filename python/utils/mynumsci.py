@@ -4,6 +4,7 @@ general purpose tools that could be useful for a range of problems
 TODO: should put zbrac and nextguess into `opttools.py` or something...
 """
 
+import numpy as np
 from utils.zbrac import zbrac
 from utils.myspace import mylogspace, loglinspace, linlogspace
 from utils.constants import Me, Re, Myr
@@ -36,3 +37,46 @@ class nf(float):
             return '%.0f' % self.__float__()
         else:
             return '%.1f' % self.__float__()
+
+def jac(func, x, eps=1e-6, direct=1, args=(), kwargs={}):
+    """
+    Parameters
+    ----------
+    func : function
+        accepts `x` returns values
+    x : 1D array
+    eps : float or 1D array (optional
+        step size
+    direct : int (optional)
+        1 for positive steps (away from x = 1), -1 for negative,
+        0 for symmetric (two half steps, so more expensive)
+    args, kwargs: tuple, dict (optional)
+        args and kwargs to be passed to `func`
+    """
+    
+    F0 = func(x, *args, **kwargs)
+    ni, nj = len(F0), len(x)
+    jac = np.empty((ni, nj))
+    if np.shape(np.atleast_1d(eps)) == (1,):
+        eps = np.ones(nj) * eps
+    elif np.shape(eps) != (nj,):
+        sys.exit("Provide {} or {} stepsize parameters in `eps`"
+                 .format(1, nj))
+
+    for j, xj in enumerate(x):
+        h = eps[j] * abs(xj)
+        if h == 0:
+            h = eps[j]
+        dx = np.zeros(nj)
+        if direct == -1:
+            h = -h
+        if direct == 0:
+            dx[j] = h/2
+            h = 2*dx[j] #NR-like precision trick (not sure if matters)
+            F0 = func(x - dx, *args, **kwargs)
+        else:
+            dx[j] = h #works for pos. or neg. steps
+        Fnew = func(x + dx, *args, **kwargs)
+        jac[:, j] = (np.array(Fnew) - np.array(F0)) / h
+        
+    return jac
