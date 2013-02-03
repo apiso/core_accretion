@@ -9,7 +9,7 @@ from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
 from utils.parameters import mstar, FSigma, FT
 from scipy.integrate import odeint
 
-def analytic_sols(delad, Y, rhoc, a, Mc, Pcb, beta = 2, theta = 0.556):
+def analytic_sols(Pcb, delad, Y, rhoc, a, Mc, beta = 2, theta = 0.556):
 
     """
     Computes analytic estimates for a given set of gas, disk and core conditions
@@ -20,6 +20,8 @@ def analytic_sols(delad, Y, rhoc, a, Mc, Pcb, beta = 2, theta = 0.556):
 
     Input
     -----
+    Pcb: 
+        pressure at the RCB in dyne/cm^2; can be a scalar or an array
     delad, Y:
         adiabatic index and He mass fraction
     rhoc:
@@ -28,9 +30,6 @@ def analytic_sols(delad, Y, rhoc, a, Mc, Pcb, beta = 2, theta = 0.556):
         semi-major axis in AU
     Mc:
         core mass in g
-    Pcb: (AY: This should be first as it's the true variable.  All other
-          parameter should follow.)
-        pressure at the RCB in dyne/cm^2; can be a scalar or an array
     beta:
         temperature power law index for sut opacity; default 2
     theta:
