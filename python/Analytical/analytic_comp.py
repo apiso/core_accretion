@@ -28,7 +28,8 @@ def analytic_sols(delad, Y, rhoc, a, Mc, Pcb, beta = 2, theta = 0.556):
         semi-major axis in AU
     Mc:
         core mass in g
-    Pcb:
+    Pcb: (AY: This should be first as it's the true variable.  All other
+          parameter should follow.)
         pressure at the RCB in dyne/cm^2; can be a scalar or an array
     beta:
         temperature power law index for sut opacity; default 2
