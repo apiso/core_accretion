@@ -1,5 +1,6 @@
-\documentclass[12pt, preprint,numberedappendix]{emulateapj}
+%\documentclass[12pt, preprint,numberedappendix]{emulateapj}
 %\documentclass[12pt, preprint]{aastex}
+\documentclass[apj]{emulateapj}
 
 \newcommand\submitms{n}		% set to y to follow AAS ``ms'' names, etc.
 \newcommand\bibinc{n}		% set to y if bib pasted in .tex, set to n to use bibtex
@@ -51,12 +52,12 @@
 \newcommand{\emgr}[1]{\emph{ \color{gray} #1}}
 
 
-\newenvironment{packed_item}{
-\begin{itemize}
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \setlength{\parsep}{0pt}
-}{\end{itemize}}
+%\newenvironment{packed_item}{
+%\begin{itemize}
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt}
+%  \setlength{\parsep}{0pt}
+%}{\end{itemize}}
 
 \begin{document}
 
@@ -86,43 +87,60 @@ This paper is organized as follows: \emgr{(section summaries)}.
 \section{Quasistatic Two Layer Model}\label{sec:model}
 
 \subsection{Model Assumptions}
-\emgr{Describe basic assumptions, perhaps in list format. Will need to describe basic scales and idea that atmosphere is 1D and matches smoothly onto disk.  However we may want to separate these standard assumptions from our more unique ones that are part of the two layer model.}
+\emgr{ Define and describe basic length scales; Describe disk conditions: MMSN etc. Describe basic assumptions: 1D atmosphere, smooth matching onto the disk, atmosphere composition etc., perhaps in list format; Describe assumptions specific to our model: quasistatic, $L_{KH} \gg L_{acc}$, two-layer, constant $L$. Explain how our model is intermediary between purely static models with $L=L_{acc}$ and full time-dependent evolutionary models. Could be split into sub-subsections.}
 
 \subsection{Structure Equations}
-\emgr{Give in pressure coordinates.  Put EOS (polytrope and detailed) and opacity laws (noting that we only consider cool radiative zones with dust opacities).}
+\emgr{Give in radius coordinates. EOS (polytrope, various assumption for $\nabla_{\mathrm{ad}}$ and $\mu$) and opacity laws (noting that we only consider cool radiative zones with dust opacities). Give boundary conditions (probably not worth a whole subsection by itself)}
 
-\subsection{Boundary Conditions: Core and Disk} 
+%\subsection{Boundary Conditions: Core and Disk} 
 
 %\subsection{Convective Zone}
 %\emgr{might not need a (sub)section}
 
-\subsection{Radiative Zone Solutions}
-\emgr{Give analytic solution valid for power law opacity and lack of self-gravity.}
-
-\subsection{Matching at the Radiative-Convective Boundary (RCB)}
-\emgr{Include figure of an example atmospheric profile.}
-
-\subsection{The Gravothermal Catastrophe}
-\emgr{Show and explain double valued solutions, including caveat that upper branch breaks several model assumptions.}
+%\subsection{Radiative Zone Solutions}
+%\emgr{Give analytic solution valid for power law opacity and lack of self-gravity.}
+%
+%\subsection{Matching at the Radiative-Convective Boundary (RCB)}
+%\emgr{Include figure of an example atmospheric profile.}
+%
+%\subsection{The Gravothermal Catastrophe}
+%\emgr{Show and explain double valued solutions, including caveat that upper branch breaks several model assumptions.}
 
 \section{Cooling History}
-\emgr{start with basic idea of quasistatic contraction and $L = -\dot{E}$}
+\emgr{Start with basic idea of quasistatic contraction and $L = -\dot{E}$, then write out cooling equation and explain terms. Explain where it comes from (local cooling + virial equilibrium)}
 \subsection{Role of Finite Pressure}
- \emgr{Give more more general result, but defer derivation to \App{sec:virial}.}
-\subsection{Estimating a Critical Core Mass}
-\emgr{Describe how and why we use the time to gravothermal catastrophe as estimate of minimum core mass}
+ \emgr{Give more more general result, but defer derivation to Appendix \ref{sec:virial}. Perhaps not worth a subsection by itself.}
+%\subsection{Estimating a Critical Core Mass}
+%\emgr{Describe how and why we use the time to gravothermal catastrophe as estimate of minimum core mass}
+
+\section{Numerical method}
+\emgr{Explain the shooting technique, then how to obtain an evolutionary series from cooling model between subsequent static atmospheres. Show P-T, M-T, M-R etc. plots. Also L-t, L-M plots.}
+\subsection{The Gravothermal Catastrophe \emgr{or} {Entropy Minimum} \emgr{or} {Negative Luminosity} \emgr{or} Something else?}
+\emgr{Describe that time / luminosity becomes negative when $M_{atm} \sim M_c$.}
 
 \section{Critical Core Mass}
-\emgr{These are the take home results!}
+\emgr{These are the take home results! Define critical core mass (= minimum between mass doubling and entropy minimum). Explain the assumptions, show that growth is slowest then (M-t plot?)}
 
 \subsection{Role of Disk Temperature and Pressure}
+\emgr{Show how critical core mass changes as you vary one parameter while keeping the other constant.}
+
+\subsection{Core Mass vs. Cooling Time at Fixed Radius}
 
 \subsection{Core Mass vs. Disk Radius}
 
 \subsection{Opacity Dependence}
+\emgr{Not sure what would go in this section, since we only use one opacity model.}
 
+%\subsection{EOS Tables}
+%\emgr{compare polytrope vs. real EOS, this could go first or last.}
+
+\section{Discussion}
+\subsection{Kelvin-Helmholtz Contraction vs. Planetesimal Accretion}
+\emgr{Compare and contrast our results with Rafikov's, show accretion rates plot; discuss why our fixed core mass assumptions are valid in the regime we are considering.}
+\subsection{Analytic Cooling Model}
+\emgr{Explain assumptions of analytic model but defer equations and derivations to Appendix \ref{sec:analytic}. Show numerical vs. analytic comparison plots and explain role of self gravity. }
 \subsection{EOS Tables}
-\emgr{compare polytrope vs. real EOS, this could go first or last.}
+\emgr{Mention and briefly describe Saumon et al. EOS tables as future work. }
 
 \section{Conclusions}
 
@@ -145,9 +163,9 @@ This paper is organized as follows: \emgr{(section summaries)}.
 \emgr{Acknowledge Ruth, Scott, Jonathan Fortney \& Didier Saumon.}  Portions of this project were supported by the {\it NASA} {\it Astrophysics Theory Program} and  {\it Origins of Solar Systems Program}  through grant NNX10AF35G. \emgr{JILA, Ruth's grants?}\\
 
 \appendix
-\section{Extending the EOS tables}\label{sec:EOSext}
+%\section{Extending the EOS tables}\label{sec:EOSext}
 \section{Virial Equilibrium and Cooling}\label{sec:virial}
-\section{Analytic Cooling Model}
+\section{Analytic Cooling Model}\label{sec:analytic}
 \if\bibinc n
 \bibliography{refs}
 \fi
