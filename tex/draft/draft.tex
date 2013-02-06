@@ -65,57 +65,59 @@
 
 
 \shorttitle{Critical Core Mass at Wide Separations}
-\shortauthors{Piso \& Youdin}
+\shortauthors{Youdin \& Piso \emph{TBD}}
 
-\title{Lower Limits on the Core Mass for Giant Planets}
+\title{On the Minimum Core Mass for Giant Planet Formation}
+%\title{Lower Limits on the Core Mass for Giant Planets}
 %\title{The Critical Core Mass of Wide-Separation Giant Planets:  Lower Limits from Kelvin-Helmholtz Cooling}
 \author{Ana-Maria Piso}
 \affil{Harvard Smithsonian Center for Astrophysics}
-\author{ Andrew N.\ Youdin}
+\author{Andrew N.\ Youdin}
 \affil{JILA, University of Colorado}
 %\begin{abstract}
 %\end{abstract}
 
 \section{Introduction}
-\emgr{Background topics to mention include: core accretion history, giant planets at wide separations and theoretical challenges posed (GI probably to big, core accretion maybe to slow).}
+\emgr{Background topics to mention include: core accretion history, giant planets at wide separations and theoretical challenges posed (GI probably too big, core accretion maybe to slow).}
 
 \emgr{Describe goals and approach of this paper.}
 
 This paper is organized as follows: \emgr{(section summaries)}.
 
 
-\section{Quasistatic Two Layer Model}\label{sec:model}
+\section{Atmosphere Models}\label{sec:model}
 
-\subsection{Model Assumptions}
-\emgr{ Define and describe basic length scales; Describe disk conditions: MMSN etc. Describe basic assumptions: 1D atmosphere, smooth matching onto the disk, atmosphere composition etc., perhaps in list format; Describe assumptions specific to our model: quasistatic, $L_{KH} \gg L_{acc}$, two-layer, constant $L$. Explain how our model is intermediary between purely static models with $L=L_{acc}$ and full time-dependent evolutionary models. Could be split into sub-subsections.}
+\subsection{Basic Assumptions}
+\emgr{ Define and describe basic length scales; Describe disk conditions: MMSN etc. Describe basic assumptions: 1D atmosphere, smooth matching onto the disk, atmosphere composition etc.  \\
+The idea is to start gentle with generalities and then get specific with the 2-layer quasistatic model after the basic eqns. have been given.}
+
+%Describe assumptions specific to our model: quasistatic, $L_{KH} \gg L_{acc}$, two-layer, constant $L$. Explain how our model is intermediary between purely static models with $L=L_{acc}$ and full time-dependent evolutionary models. 
 
 \subsection{Structure Equations}
-\emgr{Give in radius coordinates. EOS (polytrope, various assumption for $\nabla_{\mathrm{ad}}$ and $\mu$) and opacity laws (noting that we only consider cool radiative zones with dust opacities). Give boundary conditions (probably not worth a whole subsection by itself)}
+\emgr{Give in radius coordinates. EOS (polytrope, various assumption for $\nabla_{\mathrm{ad}}$ and $\mu$) and opacity laws (noting that we only consider cool radiative zones with dust opacities). Give boundary conditions}
 
-%\subsection{Boundary Conditions: Core and Disk} 
+\subsection{Standard Methods of Solution} 
+\emgr{shooting vs. Henyey methods to satisfy above BC. Static models powered by accretion and full evolutionary calculations. Note that there's nothing really to explain about the ``shooting method" .  Fine to state the BC's and that we use the shooting method.  That's a difference between a paper and research notes. We probably want the radius version of structure ODEs.}
 
-%\subsection{Convective Zone}
-%\emgr{might not need a (sub)section}
 
-%\subsection{Radiative Zone Solutions}
-%\emgr{Give analytic solution valid for power law opacity and lack of self-gravity.}
-%
-%\subsection{Matching at the Radiative-Convective Boundary (RCB)}
-%\emgr{Include figure of an example atmospheric profile.}
-%
-%\subsection{The Gravothermal Catastrophe}
-%\emgr{Show and explain double valued solutions, including caveat that upper branch breaks several model assumptions.}
 
-\section{Cooling History}
-\emgr{Start with basic idea of quasistatic contraction and $L = -\dot{E}$, then write out cooling equation and explain terms. Explain where it comes from (local cooling + virial equilibrium)}
-\subsection{Role of Finite Pressure}
- \emgr{Give more more general result, but defer derivation to Appendix \ref{sec:virial}. Perhaps not worth a subsection by itself.}
-%\subsection{Estimating a Critical Core Mass}
-%\emgr{Describe how and why we use the time to gravothermal catastrophe as estimate of minimum core mass}
+\subsection{Virial Equilibrium and Global Cooling}
+\emgr{Start with basic idea of quasistatic contraction and $L = -\dot{E}$, then write out cooling equation and explain terms.   Explain where it comes from (local cooling + virial equilibrium).   Defer some derivation to Appendix \ref{sec:virial}.  In principle this is still general stuff, i.e. the global cooling eqn applies to all hydrostatic models, not just our quasi-static one.}
 
-\section{Numerical method}
-\emgr{Explain the shooting technique, then how to obtain an evolutionary series from cooling model between subsequent static atmospheres. Show P-T, M-T, M-R etc. plots. Also L-t, L-M plots.}
-\subsection{The Gravothermal Catastrophe \emgr{or} {Entropy Minimum} \emgr{or} {Negative Luminosity} \emgr{or} Something else?}
+Before describing our quasistatic method we first describe the general ways that planetary Kelvin-Helmholz contraction differs from the stellar case.
+
+\subsection{Quasi-static Two-layer Model}
+\emgr{Two layer model and simplified treatment of radiative zone. How to obtain an evolutionary series from cooling model between subsequent static atmospheres. }
+
+\section{Analytic Cooling Model}
+\emgr{derive model (perhaps deferring some results to an appendix), give and explain expected scalings.  Could go after numerical results, but if first can use to explain some numerical results.}
+
+
+
+\section{Quasistatic Kelvin-Helmholz Contraction}
+\emgr{Show instantaneous profiles. Also L-t, L-M evolution.}
+
+\subsection{The End of Quasistatic Evolution}
 \emgr{Describe that time / luminosity becomes negative when $M_{atm} \sim M_c$.}
 
 \section{Critical Core Mass}
@@ -134,13 +136,14 @@ This paper is organized as follows: \emgr{(section summaries)}.
 %\subsection{EOS Tables}
 %\emgr{compare polytrope vs. real EOS, this could go first or last.}
 
-\section{Discussion}
-\subsection{Kelvin-Helmholtz Contraction vs. Planetesimal Accretion}
+
+
+
+\section{Neglected effects}
+\emgr{EOS, time evolution, planetesimal accretion, inefficient convection (mixing length models).  Subsections as needed.}
+\subsection{Planetesimal Accretion}
 \emgr{Compare and contrast our results with Rafikov's, show accretion rates plot; discuss why our fixed core mass assumptions are valid in the regime we are considering.}
-\subsection{Analytic Cooling Model}
-\emgr{Explain assumptions of analytic model but defer equations and derivations to Appendix \ref{sec:analytic}. Show numerical vs. analytic comparison plots and explain role of self gravity. }
-\subsection{EOS Tables}
-\emgr{Mention and briefly describe Saumon et al. EOS tables as future work. }
+
 
 \section{Conclusions}
 
@@ -160,12 +163,13 @@ This paper is organized as follows: \emgr{(section summaries)}.
 
 
 \acknowledgements
-\emgr{Acknowledge Ruth, Scott, Jonathan Fortney \& Didier Saumon.}  Portions of this project were supported by the {\it NASA} {\it Astrophysics Theory Program} and  {\it Origins of Solar Systems Program}  through grant NNX10AF35G. \emgr{JILA, Ruth's grants?}\\
+\emgr{Acknowledge Ruth, Phil Armitage, Scott Kenyon, Jonathan Fortney \& Didier Saumon.}  Portions of this project were supported by the {\it NASA} {\it Astrophysics Theory Program} and  {\it Origins of Solar Systems Program}  through grant NNX10AF35G. \emgr{JILA, Ruth's grants?}\\
 
 \appendix
 %\section{Extending the EOS tables}\label{sec:EOSext}
-\section{Virial Equilibrium and Cooling}\label{sec:virial}
-\section{Analytic Cooling Model}\label{sec:analytic}
+\section{Derivation of Cooling Model}\label{sec:virial}
+\section{Analytic Cooling Model Details}\label{sec:analytic}
+
 \if\bibinc n
 \bibliography{refs}
 \fi
