@@ -95,7 +95,7 @@ def dxjac(func, x0, F0=0, eps=1e-5, direct=1, args=(), kwargs={}):
     dx = -np.dot(invJac, F0)
     return x0 + dx
 
-def ezroot2D(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
+def ezroot(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
              verbose=0, args=(), kwargs={}):
     """find non-linear roots with simple Jacobian steps
 
