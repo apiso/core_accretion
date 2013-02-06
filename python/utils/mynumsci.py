@@ -8,6 +8,7 @@ import numpy as np
 from utils.zbrac import zbrac
 from utils.myspace import mylogspace, loglinspace, linlogspace
 from utils.constants import Me, Re, Myr
+import sys
 
 def nextguess(xnew, ys, xs, maxdy = 0):
     """
@@ -38,7 +39,7 @@ class nf(float):
         else:
             return '%.1f' % self.__float__()
 
-def jac(func, x, eps=1e-6, direct=1, args=(), kwargs={}):
+def jac(func, x, F0=0, eps=1e-6, direct=1, args=(), kwargs={}):
     """
     Parameters
     ----------
@@ -52,9 +53,12 @@ def jac(func, x, eps=1e-6, direct=1, args=(), kwargs={}):
         0 for symmetric (two half steps, so more expensive)
     args, kwargs: tuple, dict (optional)
         args and kwargs to be passed to `func`
+
+    TODO: optionally supply value func(x) as keyword
     """
-    
-    F0 = func(x, *args, **kwargs)
+
+    if F0 == 0 and direct != 0:#no need to compute if centered deriv 
+        F0 = func(x, *args, **kwargs)
     ni, nj = len(F0), len(x)
     jac = np.empty((ni, nj))
     if np.shape(np.atleast_1d(eps)) == (1,):
@@ -80,3 +84,58 @@ def jac(func, x, eps=1e-6, direct=1, args=(), kwargs={}):
         jac[:, j] = (np.array(Fnew) - np.array(F0)) / h
         
     return jac
+
+def dxjac(func, x0, F0=0, eps=1e-5, direct=1, args=(), kwargs={}):
+    """Uses Jacobian of `func` at `x0` to estimate location of root"""
+
+    if F0 == 0:
+        F0 = func(x0, *args, **kwargs)
+    jaco = jac(func, x0, F0, eps, direct, args=args, kwargs=kwargs)
+    invJac = np.linalg.inv(jaco)
+    dx = -np.dot(invJac, F0)
+    return x0 + dx
+
+def ezroot2D(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
+             verbose=0, args=(), kwargs={}):
+    """find non-linear roots with simple Jacobian steps
+
+    TODO: allow array of tol values
+    """
+
+    err = func(x0, *args, **kwargs)
+    xbest, errbest = x0, err
+    fails = 0
+    
+    for i in range(nmax):#don't need i...
+        xn = dxjac(func, xbest, errbest, jaceps, jacdir, args=args,
+                   kwargs=kwargs)
+        errn = func(xn, *args, **kwargs)
+        if verbose:
+            print i, errn
+        
+        if np.all(np.abs(errn) < tol):
+            return xn, errn
+        elif np.any(np.abs(errn) < np.abs(errbest)):
+            xbest, errbest = xn, errn
+        elif np.all(np.abs(errn) > np.abs(errbest)):
+            if jacdir == 1:
+                jacdir = 0
+                if verbose:
+                    print "switching to centered jacobian"
+            else:
+                fails +=1
+                if fails == 1:
+                    jaceps /= 10
+                    if verbose:
+                        print "higher resolution jacobian"
+                elif fails == 2:
+                    jaceps *= 100
+                    if verbose:
+                        print "lower resolution jacobian"
+                elif fails > 2:
+                    print "all errors got worse, settling for", errbest
+                    return xbest, errbest
+                else:
+                    sys.exit("can't count fails dummy")
+
+    return xbest, errbest
