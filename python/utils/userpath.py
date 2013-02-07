@@ -14,15 +14,20 @@ import os
 user = os.environ['USER']
 
 if user == 'youd':
-    userpath = '/Users/youd/Documents/Work/Repositories/aacore'
+    userpath = os.environ['REPOS']+'/aacore'
 elif user == 'ana-mariapiso':
     userpath ='/Users/ana-mariapiso/Documents/core_accretion'
 elif user == 'apiso':
     userpath = '/home/apiso/repos/core_accretion'
-    
+
+#For all users submodule names and locations fixed.
+aydat = userpath + '/dat_andrew'
+apdat = userpath + '/dat_ana'  
+gendat = userpath + '/dat' 
 
 def cduser(s = '/python'):
-    """cd to the users python directory, or other directory in repository as specified by string"""
+    """cd to the users python directory, or other directory in repository 
+    as specified by string"""
     os.chdir(userpath+s)
 
     
