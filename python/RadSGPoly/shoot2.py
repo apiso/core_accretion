@@ -534,13 +534,12 @@ def error2D(x, Mtot, prev, prms=prms, Lnorm=0, full_out=0, dt_log=1,
         y = odeint(f, bc, rrange, args=stargs)
     Mcint , Lcint = y[-1,0] , y[-1,3] #core mass, Luminosity
 
-    #set scale luminosity errors
-    if Lnorm == 0:
+    #set scale luminosity errors. A numerical Lnorm > 1e6 will pass
+    if Lnorm == 0 or Lnorm == 1:
         Lnorm = 10**lL
-    elif Lnorm < 1e6: #multiply previous error by factor Lnorm
+    elif Lnorm < 1e6: #multiply error by factor Lnorm
         Lnorm = 10**lL/Lnorm
-    else: #let supplied Lnorm pass
-        Lnorm = 1*Lnorm
+    
     err = (Mcint/prms.mco - 1, Lcint/Lnorm)
     
     #track guesses if lists have been initialized elsewhere
@@ -575,7 +574,7 @@ def errormap(Mtot, lL1, lL2, dt1, dt2, prev, prms=prms, nL=10, ndt=10,
     return lL, dt, errmap
 
 
-def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0
+def root2D(x0, Mtot, prev, prms=prms, Lnorm=1, method='ezroot', full_out=0
            , **rkwargs):
     """
     find root x = (lL, log10(dt)) that gives matched atmosphere solution
@@ -601,8 +600,7 @@ def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0
     Example:
         >>> Mold, Mnew = 5.8*s2.Me, 5.808*s2.Me
         >>> prev = s2.makeprev(Mold)
-        >>> xg = s2.staticguess(Mnew, prev)*array([1.002])
-        >>> #slightly higher luminosity guesses avoid neg L
+        >>> xg = s2.staticguess(Mnew, prev)
         >>> s2.root2D(xg, Mnew, prev)
     """
 
@@ -666,8 +664,8 @@ def staticguess(M, prev, dt_guess=0.01*Myr, prms=prms, dt_log=1, statgrid=50,
 
 
 def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
-              statgrid=50, retry=0, full_out=0, Lnorm=0, verbose=1
-              , solver='hybr', **rkwargs):
+              retry=0, full_out=0, Lnorm=1, verbose=1, 
+              solver='ezroot', **rkwargs):
     """advance to mass M + dM by K-H contraction
     
     using a specified guess and/or a static solution to make initial
@@ -684,12 +682,12 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
     else: #e.g. supply pre-previous solution for time dependence?
         sys.exit("chosen option for prevroot not supported")
 
-    eargs = (M, prev, prms, Lnorm)
-
 #increment mass
     if dM == 0: #default increase atmosphere mass by 1%
        dM = 0.01*(M - prms.mco)
     M += dM
+
+    eargs = [M, prev, prms, Lnorm] 
 
 #make guess for lL, dt (static guess only if supplied guess missing or bad)
     guess, guessbad = list(xg), 0 #guess = True if xg not empty
@@ -698,7 +696,7 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
         err0 = error2D(xg, *eargs)
         guessbad = np.any(np.abs(err0) > 1e-2)
     if (guessbad) or (not guess):
-        xg = staticguess(M, prev, prms=prms, statgrid=statgrid, full_out=0)
+        xg = staticguess(M, prev, prms=prms, statgrid=50)
         xg = (xg[0] + np.log10(1.2), xg[1]) #bump static luminosity guess by 20%
         errg = error2D(xg, *eargs)
         if guessbad: #decide which to keep
@@ -710,35 +708,27 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
         else:
             x0, err0 = xg, errg             
     if verbose:
-        print "initial guess error ", err0
+        print "initial guess", x0, " has error ", err0
         
-#find time dependent solution based on guessed values
+#find root and check if improvement
     sol = root2D(x0, *eargs, method=solver, **rkwargs)
-    print "sol1 status " , sol.status , " with error ", sol.fun
-    if sol.status != 1 and retry:
-        if abs(err0[1]) < abs(sol.fun[1]):
-            x1 = x0
-        else:
-            x1 = sol.x
-        Lfac = 1e-3 
-        sol2 = root2D(x1, M, prev, prms, Lnorm*Lfac)
-        sol2.x[1] = sol2.x[1]/Lfac
-        print "sol2 Lfac status " , sol2.status , " with error ", sol2.fun
-        if sol2.fun[0] < sol.fun[0]:
-            print "choosing sol2"
-            sol = sol2
-    elif max(abs(sol.fun)) > 1e-6 and retry:
-        sol2 = root2D(sol.x, M, prev, prms, Lnorm)
-        print "sol2 status " , sol2.status , " with error ", sol2.fun
-        if abs(sol2.fun[0]) < abs(sol.fun[0]):
-            print "choosing sol2"
-            sol = sol2        
-            
-    if full_out == 0:
-        return sol
-    else:
-        return sol, (lL, dt), err0
+    if np.all(np.abs(sol.fun) > np.abs(err0)):
+        sol.x, sol.fun = x0, err0
 
+    if max(np.abs(sol.fun)) > 1e-4 and retry:
+        if verbose:
+            print "trying again, got stuck with error", sol.fun
+        Lfac = 1e-3
+        eargs[3] = Lfac * Lnorm #rescale luminosity errors
+        x0 = (sol.x[0], sol.x[1] + np.log10(1.1) ) #10% bump in dt
+        sol2 = root2D(x0, *eargs, method=solver, **rkwargs)
+        sol2.fun[1] /= Lfac #need to compare errors on same scale
+        if np.any(np.abs(sol2.fun) < np.abs(sol.fun)):
+            sol = sol2
+            if verbose:
+                print "second time a better error", sol.fun
+
+    return sol
     
 def evolve_DM(M, DM, ep=0.01, prms=prms, verbose=1):
     """take a bunch of steps...
