@@ -28,7 +28,7 @@ import numpy as np
 from utils.constants import G, Me, Re, Msun, sigma, Pdisk, Tdisk, RHill, \
                             kdust, AU, Myr
 from utils.parameters import R, FT, FSigma, mstar, rhoc, a
-from utils.mynumsci import nextguess, zbrac, mylogspace
+from utils.mynumsci import nextguess, zbrac, mylogspace, ezroot
 from scipy.integrate import odeint
 from scipy.optimize import brentq, newton, root, fsolve
 from scipy.interpolate import interp1d
@@ -45,8 +45,8 @@ values (and create new instance).
 """
 Params = namedtuple('Params',
                     'mco, rco, a, R, delad, Po, To,  Mstar, kappa, match')
-prms = Params(mcore, rcore, a, R, 2./7, Mstar = mstar*Msun, match = 'Hill',
-              Po = Pdisk(a,mstar, FSigma, FT) , To = Tdisk(a,FT), kappa = kdust )
+prms = Params(mcore, rcore, a, R, 2./7, Mstar=mstar*Msun, match='Hill',
+              Po=Pdisk(a,mstar, FSigma, FT), To=Tdisk(a,FT), kappa=kdust)
 
 
 def evostruct_r(y, r, dt, prev, prms=prms, verbose=0):
@@ -575,7 +575,8 @@ def errormap(Mtot, lL1, lL2, dt1, dt2, prev, prms=prms, nL=10, ndt=10,
     return lL, dt, errmap
 
 
-def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0):
+def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0
+           , **rkwargs):
     """
     find root x = (lL, log10(dt)) that gives matched atmosphere solution
 
@@ -594,6 +595,8 @@ def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0):
     method : string, optional
         root finding method to pass to scipy.optimize.root, currently only
         `hybr` known to work.
+    **rkwargs : extra keyword arguments
+        passed to root finder
 
     Example:
         >>> Mold, Mnew = 5.8*s2.Me, 5.808*s2.Me
@@ -604,11 +607,15 @@ def root2D(x0, Mtot, prev, prms=prms, Lnorm=0, method='hybr', full_out=0):
     """
 
     e2args =  (Mtot, prev, prms, Lnorm)
-    #`fsolve` calls below used for testing, `root` with `hybr` method is
-    #equivalent but options are passed differently. See `root` help.  
-    #return fsolve(error2D, x0, args = e2args, diag = (.1,.1*Myr), full_output = full_out)
-    #return fsolve(error2D, x0, args = e2args, full_output = full_out)
-    return root(error2D, x0, args = e2args, method = method)
+    if method == 'hybr':
+       return root(error2D, x0, args = e2args, method = method)
+    if method == 'fsolve': #should be equivalent to 
+        #return fsolve(error2D, x0, args = e2args, diag = (.1,.1*Myr)
+        #              , full_output = full_out)
+       return fsolve(error2D, x0, args = e2args, full_output = full_out)
+    if method == 'ezroot':
+       return ezroot(error2D, x0, args=e2args, **rkwargs)
+    
 
 
 def staticguess(M, prev, dt_guess=0.01*Myr, prms=prms, dt_log=1, statgrid=50,
@@ -630,7 +637,8 @@ def staticguess(M, prev, dt_guess=0.01*Myr, prms=prms, dt_log=1, statgrid=50,
 #`odeint` call to `polyradstruct_r` below).
     lL = lLtop(M, prev.lL , .95*prev.lL, prms = prms)
     rgrid = mylogspace(rout(M, prms), prms.rco, statgrid)
-    y = odeint(polyradstruct_r, [M, prms.Po, prms.To, 10**lL], rgrid, args = (dt_guess, prms, prev, 10**lL))
+    y = odeint(polyradstruct_r, [M, prms.Po, prms.To, 10**lL], rgrid
+               , args=(dt_guess, prms, prev, 10**lL))
     Lint =  y[: , 3] #`Lint` returns L + integral of T dS/dt_guess dm/dr
 
 #determine dt value needed to generate assumed (fixed) luminosity. 
@@ -658,10 +666,12 @@ def staticguess(M, prev, dt_guess=0.01*Myr, prms=prms, dt_log=1, statgrid=50,
 
 
 def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
-              statgrid=50, retry=0, full_out=0, Lnorm=0, verbose=1):
+              statgrid=50, retry=0, full_out=0, Lnorm=0, verbose=1
+              , solver='hybr', **rkwargs):
     """advance to mass M + dM by K-H contraction
     
-    using a static solution to make initial guesses for L, dt"""
+    using a specified guess and/or a static solution to make initial
+    estimate of L, dt"""
 
 #obtain previous solution
     if not prevroot: #find static solution for initial mass
@@ -674,27 +684,37 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
     else: #e.g. supply pre-previous solution for time dependence?
         sys.exit("chosen option for prevroot not supported")
 
+    eargs = (M, prev, prms, Lnorm)
+
 #increment mass
     if dM == 0: #default increase atmosphere mass by 1%
-        dM = 0.01*(M - prms.mco)
+       dM = 0.01*(M - prms.mco)
     M += dM
 
-#make guess for lL, dt (may need to put in try/except for static guess if fails)
-    x0 = staticguess(M, prev, prms=prms, statgrid=statgrid, full_out=0)
-    x0 = (x0[0] + np.log10(1.2), x0[1]) #bump luminosity guess by 20%
-    err0 = error2D(x0, M, prev, prms, Lnorm)
-    if list(xg): #truth of arrays can't be tested
-        errg = error2D(xg, M, prev, prms, Lnorm)
-        if abs(err0[1]) > abs(errg[1]):
-            x0, err0 = xg, errg
-            if verbose:
-                print "using supplied guess for M = {:.3f} M_E".format(M/Me)
+#make guess for lL, dt (static guess only if supplied guess missing or bad)
+    guess, guessbad = list(xg), 0 #guess = True if xg not empty
+    if guess:
+        x0 = xg
+        err0 = error2D(xg, *eargs)
+        guessbad = np.any(np.abs(err0) > 1e-2)
+    if (guessbad) or (not guess):
+        xg = staticguess(M, prev, prms=prms, statgrid=statgrid, full_out=0)
+        xg = (xg[0] + np.log10(1.2), xg[1]) #bump static luminosity guess by 20%
+        errg = error2D(xg, *eargs)
+        if guessbad: #decide which to keep
+            if abs(err0[1]) > abs(errg[1]):
+                x0, err0 = xg, errg
+                if verbose:
+                    print ("choosing static guess for M = {:.3f} M_E"
+                           .format(M/Me))
+        else:
+            x0, err0 = xg, errg             
     if verbose:
         print "initial guess error ", err0
+        
 #find time dependent solution based on guessed values
-    sol = root2D(x0, M, prev, prms, Lnorm)
+    sol = root2D(x0, *eargs, method=solver, **rkwargs)
     print "sol1 status " , sol.status , " with error ", sol.fun
-    #sys.stdout.flush() #try to make above line finish writing...doesn't work
     if sol.status != 1 and retry:
         if abs(err0[1]) < abs(sol.fun[1]):
             x1 = x0

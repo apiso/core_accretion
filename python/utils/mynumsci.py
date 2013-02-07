@@ -8,6 +8,7 @@ import numpy as np
 from utils.zbrac import zbrac
 from utils.myspace import mylogspace, loglinspace, linlogspace
 from utils.constants import Me, Re, Myr
+from collections import namedtuple
 import sys
 
 def nextguess(xnew, ys, xs, maxdy = 0):
@@ -99,22 +100,32 @@ def ezroot(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
              verbose=0, args=(), kwargs={}):
     """find non-linear roots with simple Jacobian steps
 
+    Returns
+    -------
+    sol : named tuple
+        Containts solution `x`, func(x) `fun`, and func evals `nfev`
+
     TODO: allow array of tol values
+    TODO: nfev is approximate and assumed 2D problem
     """
 
+    Sol = namedtuple('Sol', 'x, fun, nfev')
     err = func(x0, *args, **kwargs)
     xbest, errbest = x0, err
-    fails = 0
+    fails, nfev = 0, 1
     
     for i in range(nmax):#don't need i...
         xn = dxjac(func, xbest, errbest, jaceps, jacdir, args=args,
                    kwargs=kwargs)
         errn = func(xn, *args, **kwargs)
+        nfev += 3
+        if fails != 0:
+            nfev =+ 2 #for centered jacobian
         if verbose:
             print i, errn
         
         if np.all(np.abs(errn) < tol):
-            return xn, errn
+            return Sol(xn, errn, 2*i + 2)
         elif np.any(np.abs(errn) < np.abs(errbest)):
             xbest, errbest = xn, errn
         elif np.all(np.abs(errn) > np.abs(errbest)):
@@ -134,8 +145,11 @@ def ezroot(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
                         print "lower resolution jacobian"
                 elif fails > 2:
                     print "all errors got worse, settling for", errbest
-                    return xbest, errbest
+                    return Sol(xbest, errbest, 2*i + 7)
                 else:
                     sys.exit("can't count fails dummy")
 
-    return xbest, errbest
+    
+    nfev = 2*i + 7 #estimated, counts centered jacobians for final 3 guesses
+ 
+    return Sol(xbest, errbest, nfev)
