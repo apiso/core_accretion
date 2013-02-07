@@ -19,7 +19,7 @@ atmospheres
 
 
 from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
-     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, Tdisk, Pdisk, params
+     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, kdust10, Tdisk, Pdisk, params
 from utils.parameters import FT, FSigma, mstar, Y, delad, rhoc, Mc, rc, \
      gamma, Y, a
 import numpy
@@ -41,11 +41,11 @@ prms = params(Mc, rc, a, delad, Y, gamma = gammafn(delad), R = Rfn(Y), \
               Td = Tdisk(a, FT), kappa = kdust) #gas, disk and core parameters
                         #for specific values imported from parameters.py 
 
-def delradfn(p, m, T, L): #radiative temperature gradient
-    return 3 * kdust(T) * p * L / (64 * pi * G * m * sigma * T**4)
+def delradfn(p, m, T, L, prms = prms): #radiative temperature gradient
+    return 3 * prms.kappa(T) * p * L / (64 * pi * G * m * sigma * T**4)
 
-def Del(p, m, T, L): #del = min(delad, delrad)
-    return min(prms.delad, delradfn(p, m, T, L))
+def Del(p, m, T, L, prms = prms): #del = min(delad, delrad)
+    return min(prms.delad, delradfn(p, m, T, L, prms))
 
 def Ltop(Mi, L1, L2, n, tol, prms = prms):
 
@@ -96,7 +96,7 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
         """
         
         return numpy.array([ - G * x[2] * x[0] / (r**2 * prms.R * x[1]), \
-                             - Del(x[0], x[2], x[1], x[3]) * G * x[2] / \
+                             - Del(x[0], x[2], x[1], x[3], prms) * G * x[2] / \
                              (prms.R * r**2),
                              4 * pi * r**2 * x[0] / (prms.R * x[1]), \
                              0])              
@@ -205,7 +205,7 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
         """
         
         return numpy.array([ - G * x[2] * x[0] / (r**2 * prms.R * x[1]), \
-                             - Del(x[0], x[2], x[1], x[3]) * G * x[2] / \
+                             - Del(x[0], x[2], x[1], x[3], prms) * G * x[2] / \
                              (prms.R * r**2),
                              4 * pi * r**2 * x[0] / (prms.R * x[1]), \
                              0, \
@@ -232,7 +232,7 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
     U = U - U[0]
     Iu = Iu - Iu[0]
     
-    delrad = delradfn(P, m, T, L)
+    delrad = delradfn(P, m, T, L, prms)
 
     rho = P / (prms.R * T)
 

@@ -61,6 +61,14 @@ def kdust(T, P = None, b = 2, fsolar = 1.):
     """Opacity (generally applicable for beta = 2)"""
     return 2 * fsolar * (T/100.)**b
 
+def kdust10(T, P = None, b = 2, fsolar = 1.):
+    """Opacity reduced by a factor of 10"""
+    return 2 * fsolar * (T/100.)**b / 10
+
+def kdust100(T, P = None, b = 2, fsolar = 1.):
+    """Opacity reduced by a factor of 100"""
+    return 2 * fsolar * (T/100.)**b / 100
+
 def kfixed(T = None, P = None, const = 0.01):
     """a silly function but useful if kappa functions expects a temperature."""
     return const
