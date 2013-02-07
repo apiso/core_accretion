@@ -28,7 +28,7 @@ from shooting_poly import Ltop, shoot, prms
 
 
 def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
-                   tol = 10**(-25), log = 1, savefile = 1):
+                   tol = 10**(-25), log = 1, savefile = 1, disk = 1):
 
     """
     Uses the output of shoot (described in shooting_poly) to generate recarrays
@@ -146,19 +146,32 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 
 
     if savefile == 1:
-        paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
-                        str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
-                        str(int(prms.a)) + 'AU/' + filename
-        numpy.savez_compressed(paramfilename, model = model, param = param, \
+        if disk == 1:
+            paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
+                            str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
+                            str(int(prms.a)) + 'AU/' + filename
+            numpy.savez_compressed(paramfilename, model = model, param = param, \
+                               prof = prof)
+        else:
+            paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'Td' + \
+                            str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                            'Mc' + str(prms.Mco/Me)
+            numpy.savez_compressed(paramfilename, model = model, param = param, \
                                prof = prof)
     
     return model, param, prof
 
 
-def atmload(filename, prms = prms):
-    npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
-                        str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
-                        str(int(prms.a)) + 'AU/' + filename)
+def atmload(filename, prms = prms, disk = 1):
+    if disk == 1:
+        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
+                            str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
+                            str(int(prms.a)) + 'AU/' + filename)
+    else:
+        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'Td' + \
+                            str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                            'Mc' + str(prms.Mco/Me) + '.npz')
+        
     model = npzdat['model'].view(numpy.recarray)
     param = npzdat['param'].view(numpy.recarray)
     prof = npzdat['prof'].view(numpy.recarray)
