@@ -18,9 +18,13 @@ def nextguess(xnew, ys, xs, maxdy = 0):
     order for x0,x1,xnew.  Limits step in dy if `maxdy` nonzero.  Step limit
     only works for scalar y values.
     """
-    if type(ys[0]) == (list or tuple):
-        ys = (np.array(ys[0]), np.array(ys[1]))
-    dypred = (ys[1] - ys[0]) / (xs[1] - xs[0]) * (xnew - xs[1])
+
+    try:
+        dy = ys[1] - ys[0]
+    except TypeError:
+        dy = np.array(ys[1]) - np.array(ys[0])
+    dypred =  dy / (xs[1] - xs[0]) * (xnew - xs[1])
+
     if maxdy != 0:
         if abs(dypred) > maxdy*abs(ys[1] - ys[0]):
             print "maxdy step limited to", maxdy

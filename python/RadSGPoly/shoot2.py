@@ -49,6 +49,10 @@ Params = namedtuple('Params',
 prms = Params(mcore, rcore, a, R, 2./7, Mstar=mstar*Msun, match='Hill',
               Po=Pdisk(a,mstar, FSigma, FT), To=Tdisk(a,FT), kappa=kdust)
 
+Previ = namedtuple('Previ', 
+                   'Mmax, lL, T_m, P_m, r, L, Sold, Mconv, Mcint')
+Previunterp = namedtuple('Previunterp', 
+                         'Mmax, lL, T, P, m, r, L, Sold, Mconv, Mcint')
 
 def evostruct_r(y, r, dt, prev, prms=prms, verbose=0):
     """
@@ -405,6 +409,26 @@ def sol2prof(prev, prms=prms):
     profs.Mae = (profs.m - prev.Mcint)/Me
     return profs
 
+def prevunterp(prev):
+    """
+    remake Previ object without interpolation objects which can't be pickled
+    """
+    return Previunterp(prev.Mmax, prev.lL, prev.T_m.y, prev.P_m.y, prev.T_m.x
+                       , prev.r, prev.L, prev.Sold, prev.Mconv, prev.Mcint)
+
+
+def prevreterp(prevunt, asdict=1, prms=prms):
+    """
+    take Previunterp object and re-interpolate T & P
+    """
+    if asdict:
+        prevunt = Previuninterp(**prevunt)
+    m, T, P = prevunt.m, prevunt.T, prevunt.P      
+    T_m = interp1d(m , T, bounds_error=False, fill_value=prms.To)
+    P_m = interp1d(m , P, bounds_error=False, fill_value=prms.Po)
+    return Previ(prevunt.Mmax, prevunt.lL, T_m, P_m, prevunt.r, prevunt.L, 
+                 prevunt.Sold, prevunt.Mconv, prevunt.Mcint)
+
 
 def rBondi(m, r, prms):
     """
@@ -445,14 +469,14 @@ def makeprev(M, lL=0, dt=0, prev=0, prms=prms, ngrid=1000):
         (log10 of) luminosity.
     ngrid : int
         number of grid points for atmosphere solution.  A high number is best
-        since 2D interpolation functions.  
+        since 1D interpolation functions.  
 
     Usage
     -----
     >>> prev = s2.makeprev(M) #static
     >>> prev = s2.makeprev(M, lL, dt, prev)
     """
-    Previ = namedtuple('Previ', 'Mmax, lL, T_m, P_m, r, L, Sold, Mconv, Mcint')
+
     Rout = rout(M, prms)
     rgrid = mylogspace(Rout, prms.rco, ngrid)
     if lL == 0:
@@ -607,13 +631,15 @@ def root2D(x0, Mtot, prev, prms=prms, Lnorm=1, method='ezroot', full_out=0
 
     e2args =  (Mtot, prev, prms, Lnorm)
     if method == 'hybr':
-       return root(error2D, x0, args = e2args, method = method)
-    if method == 'fsolve': #should be equivalent to 
+        sys.exit("why the heck in hybr")
+        return root(error2D, x0, args = e2args, method = method)
+    #if method == 'fsolve':
+        #equivalent to hybr
         #return fsolve(error2D, x0, args = e2args, diag = (.1,.1*Myr)
         #              , full_output = full_out)
-       return fsolve(error2D, x0, args = e2args, full_output = full_out)
+        #return fsolve(error2D, x0, args = e2args, full_output = full_out)
     if method == 'ezroot':
-       return ezroot(error2D, x0, args=e2args, **rkwargs)
+        return ezroot(error2D, x0, args=e2args, **rkwargs)
     
 
 
@@ -731,8 +757,8 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
 
     return sol
     
-def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, prms=prms, 
-              **dmargs):
+def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0, 
+              prms=prms, **dmargs):
     """take a bunch of steps...
     uses ezroot as default solver.
 
@@ -760,36 +786,58 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, prms=prms,
                                       ('err0', float),('err1', float)])
     bca.M = Ms
 
-    #find initial static solution
-    prev = makeprev(Ms[0], prms=prms)
-    bca.lL[0], bca.dt[0] = prev.lL, 0
-    bca.err0[0], bca.err1[0] = prev.Mcint/prms.mco - 1, 0
-    prof0 = sol2prof(prev)
+    if restart == 0:
+        #find initial static solution
+        prev = makeprev(Ms[0], prms=prms)
+        bca.lL[0], bca.dt[0] = prev.lL, 0
+        bca.err0[0], bca.err1[0] = prev.Mcint/prms.mco - 1, 0
+        prof0 = sol2prof(prev)
+        
+        #use the first profile to robustly set dtype and shape
+        profss = np.recarray((nM, len(prof0)), dtype=prof0.dtype)
+        profss[0, :] = prof0
+        skip = 1
+    else:
+        skip = 0
+        if type(restart) == str:
+            #reconstruct dictionary from file, reterp TODO
+            pass
+        #take first (two) steps using restart info
+        solm2, solm1 = restart['solm2'], restart['solm1']
+        Mm2, Mm1 = restart['Mm2'], restart['Mm1']
+        prev, prms = restart['prev'], restart['prms']
+        
+        
+    
 
-    #use the first profile to robustly set dtype and shape
-    profss = np.recarray((nM, len(prof0)), dtype=prof0.dtype)
-    profss[0, :] = prof0
+    #loop over remaining steps
+    for i, M in enumerate(Ms[skip:], skip):
+        #guess root from previous solutions
+        if restart == 0 and i < 3: #not enough solutions for guess
+            xg = []
+        elif i == 0: #use restart guesses
+            xg = nextguess(M, [solm2, solm1], [Mm2, Mm1])
+        elif i == 1: 
+            xg = nextguess(M, [solm1, sol.x], [Mm1, Ms[0]])
+        else: #up and running
+            xg = nextguess(M, [oldsolx, sol.x], [Ms[i-2], Ms[i-1]])
+           
 
-    #loop over non-static
-    skip = 1
-    for i, M in enumerate(Ms[skip:]):
-        i += skip
-        if i > 2:#educated nextguess
-           xg = nextguess(M, [oldsolx, sol.x], [Ms[i-2], Ms[i-1]])
-        else:
-           xg = []
-        if i > 1:
-           oldsolx = sol.x
+        if i > skip:
+            oldsolx = sol.x
         sol = evolve_dM(M, dMs[i-1], xg, prev, **dmargs)
         bca.lL[i], bca.dt[i] = sol.x[0], 10**sol.x[1]
         bca.err0[i], bca.err1[i] = sol.fun[0], sol.fun[1]
         prev = makeprev(M, bca.lL[i], bca.dt[i], prev, prms)
-        profss[i, :] = sol2prof(prev)
+        prof = sol2prof(prev)
+        if i == 0:
+            profss = np.recarray((nM, len(prof)), dtype=prof.dtype)
+        profss[i, :] = prof
 
-    #generate restart data to continue
+    #generate restart data
     restart = {'Mm1' : Ms[-1], 'Mm2' : Ms[-2], 
-               'errm1' : (bca.err0[-1], bca.err1[-1]), 
-               'errm2' : (bca.err0[-2], bca.err1[-2]),
+               'solm1' : (bca.lL[-1], bca.lL[-1]), 
+               'solm2' : (np.log10(bca.dt[-2]), np.log10(bca.dt[-2])),
                'prev' : prev, 'prms' : prms}
 
     #saving
@@ -800,13 +848,14 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, prms=prms,
     if savefile != 0:
         np.savez_compressed(savefile + '.npz', params=prms._asdict(), 
                             bcs=bca, profs=profss)
-        #namedtuples don't pickle (yet?)
+        
         restart_sv = restart.copy()
-        restart_sv['prev'] = prev._asdict()
+        restart_sv['prev'] = prevunterp(prev)._asdict()
         restart_sv['prms'] = prms._asdict()
-        restartfile =  savefile + '_rstrt.pkl'
-        output = open(restartfile, 'wb')
-        pickle.dump(restart_sv, output)
-        output.close()
+        restartfile =  savefile + '_rstrt.npz'
+        #output = open(restartfile, 'wb')
+        #pickle.dump(restart_sv, output)
+        #output.close()
+        np.savez_compressed(restartfile, restart=restart_sv)
 
     return bca, profss, restart
