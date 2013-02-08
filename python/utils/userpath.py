@@ -21,9 +21,9 @@ elif user == 'apiso':
     userpath = '/home/apiso/repos/core_accretion'
 
 #For all users submodule names and locations fixed.
-aydat = userpath + '/dat_andrew'
-apdat = userpath + '/dat_ana'  
-gendat = userpath + '/dat' 
+aydat = userpath + '/dat_andrew/'
+apdat = userpath + '/dat_ana/'  
+gendat = userpath + '/dat/' 
 
 def cduser(s = '/python'):
     """cd to the users python directory, or other directory in repository 
