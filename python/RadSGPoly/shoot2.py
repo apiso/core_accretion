@@ -33,8 +33,9 @@ from scipy.integrate import odeint
 from scipy.optimize import brentq, newton, root, fsolve
 from scipy.interpolate import interp1d
 from collections import namedtuple
-from utils.userpath import userpath
-datfolder = userpath + "/dat/MODELS/RadSGPoly2/"
+from utils.userpath import userpath, aydat
+import pickle
+#datfolder = userpath + "/dat/MODELS/RadSGPoly2/" 
 
 p4 = 4*np.pi
 mcore  = 5*Me 
@@ -195,9 +196,9 @@ def polyradstruct_r_simp(y, r, dt = 0, prms = prms, prev = 0):
     """
     simple version of structure eqns. dy/dr for "y" = [m, P , T, L].
 
-    Not currently used, but the simplest form of the full time-dependent structure
-    eqns. for polytrope. 
-    Not intended for static solutions and will break if dt and prev not specified.
+    Not currently used, but the simplest form of the full time-dependent 
+    structure eqns. for polytrope.  Not intended for static solutions and 
+    will break if dt and prev not specified.
     """
     m, P, T, L = y
     rho = P/prms.R/T
@@ -407,11 +408,11 @@ def sol2prof(prev, prms=prms):
 
 def rBondi(m, r, prms):
     """
-    find the Bondi radius for a solution. Used for evaluation, not in obtaining solutions.
+    find the Bondi radius for a solution. Used for evaluation, not in 
+    obtaining solutions.
 
-    When Bondi radius is outside Hill (fit) radius Bondi radius is based on mass within
-    the fit radius.  In any even Bondi radius has little meaning in this case (in 1D
-    models like ours).
+    When Bondi radius is outside Hill (fit) radius Bondi radius is based on 
+    mass within the fit radius.  Bondi radius has little meaning in this case.
     """
     
     if len(m) != len(r):
@@ -730,8 +731,10 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
 
     return sol
     
-def evolve_DM(M, DM, ep=0.01, prms=prms, verbose=1):
+def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, prms=prms, 
+              **dmargs):
     """take a bunch of steps...
+    uses ezroot as default solver.
 
     Returns (suggested)
     -------
@@ -743,7 +746,7 @@ def evolve_DM(M, DM, ep=0.01, prms=prms, verbose=1):
         for reference and preproducability
     """
     #setup Mass grid and arrays
-    Ma0 = M - prms.mco
+    Ma0 = M0 - prms.mco
     if type(DM) == float:
         #find steps needed to get precision in atm. mass, rounding up
         nM = 1 + np.ceil(np.log((Ma0+DM)/Ma0) / np.log(1+ep))        
@@ -755,14 +758,17 @@ def evolve_DM(M, DM, ep=0.01, prms=prms, verbose=1):
    
     bca = np.recarray(nM, dtype = [('M', float),('lL', float),('dt', float),
                                       ('err0', float),('err1', float)])
-    profss = []
     bca.M = Ms
-    
+
     #find initial static solution
     prev = makeprev(Ms[0], prms=prms)
     bca.lL[0], bca.dt[0] = prev.lL, 0
     bca.err0[0], bca.err1[0] = prev.Mcint/prms.mco - 1, 0
-    profss = [sol2prof(prev)] #initializes list and gives 1st element
+    prof0 = sol2prof(prev)
+
+    #use the first profile to robustly set dtype and shape
+    profss = np.recarray((nM, len(prof0)), dtype=prof0.dtype)
+    profss[0, :] = prof0
 
     #loop over non-static
     skip = 1
@@ -774,10 +780,33 @@ def evolve_DM(M, DM, ep=0.01, prms=prms, verbose=1):
            xg = []
         if i > 1:
            oldsolx = sol.x
-        sol = evolve_dM(M, dMs[i-1], xg, prev, prms, retry=1)
+        sol = evolve_dM(M, dMs[i-1], xg, prev, **dmargs)
         bca.lL[i], bca.dt[i] = sol.x[0], 10**sol.x[1]
-        bca.err0[0], bca.err1[0] = sol.fun[0], sol.fun[1]
+        bca.err0[i], bca.err1[i] = sol.fun[0], sol.fun[1]
         prev = makeprev(M, bca.lL[i], bca.dt[i], prev, prms)
-        profss.append(sol2prof(prev))
+        profss[i, :] = sol2prof(prev)
 
-    return bca, profss
+    #generate restart data to continue
+    restart = {'Mm1' : Ms[-1], 'Mm2' : Ms[-2], 
+               'errm1' : (bca.err0[-1], bca.err1[-1]), 
+               'errm2' : (bca.err0[-2], bca.err1[-2]),
+               'prev' : prev, 'prms' : prms}
+
+    #saving
+    savedir = aydat + savedir
+    if savefile == 1:
+        savefile = 'mc{:.1f}_{:.1f}_{:.1f}_ep{:.2f}'.format(
+            prms.mco/Me, M0/Me, (M0+DM)/Me, ep)
+    if savefile != 0:
+        np.savez_compressed(savefile + '.npz', params=prms._asdict(), 
+                            bcs=bca, profs=profss)
+        #namedtuples don't pickle (yet?)
+        restart_sv = restart.copy()
+        restart_sv['prev'] = prev._asdict()
+        restart_sv['prms'] = prms._asdict()
+        restartfile =  savefile + '_rstrt.pkl'
+        output = open(restartfile, 'wb')
+        pickle.dump(restart_sv, output)
+        output.close()
+
+    return bca, profss, restart

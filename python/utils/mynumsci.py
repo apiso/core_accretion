@@ -144,7 +144,8 @@ def ezroot(func, x0, tol=1e-7, nmax = 20, jaceps=1e-5, jacdir=1,
                     if verbose:
                         print "lower resolution jacobian"
                 elif fails > 2:
-                    print "all errors got worse, settling for", errbest
+                    if verbose:
+                        print "best error", errbest
                     return Sol(xbest, errbest, 2*i + 7)
                 else:
                     sys.exit("can't count fails dummy")
