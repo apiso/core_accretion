@@ -735,7 +735,7 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
         else:
             x0, err0 = xg, errg             
     if verbose:
-        print "initial guess", x0, " has error ", err0
+        print "{:.2f} Me guess {} has error {}".format(M/Me, x0, err0)
         
 #find root and check if improvement
     sol = root2D(x0, *eargs, method=solver, **rkwargs)
@@ -773,7 +773,7 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
     """
     #setup Mass grid and arrays
     Ma0 = M0 - prms.mco
-    if type(DM) == float:
+    if 'float' in str(type(DM)): #to catch numpy.float64
         #find steps needed to get precision in atm. mass, rounding up
         nM = 1 + np.ceil(np.log((Ma0+DM)/Ma0) / np.log(1+ep))        
     elif type(DM) == int: #supply num of steps
@@ -797,7 +797,7 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
         profss = np.recarray((nM, len(prof0)), dtype=prof0.dtype)
         profss[0, :] = prof0
         skip = 1
-    else:
+    else: #use restart data
         skip = 0
         if type(restart) == str:
             #reconstruct dictionary from file, reterp TODO
@@ -805,10 +805,7 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
         #take first (two) steps using restart info
         solm2, solm1 = restart['solm2'], restart['solm1']
         Mm2, Mm1 = restart['Mm2'], restart['Mm1']
-        prev, prms = restart['prev'], restart['prms']
-        
-        
-    
+        prev, prms = restart['prev'], restart['prms']   
 
     #loop over remaining steps
     for i, M in enumerate(Ms[skip:], skip):
@@ -820,30 +817,34 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
         elif i == 1: 
             xg = nextguess(M, [solm1, sol.x], [Mm1, Ms[0]])
         else: #up and running
-            xg = nextguess(M, [oldsolx, sol.x], [Ms[i-2], Ms[i-1]])
-           
+            xg = nextguess(M, [oldsolx, sol.x], [Ms[i-2], Ms[i-1]])        
 
         if i > skip:
             oldsolx = sol.x
-        sol = evolve_dM(M, dMs[i-1], xg, prev, **dmargs)
+        
+        if i == 0:
+            sol = evolve_dM(M, M - Mm1, xg, prev, **dmargs)
+        else:
+            sol = evolve_dM(M, dMs[i-1], xg, prev, **dmargs)
+
         bca.lL[i], bca.dt[i] = sol.x[0], 10**sol.x[1]
         bca.err0[i], bca.err1[i] = sol.fun[0], sol.fun[1]
         prev = makeprev(M, bca.lL[i], bca.dt[i], prev, prms)
         prof = sol2prof(prev)
-        if i == 0:
+        if i == 0: #happens in restart case only
             profss = np.recarray((nM, len(prof)), dtype=prof.dtype)
         profss[i, :] = prof
 
     #generate restart data
     restart = {'Mm1' : Ms[-1], 'Mm2' : Ms[-2], 
-               'solm1' : (bca.lL[-1], bca.lL[-1]), 
-               'solm2' : (np.log10(bca.dt[-2]), np.log10(bca.dt[-2])),
+               'solm1' : (bca.lL[-1], np.log10(bca.dt[-1])), 
+               'solm2' : (bca.lL[-2], np.log10(bca.dt[-2])),
                'prev' : prev, 'prms' : prms}
 
     #saving
     savedir = aydat + savedir
     if savefile == 1:
-        savefile = 'mc{:.1f}_{:.1f}_{:.1f}_ep{:.2f}'.format(
+        savefile = savedir + 'mc{:.1f}_{:.1f}_{:.1f}_ep{:.2f}'.format(
             prms.mco/Me, M0/Me, (M0+DM)/Me, ep)
     if savefile != 0:
         np.savez_compressed(savefile + '.npz', params=prms._asdict(), 
@@ -859,3 +860,4 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
         np.savez_compressed(restartfile, restart=restart_sv)
 
     return bca, profss, restart
+
