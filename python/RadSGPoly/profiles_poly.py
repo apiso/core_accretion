@@ -149,7 +149,7 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
         if disk == 1:
             paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
                             str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
-                            str(int(prms.a)) + 'AU/' + filename
+                            str(prms.a) + 'AU/' + filename
             numpy.savez_compressed(paramfilename, model = model, param = param, \
                                prof = prof)
         else:
@@ -166,7 +166,7 @@ def atmload(filename, prms = prms, disk = 1):
     if disk == 1:
         npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
                             str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
-                            str(int(prms.a)) + 'AU/' + filename)
+                            str(prms.a) + 'AU/' + filename)
     else:
         npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'Td' + \
                             str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \

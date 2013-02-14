@@ -55,21 +55,61 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
                   Cv = Cvfn(Y, delad), Pd = Pdisk(a, mstar, FSigma, FT), \
                   Td = Tdisk(a, FT), kappa = kdust)
 
-    t = 0 * numpy.ndarray(shape = (10), dtype = float)
-    dtarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
-    tarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
-    Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+    if a == 1.0 or a == 5.0 or a  == 3.0 or a == 2.0 or a == 1.5 or a == 2.5 or a == 1.75:
+    	t = 0 * numpy.ndarray(shape = (5), dtype = float)
+    	dtarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+    	tarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+    	Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+    
+    else:
+	t = 0 * numpy.ndarray(shape = (10), dtype = float)
+    	dtarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+    	tarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+    	Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
     
     for i in range(len(t)):
 
-        if delad == 2./7 and Y == 0.0:
-            Mc = numpy.linspace(5, 14, 10)
+	if a == 1.0:
+	    if delad == 2./7 and Y == 0.0:
+		Mc = numpy.linspace(16, 20, 5)
+	    elif delad == 2./7 and Y == 0.3:
+		Mc = numpy.linspace(10, 14, 5)
+	    elif delad == 2./5 and Y == 0.3:
+		Mc = numpy.linspace(40, 44, 5)
 
-        elif delad == 2./7 and Y == 0.3:
-            Mc = numpy.linspace(1, 10, 10)
+	elif a == 1.5:
+	    if delad == 2./5 and Y == 0.3:
+		Mc = [20.0, 21.0, 22.0, 23.0, 24.0]
+
+	elif a == 1.75:
+	    if delad == 2./5 and Y == 0.3:
+		Mc = [15.0, 16.0, 17.0, 18.0, 19.0]
+	
+	elif a == 2.0 or a == 2.5:
+	    if delad == 2./5 and Y == 0.3:
+		Mc = [8.0, 9.0, 10.0, 11.0, 12.0]
+
+	elif a == 3.0:
+	    if delad == 2./5 and Y == 0.3:
+		Mc = [8.0, 9.0, 10.0, 11.0, 12.0] #numpy.linspace(11, 15, 5)
+
+	elif a == 5.0:
+	    if delad == 2./7 and Y == 0.0:
+		Mc = numpy.linspace(11, 15, 5)
+	    elif delad == 2./7 and Y == 0.3:
+		Mc = numpy.linspace(7, 11, 5)
+	    elif delad == 2./5 and Y == 0.3:
+		Mc = numpy.linspace(6, 10, 5)
+
+	else:
+            if delad == 2./7 and Y == 0.0:
+            	Mc = numpy.linspace(5, 14, 10)
+
+            elif delad == 2./7 and Y == 0.3:
+            	Mc = numpy.linspace(1, 10, 10)
             
-        elif delad == 2./5 and Y == 0.3:
-            Mc = numpy.linspace(1, 10, 10)
+            elif delad == 2./5 and Y == 0.3:
+            	Mc = numpy.linspace(1, 10, 10)
         
         atm = atmload('Mc' + str(Mc[i]) + '.npz', prms = prms)
         model = atm[0]
@@ -166,8 +206,10 @@ def Mc_vs_a_fixed_t(delad, Y, disklife):
         array or critical core masses for fixed disk life
         
     """
-
-    a = numpy.linspace(10, 100, 10)
+    if delad == 2./5:
+    	a = [1.0, 1.5, 1.75, 2.0, 2.5, 3.0, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0] # numpy.linspace(10, 100, 10)
+    else:
+	a = [1.0, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
     Mcrit = 0 * numpy.ndarray(shape = (len(a)), dtype = float)
     
     for i in range(len(a)):

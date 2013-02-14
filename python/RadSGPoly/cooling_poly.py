@@ -166,7 +166,7 @@ def cooling_local(param, prof, prms = prms, out = 'rcb', onlyrad = 0):
             else:
                 print "Wrong choice of boundary."
                 sys.exit()
-            
+
             mmid = (m[:-1] + m[1:]) / 2
             dm = m[1] - m[0]
             
@@ -184,10 +184,19 @@ def cooling_local(param, prof, prms = prms, out = 'rcb', onlyrad = 0):
             fP2 = interp1d(m2, P2)
             fT2 = interp1d(m2, T2)
 
-            P1int = fP1(mmid)
-            P2int = fP2(mmid)
-            T1int = fT1(mmid)
-            T2int = fT2(mmid)
+            success = 0
+        
+            while success != 1:
+                try:
+                    P1int = fP1(mmid)
+                    P2int = fP2(mmid)
+                    T1int = fT1(mmid)
+                    T2int = fT2(mmid)
+
+                    success = 1
+
+                except ValueError:
+                    mmid = mmid[1:]
 
             Tav = (T1int + T2int) / 2
 
@@ -227,18 +236,18 @@ def critical(param, prof, prms = prms):
     
     """
     
-    Ldt = cooling_local(param, prof, prms)
+    dt = cooling_global(param, prof, prms)[0]
     Lav = (param.L[:-1] + param.L[1:]) / 2
     
-    for i in range(len(Ldt)):
-        if Ldt[i] < 0:
+    for i in range(len(dt)):
+        if dt[i] < 0:
             break
     for j in range(len(param.MB)):
         if param.MB[j] > 2 * prms.Mco / Me:
             break
         
     k = numpy.array([i, j]).min()
-    return param[:k], prof[:k], Ldt[:k] / Lav[:k]
+    return param[:k], prof[:k], dt[:k]
 
 
 
