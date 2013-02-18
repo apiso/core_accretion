@@ -12,7 +12,7 @@ atmosphere:
 """
 
 import numpy as np
-from constants import Me, Rb
+from constants import Me, Rb, Rfn
 
 
 #disk parameters (relative to MMSN model)
@@ -26,11 +26,12 @@ gamma = 7./5
 delad = 1 - 1/gamma
 
 #parameters for H-He mixture
-Y = 0.0 #0.3
+Y = 0.3
 muH = 2.0
 mu = 4./(2-Y)
 R = Rb/mu
 Cv = R / (gamma - 1)
+R_EOS = Rfn(Y)
 
 
 #core parameters

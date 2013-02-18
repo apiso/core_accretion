@@ -16,7 +16,7 @@ user = os.environ['USER']
 if user == 'youd':
     userpath = os.environ['REPOS']+'/aacore'
 elif user == 'ana-mariapiso':
-    userpath ='/Users/ana-mariapiso/Documents/core_accretion'
+    userpath ='/Users/ana-mariapiso/core_accretion'
 elif user == 'apiso':
     userpath = '/home/apiso/repos/core_accretion'
 

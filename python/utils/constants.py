@@ -91,9 +91,13 @@ def Cvfn(Y, delad):
     """
     return Rfn(Y) / (gammafn(delad) - 1)
 
-#tuple of gas, disk and core parameters
+#tuple of gas, disk and core parameters for polytrope
 params = namedtuple( \
     'params', 'Mco, rco, a, delad, Y, gamma, R, Cv, Pd, Td, kappa')
+
+#tuple of gas, disk and core parameters for real EOS
+paramsEOS = namedtuple( \
+    'paramsEOS', 'Mco, rco, Y, a, Pd, Td, kappa')
 
 
 
