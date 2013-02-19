@@ -6,7 +6,7 @@ scripts & ipython notebooks in python/Atmscrips.
 
 import numpy
 from utils.constants import Me, Re, gammafn, Rfn, Cvfn, Pdisk, Tdisk, kdust, \
-     params
+     params, kdust10, kdust100
 from utils.parameters import FSigma, FT, mstar
 import matplotlib.pyplot as plt
 
@@ -15,7 +15,7 @@ from RadSGPoly.cooling_poly import cooling_global as cg, cooling_local as cl,\
      critical
 from RadSGPoly.atmseries_poly import mcrit_disktime as mcd
 
-def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
+def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0, opacity = kdust):
 
     """
     Uses already generated atmosphere profiles to calculate the atmosphere
@@ -55,62 +55,71 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
                   Cv = Cvfn(Y, delad), Pd = Pdisk(a, mstar, FSigma, FT), \
                   Td = Tdisk(a, FT), kappa = kdust)
 
+    #if prms.kappa == kdust:
+
     if a == 1.0 or a == 5.0 or a  == 3.0 or a == 2.0 or a == 1.5 or a == 2.5 or a == 1.75:
-    	t = 0 * numpy.ndarray(shape = (5), dtype = float)
-    	dtarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
-    	tarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
-    	Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+        t = 0 * numpy.ndarray(shape = (5), dtype = float)
+        dtarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+        tarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+        Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
     
     else:
-	t = 0 * numpy.ndarray(shape = (10), dtype = float)
-    	dtarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
-    	tarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
-    	Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+        t = 0 * numpy.ndarray(shape = (10), dtype = float)
+        dtarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+        tarr = 0 * numpy.ndarray(shape = (10, 299), dtype = float)
+        Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
     
     for i in range(len(t)):
 
-	if a == 1.0:
-	    if delad == 2./7 and Y == 0.0:
-		Mc = numpy.linspace(16, 20, 5)
-	    elif delad == 2./7 and Y == 0.3:
-		Mc = numpy.linspace(10, 14, 5)
-	    elif delad == 2./5 and Y == 0.3:
-		Mc = numpy.linspace(40, 44, 5)
-
-	elif a == 1.5:
-	    if delad == 2./5 and Y == 0.3:
-		Mc = [20.0, 21.0, 22.0, 23.0, 24.0]
-
-	elif a == 1.75:
-	    if delad == 2./5 and Y == 0.3:
-		Mc = [15.0, 16.0, 17.0, 18.0, 19.0]
-	
-	elif a == 2.0 or a == 2.5:
-	    if delad == 2./5 and Y == 0.3:
-		Mc = [8.0, 9.0, 10.0, 11.0, 12.0]
-
-	elif a == 3.0:
-	    if delad == 2./5 and Y == 0.3:
-		Mc = [8.0, 9.0, 10.0, 11.0, 12.0] #numpy.linspace(11, 15, 5)
-
-	elif a == 5.0:
-	    if delad == 2./7 and Y == 0.0:
-		Mc = numpy.linspace(11, 15, 5)
-	    elif delad == 2./7 and Y == 0.3:
-		Mc = numpy.linspace(7, 11, 5)
-	    elif delad == 2./5 and Y == 0.3:
-		Mc = numpy.linspace(6, 10, 5)
-
-	else:
+        if a == 1.0:
             if delad == 2./7 and Y == 0.0:
-            	Mc = numpy.linspace(5, 14, 10)
+                Mc = numpy.linspace(16, 20, 5)
+            elif delad == 2./7 and Y == 0.3 and opacity == kdust:
+                Mc = numpy.linspace(10, 14, 5)
+            elif delad == 2./7 and Y == 0.3 and opacity == kdust10:
+                Mc = numpy.linspace(4, 8, 5)
+            elif delad == 2./5 and Y == 0.3:
+                Mc = numpy.linspace(40, 44, 5)
+
+        elif a == 1.5:
+            if delad == 2./5 and Y == 0.3:
+                Mc = [20.0, 21.0, 22.0, 23.0, 24.0]
+
+        elif a == 1.75:
+            if delad == 2./5 and Y == 0.3:
+                Mc = [15.0, 16.0, 17.0, 18.0, 19.0]
+        
+        elif a == 2.0 or a == 2.5:
+            if delad == 2./5 and Y == 0.3:
+                Mc = [8.0, 9.0, 10.0, 11.0, 12.0]
+
+        elif a == 3.0:
+            if delad == 2./5 and Y == 0.3:
+                Mc = [8.0, 9.0, 10.0, 11.0, 12.0] #numpy.linspace(11, 15, 5)
+
+        elif a == 5.0:
+            if delad == 2./7 and Y == 0.0:
+                Mc = numpy.linspace(11, 15, 5)
+            elif delad == 2./7 and Y == 0.3 and opacity == kdust:
+                Mc = numpy.linspace(7, 11, 5)
+            elif delad == 2./7 and Y == 0.3 and opacity == kdust10:
+                Mc = numpy.linspace(2, 6, 5)                
+            elif delad == 2./5 and Y == 0.3:
+                Mc = numpy.linspace(6, 10, 5)
+
+        elif a == 10.0 and delad == 2./7 and Y == 0.3:
+                Mc = numpy.linspace(5, 14, 10)
+
+        else:
+            if delad == 2./7 and Y == 0.0:
+                Mc = numpy.linspace(5, 14, 10)
 
             elif delad == 2./7 and Y == 0.3:
-            	Mc = numpy.linspace(1, 10, 10)
+                Mc = numpy.linspace(1, 10, 10)
             
             elif delad == 2./5 and Y == 0.3:
-            	Mc = numpy.linspace(1, 10, 10)
-        
+                Mc = numpy.linspace(1, 10, 10)
+    
         atm = atmload('Mc' + str(Mc[i]) + '.npz', prms = prms)
         model = atm[0]
         param = atm[1]
@@ -125,6 +134,41 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0):
             dtarr[i, j] = dt[j]
             tarr[i, j] = sum(dt[:j])
 
+
+##    elif prms.kappa == kdust10:
+##        
+##        if a == 10.0:
+##            t = 0 * numpy.ndarray(shape = (5), dtype = float)
+##            dtarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+##            tarr = 0 * numpy.ndarray(shape = (5, 299), dtype = float)
+##            Mtotcrit = 0 * numpy.ndarray(shape = (299), dtype = float)
+##            
+##        for i in range(len(t)):
+##            
+##            if delad == 2./7 and Y == 0.3:
+##                if a == 10.0:
+##                    Mc = numpy.linspace(3, 7, 5)
+##
+##            atm = atmload('Mc' + str(Mc[i]) + '.npz', prms = prms)
+##            model = atm[0]
+##            param = atm[1]
+##            prof = atm[2]
+##
+##            temp = critical(param, prof, model)
+##            Mtotcrit[i] = temp[0].MB[-1]
+##            dt = temp[-1]
+##            t[i] = sum(dt)
+##
+##            for j in range(len(dt)):
+##                dtarr[i, j] = dt[j]
+##                tarr[i, j] = sum(dt[:j])
+
+
+    if opacity == kdust10:
+        t = t / 10
+    elif opacity == kdust100:
+        t = t / 100
+        
     if returnt == 0:
         return Mc, t / (365 * 24 * 3600)
     else:
@@ -179,7 +223,7 @@ def t_vs_a_fixed_Mc(delad, Y, Mc):
     return a, t / (365 * 24 * 3600)
 
 
-def Mc_vs_a_fixed_t(delad, Y, disklife):
+def Mc_vs_a_fixed_t(delad, Y, disklife, opacity = kdust):
     
     """
 
@@ -214,7 +258,7 @@ def Mc_vs_a_fixed_t(delad, Y, disklife):
     
     for i in range(len(a)):
 
-        Mct = t_vs_Mc_fixed_a(delad, Y, a[i])
+        Mct = t_vs_Mc_fixed_a(delad, Y, a[i], opacity = opacity)
         Mcrit[i] = mcd(Mct[0], Mct[1], disklife = disklife)
 
     return a, Mcrit
