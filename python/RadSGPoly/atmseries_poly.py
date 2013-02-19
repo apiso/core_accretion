@@ -15,7 +15,7 @@ from RadSGPoly.cooling_poly import critical
 
 def atmseries(a, rhoc, delad, Y, Mcomin, Mcomax, nMco, n = 500, \
               nMpoints = 300, L1 = 10**21, L2 = 10**30, minMfrac = 1.1, \
-              maxMfrac = 2.8):
+              maxMfrac = 2.8, opacity = kdust):
     
     """
 
@@ -75,7 +75,7 @@ def atmseries(a, rhoc, delad, Y, Mcomin, Mcomax, nMco, n = 500, \
     for i in range(nMco):
         
         prms = params(Mcore[i], rcore[i], a, delad, Y, gamma, R, Cv, Pd, Td,\
-                      kappa = kdust)
+                      kappa = opacity)
         Mmin = minMfrac * Mcore[i]
         Mmax = maxMfrac * Mcore[i]
 
