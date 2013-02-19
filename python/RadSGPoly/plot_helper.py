@@ -107,7 +107,7 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0, opacity = kdust):
             elif delad == 2./5 and Y == 0.3:
                 Mc = numpy.linspace(6, 10, 5)
 
-        elif a == 10.0 and delad == 2./7 and Y == 0.3:
+        elif a == 10.0 and delad == 2./7 and Y == 0.3 and opacity == kdust:
                 Mc = numpy.linspace(5, 14, 10)
 
         else:

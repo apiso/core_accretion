@@ -188,17 +188,17 @@ def cooling_local(param, prof, prms = prms, out = 'rcb', onlyrad = 0):
 
             success = 0
         
-            #while success != 1:
-            #    try:
-            P1int = fP1(mmid)
-            P2int = fP2(mmid)
-            T1int = fT1(mmid)
-            T2int = fT2(mmid)
+            while success != 1:
+                try:
+            	    P1int = fP1(mmid)
+            	    P2int = fP2(mmid)
+            	    T1int = fT1(mmid)
+            	    T2int = fT2(mmid)
 
-                    #success = 1
+                    success = 1
 
-                #except ValueError:
-                #    mmid = mmid[1:]
+                except ValueError:
+                    mmid = mmid[1:]
 
             Tav = (T1int + T2int) / 2
 

@@ -128,7 +128,11 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
         #deltaL = 4 / numpy.pi * numpy.arctan(Mc1 / prms.Mco) - 1
         #relative error; use of the arctan ensures deltaL stays between -1 and 1
         if math.isnan(deltaL): #used to get rid of possible divergences
-                deltaL = 1. *(-1)
+	    #try:
+	    if lum < 10**25:
+            	deltaL = 1. *(-1)
+	    else:
+		deltaL = 1.
         return deltaL
 
     #Lmatch = newton(delta, L1, tol = tol, maxiter = 200)

@@ -126,10 +126,14 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
         mass = numpy.linspace(Mmin, Mmax, nMpoints)
 
     for i in range(nMpoints):
-        try:
-            sol = shoot(mass[i], L1, L2, n, tol, prms)
-        except ValueError:
-            pass
+	 
+        #try:
+        sol = shoot(mass[i], L1, L2, n, tol, prms)
+
+        #except ValueError:
+	#    pass 
+            	#L1 = 0.99 * L1
+	    	#L2 = 1.01 * L2
         
         param.Mtot[i], param.Mcb[i], param.MB[i], param.rcb[i], param.RB[i], \
                        param.RHill[i], param.Pc[i], param.Pcb[i], param.PB[i],\
@@ -147,8 +151,10 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 
             #step = (Mmax - Mmin) / nMpoints / param.Mtot[i]
             
-            L1 = param.L[i] * 0.5
-            L2 = param.L[i] * 1.5
+        L1 = param.L[i] * 0.5
+        L2 = param.L[i] * 1.5
+
+	print i
 
 
     if savefile == 1:
