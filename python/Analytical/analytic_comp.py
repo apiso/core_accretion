@@ -228,9 +228,17 @@ class AnSols:
             sys.exit('mcrit bracket not found')
         return brentq(f, m0, m1, args = (tdisk, fM))
         
+    def tcool_fixksi(self, ksi=2, mc=5, fM=0.15, **kwargs):
+        """returns cooling time in Myr"""
 
+        self.setcore(mc, **kwargs)
+        PM, Pd = self.PM, self.Pd
+        #fac = fM * PM / (self.theta * Pd)
+        
+        Pcb = ksi * fM * PM
 
-    
+        tcool = p4 * Pcb**2 / Pd * self.RBprime**(7./2) / (
+            self.Lo * np.sqrt(self.rc))
 
-
+        return tcool/Myr
 
