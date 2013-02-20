@@ -90,7 +90,7 @@ def atmseries(a, rhoc, Y, Mcomin, Mcomax, nMco, n = 500, \
                 success = 1
                 
             except ValueError:
-                Mmin = Mmin * 1.05
+                Mmin = Mmin * 1.01
 
         print "SUCCESS FOR MC = %s !" % str(Mcore[i]/Me)
 
