@@ -673,12 +673,12 @@ In what follows we study the separate effect of disk temperature and pressure on
 
 We perform a similar analysis on the effect of disk temperature $T_{\rm{d}}$ on the evolutionary time. For $a=10$ AU and $M_{\rm{c}}=5 M_{\oplus}$, we fix the disk pressure at the value given by equation (\ref{eq:Pd}) and vary $T_{\rm{d}}$. The resulting dependence is shown in Figure 5. In contrast with the pressure effect, an increase in disk temperature causes the growth time to increase as well. This is due to opacity effects: a higher disk temperature increases the opacity in the radiative zone of the atmosphere, causing a decrease in luminosity and therefore a longer Kelvin-Helmholtz accretion time. Moreover, a factor of $\sim 3$ reduction in the disk temperature results in an decrease of the growth time by a factor of $\sim 30$. The atmosphere evolution is therefore strongly dependent on the temperature in the protoplanetary disk.
 
-\begin{figure}[h]
+\begin{figure*}[tb]
 \centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/TdPd_effect.pdf}
+\includegraphics[width=1.\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/TdPd_effect.pdf}
 %\vspace{-0.5in}
 \caption{Disk temperature effect on growth time. Gas accretion is faster for lower temperatures.}
-\end{figure}
+\end{figure*}
 
 \subsection{Core Mass versus Evolution Time at Fixed Distance}
 \label{Mct}
@@ -923,6 +923,14 @@ Subtracting \Eqs{eq:udot}{eq:4EGc} and rearranging for the desired integral give
 \int_{M\co}^M {P \over \rho^2} {\p \rho \over \p t} dm  &=&  - \dot{E}_G - {G M \dot{M} \over R} - P\surf {\p \dot{V}\surf \over \p t} \,  
 \end{eqnarray} 
 with \Eq{eq:dot} used to combine terms.  Combining \Eqsss{eq:DLc}{eq:udot}{eq:PdVint}, we reproduce \Eq{eq:coolingglobal} with the accreted energy $e_{\rm acc} \equiv u\surf - GM/R$.  
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cooling_a10_Mc5_rcb.pdf}
+%\vspace{-0.5in}
+\caption{}
+\end{figure}
+
 
 
 \section{Analytic Cooling Model Details}\label{sec:analytic}
