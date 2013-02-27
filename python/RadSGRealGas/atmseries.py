@@ -15,7 +15,7 @@ from RadSGRealGas.cooling import critical
 
 def atmseries(a, rhoc, Y, Mcomin, Mcomax, nMco, n = 500, \
               nMpoints = 200, L1 = 10**21, L2 = 10**28, minMfrac = 1.05, \
-              maxMfrac = 2.25):
+              maxMfrac = 2.25, checktop = 0):
     
     """
 
@@ -86,7 +86,8 @@ def atmseries(a, rhoc, Y, Mcomin, Mcomax, nMco, n = 500, \
         
             try:
                 profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, 'Mc' + \
-                               str(Mcore[i]/Me)[:4], prms = prms)
+                               str(Mcore[i]/Me)[:4], prms = prms, \
+                               checktop = checktop)
                 success = 1
                 
             except ValueError:

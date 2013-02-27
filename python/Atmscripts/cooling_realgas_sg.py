@@ -18,7 +18,7 @@ out = 'rcb'
 
 if load != 0:
 
-    atm = atmload('Mc6.0.npz', prms = prms)
+    atm = atmload('Mc10.0_checktop.npz', prms = prms)
     model = atm[0]
     param = atm[1]
     prof = atm[2]

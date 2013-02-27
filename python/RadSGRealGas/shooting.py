@@ -35,7 +35,7 @@ from collections import namedtuple
 from scipy import integrate, interpolate, optimize
 from scipy.integrate import odeint
 from scipy.interpolate import interp1d
-from scipy.optimize import brentq, brenth, bisect, newton
+from scipy.optimize import brentq, brenth, bisect, newton, fminbound
 
 #-----------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ def delradfn(p, m, T, L, prms = prms): #radiative temperature gradient
 def Del(p, m, T, L, delad, prms = prms): #del = min(delad, delrad)
     return min(delad, delradfn(p, m, T, L, prms))
 
-def Ltop(Mi, L1, L2, n, tol, prms = prms):
+def Ltop(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
 
     """
     Iterates among luminosity values until a converged atmosphere solution is
@@ -74,6 +74,11 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
     prms:
         gas, disk and core parameters. Default used by importing values from
         parameters.py module
+    checktop:
+        flag to study EOS effects separately
+            if 0, pure EOS throughout
+            if 1, atmosphere top is a polytrope
+            if -1, atmosphere bottom is a polytrope
 
 
     Output
@@ -97,9 +102,19 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
         dL/dr = 0
         """
 
-        #r = numpy.exp(logr)
-        rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
-        delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+        if checktop == 0:
+    
+            rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+            delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+
+        else:
+            if checktop * (x[1] - 500.0) > 0:
+                rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+                delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+            else:
+                delad = 0.29677
+                R = Rfn(prms.Y)
+                rho = x[0] / (R * x[1])
         
         return numpy.array([ - G * x[2] * rho / (r**2), \
                              - Del(x[0], x[2], x[1], x[3], delad, prms) \
@@ -113,8 +128,6 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
         Returns the relative error between the core mass obtained by integrating
         from a luminosity lum and the actual core mass.
 
-        AY: The problem with having delta be an internal function is that you can't investigate its properties,
-            which is something I found useful
         """
         rfit = RHill(Mi, prms.a)
         r = numpy.logspace(numpy.log10(rfit), numpy.log10(prms.rco), n)
@@ -123,40 +136,27 @@ def Ltop(Mi, L1, L2, n, tol, prms = prms):
             
         Mc1 = y[:,2][-1] #core mass from the guessed L
 
-        deltaL = 1 - prms.Mco / Mc1
-        
-        #deltaL = 4 / numpy.pi * numpy.arctan(Mc1 / prms.Mco) - 1
-        #relative error; use of the arctan ensures deltaL stays between -1 and 1
+        deltaL = 4 / numpy.pi * numpy.arctan(Mc1 / prms.Mco) - 1
+        #deltaL = 1 - prms.Mco / Mc1
+
         if math.isnan(deltaL): #used to get rid of possible divergences
-	    #try:
-	    if lum < 10**25:
+            
+            if lum < 10**25:
             	deltaL = 1. *(-1)
 	    else:
 		deltaL = 1.
         return deltaL
 
-    #Lmatch = newton(delta, L1, tol = tol, maxiter = 200)
     Lmatch = brentq(delta, L1, L2, xtol = tol, maxiter = 500)
 
-##    deltaL = delta(L1)
-##    dx = (L2 - L1) / 2
-##
-##    while abs(deltaL) > tol:
-##        Lmid = L1 + dx
-##        deltaL = delta(Lmid)
-##        if deltaL < 0:
-##            L1 = Lmid
-##        dx = dx / 2
-
-
     return Lmatch, delta(Lmatch)
-    #return Lmid, delta(Lmid)
+
 
 
   
 ###-----------------------------------------------------------------------------
 
-def shoot(Mi, L1, L2, n, tol, prms = prms):
+def shoot(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
 
     """
     Returns the converged atmospheric profile, first by calling iteration
@@ -176,6 +176,11 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
     prms:
         gas, disk and core parameters. Default used by importing values from
         parameters.py module
+    checktop:
+        flag to study EOS effects separately
+            if 0, pure EOS throughout
+            if 1, atmosphere top is a polytrope
+            if -1, atmosphere bottom is a polytrope
 
 
     Output
@@ -211,7 +216,7 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
     """
 
     rfit = RHill(Mi, prms.a) #sets the outer boundary conditions at the Hill radius
-    Lpluserror = Ltop(Mi, L1, L2, n, tol, prms)
+    Lpluserror = Ltop(Mi, L1, L2, n, tol, prms, checktop)
     L = Lpluserror[0]
     err = Lpluserror[1]
 
@@ -231,9 +236,24 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
         dIu/dr = 12 * pi * r**2 * P
         """
 
-        rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
-        delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
-        u = 10**interplog10u(numpy.log10(x[1]), numpy.log10(x[0]))
+        if checktop == 0:
+    
+            rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+            delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+            u = 10**interplog10u(numpy.log10(x[1]), numpy.log10(x[0]))
+
+        else:
+            if checktop * (x[1] - 500.0) > 0:
+                rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+                delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+                u = 10**interplog10u(numpy.log10(x[1]), numpy.log10(x[0]))
+                
+            else:
+                delad = 0.29677
+                R = Rfn(prms.Y)
+                Cv = Cvfn(prms.Y, delad)
+                rho = x[0] / (R * x[1])
+                u = Cv * x[1]
         
         return numpy.array([ - G * x[2] * rho / (r**2), \
                              - Del(x[0], x[2], x[1], x[3], delad, prms) \
@@ -265,13 +285,34 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
     Iu = Iu - Iu[0]
     
     delrad = delradfn(P, m, T, L, prms)
-    delad = interpdelad(numpy.log10(T), numpy.log10(P))
-
-    fdelad = interp1d(delrad[::-1] - delad[::-1], delad[::-1])
-    deladcb = float(fdelad(0))
     
-    rho = 10**interplog10rho(numpy.log10(T), numpy.log10(P))
-    u = 10**interplog10u(numpy.log10(T), numpy.log10(P))
+    if checktop == 0:
+        delad = interpdelad(numpy.log10(T), numpy.log10(P))
+
+        fdelad = interp1d(delrad[::-1] - delad[::-1], delad[::-1])
+        deladcb = float(fdelad(0))
+    
+        rho = 10**interplog10rho(numpy.log10(T), numpy.log10(P))
+        u = 10**interplog10u(numpy.log10(T), numpy.log10(P))
+
+    else:
+
+        #fTr = interp1d(T[::-1], r[::-1])
+        #fTP = interp1d(T[::-1], P[::-1])
+        #fT = interp1d(delrad[::-1], T[::-1])
+        #fTm = interp1d(T[::-1], m[::-1])
+        #fTEg = interp1d(T[::-1], Eg[::-1])
+        #fTU = interp1d(delrad[::-1], U[::-1])
+        #fTIu = interp1d(delrad[::-1], Iu[::-1])
+
+
+        deladcb = 0.29677
+        delad = numpy.array([deladcb] * n)
+        R = Rfn(prms.Y)
+        Cv = Cvfn(prms.Y, delad)
+        
+        rho = P / (R * T)
+        u = Cv * T
 
     #interpolation functions to find the RCB
     fr = interp1d(delrad[::-1], r[::-1])
@@ -332,8 +373,124 @@ def shoot(Mi, L1, L2, n, tol, prms = prms):
 
 #--------------------------------------------------------------------------
     
+def mass_conv(M1, M2, n, tol, Y, a, Mc):
+
+    """
+    Finds the mass of the fully convective solution (i.e. minimum atmosphere mass)
+    
+    """
+
+    rc = (3 * Mc / (4 * numpy.pi * rhoc))**(1./3)
+
+    prms = paramsEOS(Mc, rc, Y, a, Pd = Pdisk(a, mstar, FSigma, FT), \
+                 Td = Tdisk(a, FT), kappa = kdust)
+
+    def f(x, r):
+        """
+        structure eqns. "x" = [p , T , m, L]
+        dp/dr = - G * m * rho / (r**2),
+        dT/dr = - del *  T * rho * G * m / (P * r**2)
+        dm/dr = 4 * pi * r**2 * rho
+        """
+
+        rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+        delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+
+        
+        return numpy.array([ - G * x[2] * rho / (r**2), \
+                             - delad * x[1] * rho * G * x[2]  / (x[0] * r**2),
+                             4 * pi * r**2 * rho])              
+
+    def delta(mass):
+        
+        """
+        Returns the relative error between the core mass obtained by integrating
+        from a luminosity lum and the actual core mass.
+
+        """
+        rfit = RHill(mass, prms.a)
+        r = numpy.logspace(numpy.log10(rfit), numpy.log10(prms.rco), n)
+        #integration of the structure equations
+        y = odeint(f, [prms.Pd, prms.Td, mass], r)
+            
+        Mc1 = y[:,2][-1] #core mass from the guessed L
+
+        deltam = 4 / numpy.pi * numpy.arctan(Mc1 / prms.Mco) - 1
+	
+        return deltam
+
+    Mmatch = brentq(delta, M1, M2, xtol = tol, maxiter = 500)
+
+    return Mmatch / Me - Mc / Me, delta(Mmatch)
+
+
+
+
+            
+def deltafn(mass, n, Y, a, Mc):
+
+    rc = (3 * Mc / (4 * numpy.pi * rhoc))**(1./3)
+
+    prms = paramsEOS(Mc, rc, Y, a, Pd = Pdisk(a, mstar, FSigma, FT), \
+                 Td = Tdisk(a, FT), kappa = kdust)
+
+
+
+    def f(x, r):
+
+##       
+##    """
+##    structure eqns. "x" = [p , T , m, L]
+##    dp/dr = - G * m * rho / (r**2),
+##    dT/dr = - del *  T * rho * G * m / (P * r**2)
+##    dm/dr = 4 * pi * r**2 * rho
+##    """
+
+    
+        rho = 10**interplog10rho(numpy.log10(x[1]), numpy.log10(x[0]))
+        delad = interpdelad(numpy.log10(x[1]), numpy.log10(x[0]))
+
+        
+        return numpy.array([ - G * x[2] * rho / (r**2), \
+                             - delad * x[1] * rho * G * x[2]  / (x[0] * r**2),
+                             4 * pi * r**2 * rho]) 
+        
+    """
+    Returns the relative error between the core mass obtained by integrating
+    from a luminosity lum and the actual core mass.
+
+    """
+    rfit = RHill(mass, prms.a)
+    r = numpy.logspace(numpy.log10(rfit), numpy.log10(prms.rco), n)
+    #integration of the structure equations
+    y = odeint(f, [prms.Pd, prms.Td, mass], r)
+        
+    Mc1 = y[:,2][-1] #core mass from the guessed L
+
+    deltam = 4 / numpy.pi * numpy.arctan(Mc1 / prms.Mco) - 1
+    
+    return - deltam
+
+
+
+def Mcoremax(n, Y, a, Mc1, Mc2, Mmax = 100*Me):
     
 
+    def errcore(Mc):
+        mopt, deltamax, ierr, numfunc = fminbound(\
+            deltafn, Mc, 100*Me, args = (n, Y, a, Mc), full_output = 1)
+
+        return deltamax
+
+    Mcmax = brentq(errcore, Mc1, Mc2)
+
+    return Mcmax, errcore(Mcmax)
+
+
+
+
+
+    
 
 
             

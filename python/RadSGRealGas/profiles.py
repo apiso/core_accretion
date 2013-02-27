@@ -28,7 +28,8 @@ from shooting import Ltop, shoot, prms
 
 
 def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
-                   tol = 10**(-25), log = 1, savefile = 1, disk = 1):
+                   tol = 10**(-25), log = 1, savefile = 1, disk = 1, \
+                   checktop = 0):
 
     """
     Uses the output of shoot (described in shooting_poly) to generate recarrays
@@ -128,7 +129,7 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
     for i in range(nMpoints):
 	 
         #try:
-        sol = shoot(mass[i], L1, L2, n, tol, prms)
+        sol = shoot(mass[i], L1, L2, n, tol, prms, checktop)
 
         #except ValueError:
 	#    pass 

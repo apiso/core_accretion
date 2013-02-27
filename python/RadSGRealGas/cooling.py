@@ -21,7 +21,7 @@ from shooting import prms
 
 #---------------------------------------------------------------------------
 
-def cooling_global(atmset, atmprofile, prms = prms, out = 'rcb'):
+def cooling_global(atmset, atmprofile, prms = prms, out = 'rcb', checktop = 0):
     
     """
     Determines the time evolution of a given atmosphere. Cooling time is
@@ -76,8 +76,13 @@ def cooling_global(atmset, atmprofile, prms = prms, out = 'rcb'):
         rout = atmset.RB * Re 
         Mout = atmset.MB * Me 
         Eout = atmset.EtotB
+
+    if checktop == 0 or checktop == -1:
+        uout = 10**interplog10u(numpy.log10(Tout), numpy.log10(Pout))
+    else:
+        Cv = Cvfn(prms.Y, 2./7)
+        uout = Cv * Tout
         
-    uout = 10**interplog10u(numpy.log10(Tout), numpy.log10(Pout))    
     eaccout = uout - G * Mout / rout
     deltamout = Mout[1:] - Mout[:-1]
     deltae = Eout[1:] - Eout[:-1]
@@ -212,7 +217,7 @@ def cooling_local(param, prof, prms = prms, out = 'rcb', onlyrad = 0):
 
     return Ldt
 
-def critical(param, prof, prms = prms):
+def critical(param, prof, prms = prms, checktop = 0):
     
     """
 
@@ -239,7 +244,7 @@ def critical(param, prof, prms = prms):
     
     """
     
-    dt = cooling_global(param, prof, prms)[0]
+    dt = cooling_global(param, prof, prms, checktop = checktop)[0]
     Lav = (param.L[:-1] + param.L[1:]) / 2
     
     for i in range(len(dt)):
