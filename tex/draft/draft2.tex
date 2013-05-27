@@ -108,7 +108,7 @@ The core accretion model proposes that giant planets form by the accretion of ga
 
 \end{abstract}
 
-\section{Introduction \textbf{(Paper II)}}
+\section{Introduction}
 \label{intro}
 
 Current theories of giant planet formation postulate that these planets form either through core accretion (refs), in which solid planetesimals collide and grow into a massive solid core, which then accretes a gaseous envelope, or due to a gravitational instability in the protoplanetary disk that leads to fragmentation of the disk into self-gravitating clumps (refs, inc. \citealt{dangelo11}).  %quote murray-clay, kratter 10, rafikov 05, etc.
@@ -131,10 +131,10 @@ This paper is organized as follows. In section \ref{sec2} we describe the assump
 
 %Giant planets play a fundamental role in shaping the orbital structure of planetary systems, and in affecting the delivery of volatiles to terrestrial planets in the 
 
-\section{Atmosphere Models \textbf{(Paper I)}}
+\section{Atmosphere Models}
 \label{sec2}
 
-In this section we derive the structure and evolution of a planetary atmosphere embedded in a protoplanetary disk in the absence of planetesimal accretion. In section \ref{model} we describe the assumptions of our model. In section \ref{scales} we describe the properties of our assumed protoplanetary disk and review relevant length scales. Section \ref{struct} presents the equations describing the structure of a static planetary atmosphere and the boundary conditions that we use. In section \ref{cooling} we develop a model to estimate the rate at which the atmosphere cools. Finally, we combine these calculations into a quasi-static model for atmospheric evolution in section \ref{twolayer}.
+In this section we derive the structure and evolution of a planetary atmosphere embedded in a protoplanetary disk in the absence of planetesimal accretion. In section \ref{model} we describe the assumptions of our model. Section \ref{struct} presents the equations describing the structure of a static planetary atmosphere.  In section \ref{BCs} we describe discuss our boundary conditions and the properties of our assumed protoplanetary disk, and review relevant length scales.  and the boundary conditions that we use. In section \ref{cooling} we develop a model to estimate the rate at which the atmosphere cools. Finally, we combine these calculations into a quasi-static model for atmospheric evolution in section \ref{twolayer}.
 
 \subsection{Basic Model Assumptions}
 \label{model}
@@ -159,71 +159,11 @@ We use assumptions for the atmosphere geometry and composition similar to those 
 The time dependence of the atmosphere structure equations may be neglected or explicitly taken into account. Some previous studies of atmosphere accretion (e.g., \citealt{stevenson82}, \citealt{wuchterl93}, \citealt{rafikov06}) consider static envelopes, in which the luminosity is solely supplied by planetesimal accretion and fully radiated away by the atmosphere. In other studies, the time evolution is explicitly taken into account and full time dependent models are developed (e.g., \citealt{ikoma00}). We follow an intermediate approach and consider quasi-static evolution. Our model for the atmosphere growth time is described in section \ref{cooling}. 
 
 
-\subsection{Disk Model and Length Scales}
-\label{scales}
-
-As a disk model, we use the minimum mass, passively irradiated model of  \citet{chiang10}. In this model, the surface density and mid-plane temperature are given by 
-
-\begin{subeqnarray}
-\label{eq:diskparam}
-\Sigma_d&=&2200 F_{\Sigma} a^{-3/2}\,\, \text{g cm}^{-2} \slabel{eq:diska}\\
-T_d &=& 120 F_T a^{-3/7} \,\,K, \slabel{eq:diskb}
-\end{subeqnarray}
-
-\noindent with $a$ the semi-major axis in AU, and $F_{\Sigma}$ and $F_T$ normalization factors that adjust the disk mass and temperature relative to the minimum mass solar nebula (MMSN). In this study, we assume $F_{\Sigma}=F_T=1$. The resulting mid-plane pressure is given by 
-
-\begin{equation}
-\label{eq:Pd}
-P_d=1.1 \times 10^{-4} F_{\Sigma} \sqrt{F_T m_*} a^{-45/14} \,\, \text{dyne cm}^{-2}
-\end{equation}
-
-\noindent for a molecular weight $\mu=2.35$. Here $m_* \equiv M_*/M_{\odot}$, where $M_*$ is the mass of the central star and $M_{\odot}$ is the mass of the Sun. We take $m_*=1$. 
-
-We further define several characteristic length scales that are important for this problem. \\
-
-\textbf{The Core Radius} represents the physical radius of the protoplanetary core:
-
-\begin{equation}
-\label{eq:rc}
-R_c \equiv \Big(\frac{3 M_c}{4 \pi \rho_c}\Big)^{1/3},
-\end{equation}
-
-\noindent with $M_c$ and $\rho_c$ the core mass and density, respectively. Since we assume that the core mass does not change with time, the core radius is also fixed for a given model. \\
-
-\textbf{The Bondi Radius} represents the distance from the planet at which the thermal energy of the nebular gas is of the order of the gravitational energy binding the gas to the planet. It is defined as
-
-\begin{equation}
-\label{eq:RB}
-R_B \equiv \frac{G M_p}{c_s^2}=\frac{G M_p}{\mathcal{R} T_d},
-\end{equation}
-
-\noindent where $G$ is the gravitational constant, $M_p$ is the total mass of the planet, $c_s$ is the sound speed, and $\mathcal{R}$ is the reduced gas constant: $\mathcal{R}=k_b/(\mu m_p)$, with $k_b$ the Boltzmann constant and $m_p$ the proton mass. \\
+%\subsection{Length Scales}
+%\label{scales}
 
 
-\textbf{The Hill Radius} represents the distance at which the gravitational attraction of the planet and of the host star are comparable. It is given by
 
-\begin{equation}
-\label{eq:RHill}
-R_H \equiv a \Big(\frac{M_p}{M_{\odot}}\Big)^{1/3}
-\end{equation}
-
-\noindent Outside the Hill radius, the gravity of the core is too weak to affect the nebular gas. Consequently, the planet will be able to accrete only gas that lies within its Hill sphere. \\
-
-\textbf{The Disk Scale Height} is defined by
-
-\begin{equation}
-\label{eq:H}
-H \equiv \frac{c_s^2}{\Omega},
-\end{equation}
-
-\noindent where $\Omega$ is the Keplerian angular velocity. The disk scale height is a measure of the thickness of the protoplanetary disk. Using equation (\ref{eq:diska}), we find that the scale height for our assumed disk model can be expressed as
-
-\begin{equation}
-\label{eq:H2}
-H=0.022 \sqrt{F_T} a^{9/7} \,\, \mathrm{AU}
-\end{equation}
-
-For small planet masses, $R_B<R_H<H$. As the atmosphere becomes more massive, tidal truncation becomes more important than thermal constraints, and $R_H<R_B<H$. Finally, for high mass atmospheres the disk scale height becomes smaller than the Hill radius of the planet, and spherical symmetry breaks, as the planet is now affected by the vertical profile of the disk.
 
 %Some previous studies of atmosphere accretion (e.g., \citealt{stevenson82}, \citealt{wuchterl93}, \citealt{rafikov06}) consider static envelopes, in which the luminosity is solely supplied by planetesimal accretion and fully radiated away by the atmosphere. In other studies, the time evolution is explicitly taken into account and full time dependent models are developed (e.g., \citealt{ikoma00}). We follow an intermediate approach and consider quasi static evolution. Our model for the atmosphere growth time is described in section \ref{...}. 
 
@@ -303,12 +243,74 @@ We assume an opacity power law of the form
 
 \noindent with $\alpha$ and $\beta$ constants, and $\kappa_0=2 F_{\kappa}$. To estimate $\alpha$ and $\beta$ we use the \citet{bell94} opacity laws for ice grains: $\alpha =0 $, $\beta=2$ and $F_{\kappa}=1$ (i.e., $\kappa_0=2$). We note that these values are valid only for low disk temperatures: $T_d< \sim 100 K$. As such, we only consider cool atmospheres that form in the outer part of the protoplanetary disk ($a \geq 10$ AU).
 
-\subsubsection{Boundary Conditions}
+\subsection{Boundary Conditions}
 \label{BCs}
+
+
+We first define several characteristic length scales that are important for this problem. \\
+
+\textbf{The Core Radius} represents the physical radius of the protoplanetary core:
+
+\begin{equation}
+\label{eq:rc}
+R_c \equiv \Big(\frac{3 M_c}{4 \pi \rho_c}\Big)^{1/3},
+\end{equation}
+
+\noindent with $M_c$ and $\rho_c$ the core mass and density, respectively. Since we assume that the core mass does not change with time, the core radius is also fixed for a given model. \\
+
+\textbf{The Bondi Radius} represents the distance from the planet at which the thermal energy of the nebular gas is of the order of the gravitational energy binding the gas to the planet. It is defined as
+
+\begin{equation}
+\label{eq:RB}
+R_B \equiv \frac{G M_p}{c_s^2}=\frac{G M_p}{\mathcal{R} T_d},
+\end{equation}
+
+\noindent where $G$ is the gravitational constant, $M_p$ is the total mass of the planet, $c_s$ is the sound speed, and $\mathcal{R}$ is the reduced gas constant: $\mathcal{R}=k_b/(\mu m_p)$, with $k_b$ the Boltzmann constant and $m_p$ the proton mass. \\
+
+
+\textbf{The Hill Radius} represents the distance at which the gravitational attraction of the planet and of the host star are comparable. It is given by
+
+\begin{equation}
+\label{eq:RHill}
+R_H \equiv a \Big(\frac{M_p}{M_{\odot}}\Big)^{1/3}
+\end{equation}
+
+\noindent Outside the Hill radius, the gravity of the core is too weak to affect the nebular gas. Consequently, the planet will be able to accrete only gas that lies within its Hill sphere. \\
+
+\textbf{The Disk Scale Height} is defined by
+
+\begin{equation}
+\label{eq:H}
+H \equiv \frac{c_s}{\Omega},
+\end{equation}
+
+\noindent where $\Omega$ is the Keplerian angular velocity. The disk scale height is a measure of the thickness of the protoplanetary disk. Using equation (\ref{eq:diska}), we find that the scale height for our assumed disk model can be expressed as
+
+\begin{equation}
+\label{eq:H2}
+H=0.022 \sqrt{F_T} a^{9/7} \,\, \mathrm{AU}
+\end{equation}
+
+For small planet masses, $R_B<R_H<H$. As the atmosphere becomes more massive, tidal truncation becomes more important than thermal constraints, and $R_H<R_B<H$. Finally, for high mass atmospheres the disk scale height becomes smaller than the Hill radius of the planet, and spherical symmetry breaks, as the planet is now affected by the vertical profile of the disk.
 
 We assume a solid core of fixed mass $M_c$ with a radius given by equation (\ref{eq:rc}). We choose $\rho_c=3.2$ g cm$^{-3}$ (e.g., \citealt{pap99}). Furthermore, we assume the atmosphere extends out to the boundary of the Hill sphere, defined by equation (\ref{eq:RHill}). If the Bondi radius (defined in equation (\ref{eq:RB})) is within the Hill radius, perturbations of the nebular gas still occur past the Bondi radius due to the gravitational influence of the core. If, on the other hand, $R_B>R_H$, then the Hill radius is the more relevant truncation radius since material cannot be gravitationally bound to the protoplanet outside the Hill sphere. As such, it is always safe to choose the Hill radius as the outer boundary.
 
-As stated in section \ref{model}, the atmosphere matches smoothly onto the disk at the outer boundary. The temperature and pressure at the Hill radius have to therefore be given by the nebular temperature and pressure: $T(R_H)=T_d$ and $P(R_H)=P_d$. 
+As stated in section \ref{model}, the atmosphere matches smoothly onto the disk at the outer boundary. The temperature and pressure at the Hill radius have to therefore be given by the nebular temperature and pressure: $T(R_H)=T_d$ and $P(R_H)=P_d$. As a disk model, we use the minimum mass, passively irradiated model of  \citet{chiang10}. In this model, the surface density and mid-plane temperature are given by 
+
+\begin{subeqnarray}
+\label{eq:diskparam}
+\Sigma_d&=&2200 F_{\Sigma} a^{-3/2}\,\, \text{g cm}^{-2} \slabel{eq:diska}\\
+T_d &=& 120 F_T a^{-3/7} \,\,K, \slabel{eq:diskb}
+\end{subeqnarray}
+
+\noindent with $a$ the semi-major axis in AU, and $F_{\Sigma}$ and $F_T$ normalization factors that adjust the disk mass and temperature relative to the minimum mass solar nebula (MMSN). In this study, we assume $F_{\Sigma}=F_T=1$. The resulting mid-plane pressure is given by 
+
+\begin{equation}
+\label{eq:Pd}
+P_d=1.1 \times 10^{-4} F_{\Sigma} \sqrt{F_T m_*} a^{-45/14} \,\, \text{dyne cm}^{-2}
+\end{equation}
+
+\noindent for a molecular weight $\mu=2.35$. Here $m_* \equiv M_*/M_{\odot}$, where $M_*$ is the mass of the central star and $M_{\odot}$ is the mass of the Sun. We take $m_*=1$. 
 
 %\subsection{Standards Methods of Solution}
 
@@ -383,35 +385,9 @@ E&=&(1-\xi)U+4 \pi (R^3 P_M-R_c^3 Pc) \slabel{eq:vira} \\
 The global cooling equation (\ref{eq:coolingglobal}) can therefore be derived using equations(\ref{eq:coolinglocal}) and (\ref{eq:virial}). A detailed derivation is deferred to  \App{sec:virial}.
 
 
-\subsection{Quasi-Static Two-Layer Model}
-\label{twolayer}
 
-%The model and equations presented in this section so far can be applied to any protoplanetary atmosphere that satisfies the assumptions listed in section \ref{model}. 
 
-As a consequence of the equations derived in section \ref{cooling}, both the atmosphere structure and the gas accretion rate are uniquely determined by the current atmosphere mass. As this mass accretion rate is slow compared to the time it takes to relax to this solution, we can make a quasi-static model of the atmosphere growth. In this section we therefore describe the procedure to obtain an evolutionary series from the cooling model introduced in \ref{cooling} between consecutive two-layer static atmospheres (cf. \ref{model}).
-
-We use the boundary conditions and opacity laws described in section \ref{struct}. The numerical integration is performed through the shooting method, which solves the boundary value problem by reducing it to an initial value problem: trial values are chosen for the parameters at one of the boundaries, then the equations are integrated and the resulting values at the other boundary are com- pared to the actual boundary conditions. The procedure is repeated until convergence is achieved. We start with a total atmosphere mass $M_i$, where the index $i$ labels each evolutionary stage. For this mass we guess a trial luminosity $L=L_{\mathrm{guess}}$. The assumption of constant luminosity throughout the radiative zone sets the right hand side of equation (\ref{eq:structb}) to zero, i.e. the time dependence is neglected. We integrate the structure equations (\ref{eq:struct}) inwards from $R_{\mathrm{out}}=R_H$, with the boundary conditions $T(R_{\mathrm{out}})=T_d$ and $P(R_{\mathrm{out}})=P_d$. The numerical integration gives a value for the core mass implied by the trial solution $M_c=M_{c, \mathrm{guess}}$. We adjust $L_{\mathrm{guess}}$ until $M_{c, \mathrm{guess}}$ converges to the actual core mass $M_c$. 
-
-The time evolution of the atmosphere is obtained using the global cooling model described in section \ref{cooling}. We neglect the luminosity due to planetesimal accretion and direct heat generation; as such, the first two terms in equation (\ref{eq:coolingglobal}) are set to zero. Equation (\ref{eq:coolingglobal}) is then evaluated at the RCB, since we assume that luminosity is primarily generated in the convective zone. In what follows, $X_{RCB}$ denotes quantity $X$ evaluated at the RCB. The time step $\Delta t_i$ between two consecutive models of masses $M_i$ and $M_{i+1}$ is calculated as follows:
-
-\begin{eqnarray}\nonumber
-\label{eq:dti}
-<L>_i \Delta t_i&=&-\Delta E_{RCB,i} + <e_{\mathrm{acc}, RCB}>_i \Delta M_{RCB, i} \\
-&&  - <P_{RCB}>_i \Delta V_{RCB, M, i} 
-\end{eqnarray}  
-
-\noindent where we denote 
-
-\begin{subeqnarray}
-\Delta X_i&=&X_{i+1}-X_i \\
-<X>_i&=&\frac{X_i+X_{i+1}}{2}
-\end{subeqnarray}
-\\
-\noindent The subscript $M$ in the volume expression above signifies evaluating the change in volume at constant mass. 
-
-By connecting sets of subsequent static atmospheres through the procedure described above we therefore obtain an evolutionary atmosphere series. 
-
-\section{Analytic Cooling Model \textbf{(Paper I)}}
+\section{Analytic Cooling Model}
 \label{analytic}
 
 In this section we derive a simplified analytic model for the atmosphere structure and evolution, based on the assumptions and equations described in section \ref{sec2}. We use this model to predict the qualitative behavior of our more detailed numerical model. %, and to explain expected scalings (\textbf{Maybe take out this sentence.})
@@ -446,7 +422,7 @@ We now show that the temperature contrast between the radiative-convective bound
 
 \begin{equation}
 \label{eq:delo}
-\nabla \di \equiv \frac{3 \kappa_0 P_{\rm d}}{64 \pi G M \sigma T_{\rm d}^4}.
+\nabla \di \equiv \frac{3 \kappa_0 P_{\rm d}}{64 \pi G M \sigma T_{\rm d}^4} L.
 \end{equation}
 
 \noindent $M$ is the sum of the core mass and the atmosphere mass below the pressure level $P$.  If the mass in the radiative zone is small, then we can hold $M$ fixed at the sum of the core and convective zone masses: $M = M\co + M_{\rm conv}$.   With this assumption and power-law opacity, we get a constant value for $\nabla\di$.  The temperature profile then integrates to
@@ -612,54 +588,76 @@ The numerical values for a different opacity law do not change the numerical ans
 
 
 
-\section{Quasi-Static Kelvin-Helmholtz Contraction \textbf{(Paper I)}}
+\section{Quasi-Static Kelvin-Helmholtz Contraction}
 \label{KH}
 
-In this section we describe our choices for the gas, disk and core parameters, and present some typical atmosphere numerical models. As mentioned in section \ref{model}, we assume that the central star is a Sun-like star with $M_*=M_{\odot}$. We are primarily interested in the outer regions of the protoplanetary disk, so we generate atmosphere models between 10 and 100 AU. As a fiducial case, we assume that the atmosphere is composed of a hydrogen-helium mixture with the helium mass fraction $Y=0.3$., resulting in a mean molecular weight $\mu=2.35$. We do not take into account the dependence of the adiabatic index on the helium fraction, and therefore assume the adiabatic index for a diatomic gas $\delad=2/7$. We further explore how the atmosphere evolution varies with adiabatic index and molecular weight. We generate model atmospheres for monatomic adiabatic index $\delad=2/5$ and for a purely molecular hydrogen composition ($\mu=2$). The comparison between different gas compositions is deferred to section \ref{critcore}.
+In this section we generate quasi-static two-layer atmosphere profiles by integrating the equations of hydrostatic balance (\ref{eq:struct}) with the boundary conditions described in section \ref{BCs}. We obtain an evolutionary sequence from a series of instantaneous atmosphere profiles using the cooling model outlined in section \ref{cooling}. We describe our numerical method in section \ref{twolayer}. In section \ref{profiles} we show example plots of instantaneous and evolutionary atmosphere profiles for various choices of disk and core parameters. We compare our results with the predictions of the analytic model described in section \ref{analytic} and we explore the effect of changes in opacity on the atmosphere evolution. Finally, we discuss the breakdown of the quasi-static model in section \ref{endoftime}.
 
-Figure 1 shows instantaneous atmosphere radial profiles at $a=10$ AU accreting around a fixed core of mass $M_{\rm{c}}=5 M_{\oplus}$ for several total planet masses. In what follows,  if the $R_B<R_H$ hierarchy holds, we define the planet mass as the total mass enclosed within the Bondi radius of the atmosphere, and regard the gas between the Bondi and Hill radii as perturbations due to the gravitational influence of the planet. For illustrative purposes we mark the position of the Bondi radius and of the radiative convective boundary. We notice that the pressure and temperature in the convective regions of the atmospheres scale as $1/r$, which is the expected behavior of an ideal gas adiabat with a polytopic equation of state (e.g., \citealt{rafikov06}). In the outer radiative region of the atmosphere, the pressure has a nearly exponential profile, which is in agreement with the predictions of the analytic model (see section \ref{analytic} and \App{sec:analytic}). In addition, the atmosphere temperature at the radiative-convective boundary $T_{\rm{RCB}}$ only differs from the disk temperature $T_{\rm{d}}$ by an order unity factor, and so the atmosphere is nearly isothermal throughout the radiative zone. This is also in agreement with the analytic predictions. %, and justifies  
+\subsection{Numerical Method}
+\label{twolayer}
+
+%The model and equations presented in this section so far can be applied to any protoplanetary atmosphere that satisfies the assumptions listed in section \ref{model}. 
+
+As a consequence of the equations derived in section \ref{cooling}, both the atmosphere structure and the gas accretion rate are uniquely determined by the current atmosphere mass. As this mass accretion rate is slow compared to the time it takes to relax to this solution, we can make a quasi-static model of the atmosphere growth. In this section we describe the procedure to obtain an evolutionary series from the cooling model introduced in \ref{cooling} between consecutive two-layer static atmospheres (cf. \ref{model}).
+
+We use the boundary conditions and opacity laws described in section \ref{struct}. The numerical integration is performed through the shooting method, which solves the boundary value problem by reducing it to an initial value problem: trial values are chosen for the parameters at one of the boundaries, then the equations are integrated and the resulting values at the other boundary are compared to the actual boundary conditions. The procedure is repeated until convergence is achieved. We start with a total atmosphere mass $M_i$, where the index $i$ labels each evolutionary stage. For this mass we guess a trial luminosity $L=L_{\mathrm{guess}}$. The assumption of constant luminosity throughout the radiative zone sets the right hand side of equation (\ref{eq:structb}) to zero, i.e. the time dependence is neglected. We integrate the structure equations (\ref{eq:struct}) inwards from $R_{\mathrm{out}}=R_{\rm H}$, with the boundary conditions $T(R_{\mathrm{out}})=T_{\rm d}$ and $P(R_{\mathrm{out}})=P_{\rm d}$. The numerical integration gives a value for the core mass implied by the trial solution $M_{\rm c}=M_{\rm{c, guess}}$. We adjust $L_{\mathrm{guess}}$ until $M_{\rm{c,guess}}$ converges to the actual core mass $M_{\rm c}$. 
+
+The time evolution of the atmosphere is obtained using the global cooling model described in section \ref{cooling}. We neglect the luminosity due to planetesimal accretion and direct heat generation; as such, the first two terms in equation (\ref{eq:coolingglobal}) are set to zero. Equation (\ref{eq:coolingglobal}) is then evaluated at the RCB, since we assume that luminosity is primarily generated in the convective zone. In what follows, $X_{RCB}$ denotes quantity $X$ evaluated at the RCB. The time step $\Delta t_i$ between two consecutive models of masses $M_i$ and $M_{i+1}$ is calculated as follows:
+
+\begin{eqnarray}\nonumber
+\label{eq:dti}
+<L>_i \Delta t_i&=&-\Delta E_{RCB,i} + <e_{\mathrm{acc}, RCB}>_i \Delta M_{RCB, i} \\
+&&  - <P_{RCB}>_i \Delta V_{RCB, M, i} 
+\end{eqnarray}  
+
+\noindent where we denote 
+
+\begin{subeqnarray}
+\Delta X_i&=&X_{i+1}-X_i \\
+<X>_i&=&\frac{X_i+X_{i+1}}{2}
+\end{subeqnarray}
+\\
+\noindent The subscript $M$ in the volume expression above signifies evaluating the change in volume at constant mass. 
+
+By connecting sets of subsequent static atmospheres through the procedure described above we therefore obtain an evolutionary atmosphere series. 
+
+\subsection{Atmosphere Profiles}
+\label{profiles}
+
+We consider planets embedded in a protoplanetary disk around a Sun-like star and with a temperature and pressure profile described by equations (\ref{eq:diskb}) and (\ref{eq:Pd}), respectively. We are primarily interested in the outer regions of the disk, so we generate atmosphere models at distances between 10 and 100 AU in our fiducial disk. We emphasize that the location in the disk only affects the temperature and pressure of the nebular gas. As our model applies only when planetesimal accretion occurs too slowly to substantially change the mass of the core, we consider the evolution of an atmosphere around a core of fixed mass.  
+
+We assume that the atmosphere consists of an ideal gas described by a polytropic equation of state, and is composed of a hydrogen-helium mixture with the helium mass fraction $Y=0.3$, resulting in a mean molecular weight $\mu=2.35$. We do not take into account the dependence of the adiabatic index on the helium fraction, and therefore assume the adiabatic gradient of a diatomic gas $\delad=2/7$.  %We further explore how the atmosphere evolution varies with adiabatic index and molecular weight. We generate model atmospheres for monatomic adiabatic index $\delad=2/5$ and for a purely molecular hydrogen composition ($\mu=2$). The comparison between different gas compositions is deferred to section \ref{critcore}.
+
+Figure \ref{fig:profiles} shows instantaneous radial profiles at different stages in the evolution of an atmosphere accreting around a core of fixed mass $M_{\rm{c}}=5 M_{\oplus}$ located at $a=60$ AU.  We define the atmosphere mass as the mass of the gas enclosed within the Bondi radius. The locations of the radiative-convective boundary and of the Bondi radius are displayed. Pressure and temperature in the convective region of the atmosphere scale as $1/r$, which is the expected behavior of an ideal gas adiabat (e.g., \citealt{rafikov06}). In the outer radiative region of the atmosphere, the pressure has a nearly exponential profile, which is in agreement with the predictions of our analytic model (see section \ref{analytic} and \App{sec:analytic}). In addition, the temperature at the radiative-convective boundary $T_{\rm{RCB}}$ only differs from the disk temperature $T_{\rm{d}}$ by an order unity factor, hence the atmosphere is nearly isothermal throughout the radiative zone. This is also in agreement with our analytic predictions (see equation \ref{eq:Tcb}). %, and justifies  
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/PTm_profiles_v2.pdf}
 %\vspace{-0.5in}
-\caption{Example pressure, temperature and mass profiles as a function of radius.}
+\caption{Example pressure, temperature and total mass (core plus atmosphere) profiles as a function of radius at $a=60$ AU and for a fixed core mass $M_{\rm c}=5 M_{\oplus}$. The circles and triangles mark the locations of the Bondi radius and of the radiative-convective boundary, respectively. The solid, dotted and dashed lines correspond to profiles with total mass (core and atmosphere) of $5.12 M_{\oplus}$, $5.85 M_{\oplus}$ and $9.22 M_{\oplus}$, respectively.}
+\label{fig:profiles}
 \end{figure}
 
-The location of the Bondi radius moves further out as the mass of the atmosphere increases, as the Bondi radius scales with mass. The location of the radiative-convective boundary has a more interesting behavior. As stated in section \ref{intro}, the nebular gas initially settles into equilibrium around the protoplanetary core on a short timescale relative to the thermal timescale, and is isentropic throughout with an entropy equal to that of the disk. In the context of our model, this atmosphere represents the minimum atmosphere mass for which a hydrostatic solution exists. This atmosphere is purely convective. As gas accumulates and the atmosphere starts cooling, an outer radiative region forms. This layer is thin for low mass atmospheres, as can be seen in Fig. 1: for the $5.21 M_{\oplus}$ atmosphere, the ratio between the thickness of the radiative and convective regions is low. An increase in atmosphere mass causes the radiative zone to expand and the convective region to contract. As more and more gas is accumulated, the convective zone eventually starts expanding again; however, the ratio between the radii of the radiative and convective regions continually increases with atmosphere mass, i.e. the radiative regions of these types of atmospheres are getting deeper and deeper.  \textbf{[This needs to be rephrased, somewhat vague and repetitive.]}
 
-We further use the global cooling model developed in section \ref{cooling} to obtain an evolutionary series from static atmosphere profiles. Figure 2 shows the luminosity and cooling time evolution with atmosphere mass. Gas accretion is initially rapid, but slows down significantly after a relatively small mass increase. For comparison, we also plot the analytic results derived in section \ref{analytic}. We see that there is only a very brief agreement between the analytic and full numerical results. At early times, the radiative zone is too shallow and so the approximation that $P_{\rm RCB} \gg P_{\rm d}$ used in section \ref{analytic} breaks down. At late times, the self-gravity of the atmosphere becomes important. %We see that self-gravity starts to matter 
+In the initial stages of its evolution, the atmosphere is purely convective and isentropic, with an entropy equal to that of the disk. In the context of our numerical model, this is the minimum atmosphere mass for which a hydrostatic solution exists. Further gas accumulation brings in energy that has to be radiated away, and an initially thin outer radiative region forms, which becomes thicker as the atmosphere becomes more massive. 
+
+%This layer is thin for low mass atmospheres, An increase in atmosphere mass causes the radiative zone to expand and the convective region to contract. As more and more gas is accumulated, the convective zone eventually starts expanding again; however, the ratio between the radii of the radiative and convective regions continually increases with atmosphere mass, i.e. the radiative regions of these types of atmospheres are getting deeper and deeper.  \textbf{[This needs to be rephrased, somewhat vague and repetitive.]}
+
+%as can be seen in Fig. 1: for the $5.21 M_{\oplus}$ atmosphere, the ratio between the thickness of the radiative and convective regions is low. 
+
+In what follows we discuss the time evolution of the envelope. We use the global cooling model developed in section \ref{cooling} to obtain an evolutionary history from series of static atmosphere profiles, using the numerical procedure described in section \ref{twolayer}. Figure \ref{fig:Ltplot} shows the luminosity evolution and the elapsed time as a function of atmosphere mass for the same choice of parameters as in Figure \ref{fig:profiles} ($M_{\rm c}=5 M_{\oplus}$). The radiative region of the atmosphere is initially thin, which results in a relatively small number of steps that photons need to diffuse and hence a high luminosity (see equation \ref{eq:Lcb}). The luminosity decreases as the atmosphere mass grows and the radiative region becomes deeper. For comparison, we also plot the analytic results derived in section \ref{analytic}. We find only a brief agreement between the analytic and numerical results. In the early stages, the radiative zone is too shallow and the assumption that $P_{\rm RCB} \gg P_{\rm d}$ used in the analytic model breaks down. As the mass of the atmosphere grows, the neglect of self-gravity in the analytic model results in a lower luminosity (equation \ref{eq:Lcb}) and therefore a longer cooling time when compared to the numerical solution. While our analytic model does not provide an accurate quantitative description of the atmosphere evolution, we will show in section \ref{critical} that it predicts the correct scalings for the atmosphere crossover time and critical core mass.  %We see that self-gravity starts to matter 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Lt_profiles_v2.pdf}
 %\vspace{-0.5in}
-\caption{Luminosity and time evolution with mass. The analytic result is plotted for comparison.}
+\caption{Luminosity and time evolution of the atmosphere of a planet with fixed core mass $M_{\rm c}=5 M_{\oplus}$ and located at $a=60$ AU. The analytic result is plotted for comparison. The luminosity is initially high, then decreases as the atmosphere grows in mass and the radiative zone becomes deeper. Growth is accelerated as a result.}
 \label{fig:Ltplot}
 \end{figure}
 
-\subsection{The End of Quasi-Static Evolution}
-\label{endoftime}
-
-
-The right-hand side of equation (\ref{eq:dti}) decreases with increasing atmosphere mass, and eventually becomes negative when the mass of the envelope becomes comparable to the core mass $M_{\rm{atm}} \sim M_{\rm{c}}$. This implies a negative luminosity from the RCB. Physically, the luminosity $L$ represents the total heat flux through the surface defined by the RCB. The heat flux due to convective motions is always directed outwards, and hence it is positive. Moreover, the temperature gradient $dT/dr$ is negative, as the temperature decreases towards the outside. As a result (see equation (\ref{eq:structd})), the heat flux due to radiative diffusion is also positive. This implies that, in the absence of planetesimal accretion and internal heat sources, there is no physical mechanism that can justify a negative luminosity. The quasi-static, constant luminosity approximation breaks down at this point and a more detailed, time-dependent model is necessary.
-
-
-%As can be inferred from Figure 2, the time steps between subsequent evolutionary models become increasingly smaller as the atmosphere grows in mass. Around the time when the atmosphere mass is comparable to the core mass $M_{\mathrm{atm}} \sim M_{\mathrm{c}}$, we find that the time steps become negative.  
-
-\section{Critical Core Mass \textbf{(Paper I, except for $\delad=2/5$ case)}}
-\label{critical}
-
-%Standard static calculations of atmosphere accretion that consider planetesimal accretion as the main source of luminosity (e.g., \citealt{mizuno78}, \citealt{stevenson82}, \citealt{rafikov06}) find that an atmosphere can be stable only if the atmosphere mass is lower than the core mass. As the mass of the envelope becomes comparable to the solid core mass, the pressure gradient can no longer balance the self-gravity of the atmosphere, and hydrostatic equilibrium breaks down. As a result, a phase of rapid gas accumulation is initiated, i.e. runaway accretion. Typically, this instability settles in when $M_{\rm{atm}} \sim M_{\mathrm{c}}$. 
-
-Standard static calculations of giant planet formation that consider planetesimal accretion as the main source of luminosity (e.g., \citealt{mizuno78}, \citealt{stevenson82}, \citealt{rafikov06}) assume that the atmosphere is at all times in a steady state at which the luminosity due to planetesimal accretion is fully radiated away by the atmosphere. The core and the atmosphere grow simultaneously, and the mass of the envelope is a function of the core mass. As the atmosphere mass becomes comparable to the mass of the solid core, hydrostatic balance no longer holds and runaway gas accretion commences. Therefore, for a set of disk and gas conditions, there is a maximum mass the core can have before the onset of unstable accretion: this is defined as the critical core mass. %a single value for the critical core mass $M_{\rm{crit}}$ is found, when the mass of the gaseous envelope is equal to the mass of the core. This is the maximum mass the core can have before unstable gas accretion commences. 
-
-In our model the atmosphere is no longer in steady state, because energy balance requires gas accretion, and the atmosphere contracts on a Kelvin-Helmholtz time scale. Figure \ref{fig:growthtime} shows the evolution of the atmosphere growth time with mass at several locations in our fiducial disk for a fixed core mass. In the early stages when $M_{\rm{atm}}$ is small, the envelope has a thin radiative zone and hence a high luminosity (see Figure \ref{fig:Ltplot}). As a result, the envelope initially grows quickly, as shown in Figure \ref{fig:growthtime}. As the radiative zone becomes thicker, the luminosity decreases and growth slows down. For our choice of parameters, we see that accretion is slowest for an atmosphere mass of $1-2 M_{\oplus}$. This is when the self-gravity of the atmosphere starts to matter; the envelope becomes massive enough for its energy to be large compared to the internal energy of the nebular gas. As a result, growth is continuously accelerated, and eventually runaway gas accretion settles in when the mass of the atmosphere becomes comparable to the core mass. Since growth is slowest before $M_{\rm{atm}} \sim M_{\rm c}$ for the cases that we tried, the estimate of the time to initiate runaway gas accretion is insensitive to the exact choice of crossover atmosphere mass to order of magnitude. We therefore choose the effective crossover mass, past which hydrostatic balance no longer holds, to be the minimum between $M_{\rm{c}}$ and the $M_{\rm{atm}}<M_{\rm c}$ at which our model becomes unphysical according to equation (\ref{eq:dti}), noting that both of these occur after the slow accretion phase for all our parameter choices. We define the \textit{crossover time} $t_{\rm{co}}$ as the time elapsed until the atmosphere mass becomes equal to the effective crossover mass as defined above, and runaway accretion commences.
-
-In this section we explore the dependence of the crossover time on core, disk and gas parameters, and determine the minimum core mass needed to initiate runaway gas accretion within the lifetime of the protoplanetary disk. In section \ref{Mct} we show the dependence of the crossover time on the core mass at a fixed distance in the disk, justifying the need for a ``minimum'' core mass. We further explore how the crossover time is affected by the position in the disk in section \ref{TPeffects} and by the mean molecular weight and opacity of the nebular gas in section \ref{muopacity}. Finally, we determine the minimum core mass necessary for a giant planet to form before the nebular gas dissipates; we define this minimum mass as the \textit{critical core mass} for runaway accretion to commence. 
-
-%In our evolutionary model the core mass is assumed to be fixed, so the above definition for the critical core mass is not applicable. Nevertheless, we adopt a similar approach in defining the atmosphere mass past which hydrostatic balance no longer holds. We denote this mass as the minimum between the mass at which $M_{\rm{atm}}=M_{\rm{c}}$ and the mass at which the right-hand side of equation (\ref{eq:dti}) becomes negative (see section \ref{endoftime}). We therefore define the evolutionary time (or growth time, or cooling time) of the atmosphere as the time elapsed until runaway accretion commences according to the criteria above. The evolution of atmosphere mass with time is shown in Figure \ref{fig:growthtime} at several locations in the disk for a core mass $M_{\mathrm{c}}=5 M_{\oplus}$. The atmosphere instantaneous growth time, defined as $\tau=M_{\rm{atm}}/\dot{M}$, is plotted as a function of the envelope mass. We see that growth is slowest around $M_{\rm{tot}} \sim 6-7 M_{\oplus}$, after which it is continuously accelerated. The estimate of the time to initiate runaway gas accretion is therefore insensitive to the exact choice of atmosphere mass, to order of magnitude, as long as it is past the time at which accretion is slowest. %\textbf{Needs a bit of a cleanup as well.}
-
+ 
+We explain the time evolution from the bottom panel of Figure \ref{fig:Ltplot} by showing how the atmosphere growth time evolves with the atmosphere mass for a fixed core. Since the luminosity is high in the early stages, the envelope initially grows quickly; this is shown in Figure \ref{fig:growthtime} for a planet forming around a core of mass $M_{\rm c}=5 M_{\oplus}$ at several locations in our fiducial disk. Even though the atmosphere growth time, i.e. $M/\dot{M}$, is small in the early evolution stages, the increase in atmosphere mass, i.e. $\dot{M}$ is also small. As a result, the envelope spends a relatively long time at a low mass, which explains the behavior in the bottom panel of Figure \ref{fig:Ltplot}. As the radiative zone becomes thicker, the luminosity decreases and growth slows down. For $M_{\rm c}=5 M_{\oplus}$, we see that accretion is slowest for an atmosphere mass of $1-2 M_{\oplus}$. This is when the self-gravity of the atmosphere starts to matter; the envelope becomes massive enough for its energy to be large compared to the internal energy of the nebular gas. As a result, growth is continuously accelerated, and eventually runaway gas accretion settles in when the mass of the atmosphere becomes comparable to the core mass. This explains the flat behavior of the elapsed time in the later stages of the evolution, since this is when the atmosphere growth time continuously decreases, as seen in Figure \ref{fig:growthtime}. We note that in all cases presented here, growth is slowest before $M_{\rm{atm}} \sim M_{\rm c}$.  %and the estimate of the time to initiate runaway gas accretion is insensitive to the exact choice of crossover atmosphere mass to order of magnitude.
+ 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mt_profile.pdf}
@@ -668,10 +666,53 @@ In this section we explore the dependence of the crossover time on core, disk an
 \label{fig:growthtime}
 \end{figure}
 
-\subsection{Influence of Core Mass on Crossover Time}
+The grain opacity is one source of uncertainty in our model, as it may be be lower or higher than the standard dust opacity. Dust settling or grain growth result in a lower opacity, while a high metallicity of the host star yields an enhanced opacity. Lower opacity is possible to be achieved in our regime, since we consider low planetesimal accretion rates and therefore an atmosphere that is mostly depleted of planetesimals.  A decrease in opacity reduces the number of steps that photons need to diffuse (since it increases their mean free path), resulting in a higher luminosity. In Figure \ref{fig:LtvsMopacity}, we explore opacity laws in which the coefficient $\kappa_0$ from equation (\ref{eq:opacitylaw}) is reduced by factors of 10 and 100. All things equal, a lower opacity increases the luminosity and hence speeds atmosphere growth by the same factor as the opacity reduction (see equations \ref{eq:structd} and \ref{eq:delrad}). 
+ 
+
+ \begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/opacity_effect.pdf}
+%\vspace{-0.5in}
+\caption{Luminosity and time evolution as a function of atmosphere mass for planets of fixed core mass $M_{\rm c}=5 M_{\oplus}$ and located at $a=10$ AU, for different opacities. The standard dust opacity is reduced by factors of 10 and 100, respectively. A lower opacity accelerates atmosphere growth.}
+\label{fig:LtvsMopacity}
+\end{figure}
+
+
+
+%\subsection{Growth Time \textbf{temporary title}}
+%\label{growthtime}
+
+
+
+
+\subsection{The End of Quasi-Static Evolution}
+\label{endoftime}
+
+We have shown in section \ref{profiles} that growth is continuously accelerated once the self-gravity of the atmosphere becomes important. This is due to both the decrease in luminosity and to the fact that less and less binding energy per unit of added mass is released as the envelope grows in mass, i.e. $-dE/dM$ becomes small. The right-hand side of equation (\ref{eq:coolingglobal}) therefore decreases with increasing atmosphere mass; in our calculations, we have found that it eventually becomes negative around the time when $M_{\rm{atm}} \sim M_{\rm{c}}$. This translates into a negative luminosity from the radiative-convective boundary. Physically, the luminosity $L$ represents the total heat flux through the surface defined by the radiative-convective boundary. The heat flux due to convective motions is always directed outwards and hence positive. The temperature gradient $dT/dr$ is negative, as the temperature decreases towards the outside, and the heat flux due to radiative diffusion is also positive as a result (see equation \ref{eq:structd}). This implies that, in the absence of planetesimal accretion and internal heat sources, there is no physical mechanism that can justify a negative luminosity. The quasi-static, constant luminosity approximation breaks down at this point and a more detailed, time-dependent model is necessary. However, we will show in section \ref{critical} that the existence of this unphysical result does not affect our estimates of the atmosphere evolution time or critical core mass, as the unphysical regime occurs after the slowest growth stage. %However, we have shown in section \ref{growthtime} that in all cases presented here, growth is slowest before $M_{\rm{atm}} \sim M_{\rm c}$, and the estimate of the time to initiate runaway gas accretion is therefore insensitive to the exact choice of crossover atmosphere mass to order of magnitude.
+
+
+
+%As can be inferred from Figure 2, the time steps between subsequent evolutionary models become increasingly smaller as the atmosphere grows in mass. Around the time when the atmosphere mass is comparable to the core mass $M_{\mathrm{atm}} \sim M_{\mathrm{c}}$, we find that the time steps become negative.  
+
+\section{Critical Core Mass}
+\label{critical}
+
+%Standard static calculations of atmosphere accretion that consider planetesimal accretion as the main source of luminosity (e.g., \citealt{mizuno78}, \citealt{stevenson82}, \citealt{rafikov06}) find that an atmosphere can be stable only if the atmosphere mass is lower than the core mass. As the mass of the envelope becomes comparable to the solid core mass, the pressure gradient can no longer balance the self-gravity of the atmosphere, and hydrostatic equilibrium breaks down. As a result, a phase of rapid gas accumulation is initiated, i.e. runaway accretion. Typically, this instability settles in when $M_{\rm{atm}} \sim M_{\mathrm{c}}$. 
+
+Standard static calculations of giant planet formation that consider planetesimal accretion as the main source of luminosity (e.g., \citealt{mizuno78}, \citealt{stevenson82}, \citealt{rafikov06}) assume that the atmosphere is at all times in a steady state at which the luminosity due to planetesimal accretion is fully radiated away by the atmosphere. The core and the atmosphere grow simultaneously, and the mass of the envelope is a function of the core mass. As the atmosphere mass becomes comparable to the mass of the solid core, hydrostatic balance no longer holds and runaway gas accretion commences. Therefore, for a given set of disk conditions, there is a maximum mass the core can have before the onset of unstable accretion: this is defined as the critical core mass. %a single value for the critical core mass $M_{\rm{crit}}$ is found, when the mass of the gaseous envelope is equal to the mass of the core. This is the maximum mass the core can have before unstable gas accretion commences. 
+
+In our model the atmosphere is no longer in steady state because energy balance requires gas accretion, and the atmosphere contracts on a Kelvin-Helmholtz time scale. We have shown in section \ref{profiles} that atmosphere growth is slowest before $M_{\rm{atm}} \sim M_{\rm c}$, and so the estimate of the time to initiate runaway gas accretion is insensitive to the exact choice of crossover atmosphere mass to order of magnitude. We therefore choose the effective crossover mass, past which hydrostatic balance no longer holds, to be the minimum between $M_{\rm{c}}$ and the $M_{\rm{atm}}<M_{\rm c}$ at which our model becomes unphysical according to equation (\ref{eq:dti}), noting that both of these occur after the slow accretion phase for all our parameter choices. We define the \textit{crossover time} $t_{\rm{co}}$ as the time elapsed until the atmosphere mass becomes equal to the effective crossover mass. At $t_{\rm{co}}$, runaway accretion commences.
+
+In this section we explore the dependence of the crossover time on core, disk and gas parameters, and determine the minimum core mass needed to initiate runaway gas accretion within the lifetime of the protoplanetary disk. In section \ref{Mct} we show how the crossover time varies with core mass for fixed disk parameters, demonstrating that higher mass cores achieve runaway accretion more quickly. We explore how the crossover time is affected by by the mean molecular weight of the nebular gas in section \ref{muopacity} and by the disk temperature and pressure in section \ref{TPeffects}. Finally, we determine the minimum core mass necessary for a giant planet to form before the nebular gas dissipates in section \ref{critcore}; we define this minimum mass as the \textit{critical core mass} for runaway accretion to commence. 
+
+%In our evolutionary model the core mass is assumed to be fixed, so the above definition for the critical core mass is not applicable. Nevertheless, we adopt a similar approach in defining the atmosphere mass past which hydrostatic balance no longer holds. We denote this mass as the minimum between the mass at which $M_{\rm{atm}}=M_{\rm{c}}$ and the mass at which the right-hand side of equation (\ref{eq:dti}) becomes negative (see section \ref{endoftime}). We therefore define the evolutionary time (or growth time, or cooling time) of the atmosphere as the time elapsed until runaway accretion commences according to the criteria above. The evolution of atmosphere mass with time is shown in Figure \ref{fig:growthtime} at several locations in the disk for a core mass $M_{\mathrm{c}}=5 M_{\oplus}$. The atmosphere instantaneous growth time, defined as $\tau=M_{\rm{atm}}/\dot{M}$, is plotted as a function of the envelope mass. We see that growth is slowest around $M_{\rm{tot}} \sim 6-7 M_{\oplus}$, after which it is continuously accelerated. The estimate of the time to initiate runaway gas accretion is therefore insensitive to the exact choice of atmosphere mass, to order of magnitude, as long as it is past the time at which accretion is slowest. %\textbf{Needs a bit of a cleanup as well.}
+
+
+
+\subsection{Crossover Time as a Function of Core Mass}
 \label{Mct}
 
-We begin by fixing the disk properties and generating atmosphere profiles for a set of fixed core masses. Figure \ref{fig:tvsM} shows the crossover time behavior for a range of cores with masses between 1 and 10 $M_{\oplus}$, at $a=10$ AU in our fiducial disk. The envelope grows faster if the core is more massive, as it can bind a gaseous atmosphere more quickly due to larger gravity. This can also be seen from the analytical results in equation (\ref{eq:tcoolan}). As such, for a fixed crossover time, e.g. the typical lifetime of the protoplanetary disk, there is a minimum core mass needed to form a planet within this time frame, which we defined above as the critical core mass. We defer numerical estimates of the critical core mass to section \ref{critcore}.
+We begin by generating atmosphere evolution profiles for cores of different masses under a fixed set of disk conditions. Figure \ref{fig:tvsM} displays $t_{\rm{co}}$ for $M_{\rm c}$ between 5 and 14 $M_{\oplus}$ at $a=10$ AU in our fiducial disk. The envelope grows faster if the core is more massive, as it can bind a gaseous atmosphere more quickly due to larger gravity. This can also be seen from the analytical results in equation (\ref{eq:tcoolan}). As such, there is a minimum core mass required to form a planet within a fixed crossover time, e.g. the typical lifetime of the protoplanetary disk, which we defined above as the critical core mass. We defer numerical estimates of the critical core mass to section \ref{critcore}.
 
 We also find that the atmosphere growth time is very sensitive to the core mass: for the choice of parameters in Figure \ref{fig:tvsM}, the mass increase needed to reduce the crossover time by a factor of two is only half an Earth mass. 
 
@@ -681,30 +722,47 @@ We also find that the atmosphere growth time is very sensitive to the core mass:
 \centering
 \includegraphics[width=0.52\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cumul_coolingtime_vs_Matm_10au_mu235.pdf}
 %\vspace{-0.5in}
-\caption{We generate atmosphere profiles at $a=10$ AU for cores with fixed masses between $5 M_{\oplus}$ and $14 M_{\oplus}$. We plot the cumulative cooling time as a function of atmosphere mass. The circles mark the crossover time. A larger core mass results in a shorter crossover time.}
+\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $5 M_{\oplus}$ and $14 M_{\oplus}$ at $a=10$ AU in our fiducial disk. The circles mark the crossover time where $M_{\rm{atm}} \sim M_{\rm c}$. The numbers are labeling the core mass in Earth masses. A larger core mass results in a shorter crossover time.}
 \label{fig:tvsM}
 \end{figure}
 
 
 
-\subsection{Role of Disk Temperature and Pressure}
+\subsubsection{Role of Mean Molecular Weight}
+\label{muopacity}
+
+%Figure \ref{fig:tvsMcomp} reproduces the crossover time as a function of core mass at $a=10$ AU from Figure \ref{fig:tvsM}.  
+
+ In this work we build evolutionary atmosphere profiles assuming an ideal gas equation of state with constant mean molecular weight and adiabatic index. A realistic gas mixture, however, has variable adiabatic gradient and molecular weight, due to non-ideal effects and processes like dissociation or ionization. Future work will include realistic equation of state tables, and we expect quantitatively different results. In this study we analyze only the effect of the mean molecular weight of the nebular gas on the crossover time. In Figure \ref{fig:tvsM} we compare our standard model given by $\delad=2/7$ and $\mu=2.35$ from Figure \ref{fig:tvsM} with a model with the same adiabatic index but a different molecular mass, $\mu=2$ (i.e., purely molecular hydrogen). For comparison, we also plot the results predicted by the analytic, non self-gravitating model described in section \ref{analytic}. However, we saw in equation (\ref{eq:tcoolan}) that the crossover time as predicted by the analytic results is too long. Here we are investigating whether the analytic model predicts the correct scalings as opposed to the actual absolute results, when compared to the numerical model. We therefore estimate the analytic crossover time as the time needed for the atmosphere to reach an effective crossover mass $M_{\rm{atm}}=f M_{\rm c}$, where $f = 0.13$. The scaled analytic results are in good agreement with the numerical models. A lower mean molecular weight translates into a longer crossover time for the same core mass, since an atmosphere composed of heavier molecules has a smaller scale height, and therefore a weaker pressure gradient to oppose self-gravity.  
+ 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.48\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/coolingtime_vs_Mc_10au.pdf}
+%\vspace{-0.5in}
+\caption{The crossover time $t_{\rm{co}}$ as a function of core mass at $a=10$ AU, for atmospheres with different mean molecular weight. A typical protoplanetary disk life time $t=3$ Myrs is plotted for comparison. The crossover time is larger for a lower mean molecular weight.}
+\label{fig:tvsMcomp}
+\end{figure}
+
+\subsubsection{Disk Temperature and Pressure}
 \label{TPeffects}
  
-In what follows we explore how the crossover time is affected by the planet's location in the disk. The location only matters because it dictates the disk temperature (equation (\ref{eq:diskb})) and pressure (equation (\ref{eq:Pd})). We therefore study the separate effects of disk temperature and pressure on the time evolution of the atmosphere. At a fixed distance in the disk $a=10$ AU and for a core mass $M_{\mathrm{c}}=5 M_{\oplus}$, we fix the disk temperature $T_{\rm{d}}$ at the value given by equation (\ref{eq:diskb}) and vary the disk pressure $P_{\rm{d}}$. We perform a similar analysis on the effect of disk temperature $T_{\rm{d}}$ on the crossover time by fixing the disk pressure at the value given by equation (\ref{eq:Pd}) and varying $T_{\rm{d}}$. The resulting time evolution is plotted in Figure \ref{fig:TPeffects}. For comparison, we also plot the results predicted by the analytic, non self-gravitating model described in section \ref{analytic}. However, we saw in equation (\ref{eq:tcoolan}) that the crossover time as predicted by the analytic results is too long. Here we are investigating whether the analytic model predicts the correct scalings as opposed to the actual absolute results, when compared to the numerical model. We therefore estimate the analytic crossover time as the time needed for the atmosphere to reach an effective crossover mass $M_{\rm{atm}}=f M_{\rm c}$, where $f = 0.13$.
+A planet's location in the protoplanetary disk affects its crossover time only because the disk temperature and pressure vary with stellocentric distance. Here, we study the separate effects of disk temperature and pressure on the time evolution of the atmosphere. At a fixed distance in the disk $a=10$ AU and for a core mass $M_{\mathrm{c}}=5 M_{\oplus}$, we first fix the disk pressure $P_{\rm{d}}$ at the value given by equation (\ref{eq:Pd}) and vary the disk temperature $T_{\rm{d}}$. We then fix the disk temperature at the value given by equation (\ref{eq:diskb}) and vary $P_{\rm{d}}$. The resulting variation in crossover time is plotted in Figure \ref{fig:TPeffects}. For comparison, we also plot the analytic results, using the same fractional mass scaling as in subsection \ref{muopacity}, $f=0.13$, 
 
 \begin{figure*}[tb]
 \centering
 \includegraphics[width=1.\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/TdPd_effect.pdf}
 %\vspace{-0.5in}
-\caption{Left panel: crossover time as a function of disk temperature for fixed disk pressure and a core of fixed mass $M_{\rm c}=5 M_{\oplus}$. Right panel: crossover time as a function of disk pressure for fixed disk temperature and a core of fixed mass  $M_{\rm c}=5 M_{\oplus}$. The analytic scalings are plotted for comparison, for an effective crossover mass $M_{\rm{co}}=f M_{\rm c}$ with $f=0.13$. Gas accretion is faster for lower temperatures and higher pressures.} 
+\caption{Left panel: crossover time as a function of disk temperature for fixed disk pressure $P_{\rm d}=0.067$ dyn cm$^{-2}$ given by equation (\ref{eq:Pd}) at 10 AU and a core of fixed mass $M_{\rm c}=5 M_{\oplus}$. Right panel: crossover time as a function of disk pressure for fixed disk temperature $T_{\rm d}=44.73$ K given by equation (\ref{eq:diskb}) at 10 AU and a core of fixed mass  $M_{\rm c}=5 M_{\oplus}$. The analytic scalings are plotted for comparison, for an effective crossover mass $M_{\rm{co}}=f M_{\rm c}$ with $f=0.13$. Gas accretion is faster for lower temperatures and higher pressures.} 
 \label{fig:TPeffects}
 \end{figure*}
 
 We find that the crossover time is shorter for lower disk temperatures and higher pressures. We discuss the two effects separately.
 
-An increase in disk temperature results in a longer crossover time, as a higher temperature causes an increase in opacity and hence a lower luminosity. The analytic model predicts $t_{\rm{co}} \propto T^{\beta+ 1/2}$ (see equation (\ref{eq:tcoolan})), where $\beta$ is the constant in the opacity law (\ref{eq:opacitylaw}). For our choice of $\beta=2$, the crossover time is therefore strongly dependent on the opacity. Different opacity assumptions will result in a different scaling with temperature of $t_{\rm{co}}$. We notice a generally good agreement between our numerical results and the scaled analytic approximation in the left panel of Figure \ref{fig:TPeffects}. A factor of $\sim 3$ reduction in the disk temperature results in an decrease of the growth time by a factor of $\sim 30$. The atmosphere evolution is therefore strongly dependent on the temperature in the protoplanetary disk.
+An increase in disk temperature results in a longer crossover time, as a higher temperature causes an increase in opacity. As a result, photons diffuse through the radiative layer more slowly, producing a lower planetary luminosity. Our analytic model predicts $t_{\rm{co}} \propto T^{\beta+ 1/2}$ (see equation \ref{eq:tcoolan}), where $\beta$ is the constant in the opacity law (\ref{eq:opacitylaw}). For our choice of $\beta=2$, the crossover time is therefore strongly dependent on the opacity. Different opacity assumptions will result in a different scaling with temperature of $t_{\rm{co}}$. We notice a generally good agreement between our numerical results and the scaled analytic approximation in the left panel of Figure \ref{fig:TPeffects}. A factor of $\sim 3$ reduction in the disk temperature results in an decrease of the growth time by a factor of $\sim 30$. The atmosphere evolution is therefore strongly dependent on the temperature in the protoplanetary disk.
 
-An increase in disk pressure will decrease the crossover time. This effect can also be explained by the analytic model. From equations (\ref{eq:tcoolan}) and (\ref{eq:xi}), the crossover time is inversely proportional to the disk pressure. A higher disk pressure will therefore result in a shorter crossover time. Increasing the disk pressure by a factor of $\sim 100$ only reduces the crossover time by a factor of $\sim 2$. As such, the crossover time is only weakly dependent on the nebular pressure.
+From equations (\ref{eq:tcoolan}) and (\ref{eq:xi}), the crossover time is inversely proportional to disk pressure. A higher disk pressure therefore results in a shorter crossover time. Increasing the disk pressure by a factor of $\sim 100$ only reduces the crossover time by a factor of $\sim 2$. As such, the crossover time is only weakly dependent on the nebular pressure.
 
 %From equation (\ref{eq:PcbRcb}), a higher disk pressure will yield the same pressure at the radiative-convective boundary $P_{\cb}$ at a larger radius of the convective zone $R_{\cb}$, and thus at a larger atmosphere mass from equation (\ref{eq:Matman}). A higher mass implies the atmosphere will become critical on a shorter timescale.
 
@@ -722,59 +780,26 @@ An increase in disk pressure will decrease the crossover time. This effect can a
 
 
 
-\subsection{Role of Mean Molecular Weight and Opacity}
-\label{muopacity}
-%
-%In this section we explore the effect of the core mass on the atmosphere evolution time, for a fixed semi-major axis. We explore again the case of $a=10$ AU. Figure \ref{fig:tvsM} shows the growth time behavior for a range of cores with masses between 1 and 10 $M_{\oplus}$. As expected, growth happens on a faster timescale if the core is more massive, as it can bind a gaseous atmosphere quicker due to larger gravity. We find that the atmosphere growth time is very sensitive to the core mass: the mass increase needed to reduce the cooling time by an order of magnitude is only half an Earth mass. 
-%
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=0.52\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cumul_coolingtime_vs_Matm_10au_mu235.pdf}
-%%\vspace{-0.5in}
-%\caption{Time evolution as a function of atmosphere mass for a range of core masses. The circles mark the time when runaway accretion is initiated. A larger core mass results in a lower cooling time.}
-%\label{fig:tvsM}
-%\end{figure}
-
-In this work we build evolutionary atmosphere profiles assuming an ideal gas equation of state with constant mean molecular weight and adiabatic index. A realistic gas mixture, however, has variable adiabatic gradient and molecular weight, due to non-ideal effects and processes like dissociation or ionization. Future work will include real gas equation of state tables, and we expect quantitatively different results. In this study we analyze only the effect of the mean molecular weight of the nebular gas on the crossover time.   In Figure \ref{fig:tvsMcomp}, we compare our standard model given by $\delad=2/7$ and $\mu=2.35$ with a model with the same adiabatic index but a different molecular mass, $\mu=2$ (i.e., purely molecular hydrogen). We also plot the analytic results for comparison, using the same fractional mass scaling as in subsection \ref{TPeffects}, $f=0.13$, and notice that they are in good agreement with the numerical models. A lower mean molecular weight translates into a longer crossover time for the same core mass, since an atmosphere composed of heavier molecules is easier to bind. 
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.48\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/coolingtime_vs_Mc_10au.pdf}
-%\vspace{-0.5in}
-\caption{The crossover time $t_{\rm{co}}$ as a function of core mass at $a=10$ AU, for atmospheres with different mean molecular weight. A typical protoplanetary disk life time $t=3$ Myrs is plotted for comparison. The crossover time is larger for a lower mean molecular weight.}
-\label{fig:tvsMcomp}
-\end{figure}
-
-A decrease in opacity reduces the number of steps that photons need to diffuse (since it increases their mean free path), resulting in a higher luminosity. In Figure \ref{fig:LtvsMopacity}, we explore opacity laws in which the coefficient $\kappa_0$ from equation (\ref{eq:opacitylaw}) is reduced by factors of 10 and 100. All things equal, a lower opacity increases the luminosity and hence speeds atmosphere growth by the same factor as the opacity reduction (see equations (\ref{eq:structd}) and (\ref{eq:delrad})). 
- 
-
- \begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/opacity_effect.pdf}
-%\vspace{-0.5in}
-\caption{Luminosity and cooling time evolution with total atmosphere mass for planets of fixed core mass $M_{\rm c}=5 M_{\oplus}$ and located at $a=10$ AU, for different opacities. The standard dust opacity is reduced by factors of 10 and 100, respectively. A lower opacity accelerates atmosphere growth.}
-\label{fig:LtvsMopacity}
-\end{figure}
 
 
 \subsection{Critical Core Mass}
 \label{critcore}
 
-We can now combine the results obtained in sections \ref{Mct}, \ref{TPeffects} and \ref{muopacity} to determine the minimum core mass necessary for a protoplanet to initiate runaways gas accretion within the disk lifetime, i.e. to have a crossover time equal to the disk life timescale. We  denote this mass the \textit{critical core mass}.
+We can now combine the results obtained in section \ref{Mct} to determine the minimum core mass necessary for a protoplanet to initiate runaway gas accretion within the disk lifetime, i.e. to have a crossover time less than the disk lifetime. We  denote this mass the \textit{critical core mass}.
 
 %In the previous subsections we explored the effect of disk and gas properties on the growth time of an atmosphere accreting around a protoplanetary core of fixed mass. The main question we address here is under what conditions the atmosphere can grow before the gas in the protoplanetary disk is dissipated. Specifically, we determine the minimum core mass that is necessary for a protoplanet to initiate runaway gas accretion within the disk lifetime, i.e. to have a crossover time equal to the disk life timescale. We  denoted this mass the \textit{critical core mass} in section \ref{Mct}.
 
-Observations of protoplanetary disks show that they dissipate over a time scale of a few million years (e.g., \citealt{lagrange00}, \citealt{haisch01}, \citealt{goldreich04}). We adopt a disk life timescale of $\tau=3 $ Myrs and determine the critical core mass as a function of gas and disk conditions. 
+Observations of protoplanetary disks show that they dissipate over a time scale of a few million years (e.g., \citealt{lagrange00}, \citealt{haisch01}, \citealt{goldreich04}). We adopt a disk life timescale of $\tau=3 $ Myrs and determine the critical core mass as a function of disk temperature, pressure and mean molecular weight of the nebular gas. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mcrit_vs_a_3Myrs_new.pdf}
 %\vspace{-0.5in}
-\caption{The minimum core mass for an atmosphere to initiate runaway gas accretion within the lifetime of the disk $t \sim 3 Myrs$ as a function of semi-major axis, for different mean molecular weight of the nebular gas. The analytic results are plotted for comparison. The critical core mass is lower further out in the disk.}
+\caption{The minimum core mass for an atmosphere to initiate runaway gas accretion within the lifetime of a typical protoplanetary disk $t \sim 3$ Myrs as a function of semi-major axis, for different mean molecular weight of the nebular gas. The analytic results are plotted for comparison. The critical core mass is lower at larger stellocentric distances.}
 \label{fig:Mcvsa}
 \end{figure}
 
- In Figure \ref{fig:Mcvsa}, we see that the critical core mass decreases as we move further away in the disk, primarily due to the fact the disk temperature is lower in the outer regions of the disk. As we showed in section \ref{TPeffects}, the atmosphere grows faster for lower temperatures, which offsets the need for a larger core mass. The critical core mass is larger for a lower mean molecular weight, consistent with the results derived in section \ref{Mct}. \textbf{Add explanation for analytic curve behavior --- need to chat about this with Andrew}. We also explore the opacity effect on the critical core mass in Figure \ref{fig:Mcritopacity} For an opacity, and therefore crossover time, reduced by an order of magnitude, the critical core mass is reduced by roughly a factor of 2. 
+ In Figure \ref{fig:Mcvsa}, we see that the critical core mass decreases for larger separations, primarily due to the fact the disk temperature is lower in the outer regions of the disk. As we showed in section \ref{Mct}, the atmosphere grows faster for lower temperatures, which offsets the need for a larger core mass. The critical core mass is larger for a lower mean molecular weight, consistent with the results derived in section \ref{Mct}. We also explore the opacity effect on the critical core mass in Figure \ref{fig:Mcritopacity}. For an opacity, and therefore crossover time, that is an order of magnitude larger, the critical core mass is increased by roughly a factor of 2. 
 
 %The comparison between our results and standard values for the critical core mass due to planetesimal accretion is deferred to section \ref{acc}.  % \textbf{Need to add qualitative explanations for different slopes and curve intersection}
 %
@@ -802,102 +827,38 @@ Observations of protoplanetary disks show that they dissipate over a time scale 
 \label{fig:Mcritopacity}
 \end{figure}
 
-\section{Discussion}
-\label{discussion}
+%\section{Discussion}
+%\label{discussion}
+%
+%In this section we discuss the parameter space of validity of our model. We calculate the conditions under which planetesimal accretion can be ignored, and review the effects of some of the approximations that come into our model.
 
-In this section we discuss the parameter space of validity of our model. We calculate the conditions under which planetesimal accretion can be ignored, and review the effects of some of the approximations that come into our model.
 
-\subsection{Comparison with Planetesimal Accretion \textbf{(Paper II)}}
-\label{acc}
-
-In this study we have considered atmospheres for which planetesimal accretion is negligible and Kelvin-Helmholtz contraction dominates the luminosity evolution of the atmosphere. This is different from standard calculations, in which the atmosphere is heated by planetesimal accretion. In this section we investigate the core accretion rates that are necessary for our regime to be valid. We also discuss the conditions under which runaway gas accretion can be initiated due to the Kelvin-Helmholtz contraction of the atmosphere before it becomes critical due to planetesimal accretion.
-
-We estimate the planetesimal accretion rate consistent with our assumptions that $L_{\mathrm{acc}} \ll L_{\rm{KH}}$. Here $L_{\rm{acc}}$ is the accretion luminosity given by
-
-\begin{equation}
-\label{eq:Lacc}
-L_{acc}=G \frac{M_{\rm{c}} \dot{M_{\rm{c}}}}{R_{\rm{c}}},
-\end{equation}
-
-\noindent where $\dot{M_{\rm{c}}}$ is the core accretion rate, and $L_{\rm{KH}}$ is the luminosity of the atmosphere due to gas contraction as calculated in section \ref{KH}. At the limit, $L_{\rm{acc}}=L_{\rm{KH}}$. For a given atmosphere model we can therefore estimate the maximum planetesimal accretion rate during the gas contraction phase in order for the atmosphere to be dominated by the Kelvin-Helmholtz luminosity. We choose as a fiducial case an atmosphere forming at 10 AU and with a core mass of $10 M_{\oplus}$. For this choice or parameters, the atmosphere cooling time is $\sim$ 1.2 Myrs (see Figure 7), which is within the typical life time of a protoplanetary disk. The results are presented in Figure 10. 
-
- \begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/acc_rates_poster.pdf}
-%\vspace{-0.5in}
-\caption{Various relevant accretion rates. $\dot{M}_{\rm{atm}}$ is the growth rate of the atmosphere as estimated by our model, and $\dot{M}_{\rm{c,KH}}$ is the maximum planetesimal accretion rate during the gas contraction phase in order for our regime to be valid. For comparison, we plot the core accretion rate $\dot{M}_{\rm{c,acc}}$ necessary to grow the core on the same time scale as the atmosphere $\tau \sim 1.2$ Myrs, and a typical planetesimal accretion rate where the random velocity of the planetesimals is given by the Hill velocity due to the core.}
-\end{figure}
-
-We label the resulting minimum core accretion rate as $\dot{M}_{\rm{c,KH}}$. The atmosphere growth rate is also plotted for comparison. We therefore see that the core accretion rate has to be $\sim2-3$ orders of magnitude lower than the atmosphere accretion rate for our assumptions to be valid.  If the core had accreted planetesimals at this constant rate since it started forming, then the formation of a core massive enough to attract an atmosphere would not have been possible within typical disk life timescales, which indicates a slowing down of the planetesimal accretion regime. Possible explanations for that include the core having formed in the inner part of the disk and later migrated outwards, or the core having been depleted of planetesimals due to a giant neighbor. We also estimate the core accretion rate 
-
-\begin{equation}
-\label{eq:Mcdot}
-\dot{M}_{\rm{c,acc}}(M_{\rm{c}}) \equiv \frac{M_{\rm{c}}}{\tau}
-\end{equation}
-
-\noindent needed for the core to form on the same timescale as our model atmosphere, $\tau=1.2$ Myrs, as well as a typical planetesimal accretion rate, for which the random velocities of the planetesimals are of the order of the Hill velocity around the protoplanetary core \citep{goldreich04}. We denote this latter rate as $\dot{M}_{\rm{c,typical}}$. This rate, which is at the boundary of the dispersion dominated and shear dominated regimes ,is often quoted as a maximum (refs). However, it is easy to see that  $\dot{M}_{\rm{c,typical}}$ is more than one order of magnitude lower than the gas accretion rate of our model atmosphere $\dot{M}_{\rm{atm}}$, and lower than the core accretion rate $\dot{M}_{\rm{c,acc}}$ needed to grow the core and the atmosphere at the same time within the disk life time. As such, the formation of a giant planet by growing the core first, then letting the atmosphere cool is faster than growing the core and the atmosphere at the same time at a steady planetesimal accretion rate.
-
-Next, we are interested in whether hydrodynamic gas accumulation due to planetesimal accretion can already commence before the atmosphere becomes unstable due to Kelvin-Helmholtz contraction, as our regime is no longer the relevant one under such conditions. A core that forms on the same timescale as our model atmosphere accretes planetesimals at a rate given by equation (\ref{eq:Mcdot}). This accretion rate is dependent on the core mass, which is steadily increasing. We therefore compare the critical core mass due to planetesimal accretion at this rate $M_{\rm{crit,acc}}$ to a core mass assumed fixed $M_{\rm{c,fixed}}$. If $M_{\rm{crit,acc}}<M{\rm_{c, fixed}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
-
-%Specifically, we compare the critical core mass due to planetesimal accretion at the rate 
-
-%we compare the critical core mass $M_{\rm{c,acc}}$ due to planetesimal accretion, for an accretion rate that satisfies $L_{\rm{acc}}<L_{\rm{KH}}$ to the actual core mass $M_{\rm{c}}$ assumed fixed in our model. If $M_{\rm{c,acc}}<M{\rm{c}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
-
-In order to estimate the critical core mass due to planetesimal accretion $M_{\rm{crit,acc}}$, we use the results of \citet{rafikov06} for low luminosity atmospheres forming in the outer disk ($>2-5$ AU), consistent with our region of interest. By relating his expression for the critical core mass to a given core mass dependent planetesimal accretion rate $\dot{M}(M_{\rm{c}})$, we find the following expression for the critical core mass when accretion luminosity dominates the evolution of the atmosphere:
-
-\begin{equation}
-\label{eq:critraf}
-M_{\rm{crit, acc}} \sim \Big[\frac{\dot{M}(M_{\rm{c}})}{64 \pi^2} \frac{\kappa_0}{\sigma G^3} \frac{1}{R_c M_c^{1/3}} \Big(\frac{k}{\mu}\Big)^4\Big]^{3/5},
-\end{equation}
-
-\noindent with all the constants as defined in previous sections. We therefore calculate $M_{\rm{crit,acc}}$ for a range of core masses. The result is displayed in Figure 11. 
-
- \begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/critcore.pdf}
-%\vspace{-0.5in}
-\caption{Comparison between the critical core mass $M_{\rm{crit, acc}}$ due to planetesimal accretion and the assumed fixed core mass when gas contraction dominates, for a growth time of $\tau=1.2$ Myrs. Unstable atmosphere collapse occurs due to core accretion before Kelvin-Helmholtz contraction starts dominating for core masses larger than $\sim 40 M_{\oplus}$.}
-\end{figure}
-
-We see that the critical core mass due to planetesimal accretion is smaller than the mass of the fixed core for $M_{\rm{c}} \sim 40 M_{\oplus}$. This means that for large core masses, planetesimal accretion will lead to runaway gas accretion before gas contraction starts dominating, and hence our model is not applicable in that regime. However, we have found in section \ref{critcore} that unstable atmospheres collapse occurs within the life time of the disk for protoplanetary cores smaller than this. We therefore confirm that planetesimal accretion can be safely ignored in our regime of interest. Moreover, as displayed in Fig. 10, it is faster to form a planet by growing the core first, then accreting a massive envelope, rather than by growing the core and atmosphere in parallel. \textbf{This works for this particular choice of core, disk etc. conditions, and I am expecting it to work for most of our parameter space, but it would probably be good to explore this numerically, at least to order of magnitude, with the estimates we have.} 
-
-As a final check, we investigate whether planetesimal accretion during the gas contraction phase at the rate $\dot{M}_{\rm{KH}}$ imposed by the condition that $L_{\rm{acc}}<L_{\rm{KH}}$ can alter the core mass enough to affect the time evolution of the atmosphere. We can quantitatively estimate the increase in core mass as 
-
-\begin{equation}
-\label{eq:cminc}
-\Delta M_{\rm{c}} = \int_0^{t_{\rm{crit}}} \dot{M_{\rm{c}}} dt \approx \sum_i \dot{M_{\rm{c}}}_i \Delta t_i,
-\end{equation}
  
- \noindent where $t_{\rm{crit}}$ is the time elapsed until runaway gas accretion commences, and the accretion rate $ \dot{M_{\rm{c}}}_i $ is given by 
- 
- \begin{equation}
- \label{eq:Mdotexp}
- \dot{M_{\rm{c}}}_i =\frac{L_i R_c}{G M_{\rm{c}}} 
- \end{equation}
- 
- \noindent from equation (\ref{eq:Lacc}), with $L_i$ the luminosity of the atmosphere at time $t_i$ in our model. For $M_{\rm{c}}=10 M_{\oplus}$, we find $\Delta M_{\rm{c}} \approx 0.05 M_{\oplus}$. This mass increase is therefore negligible in comparison with the initial core mass. It follows that a significant increase in core mass that could potentially alter the time evolution of the atmosphere would occur on a longer time scale than the mass-doubling time for the unperturbed atmosphere. Therefore, the time evolution of the atmosphere is insensitive to core mass changes at a rate imposed by the assumption that $L_{\rm{acc}}<L_{\rm{KH}}$.
- 
- \subsection{Neglected Effects}
+ \section{Neglected Effects}
  \label{neglected}
  
  In this section we summarize some of the simplifications we have made, and discuss their relative effect on our model.
  
- \subsubsection{Equation of State \textbf{(Paper II)}}
+ \subsection{Planetesimal Accretion}
+ 
+ In this study we explore the formation of giant planets through core accretion under the assumption that the protoplanetary core is already fully formed, and therefore the planetesimal accretion rate is low. We defer quantitative estimates of the parameter space under which this is a valid assumption to Piso et al. (2013, in prep). 
+ 
+ \subsection{Equation of State}
  \label{EOS}
  
  In our model we assume an ideal gas law and a polytropic equations of state (EOS), given by equations (\ref{eq:idealgas}) and (\ref{eq:polyEOS}), respectively. However, non-ideal effects such as partial dissociation and ionization have to be taken into account. One solution is using tabulated equation of state tables for hydrogen and helium mixtures. As future work, we plan to use the \citet{saumon95} EOS tables and extend them to lower pressures and temperatures as required by our disk assumptions.
  
- \subsubsection{Time Evolution \textbf{(Paper I)}}
+ \subsection{Time Evolution}
  
  In this study we have assumed that the luminosity stays constant throughout the radiative region of the atmosphere. As a result, the time dependence can be neglected in equation (\ref{eq:structd}) and static solution can be obtained and then connected through a global cooling equations, as described in section \ref{cooling}. However, the assumption of constant luminosity breaks down for high atmosphere masses, as described in section \ref{endoftime}; in this case, a time-dependent model is required to describe the atmosphere evolution. We are currently developing a full evolutionary time-dependent atmosphere model. We do not expect qualitatively different results. We showed in section \ref{endoftime} that the quasi-static model breaks down around the time when the atmosphere mass becomes equal to the mass of the core. Nevertheless, we can see from Figures 2 and 3 that the time of slowest accretion is safely before the region in which our model breaks down, and that the time after which the atmosphere mass increases by 25 \% is only a factor of 2 lower than the mass doubling time. As a result, we are confident of our results to order of magnitude.
  
- \subsubsection{Inefficient Convection\textbf{(Paper I)}}
+ \subsection{Inefficient Convection}
  
 \textbf{Discussion about mixing length theory...} 
 
-\subsubsection{Opacity \textbf{(Paper II)}}
+%\subsubsection{Opacity \textbf{(Paper II)}}
 
-\textbf{In progress, still need to run models for smaller AU and see at what point ice grain opacity is no longer valid. Currently strange behavior at 1 AU for $\delad=2/5$, the critical core mass goes up significantly instead of having a linear trend. $\delad=2/7$ atmospheres do not show this effect. Models for the inner disk would also show / confirm that close-in giant planet formation is hard (need larger core mass).}
+%\textbf{In progress, still need to run models for smaller AU and see at what point ice grain opacity is no longer valid. Currently strange behavior at 1 AU for $\delad=2/5$, the critical core mass goes up significantly instead of having a linear trend. $\delad=2/7$ atmospheres do not show this effect. Models for the inner disk would also show / confirm that close-in giant planet formation is hard (need larger core mass).}
  
  
  \section{Conclusions}
