@@ -9,7 +9,8 @@ profiles.
 
 
 from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
-     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, Tdisk, Pdisk, paramsEOS
+     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, kfixed, kdustbeta1, \
+     kdustall, Tdisk, Pdisk, paramsEOS
 from utils.userpath import userpath
 import numpy
 import scipy
@@ -159,33 +160,67 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 
 
     if savefile == 1:
-        if disk == 1:
+        if prms.kappa == kdust:
+            if disk == 1:
+                paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/' + filename
+                numpy.savez_compressed(paramfilename, model = model, param = param, \
+                                   prof = prof)
+            else:
+                paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
+                                str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                                'Mc' + str(prms.Mco/Me)
+                numpy.savez_compressed(paramfilename, model = model, param = param, \
+                                   prof = prof)
+        elif prms.kappa == kfixed:
             paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/' + filename
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kfixed/' + filename
             numpy.savez_compressed(paramfilename, model = model, param = param, \
-                               prof = prof)
-        else:
-            paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
-                            str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
-                            'Mc' + str(prms.Mco/Me)
+                                prof = prof)
+        elif prms.kappa == kdustall:
+            paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename
             numpy.savez_compressed(paramfilename, model = model, param = param, \
-                               prof = prof)
+                                prof = prof)
+
+        elif prms.kappa == kdustbeta1:
+            paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustbeta1/' + filename
+            numpy.savez_compressed(paramfilename, model = model, param = param, \
+                                prof = prof)
+            
     
     return model, param, prof
 
 
 def atmload(filename, prms = prms, disk = 1):
-    if disk == 1:
+    if prms.kappa == kdust:
+        if disk == 1:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/' + filename)
+        else:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
+                                str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                                'Mc' + str(prms.Mco/Me) + '.npz')
+
+    elif prms.kappa == kfixed:
         npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/' + filename)
-    else:
-        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
-                            str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
-                            'Mc' + str(prms.Mco/Me) + '.npz')
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kfixed/' + filename)
+
+    elif prms.kappa == kdustbeta1:
+        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustbeta1/' + filename)
+
+    elif prms.kappa == kdustall:
+        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename)
+
         
     model = npzdat['model'].view(numpy.recarray)
     param = npzdat['param'].view(numpy.recarray)
     prof = npzdat['prof'].view(numpy.recarray)
+
+    npzdat.close()
 
     return model, param, prof
 

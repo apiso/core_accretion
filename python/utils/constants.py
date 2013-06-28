@@ -57,9 +57,43 @@ def Hdisk(a, FT):  #a in AU
 
 #opacity laws
 
-def kdust(T, P = None, b = 2, fsolar = 1.):
+def kdust(T, rho = None, b = 2, fsolar = 1.):
     """Opacity (generally applicable for beta = 2)"""
     return 2 * fsolar * (T/100.)**b
+
+def kdustall(T, rho):
+    T = float(T)
+    rho = float(rho)
+    """Full Bell & Lin opacity"""
+    if T <= 166.81:
+        return 2 * 10**(-4) * T**2
+    elif T >= 166.81 and T <= 201.677:
+        return 2 * 10**16 * T**(-7)
+    elif T >= 201.677 and 0.1 * T**(1./2) - 2 * 10**81 * rho * T**(-24) <=0:
+        return 0.1 * T**(1./2)
+    elif 0.1 * T**(1./2) - 2 * 10**81 * rho * T**(-24) >=0 \
+         and 2 * 10**81 * rho * T**(-24) - 10**(-8) * rho**(2./3) * T**3 >= 0:
+        return 2 * 10**81 * rho * T**(-24)
+    elif 2 * 10**81 * rho * T**(-24) - 10**(-8) * rho**(2./3) * T**3 <=0 \
+         and 10**(-8) * rho**(2./3) * T**3 - 10**(-36) * rho**(1./3) * T**10 >= 0:
+        return 10**(-8) * rho**(2./3) * T**3
+    elif 10**(-8) * rho**(2./3) * T**3 - 10**(-36) * rho**(1./3) * T**10 <= 0 \
+         and 10**(-36) * rho**(1./3) * T**10 - 1.5 * 10**20 * rho * T**(-5./2) <= 0:
+        return 10**(-36) * rho**(1./3) * T**10
+    elif 10**(-36) * rho**(1./3) * T**10 - 1.5 * 10**20 * rho * T**(-5./2) >= 0 \
+         and 1.5 * 10**20 * rho * T**(-5./2) - 0.348 >= 0:
+        return 1.5 * 10**20 * rho * T**(-5./2) 
+    else:
+         return 0.348
+
+def kdustallfn(T, rho):
+    kappa = 0 * np.ndarray(shape = len(rho), dtype = float)
+    for i in range(len(kappa)):
+        kappa[i] = kdustall(T, rho[i])
+    return kappa
+
+def kdustbeta1(T, a = None, FT = 1):
+    return 0.1 * (T/100.0)
 
 def kdust10(T, P = None, b = 2, fsolar = 1.):
     """Opacity reduced by a factor of 10"""
@@ -69,7 +103,7 @@ def kdust100(T, P = None, b = 2, fsolar = 1.):
     """Opacity reduced by a factor of 100"""
     return 2 * fsolar * (T/100.)**b / 100
 
-def kfixed(T = None, P = None, const = 0.01):
+def kfixed(T = None, P = None, const = 0.24):
     """a silly function but useful if kappa functions expects a temperature."""
     return const
 

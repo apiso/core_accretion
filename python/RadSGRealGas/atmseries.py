@@ -7,15 +7,16 @@ import numpy
 from scipy import integrate
 from scipy.interpolate import interp1d
 from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
-     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, Tdisk, Pdisk
+     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, kdustbeta1, \
+     kfixed, Tdisk, Pdisk
 from utils.parameters import mstar, FSigma, FT
 from utils.constants import paramsEOS
 from RadSGRealGas.profiles import profiles_write
 from RadSGRealGas.cooling import critical
 
 def atmseries(a, rhoc, Y, Mcomin, Mcomax, nMco, n = 500, \
-              nMpoints = 200, L1 = 10**21, L2 = 10**28, minMfrac = 1.05, \
-              maxMfrac = 2.25, checktop = 0):
+              nMpoints = 200, L1 = 10**21, L2 = 10**30, minMfrac = 1.05, \
+              maxMfrac = 2.25, checktop = 0, opacity = kdust):
     
     """
 
@@ -69,7 +70,7 @@ def atmseries(a, rhoc, Y, Mcomin, Mcomax, nMco, n = 500, \
 
     for i in range(nMco):
         
-        prms = paramsEOS(Mcore[i], rcore[i], Y, a, Pd, Td, kappa = kdust)
+        prms = paramsEOS(Mcore[i], rcore[i], Y, a, Pd, Td, kappa = opacity)
         Mmin = minMfrac * Mcore[i]
         Mmax = maxMfrac * Mcore[i]
 

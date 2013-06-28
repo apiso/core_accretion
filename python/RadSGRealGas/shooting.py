@@ -19,7 +19,8 @@ atmospheres
 
 
 from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
-     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, kdust10, Tdisk, Pdisk, \
+     cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, kdust10, kdustbeta1, \
+     Tdisk, Pdisk, kfixed, kdustall, \
      paramsEOS
 from utils.parameters import FT, FSigma, mstar, Y, delad, rhoc, Mc, rc, \
      gamma, Y, a #, R_EOS
@@ -44,7 +45,15 @@ prms = paramsEOS(Mc, rc, Y, a, Pd = Pdisk(a, mstar, FSigma, FT), \
                         #for specific values imported from parameters.py 
 
 def delradfn(p, m, T, L, prms = prms): #radiative temperature gradient
-    return 3 * prms.kappa(T) * p * L / (64 * pi * G * m * sigma * T**4)
+    if prms.kappa == kdust:
+        return 3 * prms.kappa(T) * p * L / (64 * pi * G * m * sigma * T**4)
+    elif prms.kappa == kfixed:
+        return 3 * prms.kappa() * p * L / (64 * pi * G * m * sigma * T**4)
+    elif prms.kappa == kdustbeta1:
+        return 3 * prms.kappa(T, prms.a) * p * L / (64 * pi * G * m * sigma * T**4)
+    elif prms.kappa == kdustall:
+        rho = 10**interplog10rho(numpy.log10(T), numpy.log10(p))
+        return 3 * prms.kappa(T, rho) * p * L / (64 * pi * G * m * sigma * T**4)
 
 def Del(p, m, T, L, delad, prms = prms): #del = min(delad, delrad)
     return min(delad, delradfn(p, m, T, L, prms))
@@ -283,8 +292,11 @@ def shoot(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
     Eg = Eg - Eg[0] 
     U = U - U[0]
     Iu = Iu - Iu[0]
-    
-    delrad = delradfn(P, m, T, L, prms)
+
+    delrad = 0 * numpy.ndarray(shape = len(P), dtype = float)
+    for i in range(len(delrad)):
+        delrad[i] = delradfn(P[i], m[i], T[i], L, prms)
+    #delrad = delradfn(P, m, T, L, prms)
     
     if checktop == 0:
         delad = interpdelad(numpy.log10(T), numpy.log10(P))
