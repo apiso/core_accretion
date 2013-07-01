@@ -55,7 +55,7 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0, opacity = kdust):
                   Cv = Cvfn(Y, delad), Pd = Pdisk(a, mstar, FSigma, FT), \
                   Td = Tdisk(a, FT), kappa = opacity)
 
-    if opacity == kdust:
+    if opacity == kdust or opacity == kdust10:
 
         if a == 1.0 or a  == 3.0 or a == 2.0 or a == 1.5 or a == 2.5 or a == 1.75:
             t = 0 * numpy.ndarray(shape = (5), dtype = float)
@@ -127,12 +127,15 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0, opacity = kdust):
                 if delad == 2./7 and Y == 0.0:
                     Mc = numpy.linspace(11, 15, 5)
                 elif delad == 2./7 and Y == 0.3:
-                    Mc = numpy.linspace(1, 14, 14)               
+                    Mc = numpy.linspace(1, 14, 14)    
                 elif delad == 2./5 and Y == 0.3:
                     Mc = numpy.linspace(6, 10, 5)
 
             elif a == 10.0 and delad == 2./7 and Y == 0.3:
+                if opacity == kdust:
                     Mc = numpy.linspace(5, 14, 10)
+                else:
+                    Mc = numpy.linspace(1, 10, 10)
 
             else:
                 if delad == 2./7 and Y == 0.0:
@@ -153,7 +156,10 @@ def t_vs_Mc_fixed_a(delad, Y, a, returnt = 0, opacity = kdust):
             Mtotcrit[i] = temp[0].MB[-1]
 
             MBonditemp = temp[0].MB
-            dt = temp[-1]
+            if opacity == kdust:
+                dt = temp[-1]
+            else:
+                dt = temp[-1] / 10
             
             t[i] = sum(dt)
 

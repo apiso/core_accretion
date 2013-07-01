@@ -152,7 +152,7 @@ class AnSols:
 
     #Lcb = Lo * Pd / Pcb
 
-    def __init__(self, mu=2.35, a=100, FT=FT, **kwargs):
+    def __init__(self, mu=2.35, a=10, FT=FT, **kwargs):
         #disk
         self.Td = kwargs.get('Td', Tdisk(a, FT))
         self.Pd = kwargs.get('Pd', Pdisk(a, mstar, FSigma, FT))

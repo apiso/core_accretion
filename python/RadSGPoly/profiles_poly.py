@@ -149,16 +149,16 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 
     if savefile == 1:
         if disk == 1:
-            if prms.kappa == kdust:
+            if prms.kappa == kdust or prms.kappa == kdust10:
                 paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
                                 str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
                                 str(prms.a) + 'AU/' + filename
                 numpy.savez_compressed(paramfilename, model = model, param = param, \
                                    prof = prof)
-            elif prms.kappa == kdust10:
-                paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
-                                str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/kdust10/' + \
-                                str(prms.a) + 'AU/' + filename
+##            elif prms.kappa == kdust10:
+##                paramfilename = userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
+##                                str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/kdust10/' + \
+##                                str(prms.a) + 'AU/' + filename
                 numpy.savez_compressed(paramfilename, model = model, param = param, \
                                    prof = prof)
             elif prms.kappa == kdust100:
@@ -186,14 +186,14 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 
 def atmload(filename, prms = prms, disk = 1):
     if disk == 1:
-        if prms.kappa == kdust:
+        if prms.kappa == kdust or prms.kappa == kdust10:
             npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
                             str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
                             str(prms.a) + 'AU/' + filename)
-        elif prms.kappa == kdust10:
-            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
-                                str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/kdust10/' + \
-                                str(prms.a) + 'AU/' + filename)
+##        elif prms.kappa == kdust10:
+##            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
+##                                str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/kdust10/' + \
+##                                str(prms.a) + 'AU/' + filename)
         elif prms.kappa == kdust100:
             npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGPoly/' + 'delad' + \
                                 str(prms.delad)[:4] + '/Y' + str(prms.Y) + '/' + \
