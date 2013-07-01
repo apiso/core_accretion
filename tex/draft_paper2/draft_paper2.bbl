@@ -1,0 +1,61 @@
+\begin{thebibliography}{17}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Bell} \& {Lin}(1994)}]{bell94}
+{Bell}, K.~R. \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
+
+\bibitem[{{Bodenheimer} \& {Pollack}(1986)}]{boden86}
+{Bodenheimer}, P. \& {Pollack}, J.~B. 1986, \icarus, 67, 391
+
+\bibitem[{{Chiang} \& {Youdin}(2010)}]{chiang10}
+{Chiang}, E. \& {Youdin}, A.~N. 2010, Annual Review of Earth and Planetary
+  Sciences, 38, 493
+
+\bibitem[{{D'Angelo} {et~al.}(2011){D'Angelo}, {Durisen}, \&
+  {Lissauer}}]{dangelo11}
+{D'Angelo}, G., {Durisen}, R.~H., \& {Lissauer}, J.~J. {Giant Planet
+  Formation}, ed. S.~{Piper}, 319--346
+
+\bibitem[{{Farkas}(1935)}]{farkas35}
+{Farkas}, A. 1935, {Orthohydrogen, Parahydrogen and Heavy Hydrogen}
+
+\bibitem[{{Goldreich} {et~al.}(2004){Goldreich}, {Lithwick}, \&
+  {Sari}}]{goldreich04}
+{Goldreich}, P., {Lithwick}, Y., \& {Sari}, R. 2004, \araa, 42, 549
+
+\bibitem[{{Ikoma} {et~al.}(2000){Ikoma}, {Nakazawa}, \& {Emori}}]{ikoma00}
+{Ikoma}, M., {Nakazawa}, K., \& {Emori}, H. 2000, \apj, 537, 1013
+
+\bibitem[{{Kippenhahn} \& {Weigert}(1990)}]{kippenhahn90}
+{Kippenhahn}, R. \& {Weigert}, A. 1990, {Stellar Structure and Evolution}
+
+\bibitem[{{Kittel} {et~al.}(1981){Kittel}, {Kroemer}, \& {Landsberg}}]{kittel}
+{Kittel}, C., {Kroemer}, H., \& {Landsberg}, P.~T. 1981, \nat, 289, 729
+
+\bibitem[{{Mandl}(1989)}]{mandl89}
+{Mandl}, F. 1989, {Statistical Physics, 2nd Edition}
+
+\bibitem[{{Mizuno} {et~al.}(1978){Mizuno}, {Nakazawa}, \& {Hayashi}}]{mizuno78}
+{Mizuno}, H., {Nakazawa}, K., \& {Hayashi}, C. 1978, Progress of Theoretical
+  Physics, 60, 699
+
+\bibitem[{{Papaloizou} \& {Terquem}(1999)}]{pap99}
+{Papaloizou}, J.~C.~B. \& {Terquem}, C. 1999, \apj, 521, 823
+
+\bibitem[{{Rafikov}(2006)}]{rafikov06}
+{Rafikov}, R.~R. 2006, \apj, 648, 666
+
+\bibitem[{{Saumon} {et~al.}(1995){Saumon}, {Chabrier}, \& {van
+  Horn}}]{saumon95}
+{Saumon}, D., {Chabrier}, G., \& {van Horn}, H.~M. 1995, \apjs, 99, 713
+
+\bibitem[{{Stevenson}(1982)}]{stevenson82}
+{Stevenson}, D.~J. 1982, \planss, 30, 755
+
+\bibitem[{{Thompson}(2006)}]{thompson06}
+{Thompson}, M.~J. 2006, {An introduction to astrophysical fluid dynamics}
+
+\bibitem[{{Wuchterl}(1993)}]{wuchterl93}
+{Wuchterl}, G. 1993, \icarus, 106, 323
+
+\end{thebibliography}
