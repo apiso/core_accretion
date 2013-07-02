@@ -1,0 +1,94 @@
+\begin{thebibliography}{24}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Bell} \& {Lin}(1994)}]{bell94}
+{Bell}, K.~R. \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
+
+\bibitem[{{Bodenheimer} \& {Pollack}(1986)}]{boden86}
+{Bodenheimer}, P. \& {Pollack}, J.~B. 1986, \icarus, 67, 391
+
+\bibitem[{{Boss}(1997)}]{boss97}
+{Boss}, A.~P. 1997, Science, 276, 1836
+
+\bibitem[{{Chiang} \& {Youdin}(2010)}]{chiang10}
+{Chiang}, E. \& {Youdin}, A.~N. 2010, Annual Review of Earth and Planetary
+  Sciences, 38, 493
+
+\bibitem[{{D'Angelo} {et~al.}(2011){D'Angelo}, {Durisen}, \&
+  {Lissauer}}]{dangelo11}
+{D'Angelo}, G., {Durisen}, R.~H., \& {Lissauer}, J.~J. {Giant Planet
+  Formation}, ed. S.~{Piper}, 319--346
+
+\bibitem[{{Goldreich} {et~al.}(2004){Goldreich}, {Lithwick}, \&
+  {Sari}}]{goldreich04}
+{Goldreich}, P., {Lithwick}, Y., \& {Sari}, R. 2004, \araa, 42, 549
+
+\bibitem[{{Haisch} {et~al.}(2001){Haisch}, {Lada}, \& {Lada}}]{haisch01}
+{Haisch}, Jr., K.~E., {Lada}, E.~A., \& {Lada}, C.~J. 2001, \apjl, 553, L153
+
+\bibitem[{{Harris}(1978)}]{harris78}
+{Harris}, A.~W. 1978, in Lunar and Planetary Institute Science Conference
+  Abstracts, Vol.~9, Lunar and Planetary Institute Science Conference
+  Abstracts, 459--461
+
+\bibitem[{{Ikoma} {et~al.}(2000){Ikoma}, {Nakazawa}, \& {Emori}}]{ikoma00}
+{Ikoma}, M., {Nakazawa}, K., \& {Emori}, H. 2000, \apj, 537, 1013
+
+\bibitem[{{Kippenhahn} \& {Weigert}(1990)}]{kippenhahn90}
+{Kippenhahn}, R. \& {Weigert}, A. 1990, {Stellar Structure and Evolution}
+
+\bibitem[{{Kratter} {et~al.}(2010){Kratter}, {Murray-Clay}, \&
+  {Youdin}}]{kratter10}
+{Kratter}, K.~M., {Murray-Clay}, R.~A., \& {Youdin}, A.~N. 2010, \apj, 710,
+  1375
+
+\bibitem[{{Lagrange} {et~al.}(2000){Lagrange}, {Backman}, \&
+  {Artymowicz}}]{lagrange00}
+{Lagrange}, A.-M., {Backman}, D.~E., \& {Artymowicz}, P. 2000, Protostars and
+  Planets IV, 639
+
+\bibitem[{{Mizuno} {et~al.}(1978){Mizuno}, {Nakazawa}, \& {Hayashi}}]{mizuno78}
+{Mizuno}, H., {Nakazawa}, K., \& {Hayashi}, C. 1978, Progress of Theoretical
+  Physics, 60, 699
+
+\bibitem[{{Papaloizou} \& {Nelson}(2005)}]{pn05}
+{Papaloizou}, J.~C.~B. \& {Nelson}, R.~P. 2005, \aap, 433, 247
+
+\bibitem[{{Papaloizou} \& {Terquem}(1999)}]{pap99}
+{Papaloizou}, J.~C.~B. \& {Terquem}, C. 1999, \apj, 521, 823
+
+\bibitem[{{Pollack} {et~al.}(1996){Pollack}, {Hubickyj}, {Bodenheimer},
+  {Lissauer}, {Podolak}, \& {Greenzweig}}]{pollack96}
+{Pollack}, J.~B., {Hubickyj}, O., {Bodenheimer}, P., {Lissauer}, J.~J.,
+  {Podolak}, M., \& {Greenzweig}, Y. 1996, \icarus, 124, 62
+
+\bibitem[{{Press} {et~al.}(1992){Press}, {Teukolsky}, {Vetterling}, \&
+  {Flannery}}]{press92}
+{Press}, W.~H., {Teukolsky}, S.~A., {Vetterling}, W.~T., \& {Flannery}, B.~P.
+  1992, {Numerical recipes in C. The art of scientific computing}
+
+\bibitem[{{Rafikov}(2005)}]{rafikov05}
+{Rafikov}, R.~R. 2005, \apjl, 621, L69
+
+\bibitem[{{Rafikov}(2006)}]{rafikov06}
+---. 2006, \apj, 648, 666
+
+\bibitem[{{Saumon} {et~al.}(1995){Saumon}, {Chabrier}, \& {van
+  Horn}}]{saumon95}
+{Saumon}, D., {Chabrier}, G., \& {van Horn}, H.~M. 1995, \apjs, 99, 713
+
+\bibitem[{{Semenov} {et~al.}(2003){Semenov}, {Henning}, {Helling}, {Ilgner}, \&
+  {Sedlmayr}}]{semenov03}
+{Semenov}, D., {Henning}, T., {Helling}, C., {Ilgner}, M., \& {Sedlmayr}, E.
+  2003, \aap, 410, 611
+
+\bibitem[{{Stevenson}(1982)}]{stevenson82}
+{Stevenson}, D.~J. 1982, \planss, 30, 755
+
+\bibitem[{{Thompson}(2006)}]{thompson06}
+{Thompson}, M.~J. 2006, {An introduction to astrophysical fluid dynamics}
+
+\bibitem[{{Wuchterl}(1993)}]{wuchterl93}
+{Wuchterl}, G. 1993, \icarus, 106, 323
+
+\end{thebibliography}

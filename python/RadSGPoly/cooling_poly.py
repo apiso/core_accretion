@@ -10,6 +10,7 @@ from utils.constants import G, kb, mp, Rb, Me, Re, Msun, RH, RHe, sigma, \
      cmperau, RHill, gammafn, mufn, Rfn, Cvfn, kdust, Tdisk, Pdisk, params
 import numpy
 import scipy
+import math
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from collections import namedtuple
@@ -102,10 +103,11 @@ def cooling_global(atmset, atmprofile, prms = prms, out = 'rcb'):
             i = i + 1
 
     t = ( - deltae + eaccav * deltamout - Poutav * deltav) \
-        / Lav
+            / Lav
     
     return t, sum(t / (365 * 24 * 3600)) / (3 * 10**6), \
-           deltae, eaccav * deltamout, Poutav * deltav
+          deltae, eaccav * deltamout, Poutav * deltav
+
 
 
 def cooling_local(param, prof, prms = prms, out = 'rcb', onlyrad = 0):
@@ -252,6 +254,72 @@ def critical(param, prof, prms = prms):
 
 
 
+def tacc(param, prof, prms):
+
+    x = critical(param, prof, prms)
+    param, prof, dttrue = x
+    L = param.L * 100
+
+    l = list(L)
+    Lacc = L[1 : l.index(L.min()) + 1]
+    #Lacc = numpy.logspace(numpy.log10(L[0] / 5), \
+    #                             numpy.log10(L.min()), 100)
+    dt = 0 * numpy.ndarray(shape = (len(Lacc), len(L) - 1), dtype = float)
+    t = 0 * numpy.ndarray(shape = (len(Lacc)), dtype = float)
+    Macc = 0 * numpy.ndarray(shape = (len(Lacc)), dtype = float)
+
+    #l = list(L)
+    #Lnew = L[:l.index(L.min()) + 1]
+    #f = interp1d(Lnew[::-1], Lacc[::-1])
+    #Laccnew = f(Lnew)
+        
+    for i in range(len(Lacc)):
+        for j in range(len(L) - 1):
+        
+            dt[i, j] = L[j]/ (L[j] - Lacc[i]) * dttrue[j] / 100
+            for k in range(len(L) - 1):
+                if math.isinf(dt[i, k]):
+                    break
+            t[i] = sum(dt[i, :k]) / (365 * 24 * 3600 * 10**6)
+            #for k in range(k, len(L) - 1):
+        dt[i, k:] = 0
+        Macc[i] = param.MB[k]
+    return dt, param.MB, t, Macc, Lacc
+
+def tacc_plot(param, prof, prms, n):
+    x = tacc(param, prof, prms)
+    dt = x[0] / (365 * 24 * 3600)
+    MB = x[1]
+
+    crit = critical(param, prof, prms)
+    paramcrit = crit[0]
+    dttrue = crit[2]
+    ttrue = 0 * numpy.ndarray(shape = len(dttrue), dtype = float)
+    for i in range(len(ttrue)):
+        ttrue[i] = sum(dttrue[:i]) / (365 * 24 * 3600) / 100
+
+    tcum = 0 * numpy.ndarray(shape = (numpy.shape(dt)[0], numpy.shape(dt)[1]), \
+                       dtype = float)
+    for i in range(numpy.shape(tcum)[0]):
+        for j in range(numpy.shape(tcum)[1]):
+            tcum[i, j] = sum(dt[i, :j])
+
+    for i in range(numpy.shape(tcum)[0]):
+        for j in range(numpy.shape(tcum)[1] - 1):
+            if tcum[i, j - 1] == tcum[i, j]:
+                break
+        tcum[i, j:] = 0
+            
+    
+    rnb = numpy.linspace(0, 256, numpy.shape(dt)[0] / n)
+    
+    for i in range(numpy.shape(dt)[0] / n):
+        plt.semilogy(MB[:-1], tcum[n * i], c = cm.rainbow(numpy.int(rnb[i])))
+    plt.semilogy(paramcrit.MB, ttrue, '--', color = 'black')
+    plt.xlabel(r'$M_{\rm{atm}}\,[M_{\oplus}]$')
+    plt.ylabel(r'$t_{\rm{elapsed}}$ [yrs]')
+    plt.xlim(xmax = 3.8)
+    plt.show()
 
 
 

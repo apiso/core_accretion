@@ -14,7 +14,7 @@ from RadSGPoly.profiles_poly import profiles_write
 from RadSGPoly.cooling_poly import critical
 
 def atmseries(a, rhoc, delad, Y, Mcomin, Mcomax, nMco, n = 500, \
-              nMpoints = 300, L1 = 10**21, L2 = 10**30, minMfrac = 1.1, \
+              nMpoints = 300, L1 = 10**17, L2 = 10**28, minMfrac = 1.1, \
               maxMfrac = 2.8, opacity = kdust):
     
     """

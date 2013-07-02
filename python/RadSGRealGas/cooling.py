@@ -53,7 +53,9 @@ def cooling_global(atmset, atmprofile, prms = prms, out = 'rcb', checktop = 0):
     """
     
     n = len(atmset)
+
     L = atmset.L
+        
     deltav = 0 * numpy.ndarray(shape = (len(L) - 1), dtype = float)
 
     if out == 'rcb':
