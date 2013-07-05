@@ -325,20 +325,9 @@ Brackets indicate an average of, and Delta ($\Delta$) indicates a difference bet
 \section{Analytic Cooling Model}
 \label{sec:coolingan}
 
-\emph{TODO: this intro still needs edits}
+This section develops the analytic version of our two-layer model, which is useful for predicting and explaining the results of numerical evolution models.  To obtain our analytic results, we neglect self-gravity.   As shown in section \ref{sec:KH}, self-gravity becomes quantitatively important at surprisingly low atmospheric masses, $M_{\rm atm} \gtrsim 0.2 M\co$.  Thus the analytic model cannot accurately model the the later stages of evolution.  Nevertheless, the analytic model does successfully explain general trends with e.g.\ opacity and disk temperature and pressure.
 
-In this section we derive a simplified analytic model for the atmosphere structure and evolution, based on the assumptions and equations described in section \ref{sec2}. We use this model to predict the qualitative behavior of our more detailed numerical model. %, and to explain expected scalings (\textbf{Maybe take out this sentence.})
-
-We consider a two-layer atmosphere structure model as presented in section \ref{model}, and we make two key assumptions: we neglect the self-gravity of the atmosphere, and we assume that the outer radiative region is very thick and hence the pressure at the radiative-convective boundary is much larger than the disk pressure $P\di$. We will show in section \ref{KH} that these assumptions limit the applicability of this simplified model during the late and early stages of the atmosphere evolution, respectively. We also approximate the structure of the radiative zone as nearly isothermal, and note that this assumption is consistent with the numerical solutions (see section \ref{profiles}). 
-
-As self-gravity is quantitatively important, we expect our analytic model to only provide scalings for the full numerical model rather than absolute values.
-
-
-%We approximate the outer radiative zone of the atmosphere as nearly isothermal. Moreover, we do not take into account the self-gravity of the atmosphere in either region. We derive the structure of an isothermal non self-gravitating atmosphere is section \ref{iso}. 
-
-We use the quasi-static model of section \ref{sec2} to derive expressions for the mass, energy and luminosity of a static non self-gravitating atmosphere. We use this to derive the time evolution of the atmosphere and determine the minimum core mass for runaway gas accretion in section \ref{coolingan}. We defer the details of our calculations to \App{sec:analytic}.
-
-%\emph{shallow radiative zone passed quickly...}
+The analytic model also assumes that the upper radiative radiative layer is thick, with a pressure depth $P\cb \gg P\di$.  This approximation limits the ability to study the initial cooling of very low mass atmospheres.  However since early evolution is quite rapid, this approximation negligibly affects total cooling times and criticial core masses, our main foci.
 
 \subsection{Two Layer Structure}
 To apply the two layer cooling model analytically, we require expressions for the atmospheric structure.  Conditions at the RCB are crucial as they set the interior adiabat and the radiative losses. (Recall that luminosity generation in the radiative zone is neglected.)  We express the temperature and pressure of the RCB, at the radius $R\cb$, as 
@@ -352,7 +341,7 @@ If the radiative zone were replaced by an isothermal layer, then hydrostatic bal
 \label{eq:chi}
 \chi \simeq \Big(1-\frac{\delad}{\nabla_{\infty}} \Big)^{-\frac{1}{4-\beta}} \simeq 1.53 \, ,
 \end{equation}
-for $P\cb \gg P\di$, our regime of interest, and with the radiative temperature gradient at infinite depth, $\nabla_\infty = 1/2$, for our dust opacity.  The radiative zones are thus nearly isothermal, as also found by R06.  While  a simple closed form expression is not possible, the factor $\theta \simeq 0.556$ for our parameters. 
+for $P\cb \gg P\di$, our regime of interest, and with the radiative temperature gradient at infinite depth, $\nabla_\infty = 1/2$, for our dust opacity.  The radiative zones are thus nearly isothermal, as also found by R06.  While  a simple closed form expression is not possible, the factor $\theta \simeq 0.556$ for our parameters.   According to \Eq{eq:PcbRcb} our pressure criterion also gives $R\cb \ll \RB$, but the inequality is logarithmically weaker.
 
 Given the conditions at the RCB, hydrostatic balance gives the density and temperature profiles along the adiabat,
 \begin{subeqnarray}
