@@ -292,7 +292,7 @@ L_M = L\co + \Gamma - \dot{E}.
 \end{equation}
 The surface luminosity, $L_M$, includes contributions from the core luminosity $L\co$ --  e.g.\ planetesimal accretion or radioactive decay -- from the total heat generation $\Gamma$ -- given by the integral of $\epsilon$ over the object -- and from the rate of change of atmospheric energy $\dot{E}$, a loss term. 
 
-For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  For a main sequence star $L_M = \Gamma$ as the internal heat of nuclear burning supplies the total luminosity.
+For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  For a main sequence star $L_M = \Gamma$ as the heat of nuclear burning supplies the total luminosity.
 
 For a protoplanetary atmosphere embedded in a gas disk, the full energy equation, 
 \begin{equation}
@@ -337,7 +337,7 @@ The analytic model also assumes that the upper radiative radiative layer is thic
 
 \subsection{Two Layer Structure}
 To apply the two layer cooling model analytically, we require expressions for the atmospheric structure.  Conditions at the RCB are crucial as they set the interior adiabat and the radiative losses. (Recall that luminosity generation in the radiative zone is neglected.)  We express the temperature and pressure of the RCB, at the radius $R\cb$, as 
-\begin{subeqnarray}
+\begin{subeqnarray}\label{eq:cb2}
 T\cb &=& \chi T\di \slabel{eq:Tcb} \\
 P\cb &=& \theta P_{\rm d} e^{R_{\rm B}/R\cb} \, .\slabel{eq:PcbRcb}
 \end{subeqnarray}
@@ -362,11 +362,17 @@ The effective Bondi radius
 simplifies expressions, with $C_P = \Rg / \delad$ the specific heat at constant pressure.
 
 Even simpler expressions hold deep in the adiabatic interior, where $r \ll R\cb \ll \RB'$ gives
-\begin{subeqnarray}
+\begin{subeqnarray}\label{eq:deep}
 \rho &\simeq& \rho\cb \left[ {\RB' \over r}\right]^{1/(\gamma -1)} \propto r^{-5/2} \slabel{eq:rhoconvdeep}  \\
 T	&\simeq& T\cb {\RB' \over r} = {G M\co \over C_P r} \slabel{eq:Tconvdeep}\, .
 \end{subeqnarray} 
-While the radial density profile depends on the adiabatic index, the temperature scaling does not.  The total specific energy at depth
+While the radial density profile depends on the adiabatic index, the temperature scaling does not.  For reference, if self-gravity is included, the temperature profile satifies
+\begin{equation} \label{eq:TPsg}
+{dT \over dr} = - {G m(r) \over C_P r^2}\, .
+\end{equation} 
+Thus the enclosed mass in self-gravitating models gives a temperature profile flatter than $T \propto r^{-1}$.
+
+The total specific energy at depth
 \begin{equation}\label{eq:ean}
 e = e_g + u = -\delad {GM\co \over r} \, .
 \end{equation} 
@@ -481,13 +487,101 @@ The cooling timescale and critical core mass depend only weakly on the disk pres
 \section{Quasi-Static Kelvin-Helmholtz Contraction}
 \label{sec:KH}
 
-\subsubsection{Disk Temperature and Pressure}
-\label{sec:TPeffects}
+We now present some representative examples of the structure and evolution of our model atmospheres, calculated as described in \S\ref{sec:model}, with some comparisons made to the non-self-gravitating analytic model of \S\ref{sec:coolingan}.  Radial structure is presented in \S\ref{sec:profiles}, time evolution is described in \S\ref{sec:timeev} and the regimes of validity of our two-layer cooling model are examined in \S\ref{sec:endoftime}.
+
+\begin{figure}[tb]
+\centering
+%AY: figure should probably use R_B for consistency with text.
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/PTm_profiles_v2.pdf}
+%\vspace{-0.5in}
+\caption{Radial profiles of atmospheric pressure, temperature and enclosed mass (including the core) for a $5 M_{\oplus}$ core at $a=60$ AU.   Solid, dotted and dashed lines correspond to solutions with total mass (core and atmosphere) of $5.12 M_{\oplus}$, $5.85 M_{\oplus}$ and $9.22 M_{\oplus}$, respectively.  Circles and triangles mark the locations of the Bondi radii and of the radiative-convective boundaries, respectively.  The radial profiles extend from the core to the Hill radius.} 
+\label{fig:profiles}
+\end{figure}
+
+
+\subsection{Atmospheric Stucture}
+\label{sec:profiles}
+Figure \ref{fig:profiles} shows radial profiles at different stages of atmospheric growth.  In these examples, we fix the core mass at $M_{\rm{c}}=5 M_{\oplus}$ and the radial disk location to $a=60$ AU.  The quoted mass values include the core plus atmosphere within the smaller of $\RB$ or $\RH$, which for these cases is $\RB$.  The 9.22 $M_{\oplus}$ solution is the highest mass we can reach in our evolutionary sequence, as we explain further in \S\ref{sec:endoftime}.
+
+Deep in a non-self-gravitating atmosphere, \Eq{eq:deep} shows that $T \propto r^{-1}$ and $P\propto r^{-1/\delad}$.  This behavior is seen in the low mass solutions in \Fig{fig:profiles}.  As explained by \Eq{eq:TPsg}, the higher mass solutions show a flatter profile in $T$ and also in $P \propto T^{1/\delad}$.  In agreement with \Eq{eq:cb2}, the radiative zone remains nearly isothermal -- even in the more massive solutions -- and thus shows a nearly exponential increase in pressure with inverse depth.  
+
+The higher mass atmosphere solutions have lower entropy, i.e.\ cooling allows the atmosphere to accrete more gas.  This is evident in \Fig{fig:profiles} from the higher internal pressures of the higher mass solutions.  The somewhat higher temperatures in the higher mass solutions do not cause the entropy to increase.
+
+%AY: to say something about starting at disk entropy (not really needed) we should show it better in the figure.  Also unclear if you want to say much more about evolution before figure 2 shows the evolution.
+%In the initial stages of its evolution, the atmosphere is purely convective and isentropic, with an entropy equal to that of the disk. In the context of our numerical model, this is the minimum atmosphere mass for which a hydrostatic solution exists. Further gas accumulation brings in energy that has to be radiated away, and an initially thin outer radiative region forms, which becomes thicker as the atmosphere becomes more massive. 
+
+\subsection{Time Evolution}\label{sec:timeev}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Lt_profiles_v2.pdf}
+%\vspace{-0.5in}
+\caption{Evolution of the luminosity and elapsed time during atmospheric growth around a $5 M_{\oplus}$ core at $60$ AU.  The luminosity is initially high, then decreases as the atmosphere grows in mass and the radiative zone becomes optically thicker.  Due to the neglect of self-gravity, the analytic model (\emph{dashed curve}) gives a further drop in luminosity and a longer evolution time.}
+\label{fig:Ltplot}
+\end{figure}
+
+The cooling model of \S\ref{sec:twolayer} is used to connect solutions of different atmospheric masses into an evolutionary sequence.  \Fig{fig:Ltplot} shows the luminosity evolution and the elapsed time as a function of atmospheric mass for a $5 M_{\oplus}$ core at $60$ AU, i.e.\ the same parameters as in \Fig{fig:profiles}.  During the early stages of atmospheric growth, the luminosity drops sharply.  This behavior is seen in both the full numerical solutions (with solid lines) and the analytic model (with dashed lines).  As seen in \Eq{eq:Lcb}, the increased pressure depth of the RCB increases the optical depth ($\propto \kappa P)$ and decreases the radiative luminosity.
+
+%AY: I don't want to say 5.12 is the lowest mass b/c it's not the adiabat, and I don't see what's gained by saying it's very near the lowest mass.
+
+At later stages of evolution, the numerical model gives a flat luminosity with increasing mass and also time (not shown).  By contrast the analytic model gives a luminosity that continues to drop with increasing mass.  The difference is due to the neglect of self-gravity in the analytic model.  With $L\cb \propto M\cb T\cb^4/ (\kappa\cb  P\cb)$, accounting for the higher enclosed mass gives a somewhat higher luminosity in the self-gravitating model.  However the main effect is the higher temperature in the self-gravitating models, which have the flatter temperature profiles as described above.
+
+%The flattening of the luminosity curve is a generic feature of numerical core accretion models
+
+%We find only a brief agreement between the analytic and numerical results. In the early stages, the radiative zone is too shallow and the assumption that $P_{\rm RCB} \gg P_{\rm d}$ used in the analytic model breaks down. 
+
+
+\Fig{fig:LtvsMopacity} shows the effect of decreasing the atmospheric dust abundance on the atmospheric evolution.  The opacity normalization in \Eq{eq:opacitylaw} is reduced by factors of 10 and 100.  Lower opacities result in higher luminosities and faster evolution, a well-established result that we confirm for our model.  Atmospheric dust opacities are difficult to robustly predict. Ablation of infalling solids is a dust source, while settling through the radiative zone is a sink.  Grain growth both reduces dust opacities per unit mass and favors settling.  Our scenario of negligible ongoing particle accretion tends to favor low dust opacities.   To be conservative, however, our reference case considers full Solar abundances, but faster evolution is clearly possible. 
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/opacity_effect.pdf}
+%\vspace{-0.5in}
+\caption{Similar to \Fig{fig:Ltplot}, but showing the effect of reducing the dust abundance by factors of 10 and 100 from standard Solar abundances. The reduced dust opacities give higher luminosities and faster atmospheric growth.}  %The actual magnitude of dust opacities is difficult to robustly predict.}
+\label{fig:LtvsMopacity}
+\end{figure}
+
+\Fig{fig:growthtime} plots the evolution of the atmospheric growth timescale, $M_{\rm atm}/\dot{M}$,  around a $5 M_{\oplus}$ core at several locations in the disk. These growth times are short both early -- when the radiative zone is relatively transparent -- and late -- when self-gravity accelerates growth.  Thus the time required to accrete an atmosphere is dominated by intermediate masses, $M_{\rm atm} \sim 1-3 M_{\oplus}$ for the chosen parameters.  The accelerated growth at higher masses is also evident in \Fig{fig:Ltplot} (bottom panel) as the flattening of the $t$ vs.\ $M_{\rm atm}$ curve.  
+
+Generically for the models we considered, growth times peaked for $M_{\rm{atm}} < M_{\rm c}$, i.e.\ before the crossover mass.  Thus cumulative accretion timescales can be well approximated by only considering the evolution prior to the crossover mass.  This result is fortuitous, as we next show how our model assumptions can break down during the later stages of atmospheric growth.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mt_profile.pdf}
+%\vspace{-0.5in}
+\caption{Evolution of the atmospheric growth timescale with mass around a $5 M_{\oplus}$ solid core  located at 10, 30 or 60 AU.  Growth is slowest for $M_{\mathrm{atm}} \sim 1 - 3 M_{\oplus}$, i.e.\ before the crossover mass at $M_{\rm atm} = M\co$.}
+\label{fig:growthtime}
+\end{figure}
+
+\subsection{Validity of the Two-Layer Cooling Model}
+\label{sec:endoftime}
+
+To examine the regimes where our cooling model is valid, we compare the model luminosity to the additional neglected luminosity, $L_{\rm negl}$, that a more detailed model would have generated in the radiative zone.  To compute $L_{\rm negl}$ we compute the entropy difference between successive radiative zone solutions.  We then integrate the energy equation, $\p L / \p m = - T \p S/ \p t$, over the average depth of the radiative zone.\footnote{While useful as a diagnostic, the neglected luminosity cannot reliably correct the global cooling model because where $L_{\rm negl}$ is significant, the structure of the radiative zone would be inaccurate.}
+
+ \Fig{fig:coolingterms} shows that the neglected luminosity is indeed negligible during the early stages of evolution.  However, $L_{\rm negl}$ exceeds the model luminosity, $L$, for $M_{\rm atm} > 3 M_\oplus$, meaning that our model is becoming inaccurate.  Nevertheless, our cooling model gives both conservative and reasonably reliable estimates of core accretion timescales.  Our results are conservative -- in the sense of overestimating growth times -- because the neglected luminosity would give more rapid evolution.  And our results are reasonably accurate because the bulk of growth time is spent at low masses, when $L_{\rm negl}$ is small and safely neglected.
+ 
+The (non-vanishing) individual terms in the global cooling model of \Eq{eq:coolingglobal}, evaluated at the RCB, are also plotted in \Fig{fig:coolingterms}.  At low masses, the change in energy, $- \dot{E}$, makes the dominant contribution to luminosity.  As the mass increases the surface terms become more significant, led by the accretion energy.  However the surface terms are everywhere smaller than $L_{\rm negl}$.  Thus while the surface terms appear to reduce the total luminosity (compared to $-\dot{E}$), $L_{\rm negl}$ can more than compensate, showing again that our model conservatively underestimates cooling.
+
+At yet higher masses than shown in \Fig{fig:coolingterms}, our cooling model breaks down.  Mathematically, the breakdown manifests as negative timesteps when advancing to a higher atmospheric mass.  This unphysical result has no deep significance, as we already know that the neglected luminosity is large enough to give incorrect results.  Sometimes this breakdown occurs even before the crossover mass is reached.  The main practical effect of this behavior is that we halt the evolution where the model breaks down whenever we cannot reach the crossover mass.   Fortunately the elapsed time to either the crossover mass or the breakdown is well-behaved and, most importantly, dominated by lower atmospheric masses where the model is accurate.  
+
+ 
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cooling_a10_Mc5_rcb_paper.pdf}
+%\vspace{-0.5in}
+\caption{Luminosity evolution around a $5 M_\oplus$ core at 10 AU.  In addition to the total model luminosity $L$, the contributing terms in the cooling model of \Eq{eq:coolingglobal}; $-\dot{E}$, $e_{\rm M} \dot{M}$ and $-P \p V/ \p t |_M$; are shown.  The $L_{\rm negl}$ curve gives the neglected luminosity that would have been generated in the radiative zone, but is not included in our two-layer cooling model.}
+\label{fig:coolingterms}
+\end{figure}
+
+
 
 \section{Critical Core Mass}
 \label{sec:critical}
 
+%AY make sure this AU range comment is incorporated in some form:  We are primarily interested in the outer regions of the disk, so we generate atmosphere models at distances between 5 and 100 AU in our fiducial disk. We emphasize that the location in the disk only affects the temperature and pressure of the nebular gas. As our model applies only when planetesimal accretion occurs too slowly to substantially change the mass of the core, we consider the evolution of an atmosphere around a core of fixed mass.  
 
+\subsubsection{Disk Temperature and Pressure}
+\label{sec:TPeffects}
 
 \section{Neglected Effects}\label{sec:neglected}
 
