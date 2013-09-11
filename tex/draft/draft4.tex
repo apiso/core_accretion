@@ -593,19 +593,27 @@ At yet higher masses than shown in \Fig{fig:coolingterms}, our cooling model bre
 \section{Neglected Effects}\label{sec:neglected}
 
 \subsection{Hydrodynamic Effects}\label{sec:hydro}
-The neglect of hydrodynamical effects in our model is best discussed in terms of the thermal mass, $M_{\rm th}$, and the lengthscales introduced in \S\ref{sec:scales}.  In the low mass regime, $M\pla < M_{\rm th}/ \sqrt{3}$, where $\RB < \RH$ we assume that hydrostatic balance holds out to the outer boundary at $\RH$.   In this low mass regime, \citet[]{Orm13} calculated the flow patterns driven by stellar tides and disk headwinds.     On scales $\gtrsim \RB$ the flows no longer circulate the planet: they belong to the disk.  Nevertheless, the density structure outside $\RB$ remains spherically symmetric and hydrostatic.  Even if these flows do not destroy hydrostatic balance, they could affect the planet's cooling.  We expect such effects to be weak, as heat losses at greater depths dominate planetary cooling, but more study is needed.
+The neglect of hydrodynamical effects in our model is best discussed in terms of the thermal mass, $M_{\rm th}$, and the length scales introduced in \S\ref{sec:scales}.  In the low mass regime, $M\pla < M_{\rm th}/ \sqrt{3}$, where $\RB < \RH$, we assume that hydrostatic balance holds out to the outer boundary at $\RH$.   In this low mass regime, \citet[]{Orm13} calculated the flow patterns driven by stellar tides and disk headwinds.     On scales $\gtrsim \RB$ the flows no longer circulate the planet: they belong to the disk.  Nevertheless, the density structure outside $\RB$ remains spherically symmetric and hydrostatic.  Even if these flows do not destroy hydrostatic balance, they could affect the planet's cooling.  We expect such effects to be weak, as heat losses at greater depths dominate planetary cooling, but more study is needed.
 
-At higher masses, non-hydrostatic effects become more severe.  At $M\pla \gtrsim M_{\rm th}$ planets can open significant gaps \citep{zhu13}.  At yet higher masses accretion instabilities could occur \citep{AylBat12}.  However in this high mass regime we already know that the spherically symmetric approximation breaks down, as does our approximate cooling model (\emph{discuss elsewhere and cite}).
+At higher masses, non-hydrostatic effects become more severe.  At $M\pla \gtrsim M_{\rm th}$ planets can open significant gaps \citep{zhu13}.  At yet higher masses accretion instabilities could occur \citep{AylBat12}.  However, in this high mass regime we already know that the spherically symmetric approximation breaks down (see \S\ref{sec:scales}). %, as does our approximate cooling model (\emph{discuss elsewhere and cite}).
 
 Thus by restricting our attention to low masses, neglected hydrodynamic effects should be minor.   Moreover since $M_{\rm th} \propto a^{6/7}$ increases with disk radius, spherical hydrostratic models like ours have a greater range of applicability in the outer regions of disks. 
 
 
-\subsection{Realistic Opacities and EOS}\label{sec:opEOS}
-\emph{some comments on sublimation and radiative windows here (current text rough). upshot is the outer disk is good.}
+\subsection{Realistic Opacities}\label{sec:op}
+%\emph{some comments on sublimation and radiative windows here (current text rough). upshot is the outer disk is good.}
 
-Real dust opacities exhibit a more complicated behavior that depends on grain composition.  Opacities drop by order unity when ice grains sublimate for $T \gtrsim 150$ K and they drop by orders of magnitude when silicate grains evaporate above $T \gtrsim 1500$ K \citep{semenov03, FerAle05}.  While protoplanetary atmospheres get significantly hotter than 1500 K, our model depends on opacity only in the upper radiative zones, which are cool enough to remain dusty.  For our opacity approximations to be valid, we must restrict our model to the lower temperatures of the outer disk.   
+Real dust opacities exhibit a more complicated behavior that depends on grain composition.  Opacities drop by order unity when ice grains sublimate for $T \gtrsim 150$ K and they drop by orders of magnitude when silicate grains evaporate above $T \gtrsim 1500$ K \citep{semenov03, FerAle05}. Our model assumes that radiative regions only exist in the outer part of the atmosphere. As such, even though protoplanetary atmospheres get significantly hotter than 1500 K, our model depends on opacity only in the upper radiative zones, which are cool enough to remain dusty. For our opacity approximations to be valid, we must restrict our model to the lower temperatures of the outer disk.   
 
-A second radiative zone inside the convection zone, a ``radiative window," is possible.  Dust sublimation at shallow depths -- giving a low $\kappa$ and $P$ in \Eq{eq:delrad} -- could cause such a window.   Our two layer model ignores such complications.
+A second radiative zone inside the convection zone, a ``radiative window," is possible, due to the opacity drops caused by the evaporation of ice and metal grains. Our two layer model ignores such complications. Grain growth also impacts the opacity in the outer regions as well as the existence or depth of radiative windows. We explore more realistic opacity laws in  In Piso et al. (2013, in prep.).
+
+% we show that the existence of inner radiative windows does not impact our simplified model significantly, i.e. most of the luminosity is generated in the innermost convective region of the atmosphere and therefore the assumption that luminosity is constant in the radiative layers still holds. 
+
+
+ \subsection{Equation of State}
+ \label{sec:EOS}
+ 
+ In our model we assume an ideal gas law and a polytropic EOS, given by equations (\ref{eq:idealgas}) and (\ref{eq:polyEOS}), respectively. However, non-ideal effects such as partial dissociation and ionization have to be taken into account. One solution is using tabulated equation of state tables for hydrogen and helium mixtures. In Piso et al. (2013, in prep) we use the \citet{saumon95} EOS tables and extend them to lower pressures and temperatures as required by our disk assumptions.
 
 
 
