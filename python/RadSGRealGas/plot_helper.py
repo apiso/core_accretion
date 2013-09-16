@@ -9,11 +9,12 @@ from utils.constants import Me, Re, gammafn, Rfn, Cvfn, Pdisk, Tdisk, kdust, \
      paramsEOS, kdustbeta1
 from utils.parameters import FSigma, FT, mstar
 import matplotlib.pyplot as plt
-
+import types
 from RadSGRealGas.profiles import atmload
 from RadSGRealGas.cooling import cooling_global as cg, cooling_local as cl,\
-     critical
+     critical, cb_options
 from RadSGRealGas.atmseries import mcrit_disktime as mcd
+from RadSGRealGas.gg_opacity import interp_opacity
 
 def t_vs_Mc_fixed_a(Y, a, returnt = 0, opacity = kdust):
 
@@ -159,6 +160,36 @@ def t_vs_Mc_fixed_a(Y, a, returnt = 0, opacity = kdust):
                 tarr[i, j] = sum(dt[:j])
                 MBondi[i, j] = MBonditemp[j]
 
+    elif prms.kappa == interp_opacity:
+            
+        t = 0 * numpy.ndarray(shape = (3), dtype = float)
+        dtarr = 0 * numpy.ndarray(shape = (3, 199), dtype = float)
+        tarr = 0 * numpy.ndarray(shape = (3, 199), dtype = float)
+        Mtotcrit = 0 * numpy.ndarray(shape = (199), dtype = float)
+        MBondi = 0 * numpy.ndarray(shape = (3, 199), dtype = float)
+
+        
+        for i in range(len(t)):
+
+            Mc = numpy.linspace(2, 4, 3)            
+        
+            atm = atmload('Mc' + str(Mc[i]) + '.npz', prms = prms)
+            model = atm[0]
+            param = atm[1]
+            prof = atm[2]
+
+            temp = critical(param, prof, model)
+            Mtotcrit[i] = temp[0].MB[-1]
+            MBonditemp = temp[0].MB
+            dt = temp[-1]
+            t[i] = sum(dt)
+
+            for j in range(len(dt)):
+                dtarr[i, j] = dt[j]
+                tarr[i, j] = sum(dt[:j])
+                MBondi[i, j] = MBonditemp[j]
+        
+
     if returnt == 0:
         return Mc, t / (365 * 24 * 3600)
     else:
@@ -239,7 +270,7 @@ def Mc_vs_a_fixed_t(Y, disklife, opacity = kdust):
         
     """
     
-    a = [5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
+    a = [10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
     #a = [1.0, 5.0, 10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0]
     Mcrit = 0 * numpy.ndarray(shape = (len(a)), dtype = float)
     
@@ -251,9 +282,71 @@ def Mc_vs_a_fixed_t(Y, disklife, opacity = kdust):
     return a, Mcrit
         
         
+def time_evol(Y, a, Mc, p = 3.5):
+
+    rhoc = 3.2
+    rc = (3 * Mc / (4 * numpy.pi * rhoc))**(1./3)
+    
+    prms = paramsEOS(Mc, rc, Y, a, Pd = Pdisk(a, mstar, FSigma, FT), \
+                Td = Tdisk(a, FT), kappa = interp_opacity)
+
+    atm = atmload('Mc' + str(Mc/Me) + '.npz', prms = prms, p = p)
+    model, param, prof = atm
+
+    opt = cb_options(param) 
+
+    if type(opt) == types.NoneType:
+
+        t = 0 * numpy.ndarray(shape = (1), dtype = float)
+        tcum = 0 * numpy.ndarray(shape = (200), dtype = float)
+        MB = 0 * numpy.ndarray(shape = (200), dtype = float)
+
+        MBf = []
+        
+        temp = critical(param[1:], prof[1:], model, out = 'rcb', outrad = opt)
+        paramcrit, profcrit, dt = temp   
+        MBf = numpy.append(MBf, paramcrit.MB[-1])
+        t = sum(dt)
+
+        for j in range(len(dt)):
+            tcum[j] = sum(dt[:j])
+            MB[j] = paramcrit.MB[j]
+
+        
+    else:
+        
+        t = 0 * numpy.ndarray(shape = (len(opt)), dtype = float)
+        tcum = 0 * numpy.ndarray(shape = (len(opt), 200), dtype = float)
+        MB = 0 * numpy.ndarray(shape = (len(opt), 200), dtype = float)
+
+        MBf = []
+        
+        for i in range(len(opt)):
+
+            if a != 10.0 and Mc != 4*Me:
+                temp = critical(param, prof, model, out = 'rcb', outrad = opt[i])
+            else:
+                temp = critical(param[1:], prof[1:], model, out = 'rcb', outrad = opt[i])
+            paramcrit, profcrit, dt = temp   
+            MBf = numpy.append(MBf, paramcrit.MB[-1])
+            t[i] = sum(dt)
+
+            for j in range(len(dt)):
+                tcum[i, j] = sum(dt[:j])
+                MB[i, j] = paramcrit.MB[j]
+
+    tRB = []
+    
+    dtRB = cg(paramcrit, profcrit, model, out = 'RB')[0]
+    for k in range(len(dtRB)):
+        tRB = numpy.append(tRB, sum(dtRB[:k]))
+    
+    #dtRH = cg(paramcrit, profcrit, model, out = 'RHill')[0]
+    #for k in range(len(dtRH)):
+    #    tRH = numpy.append(tRH, sum(dtRH[:k]))                                
 
 
-
+    return paramcrit.MB, tRB, MB, tcum, MBf, t, param, opt
 
 
 

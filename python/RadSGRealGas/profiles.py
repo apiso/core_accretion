@@ -26,6 +26,7 @@ from scipy.integrate import odeint
 from scipy.interpolate import interp1d
 from scipy.optimize import fminbound, brentq
 from shooting import Ltop, shoot, prms
+from gg_opacity import interp_opacity
 
 
 def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
@@ -111,16 +112,31 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
                           dtype = [('r', float), ('P', float), ('t', float), \
                                    ('m', float), ('rho', float), ('u', float),\
                                    ('delrad', float), ('delad', float)])
-    param = numpy.recarray(\
-        shape = (nMpoints), \
-        dtype = [('Mtot', float), ('Mcb', float), ('MB', float), ('rcb', float),\
-                 ('RB', float), ('RHill', float), ('Pc', float), ('Pcb', float),\
-                 ('PB', float), ('Tc', float), ('Tcb', float), ('TB', float), \
-                 ('Egcb', float), ('Ucb', float), ('Etotcb', float), \
-                 ('EgB', float), ('UB', float), ('EtotB', float), \
-                 ('EgHill', float), ('UHill', float), ('EtotHill', float), \
-                 ('L', float), ('vircb', float), ('virHill', float), \
-                 ('err', float)])
+
+    if prms.kappa != interp_opacity:
+        param = numpy.recarray(\
+            shape = (nMpoints), \
+            dtype = [('Mtot', float), ('Mcb', float), ('MB', float), ('rcb', float),\
+                     ('RB', float), ('RHill', float), ('Pc', float), ('Pcb', float),\
+                     ('PB', float), ('Tc', float), ('Tcb', float), ('TB', float), \
+                     ('Egcb', float), ('Ucb', float), ('Etotcb', float), \
+                     ('EgB', float), ('UB', float), ('EtotB', float), \
+                     ('EgHill', float), ('UHill', float), ('EtotHill', float), \
+                     ('L', float), ('vircb', float), ('virHill', float), \
+                     ('err', float)])
+    else:
+        param = numpy.recarray(\
+            shape = (nMpoints), \
+            dtype = [('Mtot', float), ('Mcb', numpy.ndarray), ('MB', float), \
+                     ('rcb', numpy.ndarray), ('RB', float), ('RHill', float), \
+                     ('Pc', float), ('Pcb', numpy.ndarray),('PB', float), \
+                     ('Tc', float), ('Tcb', numpy.ndarray), ('TB', float), \
+                     ('Egcb', numpy.ndarray), ('Ucb', numpy.ndarray), \
+                     ('Etotcb', numpy.ndarray), \
+                     ('EgB', float), ('UB', float), ('EtotB', float), \
+                     ('EgHill', float), ('UHill', float), ('EtotHill', float), \
+                     ('L', float), ('vircb', numpy.ndarray), ('virHill', float), \
+                     ('err', float)])
         
     if log == 1:
         mass = numpy.logspace(numpy.log10(Mmin), numpy.log10(Mmax), nMpoints)
@@ -136,14 +152,54 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
 	#    pass 
             	#L1 = 0.99 * L1
 	    	#L2 = 1.01 * L2
-        
-        param.Mtot[i], param.Mcb[i], param.MB[i], param.rcb[i], param.RB[i], \
-                       param.RHill[i], param.Pc[i], param.Pcb[i], param.PB[i],\
-                       param.Tc[i], param.Tcb[i], param.TB[i], param.Egcb[i], \
-                       param.Ucb[i], param.Etotcb[i], param.EgB[i], \
-                       param.UB[i], param.EtotB[i], param.EgHill[i], \
-                       param.UHill[i], param.EtotHill[i], param.L[i], \
-                       param.vircb[i], param.virHill[i], param.err[i] = sol[7:]
+
+        if prms.kappa != interp_opacity:
+            param.Mtot[i], param.Mcb[i], param.MB[i], param.rcb[i], param.RB[i], \
+                           param.RHill[i], param.Pc[i], param.Pcb[i], param.PB[i],\
+                           param.Tc[i], param.Tcb[i], param.TB[i], param.Egcb[i], \
+                           param.Ucb[i], param.Etotcb[i], param.EgB[i], \
+                           param.UB[i], param.EtotB[i], param.EgHill[i], \
+                           param.UHill[i], param.EtotHill[i], param.L[i], \
+                           param.vircb[i], param.virHill[i], param.err[i] = sol[7:]
+
+        else:
+##            param.Mtot[i], param.Mcb[i], param.MB[i], param.rcb[i], param.RB[i], \
+##                           param.RHill[i], param.Pc[i], param.Pcb[i], param.PB[i],\
+##                           param.Tc[i], param.Tcb[i], param.TB[i], param.Egcb[i], \
+##                           param.Ucb[i], param.Etotcb[i], param.EgB[i], \
+##                           param.UB[i], param.EtotB[i], param.EgHill[i], \
+##                           param.UHill[i], param.EtotHill[i], param.L[i], \
+##                           param.vircb[i], param.virHill[i], param.err[i] = sol[7:]
+            param.Mtot[i] = sol[7]
+            param.MB[i] = sol[9]
+            param.RB[i], param.RHill[i], param.Pc[0] = sol[11:14]
+            param.PB[i], param.Tc[i] = sol[15:17]
+            param.TB[i] = sol[18]
+            param.EgB[i], param.UB[i], param.EtotB[i], param.EgHill[i], \
+                           param.UHill[i], param.EtotHill[i], param.L[i] = sol[22:29]
+            param.virHill[i], param.err[i] = sol[30:]
+
+            param.Mcb[i], param.rcb[i], param.Pcb[i], param.Tcb[i], param.Egcb[i], \
+                          param.Ucb[i], param.Etotcb[i], param.vircb[i] = \
+                          [], [], [], [], [], [], [], []
+
+            for j in range(len(sol[8])):
+                
+                param.Mcb[i] = numpy.append(param.Mcb[i], sol[8][j])
+                param.rcb[i] = numpy.append(param.rcb[i], sol[10][j])
+                param.Pcb[i] = numpy.append(param.Pcb[i], sol[14][j])
+                param.Tcb[i] = numpy.append(param.Tcb[i], sol[17][j])
+                param.Egcb[i] = numpy.append(param.Egcb[i], sol[19][j])
+                param.Ucb[i] = numpy.append(param.Ucb[i], sol[20][j])
+                param.Etotcb[i] = numpy.append(param.Etotcb[i], sol[21][j])
+                param.vircb[i] = numpy.append(param.vircb[i], sol[29][j])
+##                
+##            param.Mcb[i] = sol[8]
+##            param.rcb[i] = sol[10]
+##            param.Pcb[i] = sol[14]
+##            param.Tcb[i] = sol[17]
+##            param.Egcb[i], param.Ucb[i], param.Etotcb[i] = sol[19:22]
+            
 
         for k in range(n):
             prof.r[i, k], prof.P[i, k], prof.t[i, k], prof.m[i, k], \
@@ -178,14 +234,21 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
             numpy.savez_compressed(paramfilename, model = model, param = param, \
                                 prof = prof)
         elif prms.kappa == kdustall:
-            paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename
-            numpy.savez_compressed(paramfilename, model = model, param = param, \
-                                prof = prof)
+            if disk == 1:
+                paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename
+                numpy.savez_compressed(paramfilename, model = model, param = param, \
+                                    prof = prof)
+            else:
+                paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
+                                str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                                'Mc' + str(prms.Mco/Me)
+                numpy.savez_compressed(paramfilename, model = model, param = param, \
+                                   prof = prof)
 
-        elif prms.kappa == kdustbeta1:
+        elif prms.kappa == interp_opacity:
             paramfilename = userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustbeta1/' + filename
+                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdust_gg/' + filename
             numpy.savez_compressed(paramfilename, model = model, param = param, \
                                 prof = prof)
             
@@ -193,7 +256,7 @@ def profiles_write(n, nMpoints, L1, L2, Mmin, Mmax, filename, prms = prms, \
     return model, param, prof
 
 
-def atmload(filename, prms = prms, disk = 1):
+def atmload(filename, prms = prms, disk = 1, p = 3.5):
     if prms.kappa == kdust:
         if disk == 1:
             npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
@@ -207,14 +270,21 @@ def atmload(filename, prms = prms, disk = 1):
         npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
                             str(prms.Y) + '/' + str(prms.a) + 'AU/kfixed/' + filename)
 
-    elif prms.kappa == kdustbeta1:
-        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustbeta1/' + filename)
-
+    elif prms.kappa == interp_opacity:
+        if p == 3.5:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/kdust_gg/' + filename)
+        else:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/kdust_gg_old/' + filename)            
     elif prms.kappa == kdustall:
-        npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
-                            str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename)
-
+        if disk == 1:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/Y' + \
+                                str(prms.Y) + '/' + str(prms.a) + 'AU/kdustall/' + filename)
+        else:
+            npzdat = numpy.load(userpath + '/dat_ana/MODELS/RadSGRealGas/' + 'Td' + \
+                                str(prms.Td)[:6] + '_Pd' + str(prms.Pd)[:7] + \
+                                'Mc' + str(prms.Mco/Me) + '.npz')
         
     model = npzdat['model'].view(numpy.recarray)
     param = npzdat['param'].view(numpy.recarray)

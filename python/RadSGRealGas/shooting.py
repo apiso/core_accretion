@@ -37,6 +37,7 @@ from scipy import integrate, interpolate, optimize
 from scipy.integrate import odeint
 from scipy.interpolate import interp1d
 from scipy.optimize import brentq, brenth, bisect, newton, fminbound
+from gg_opacity import interp_opacity, kR
 
 #-----------------------------------------------------------------------------
 
@@ -54,6 +55,14 @@ def delradfn(p, m, T, L, prms = prms): #radiative temperature gradient
     elif prms.kappa == kdustall:
         rho = 10**interplog10rho(numpy.log10(T), numpy.log10(p))
         return 3 * prms.kappa(T, rho) * p * L / (64 * pi * G * m * sigma * T**4)
+    elif prms.kappa == interp_opacity:
+        if T <= 1000:
+            return 3 * prms.kappa(T) * p * L \
+                   / (64 * pi * G * m * sigma * T**4)
+        else:
+            rho = 10**interplog10rho(numpy.log10(T), numpy.log10(p))
+            return 3 * min(prms.kappa(T), kdustall(T, rho)) * p * L \
+                   / (64 * pi * G * m * sigma * T**4)
 
 def Del(p, m, T, L, delad, prms = prms): #del = min(delad, delrad)
     return min(delad, delradfn(p, m, T, L, prms))
@@ -307,6 +316,8 @@ def shoot(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
         rho = 10**interplog10rho(numpy.log10(T), numpy.log10(P))
         u = 10**interplog10u(numpy.log10(T), numpy.log10(P))
 
+
+
     else:
 
         #fTr = interp1d(T[::-1], r[::-1])
@@ -326,6 +337,7 @@ def shoot(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
         rho = P / (R * T)
         u = Cv * T
 
+    
     #interpolation functions to find the RCB
     fr = interp1d(delrad[::-1], r[::-1])
     fP = interp1d(delrad[::-1], P[::-1])
@@ -335,15 +347,178 @@ def shoot(Mi, L1, L2, n, tol, prms = prms, checktop = 0):
     fU = interp1d(delrad[::-1], U[::-1])
     fIu = interp1d(delrad[::-1], Iu[::-1])
 
-    rcb = float(fr(deladcb))
-    Pcb = float(fP(deladcb))
-    Tcb = float(fT(deladcb))
-    Mcb = float(fm(deladcb))
-    Egcb = float(fEg(deladcb))
-    Ucb = float(fU(deladcb))
-    Iucb = float(fIu(deladcb))
-    Etotcb = Egcb + Ucb
+    if prms.kappa != interp_opacity:
 
+        rcb = float(fr(deladcb))
+        Pcb = float(fP(deladcb))
+        Tcb = float(fT(deladcb))
+        Mcb = float(fm(deladcb))
+        Egcb = float(fEg(deladcb))
+        Ucb = float(fU(deladcb))
+        Iucb = float(fIu(deladcb))
+        Etotcb = Egcb + Ucb
+
+    else:
+        deldif = delad - delrad
+        rcbivec = []
+        for i in range(len(r) - 1):
+            if (delad[i] - delrad[i]) * (delad[i + 1] - delrad[i + 1]) <=0:
+                rcbivec = numpy.append(rcbivec, i)
+
+        delcb1 = []
+        delcb2 = []
+
+        rcb1, Pcb1, Tcb1, Mcb1, Egcb1, Ucb1, Iucb1 = \
+              [], [], [], [], [], [], []
+        rcb2, Pcb2, Tcb2, Mcb2, Egcb2, Ucb2, Iucb2 = \
+              [], [], [], [], [], [], []
+        
+        for i in range(len(rcbivec)):
+            
+            if deldif[rcbivec[i]] <= deldif[rcbivec[i] + 1]:
+                
+                fdel = interp1d(deldif[rcbivec[i]:rcbivec[i] + 2], \
+                                delad[rcbivec[i]:rcbivec[i] + 2])
+                temp = float(fdel(0))
+                delcb1 = numpy.append(delcb1, temp)
+
+                if delrad[rcbivec[i]] <= delrad[rcbivec[i] + 1]:
+
+                    fr = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  r[rcbivec[i]:rcbivec[i] + 2])
+                    fP = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  P[rcbivec[i]:rcbivec[i] + 2])
+                    fT = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  T[rcbivec[i]:rcbivec[i] + 2])
+                    fm = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  m[rcbivec[i]:rcbivec[i] + 2])
+                    fEg = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  Eg[rcbivec[i]:rcbivec[i] + 2])
+                    fU = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  U[rcbivec[i]:rcbivec[i] + 2])
+                    fIu = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  Iu[rcbivec[i]:rcbivec[i] + 2])
+                else:
+                
+                    fr = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  r[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fP = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  P[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fT = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  T[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fm = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  m[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fEg = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  Eg[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fU = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  U[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fIu = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  Iu[rcbivec[i]:rcbivec[i] + 2][::-1])
+                
+                rcb1 = numpy.append(rcb1, float(fr(temp)))
+                Pcb1 = numpy.append(Pcb1, float(fP(temp)))
+                Tcb1 = numpy.append(Tcb1, float(fT(temp)))
+                Mcb1 = numpy.append(Mcb1, float(fm(temp)))
+                Egcb1 = numpy.append(Egcb1, float(fEg(temp)))
+                Ucb1 = numpy.append(Ucb1, float(fU(temp)))
+                Iucb1 = numpy.append(Iucb1, float(fIu(temp)))
+
+                
+            else:
+                
+                fdel = interp1d(deldif[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                delad[rcbivec[i]:rcbivec[i] + 2][::-1])
+                temp = float(fdel(0))
+                delcb2 = numpy.append(delcb2, temp)
+
+                if delrad[rcbivec[i]] <= delrad[rcbivec[i] + 1]:
+                
+                    fr = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  r[rcbivec[i]:rcbivec[i] + 2])
+                    fP = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  P[rcbivec[i]:rcbivec[i] + 2])
+                    fT = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  T[rcbivec[i]:rcbivec[i] + 2])
+                    fm = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  m[rcbivec[i]:rcbivec[i] + 2])
+                    fEg = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  Eg[rcbivec[i]:rcbivec[i] + 2])
+                    fU = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  U[rcbivec[i]:rcbivec[i] + 2])
+                    fIu = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2], \
+                                  Iu[rcbivec[i]:rcbivec[i] + 2])
+                else:
+
+                    fr = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  r[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fP = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  P[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fT = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  T[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fm = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  m[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fEg = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  Eg[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fU = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  U[rcbivec[i]:rcbivec[i] + 2][::-1])
+                    fIu = interp1d(delrad[rcbivec[i]:rcbivec[i] + 2][::-1], \
+                                  Iu[rcbivec[i]:rcbivec[i] + 2][::-1])                    
+                
+                rcb2 = numpy.append(rcb2, float(fr(temp)))
+                Pcb2 = numpy.append(Pcb2, float(fP(temp)))
+                Tcb2 = numpy.append(Tcb2, float(fT(temp)))
+                Mcb2 = numpy.append(Mcb2, float(fm(temp)))
+                Egcb2 = numpy.append(Egcb2, float(fEg(temp)))
+                Ucb2 = numpy.append(Ucb2, float(fU(temp)))
+                Iucb2 = numpy.append(Iucb2, float(fIu(temp)))
+
+        delcb = numpy.append(delcb1, delcb2)
+        
+        rcb = numpy.append(rcb1, rcb2)
+        Pcb = numpy.append(Pcb1, Pcb2)
+        Tcb = numpy.append(Tcb1, Tcb2)
+        Mcb = numpy.append(Mcb1, Mcb2)
+        Egcb = numpy.append(Egcb1, Egcb2)
+        Ucb = numpy.append(Ucb1, Ucb2)
+        Iucb = numpy.append(Iucb1, Iucb2)
+
+
+        for i in range(len(rcb) - 1):
+            if rcb[i] < rcb[i + 1]:
+                pass
+            else:
+                temp = rcb[i]
+                rcb[i] = rcb[i + 1]
+                rcb[i + 1] = temp
+
+                temp = Pcb[i]
+                Pcb[i] = Pcb[i + 1]
+                Pcb[i + 1] = temp
+
+                temp = Tcb[i]
+                Tcb[i] = Tcb[i + 1]
+                Tcb[i + 1] = temp
+
+                temp = Mcb[i]
+                Mcb[i] = Mcb[i + 1]
+                Mcb[i + 1] = temp
+
+                temp = Egcb[i]
+                Egcb[i] = Egcb[i + 1]
+                Egcb[i + 1] = temp
+
+                temp = Ucb[i]
+                Ucb[i] = Ucb[i + 1]
+                Ucb[i + 1] = temp
+
+                temp = Iucb[i]
+                Iucb[i] = Iucb[i + 1]
+                Iucb[i + 1] = temp
+
+
+        Etotcb = Egcb + Ucb
+
+            
     EgHill = Eg[-1]
     UHill = U[-1]
     IuHill = Iu[-1]
