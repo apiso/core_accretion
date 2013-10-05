@@ -31,11 +31,20 @@ def nextguess(xnew, ys, xs, maxdy = 0):
             dypred = maxdy*abs(ys[1] - ys[0])
     return ys[1] + dypred
 
+def ngQuad(xnew, ys, xs):
+    """
+    Quadratic extrapolation (or interpolation).  Requires 3 values of xs and 
+    3 (or 3, n array) of `ys`"""
+
+    poly = np.polyfit(xs, ys, 2)
+    return poly[0] * xnew**2 + poly[1] * xnew + poly[2]
+
 class nf(float):
     """
     Defines a class that forces representation of float to have only one digit
     after decimal.  Also removes trailing zero so '1.0' becomes '1'.
-    Found here: http://matplotlib.org/examples/pylab_examples/contour_label_demo.html
+    Found here: 
+        http://matplotlib.org/examples/pylab_examples/contour_label_demo.html
     """
     def __repr__(self):
         str = '%.1f' % (self.__float__(),)

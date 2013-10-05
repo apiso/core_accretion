@@ -168,7 +168,7 @@ The remainder of this section develops our model in more detail.
 We adopt a minimum mass solar nebula (MMSN) model for a passively irradiated disk \citep{chiang10}. With the semi-major axis $a$ normalized to the outer disk as $\aun{10} = a/(10 \text{ AU})$, the gas surface density and mid-plane temperature are  
 \begin{subeqnarray} \label{eq:diskparam}
 \varSigma\di  &=& 70 \,F_\varSigma \aun{10}^{-3/2} ~{\rm g~cm}^{-2} \\
-T\di &=& 45  \,F_T\, \aun{10}^{-3/7} ~{\rm K} \, .
+T\di &=& 45  \,F_T\, \aun{10}^{-3/7} ~{\rm K} \, . 
 %\Sigma\di&=&2200 F_{\Sigma} a^{-3/2}\,\, \text{g cm}^{-2} \slabel{eq:diska}\\
 %T\di &=& 120 F_T a^{-3/7} \, \text{K}, \slabel{eq:diskb}
 \end{subeqnarray}
@@ -566,7 +566,7 @@ At yet higher masses than shown in \Fig{fig:coolingterms}, our cooling model bre
 
  
 \begin{figure}[tb]
-\centering
+%\centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cooling_a10_Mc5_rcb_paper.pdf}
 %\vspace{-0.5in}
 %\caption{Luminosity evolution around a $5 M_\oplus$ core at 10 AU.  In addition to the total model luminosity $L$, the contributing terms in the cooling model of \Eq{eq:coolingglobal}; $-\dot{E}$, $e_{\rm M} \dot{M}$ and $-P \p V/ \p t |_M$; are shown.  The $L_{\rm negl}$ curve gives the neglected luminosity that would have been generated in the radiative zone, but is not included in our two-layer cooling model.}
@@ -575,13 +575,54 @@ At yet higher masses than shown in \Fig{fig:coolingterms}, our cooling model bre
 
 
 
-\section{Critical Core Mass}
+\section{Results for Giant Planet Formation}
 \label{sec:critical}
+
+We now use our structure and evolution models to calculate the necessary conditions for gas giant formation by core accretion.   Adopting a median disk lifetime of 3 Myr, we require a core to accrete its atmosphere within the lifetime of the gas disk.  Our results for atmosphere growth times -- for a range of fixed core masses and disk conditions -- are presented in \S\ref{sec:tcross}.  Section \ref{sec:critcore} gives our results for critical core masses, the minimum masses which can accrete a massive atmosphere within the disk lifetime.
+
+Our models will focus on giant planet formation between 5 and 100 AU.  The outer disk is of particular interest for direct imaging searches.  While the growth of atmospheres close to the star is also important, our cooling model is not appropriate for these hotter atmospheres.  Their thick radiative zones where dust sublimates would require a different treatment.atmos
 
 %AY make sure this AU range comment is incorporated in some form:  We are primarily interested in the outer regions of the disk, so we generate atmosphere models at distances between 5 and 100 AU in our fiducial disk. We emphasize that the location in the disk only affects the temperature and pressure of the nebular gas. As our model applies only when planetesimal accretion occurs too slowly to substantially change the mass of the core, we consider the evolution of an atmosphere around a core of fixed mass.  
 
-\subsection{Disk Temperature and Pressure}
+\subsection{Crossover Time}
+\label{sec:tcross}
+The time to grow a massive atmosphere is well characterized by the crossover time, $t_{\rm co}$.  As in \S\ref{sec:coolingan}, the standard definition of $t_{\rm co}$ is the time for the atmosphere to grow equal to the core mass.   The precise atmospheric mass threshold used to define $t_{\rm co}$ is not very significant.  More important is that atmospheric growth starts to accelerate by the chosen mass, as was shown above.  As explained in \S\ref{sec:endoftime}, we thus can (and do) safely use a lower mass threshold for $t_{\rm co}$ if the cooling model breaks down somewhat before the crossover mass is reached.
+
+
+%\subsubsection{Effects of Core Mass}
+%\label{Mct}
+
+\Fig{fig:tvsM} displays $t_{\rm{co}}$ for a range of core masses at $a=10$ AU in our fiducial disk. Atmospheres grow faster around more massive cores due to stronger gravity. Our analytical results in \Eq{eq:tcoolan} under-predict the steepness of the core mass dependence, which is somewhat expected due to the neglect of self-gravity in the analytic model.  For the parameters of \Fig{fig:tvsM}, the critical core mass that gives $t_{\rm co} = 3$ Myr is between $7$ and $8 \, M_\oplus$.  Before examining   $M_{\rm crit}$ in more detail, we consider how $t_{\rm co}$ depends on disk and atmosphere parameters.
+
+
+
+\begin{figure}[tb]
+%\centering
+\hspace{-.1in}
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cumul_coolingtime_vs_Matm_10au_mu235.pdf}
+%\vspace{-0.5in}
+\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $5 M_{\oplus}$ and $14 M_{\oplus}$ (as labelled) at $a=10$ AU in our fiducial disk. The circles mark the crossover time where $M_{\rm{atm}} = M_{\rm c}$.   Larger core masses give faster atmospheric growth, both to a fixed atmosphere mass and to the crossover mass.}
+%AY say this somewhere? (as in the bottom panel of \Fig{fig:Ltplot})
+\label{fig:tvsM}
+\end{figure}
+
+
+\subsubsection{Disk Temperature and Pressure}
 \label{sec:TPeffects}
+
+\Fig{fig:TPeffects} shows how the crossover time depends on disk temperature, $T\di$, and pressure, $P\di$.  While a disk model, like \Eq{eq:diskparam}, gives values for both $T\di$ and $P\di$ vs.\ stellocentric distance, we here examine independent variations of  $T\di$ and $P\di$ to understand these effects separately.  The left panel of 
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=1.\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/TdPd_effect.pdf}
+%\vspace{-0.5in}
+\caption{(Left:) Crossover time as a function of disk temperature for fixed disk pressure $P_{\rm d}=0.067$ dyn cm$^{-2}$ given by equation (\ref{eq:Pd}) at 10 AU and a core of fixed mass $M_{\rm c}=5 M_{\oplus}$. Right panel: crossover time as a function of disk pressure for fixed disk temperature $T_{\rm d}=44.73$ K given by equation (\ref{eq:diskb}) at 10 AU and a core of fixed mass  $M_{\rm c}=5 M_{\oplus}$. The analytic scalings are plotted for comparison, for an effective crossover mass $M_{\rm{co}}=f M_{\rm c}$ with $f=0.13$. Gas accretion is faster for lower temperatures and higher pressures.} 
+\label{fig:TPeffects}
+\end{figure*}
+
+
+\subsection{Critical Core Mass}
+\label{sec:critcore}
 
 \section{Neglected Effects}\label{sec:neglected}
 

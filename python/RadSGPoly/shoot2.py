@@ -26,17 +26,19 @@ Loosely there are (at least) 6 levels of founctions here:
 import sys
 import numpy as np
 from utils.constants import G, Me, Re, Msun, sigma, Pdisk, Tdisk, RHill, \
-                            kdust, AU, Myr
-from utils.parameters import R, FT, FSigma, mstar, rhoc, a
-from utils.mynumsci import nextguess, zbrac, mylogspace, ezroot
+                            kdust, AU, Myr, kb, mp
+from utils.parameters import FT, FSigma, mstar, rhoc, a
+from utils.mynumsci import nextguess, zbrac, mylogspace, ezroot, ngQuad
 from scipy.integrate import odeint
 from scipy.optimize import brentq, newton, root, fsolve
 from scipy.interpolate import interp1d
 from collections import namedtuple
 from utils.userpath import userpath, aydat
-import pickle
 #datfolder = userpath + "/dat/MODELS/RadSGPoly2/" 
 
+
+mu = 2.35
+R = kb / (mp*mu)
 p4 = 4*np.pi
 mcore  = 5*Me 
 rcore = (3*mcore/p4/rhoc)**(1./3)
@@ -53,6 +55,15 @@ Previ = namedtuple('Previ',
                    'Mmax, lL, T_m, P_m, r, L, Sold, Mconv, Mcint')
 Previunterp = namedtuple('Previunterp', 
                          'Mmax, lL, T, P, m, r, L, Sold, Mconv, Mcint')
+
+def prmsSet(mc, a=a, rhoc=rhoc):
+    """create prms with different core mass, radius or disk radius.  
+    Other params TODO"""
+
+    rc = (3*mc/p4/rhoc)**(1./3)
+    return Params(mc, rc, a, R, 2./7, Mstar=mstar*Msun, match='Hill',
+              Po=Pdisk(a,mstar, FSigma, FT), To=Tdisk(a,FT), kappa=kdust)
+
 
 def evostruct_r(y, r, dt, prev, prms=prms, verbose=0):
     """
@@ -480,7 +491,7 @@ def makeprev(M, lL=0, dt=0, prev=0, prms=prms, ngrid=1000):
     Rout = rout(M, prms)
     rgrid = mylogspace(Rout, prms.rco, ngrid)
     if lL == 0:
-        lL = lLtop(M, 24, 25)
+        lL = lLtop(M, 24, 25, prms=prms)
     if dt == 0:
         y = odeint(polyradstruct_r, [M, prms.Po, prms.To, 10**lL], rgrid,
                    args = (dt, prms))
@@ -538,7 +549,8 @@ def error2D(x, Mtot, prev, prms=prms, Lnorm=0, full_out=0, dt_log=1,
     >>> prev = s2.makeprev(5.8*s2.Me)
     >>> s2.error2D([24.5, .2*s2.Myr], 5.808*s2.Me, prev, dt_log=0)
     """
-    
+
+    #print "core mass {:.2f} Me".format(prms.mco/Me)
     lL = x[0]
     if dt_log:
         dt = 10**x[1]
@@ -585,7 +597,7 @@ def error2D(x, Mtot, prev, prms=prms, Lnorm=0, full_out=0, dt_log=1,
 
     
 def errormap(Mtot, lL1, lL2, dt1, dt2, prev, prms=prms, nL=10, ndt=10,
-             tspace='lin'):
+             tspace='log'):
     """map error space in 2D"""
     errmap = np.empty((nL,ndt, 2))
     lL = np.linspace(lL1, lL2, nL)
@@ -597,6 +609,18 @@ def errormap(Mtot, lL1, lL2, dt1, dt2, prev, prms=prms, nL=10, ndt=10,
         errmap[i,j,:] = error2D((lL[i],dt[j]), Mtot, prev, prms, dt_log=0)
 
     return lL, dt, errmap
+
+def errmapDE(Mtot, lL1, lL2, lDE1, lDE2, prev, prms=prms, nL=10, nDE=10
+             ):
+    """map error space in 2D, L vs DE = L * dt"""
+    errmap = np.empty((nL,nDE, 2))
+    lL = np.linspace(lL1, lL2, nL)
+    lDE = np.linspace(lDE1, lDE2, nDE)
+    for (i,j) in np.ndindex(nL , nDE):
+        lDt = lDE[j] - lL[i]
+        errmap[i,j,:] = error2D((lL[i], lDt), Mtot, prev, prms, dt_log=1)
+
+    return lL, lDE, errmap
 
 
 def root2D(x0, Mtot, prev, prms=prms, Lnorm=1, method='ezroot', full_out=0
@@ -724,7 +748,7 @@ def evolve_dM(M, dM=0, xg=[], prevroot=0, prms=prms, prevgrid=1000,
         guessbad = np.any(np.abs(err0) > 1e-2)
     if (guessbad) or (not guess):
         xg = staticguess(M, prev, prms=prms, statgrid=50)
-        xg = (xg[0] + np.log10(1.2), xg[1]) #bump static luminosity guess by 20%
+        xg = (xg[0] + np.log10(1.2), xg[1]) #bump static luminosity guess by 10%
         errg = error2D(xg, *eargs)
         if guessbad: #decide which to keep
             if abs(err0[1]) > abs(errg[1]):
@@ -791,7 +815,7 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
         prev = makeprev(Ms[0], prms=prms)
         bca.lL[0], bca.dt[0] = prev.lL, 0
         bca.err0[0], bca.err1[0] = prev.Mcint/prms.mco - 1, 0
-        prof0 = sol2prof(prev)
+        prof0 = sol2prof(prev, prms)
         
         #use the first profile to robustly set dtype and shape
         profss = np.recarray((nM, len(prof0)), dtype=prof0.dtype)
@@ -800,45 +824,57 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
     else: #use restart data
         skip = 0
         if type(restart) == str:
-            #reconstruct dictionary from file, reterp TODO
+            #reconstruct dictionary from file, reterp (TODO)
             pass
         #take first (two) steps using restart info
-        solm2, solm1 = restart['solm2'], restart['solm1']
-        Mm2, Mm1 = restart['Mm2'], restart['Mm1']
+        solm3, solm2, solm1 = restart['solm3'], restart['solm2'], restart['solm1']
+        Mm3, Mm2, Mm1 = restart['Mm3'], restart['Mm2'], restart['Mm1']
         prev, prms = restart['prev'], restart['prms']   
 
     #loop over remaining steps
-    for i, M in enumerate(Ms[skip:], skip):
+    for i, Mnew in enumerate(Ms[skip:], skip):
+        #get Mold and dm
+        if i == 0:
+            dM = Mnew - Mm1
+            Mold = Mm1
+        else:
+            dM = dMs[i - 1]
+            Mold = Ms[i - 1]
+        
         #guess root from previous solutions
         if restart == 0 and i < 3: #not enough solutions for guess
             xg = []
-        elif i == 0: #use restart guesses
-            xg = nextguess(M, [solm2, solm1], [Mm2, Mm1])
+        elif restart == 0 and i == 3: #2previous
+            xg = ngMdot(Mnew, [sol.x, oldersolx], [Ms[2], Ms[1]])
+        elif i == 0: #use restart values to make guess
+            xg = ngMdot3(Mnew, [solm1, solm2, solm3], [Mm1, Mm2, Mm3])
         elif i == 1: 
-            xg = nextguess(M, [solm1, sol.x], [Mm1, Ms[0]])
+            xg = ngMdot3(Mnew, [sol.x, solm1, solm2], [Ms[0], Mm1, Mm2])
+        elif i == 2: 
+            xg = ngMdot3(Mnew, [sol.x, oldersolx, solm1], [Ms[1], Ms[0], Mm1])
         else: #up and running
-            xg = nextguess(M, [oldsolx, sol.x], [Ms[i-2], Ms[i-1]])        
+            xg = ngMdot3(Mnew, [sol.x, oldersolx, oldestsolx],  Ms[i-3:i][::-1])
 
         if i > skip:
-            oldsolx = sol.x
+            if i > skip + 1:
+                oldestsolx = oldersolx
+            oldersolx = sol.x            
         
-        if i == 0:
-            sol = evolve_dM(M, M - Mm1, xg, prev, **dmargs)
-        else:
-            sol = evolve_dM(M, dMs[i-1], xg, prev, **dmargs)
+        sol = evolve_dM(Mold, dM, xg, prev, prms, **dmargs)
 
         bca.lL[i], bca.dt[i] = sol.x[0], 10**sol.x[1]
         bca.err0[i], bca.err1[i] = sol.fun[0], sol.fun[1]
-        prev = makeprev(M, bca.lL[i], bca.dt[i], prev, prms)
-        prof = sol2prof(prev)
+        prev = makeprev(Mnew, bca.lL[i], bca.dt[i], prev, prms)
+        prof = sol2prof(prev, prms)
         if i == 0: #happens in restart case only
             profss = np.recarray((nM, len(prof)), dtype=prof.dtype)
         profss[i, :] = prof
 
     #generate restart data
-    restart = {'Mm1' : Ms[-1], 'Mm2' : Ms[-2], 
+    restart = {'Mm1' : Ms[-1], 'Mm2' : Ms[-2], 'Mm3' : Ms[-3],
                'solm1' : (bca.lL[-1], np.log10(bca.dt[-1])), 
                'solm2' : (bca.lL[-2], np.log10(bca.dt[-2])),
+               'solm3' : (bca.lL[-3], np.log10(bca.dt[-3])),
                'prev' : prev, 'prms' : prms}
 
     #saving
@@ -861,3 +897,40 @@ def evolve_DM(M0, DM, ep=0.01, savedir='test/', savefile=0, restart=0,
 
     return bca, profss, restart
 
+def ngMdot(Mnew, oldsols, oldMs):
+    """next guess is not just linear extrapolation since log(dt) is a 
+    differential quantity.  Thus if dt was constant for two previous steps,
+    if the step size is halved then dt should be halved (not kept constant
+    as linear extrapolation would do)."""
+
+    lLguess = nextguess(Mnew, [oldsols[0][0], oldsols[1][0]], oldMs)
+
+    dtold = 10**oldsols[0][1]
+    if oldMs[0] < oldMs[1]:
+        sys.exit('newest solutions first!')
+    Mdot = (oldMs[0] - oldMs[1]) / dtold
+    dt = (Mnew - oldMs[0]) / Mdot
+
+    return (lLguess, np.log10(dt))
+
+def ngMdot3(Mnew, oldsols, oldMs):
+    """next guess is not just linear extrapolation since log(dt) is a 
+    differential quantity.  Thus if dt was constant for two previous steps,
+    if the step size is halved then dt should be halved (not kept constant
+    as linear extrapolation would do)."""
+
+    if oldMs[0] < oldMs[1]:
+        sys.exit('newest solutions first!')
+    lLguess = ngQuad(Mnew, [oldsols[0][0], oldsols[1][0], oldsols[2][0]], 
+                        oldMs)
+
+    tm3 = 10**oldsols[2][1]
+    tm2 = tm3 + 10**oldsols[1][1]
+    tm1 = tm2 + 10**oldsols[0][1]
+    #print np.log10([tm1, tm2, tm3])
+
+    t = ngQuad(Mnew, [tm1, tm2, tm3], oldMs)
+    
+    dt = t - tm1
+
+    return (lLguess, np.log10(dt))

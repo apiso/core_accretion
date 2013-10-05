@@ -193,7 +193,7 @@ Our main assumptions are summarized as follows:
 \item The core mass and radius are fixed in evolutionary calculations, neglecting ongoing planetesimal or dust accretion.
 \item At the planet's Hill radius, the atmospheric temperature and pressure match the conditions of the disk midplane.
 \item The only source of planetary luminosity is the gravitational contraction of the atmosphere.  
-\item In the radiative zone, luminosity generation is neglected, i.e. the luminosity is held constant.
+\item Cooling of the atmosphere is dominated by the convective interior.  Thus the luminosity in the radiative exterior is held spatially constant. %In the radiative zone, luminosity generation is neglected, i.e. the luminosity is held constant.
 \item A global cooling model connects independent static solutions into a time-dependent sequence.
 \item A polytropic EOS is assumed for simplicity. %AP: define EOS here if not already
 \item Dust grains provide the opacity in the radiative zone, which remains cool enough to avoid dust sublimation.
@@ -270,7 +270,7 @@ The relevant length scales of the atmosphere and disk satisfy the relation $\RB 
 M_{\rm th} > {c\di^{3} \over G \varOmega} \approx 25 \, {F_T^{3/2} \over \sqrt{m_\ast} } \, \aun{10}^{6/7}~ M_\oplus \, .
 \end{equation} 
 
-In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the lengthscales order as $\RB< \RH<H\di$ (R06).  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We however use $\RH$ as the matching radius in both this low mass and other higher mass regimes.  This choice is justified by the fact that, for hydrostatic solutions, the  density at $\RB$ exceeds the disk's background density by an order unity factor (R06).  This modest density change has a similarly modest effect on our results. 
+In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the lengthscales order as $\RB< \RH<H\di$ (R06).  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We however use $\RH$ as the matching radius in both this low mass and other higher mass regimes.  This choice is justified by the fact that, for hydrostatic solutions, the  density at $\RB$ exceeds the disk's background density by an order unity factor (R06).  Nevertheless, since the density change is modest, the choice of outer boundary condition has a similarly modest effect on our results. 
 
 For a finite range of intermediate masses, $M_{\rm th}/\sqrt{3} < M\pla < 3 M_{\rm th}$, the Hill radius is the smallest scale, satisfying both $\RH < \RB$ and $\RH < H\di$.  Spherical symmetry remains a good, if imperfect, approximation because the disk is only weakly vertically stratified on  scales $\lesssim H\di$.  
 
@@ -303,7 +303,7 @@ where $\sigma$ is the Stefan-Boltzmann constant.  In convectively unstable regio
 \end{equation}
 According to the Schwarzschild criterion, convective instability occurs when $\delrad > \delad$.  Thus $\nabla = \min(\delrad, \delad)$ sets the temperature gradient.
 
-In the energy equation (\ref{eq:structd}), $\epsilon$ represents all local sources of heat input, which excludes the motion of the atmosphere itself.  In stars, nuclear burning contributes to $\epsilon$.  In a protoplanetary atmosphere, dissipative drag on planetesimals contributes to $\epsilon$.  Our simplified models set $\epsilon = 0$, consistent with our neglect of planetesimal accretion luminosity at the base of the atmosphere.  The $\epsilon_{\rm g} = -T \partial S / \partial t$ term gives the energy input from gravitational contraction.\footnote{In general, any motion in a non-stationary atmosphere is accounted for by this term.  The partial time derivative is performed on shells of fixed mass.}  The partial time derivative would normally require our radial derivatives to be partial derivatives.  However, our subsequent developments will replace the local energy equation (\ref{eq:structd}) with global energy balance (see section \S\ref{cooling}), reverting the structure equations to time-independent ordinary differential equations (ODEs).
+In the energy equation (\ref{eq:structd}), $\epsilon$ represents all local sources of heat input, which excludes the motion of the atmosphere itself.  In stars, nuclear burning contributes to $\epsilon$.  In a protoplanetary atmosphere, dissipative drag on planetesimals contributes to $\epsilon$.  Our simplified models set $\epsilon = 0$, consistent with our neglect of planetesimal accretion luminosity at the base of the atmosphere.  The $\epsilon_{\rm g} = -T \partial S / \partial t$ term gives the energy input from gravitational contraction.\footnote{In general, any motion is accounted for by this term.  The partial time derivative is performed on shells of fixed mass.}  The partial time derivative would normally require our radial derivatives to be partial derivatives.  However, our subsequent developments will replace the local energy equation (\ref{eq:structd}) with global energy balance (see section \S\ref{cooling}), reverting the structure equations to time-independent ordinary differential equations (ODEs).
 
 To solve the equation set (\ref{eq:struct}) an equation of state (EOS) is required for closure. In our study, we adopt an ideal gas law with a polytropic EOS 
 \begin{subeqnarray}
@@ -326,7 +326,8 @@ This section describes the global energy balance of a planet embedded in a gas d
 E_G&=&-\int_{M\co}^M \frac{G m}{r} dm \, , \label{eq:Eg} \\
 U&=&\int_{M\co}^M u dm \, .\slabel{eq:U}
 \end{subeqnarray}
-The specific internal energy $u = C_V T = \Rg (\delad^{-1} -1) T$ for a polytropic EOS.  For a star or coreless planet, $L\co = M\co = 0$.
+The specific internal energy $u = C_V T = \Rg (\delad^{-1} -1) T$ for a polytropic EOS.  For a star or coreless planet, $M\co = 0$.
+
 
 %AP/AY: add virial theorem here?
 
@@ -337,20 +338,20 @@ L_M = L\co + \Gamma - \dot{E}.
 \end{equation}
 The surface luminosity, $L_M$, includes contributions from the core luminosity $L\co$ --  e.g.\ planetesimal accretion or radioactive decay -- from the total heat generation $\Gamma$ -- given by the integral of $\epsilon$ over the object -- and from the rate of change of atmospheric energy $\dot{E}$, a loss term. 
 
-For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  For a main sequence star $L_M = \Gamma$ as the heat of nuclear burning supplies the total luminosity.
+For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  When internal heat sources dominate, $L_M = \Gamma$, e.g.\ for nuclear burning in an main sequence star.
 
-For a protoplanetary atmosphere embedded in a gas disk, the full energy equation, 
+A protoplanetary atmosphere embedded in a gas disk lacks a free surface.  For objects without a free surface (or interior to a free surface), the full energy equation, 
 \begin{equation}
 \label{eq:coolingglobal}
 L_M=L\co+\Gamma-\dot{E}+e_M \dot{M} - P_M \left. \frac{\partial V_M}{\partial t}\right|_M \, ,
 \end{equation}
-acquires surface terms as derived in  \App{sec:globalderiv}.  The energy accreted across the surface is given by the specific energy, $e_M = u_M-G M/R$, and the mass accretion rate of gas, $\dot{M}$.  The work done by the surface is $P_M \partial V_M/ \partial t$, with the partial derivative performed at fixed mass.  This generalized energy equation applies on any spherical shell where hydrostatic balance holds.\footnote{\Eq{eq:coolingglobal} also applies in the interior of objects with a free surface.  The work term, $P_M \p V_M/\p t$, vanishes at the free surface.  The accretion energy, $e_M \dot{M}$,  vanishes for a truly isolated object, but would be included to account for accretion onto (or mass loss from) an otherwise free surface.}   Thus $M$ no longer refers to a uniquely defined total mass, but to the chosen mass level, where the instantaneous radius is $R$.  Values on this shell are labelled by $M$ subscripts.
+acquires surface terms as derived in  \App{sec:globalderiv}.  The surface can be at any mass level $M$, where the instantaneous radius is $R$.  Other surface quantities are labelled by $M$ subscripts.  The energy accreted across the surface is given by the specific energy, $e_M = u_M-G M/R$, and the mass accretion rate of gas, $\dot{M}$.  The work done by the surface is $P_M \partial V_M/ \partial t$, with the partial derivative performed at fixed mass.  %This generalized energy equation applies on any spherical shell where hydrostatic balance holds.  The choice of the mass shell $M$\footnote{\Eq{eq:coolingglobal} also applies in the interior of objects with a free surface.  The work term, $P_M \p V_M/\p t$, vanishes at the free surface.  The accretion energy, $e_M \dot{M}$,  vanishes for a truly isolated object, but would be included to account for accretion onto (or mass loss from) an otherwise free surface.}   Thus $M$ no longer refers to a uniquely defined total mass, but to the chosen mass level, where the instantaneous radius is $R$.  Values on this shell are labelled by $M$ subscripts.
 
-For static solutions, which are not the focus of this Paper, the surface terms (and also $\dot{E})$ vanish.  Static solutions are valid when imposed heat sources, i.e.\ $L\co$ and $\Gamma$ exceed the atmospheric losses.  Quantitatively, static solutions apply when the evolutionary timescale exceeds  the KH timescale,
+For static solutions, which are not the focus of this Paper, the surface terms (and also $\dot{E})$ vanish.  Static solutions are valid when imposed heat sources, i.e.\ $L\co$ and $\Gamma$, exceed the atmospheric losses.  Quantitatively, static solutions apply when the KH timescale,
 \begin{equation}
 \tau_{\rm KH} \sim {|E| \over L_M}, 
 \end{equation} 
-where surface terms are assumed to be subdominant.  Thus evolutionary calculations, including the quasistatic calculations of this Paper, are needed to consider the fastest possible evolution that occurs on $\tau_{\rm KH}$.  
+is shorter than the actual evolutionary timescale.  Thus, $\tau_{\rm KH}$, which our models calculate, gives strong lower limits on the time to form giant planets by core accretion.
 
 
 \subsection{The Two-Layer Model} \label{sec:twolayer}
@@ -359,17 +360,17 @@ To simplify our calculations of atmospheric contraction we use a two layer model
 
 In convective regions, the adiabatic structure is independent of luminosity and can be calculated without local energy balance, \Eq{eq:structd}.  Thus for fully convective objects, a cooling sequence can be established by connecting a series of adiabatic solutions using a global energy equation, $L_M = -\dot{E}$ or \Eq{eq:coolingstar}.  Such methods are commonly used for their computational efficiency and are sometime referred to as ``following the adiabats," since the steady state solutions evolve in order of decreasing entropy \citep{marleau13}.
 
-In the radiative zone,  local energy balance, \Eq{eq:structd}, does affect the atmospheric structure.  We proceed by assuming that the majority of energy is lost from the convective interior, and thus the luminosity can be treated as constant in the outer radiative zone.  With this approximation we can construct solutions from equations (\ref{eq:struct}a -- c) that ``follow the mass," i.e.\ gradually increase the atmospheric mass.  We then use the global energy balance, \Eq{eq:coolingglobal} to connect these solution in a cooling sequence.  The validity of neglecting luminosity generation in the radiative zone can be checked \emph{a posteriori}.
+In the radiative zone,  local energy balance, \Eq{eq:structd}, does affect the atmospheric structure.  We proceed by assuming that the majority of energy is lost from the convective interior, and thus the luminosity can be treated as constant in the outer radiative zone.  With this approximation we can construct solutions from equations (\ref{eq:struct}a -- c) that ``follow the mass," i.e.\ gradually increase the atmospheric mass.  We then use the global energy balance, \Eq{eq:coolingglobal} to place these solutions in a cooling sequence.  The validity of neglecting luminosity generation in the radiative zone can be checked \emph{a posteriori}.
 
-To make a single atmosphere model (indexed by $i$) we choose a planet mass $M_i$.  At the outer boundary, at $\RH(M_i)$, the temperature and pressure are set to the disk values.  To integrate equations (\ref{eq:struct}a--c), the luminosity is required to compute $\delrad$.  The correct value of the luminosity is the eigenvalue of the problem, which we find by the shooting method \citep{NR}.  Only for the eigenvalue of luminosity does the integrated value of mass at the core, $m(R\co)$, match the actual core mass, $M\co$.
+To make a single atmosphere model (indexed by $i$) we choose a planet mass $M_i$.  At the outer boundary, at $\RH(M_i)$, the temperature and pressure are set to the disk values.  To integrate equations (\ref{eq:struct}a--c), the luminosity is required to compute $\delrad$.  The correct value of the luminosity is not known in advance, and is the eigenvalue of the problem.  The boundary conditions can only be satisfied for the correct value of the luminosity eigenvalue, which we find by the shooting method.  Specifically, we alter the luminosity until the integrated value of mass at the core, $m(R\co)$, matches the actual core mass, $M\co$.
 
-To establish the time difference between neighboring solutions, we apply \Eq{eq:coolingglobal} at the radiative-convective boundary (RCB) of the solutions.  Using exact solutions, energy balance could be evaluated at any level.  The approximation of constant luminosity in the radiative zone makes the RCB  the self-consistent choice.   After setting $\Gamma = L\co = 0$, we solve for the elapsed time $\Delta t$  between states $i$ and $i +1$ by finite differencing to give
+To establish the time difference between neighboring solutions, we apply \Eq{eq:coolingglobal} at the radiative-convective boundary (RCB) of the solutions.  In principle, energy balance could be evaluated at any level.  Our approximate treatment of the radiative zone makes the RCB  the preferred location.   With $\Gamma = L\co = 0$,  the elapsed time $\Delta t$  between states $i$ and $i +1$ is given by the finite difference
 \begin{equation}
 \label{eq:dti}
 \Delta t = %\left(
 { -\Delta E + \brak{e} \Delta M - \brak{P}  \Delta V_{\brak{M}} \over \brak{L} }\, .
 \end{equation} 
-Brackets indicate an average of, and Delta ($\Delta$) indicates a difference between, neighboring solutions.  All values are evaluated at the RCB.  Due to the partial derivative in \Eq{eq:coolingglobal}, the volume difference $\Delta V_{<M>}$ is performed at fixed mass, here the average of the masses at the RCB.  
+Brackets indicate an average of, and ``$\Delta$" indicates a difference between, the two states.  All values are evaluated at the RCB.  Due to the partial derivative in \Eq{eq:coolingglobal}, the volume difference $\Delta V_{<M>}$ is performed at fixed mass, here the average of the masses at the RCB.  
 
 
 
