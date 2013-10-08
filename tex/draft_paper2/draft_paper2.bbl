@@ -1,5 +1,13 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{22}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Beckwith} \& {Sargent}(1991)}]{beckwith91}
+{Beckwith}, S.~V.~W. \& {Sargent}, A.~I. 1991, \apj, 381, 250
+
+\bibitem[{{Beckwith} {et~al.}(1990){Beckwith}, {Sargent}, {Chini}, \&
+  {Guesten}}]{beckwith90}
+{Beckwith}, S.~V.~W., {Sargent}, A.~I., {Chini}, R.~S., \& {Guesten}, R. 1990,
+  \aj, 99, 924
 
 \bibitem[{{Bell} \& {Lin}(1994)}]{bell94}
 {Bell}, K.~R. \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
@@ -10,6 +18,10 @@
 \bibitem[{{Chiang} \& {Youdin}(2010)}]{chiang10}
 {Chiang}, E. \& {Youdin}, A.~N. 2010, Annual Review of Earth and Planetary
   Sciences, 38, 493
+
+\bibitem[{{D'Alessio} {et~al.}(2001){D'Alessio}, {Calvet}, \&
+  {Hartmann}}]{dalessio01}
+{D'Alessio}, P., {Calvet}, N., \& {Hartmann}, L. 2001, \apj, 553, 321
 
 \bibitem[{{D'Angelo} {et~al.}(2011){D'Angelo}, {Durisen}, \&
   {Lissauer}}]{dangelo11}
@@ -41,6 +53,21 @@
 
 \bibitem[{{Papaloizou} \& {Terquem}(1999)}]{pap99}
 {Papaloizou}, J.~C.~B. \& {Terquem}, C. 1999, \apj, 521, 823
+
+\bibitem[{{P{\'e}rez} {et~al.}(2012){P{\'e}rez}, {Carpenter}, {Chandler},
+  {Isella}, {Andrews}, {Ricci}, {Calvet}, {Corder}, {Deller}, {Dullemond},
+  {Greaves}, {Harris}, {Henning}, {Kwon}, {Lazio}, {Linz}, {Mundy}, {Sargent},
+  {Storm}, {Testi}, \& {Wilner}}]{perez12}
+{P{\'e}rez}, L.~M., {Carpenter}, J.~M., {Chandler}, C.~J., {Isella}, A.,
+  {Andrews}, S.~M., {Ricci}, L., {Calvet}, N., {Corder}, S.~A., {Deller},
+  A.~T., {Dullemond}, C.~P., {Greaves}, J.~S., {Harris}, R.~J., {Henning}, T.,
+  {Kwon}, W., {Lazio}, J., {Linz}, H., {Mundy}, L.~G., {Sargent}, A.~I.,
+  {Storm}, S., {Testi}, L., \& {Wilner}, D.~J. 2012, \apjl, 760, L17
+
+\bibitem[{{Pollack} {et~al.}(1985){Pollack}, {McKay}, \&
+  {Christofferson}}]{pollack85}
+{Pollack}, J.~B., {McKay}, C.~P., \& {Christofferson}, B.~M. 1985, \icarus, 64,
+  471
 
 \bibitem[{{Rafikov}(2006)}]{rafikov06}
 {Rafikov}, R.~R. 2006, \apj, 648, 666

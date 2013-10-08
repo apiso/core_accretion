@@ -162,7 +162,7 @@ In this section we review the model developed in PY13 for the structure and evol
 \subsection{Assumptions and Disk Model}
 \label{model}
 
-We assume that the planet consists of a solid core of fixed mass and a two-layer atmosphere composed of an inner convective zone and an outer radiative zone that matches smoothly on to the disk. The two regions are separated by the Schwarzschild criterion for convective instability. We denote the surface between the two regions as the radiative-convective boundary (RCB), defined by a radius $r=R_{\cb}$. We assume a low planetesimal accretion regime in which the atmosphere evolution is dominated by Kelvin-Helmholtz contraction while planetesimal accretion is neglected.  Moreover, we assume that the luminosity is constant throughout the outer radiative region. The atmosphere is spherically symmetric and self-gravitating. It consists of a hydrogen-helium mixture, with hydrogen and helium mass fractions of 0.7 and 0.3, respectively. We further assume that the envelope evolves through stages of quasi-static equilibrium. 
+We assume that the planet consists of a solid core of fixed mass and a two-layer atmosphere composed of an inner convective zone and an outer radiative zone that matches smoothly on to the disk. The two regions are separated by the Schwarzschild criterion for convective instability. We denote the surface between the two regions as the radiative-convective boundary (RCB), defined by a radius $r=R\cb$. We assume a low planetesimal accretion regime in which the atmosphere evolution is dominated by KH contraction while planetesimal accretion is neglected.  Moreover, we assume that the luminosity is constant throughout the outer radiative region. The atmosphere is spherically symmetric and self-gravitating. It consists of a hydrogen-helium mixture, with hydrogen and helium mass fractions of 0.7 and 0.3, respectively. We further assume that the envelope evolves through stages of quasi-static equilibrium. 
 
 
 
@@ -208,9 +208,9 @@ The structure of a static atmosphere is described by the standard equations of h
 \end{equation}
 \\
 
-\noindent with $\delad$ the adiabatic temperature gradient. The convective and radiative layers of the envelope are separated by the Schwarzschild criterion (e.g., \citealt{thompson06}): the atmosphere is stable against convection when $\nabla < \delad$ and convectively unstable when $\nabla < \delad$. For effective convection, $\nabla \approx \delad$.  The temperature gradient is thus given by $\nabla=\mathrm{min}(\delad, \delrad)$. 
+\noindent with $\delad$ the adiabatic temperature gradient. The convective and radiative layers of the envelope are separated by the Schwarzschild criterion (e.g., \citealt{thompson06}): the atmosphere is stable against convection when $\nabla < \delad$ and convectively unstable when $\nabla > \delad$. For effective convection, $\nabla \approx \delad$.  The temperature gradient is thus given by $\nabla=\mathrm{min}(\delad, \delrad)$. 
 
-The equation set (\ref{eq:struct}) is supplemented by an equation of state relating pressure, temperature and density, as well as an opacity law. In this study we use the interpolated EOS tables of \citet{saumon95} for a helium mass fraction $Y=0.3$. More details on the EOS tables and the methodology of combining the separate tables for hydrogen and helium are presented in section \ref{deladtable} and \App{EOStables}.
+The equation set (\ref{eq:struct}) is supplemented by an equation of state (EOS) relating pressure, temperature and density, as well as an opacity law. In this study we use the interpolated EOS tables of \citet{saumon95} for a helium mass fraction $Y=0.3$. More details on the EOS tables and the methodology of combining the separate tables for hydrogen and helium are presented in section \ref{deladtable} and \App{EOStables}.
 
 We assume a standard ISM opacity power law given by
 
@@ -219,7 +219,7 @@ We assume a standard ISM opacity power law given by
 \kappa=\kappa_0 \Big(\frac{P}{P_{\rm{ref}}}\Big)^{\alpha} \Big(\frac{T}{T_{\rm{ref}}}\Big)^{\beta},
 \end{equation}  
 
-\noindent with $\alpha$, $\beta$, $\kappa_0$ constants, and $T_{\rm{ref}}$ and $P_{\rm{ref}}$ a normalizing temperature and pressure, respectively. To estimate $\alpha$, $\beta$ and $\kappa_0$ we use the \citet{bell94} opacity laws for ice grains: $\alpha =0 $, $\beta=2$ and $\kappa_0=2$. These values are valid only for low disk temperatures: $T_d \lesssim 100 K$.  We therefore consider protoplanets that form in the outer parts of the disk where temperatures are low, i.e. $a \geq 5$ AU. Moreover, dust settling or grain growth will result in different numerical values for the $\kappa_0$ and $\beta$ coefficients.
+\noindent with $\alpha$, $\beta$, $\kappa_0$ constants, and $T_{\rm{ref}}$ and $P_{\rm{ref}}$ a normalizing temperature and pressure, respectively. To estimate $\alpha$, $\beta$ and $\kappa_0$ we use the \citet{bell94} opacity laws for ice grains: $\alpha =0 $, $\beta=2$ and $\kappa_0=2$. These values are valid only for low disk temperatures: $T_d \lesssim 100 K$.  We therefore consider protoplanets that form in the outer parts of the disk where temperatures are low, i.e. $a \geq 5$ AU. Dust settling or grain growth will result in different numerical values for the $\kappa_0$ and $\beta$ coefficients.
 
 
 We further discuss our choice of core parameters and boundary conditions. We assume a solid core of fixed mass $M_{\rm c}$ with a radius $R_{\rm c}=(3 M_{\rm c}/4 \pi \rho_{\rm c})^{1/3}$, where $\rho_{\rm c}$ is the core density. We choose $\rho_{\rm c}=3.2$ g cm$^{-3}$ (e.g., \citealt{pap99}). The atmosphere is assumed to match on to the protoplanetary at the Hill radius, $R_{\rm H} \equiv a \Big(\frac{M_{\rm p}}{3 M_{\odot}}\Big)^{1/3}$, the distance at which the gravitational attraction of the planet and the tidal gravity due to the host star are equal. Outside the Hill sphere, the gravity of the planet is overcome by the tidal gravity from its host star, and hence only gas that lies within the Hill sphere can be gravitationally bound to the planet. The effective outer boundary of the atmosphere is the surface defined by the Bondi radius, $R_{\rm B} \equiv \frac{G M_{\rm p}}{c_{\rm s}^2}=\frac{G M_{\rm p}}{\mathcal{R} T\di}$. This is the distance from the planet at which the thermal energy of the nebular gas is of the order of the gravitational energy of the planet. Here $G$ is the gravitational constant, $M_{\rm p}$ is the total mass of the planet, $c_{\rm s}$ is the isothermal sound speed, and $\mathcal{R}$ is the reduced gas constant: $\mathcal{R}=k_b/(\mu m_p)$, with $k_b$ the Boltzmann constant and $m_p$ the proton mass. Outside the Bondi sphere, the gravity of the planet is too weak to significantly affect the nebular gas, which justifies the choice of Bondi radius as the relevant radius of the atmosphere. However, the nebular gas is still perturbed outside the Bondi sphere, and therefore the Hill radius is the correct scale for matching on to the disk. This choice for the atmosphere boundary applies only when the Bondi radius is smaller than the Hill radius; when $R_{\rm B}>R_{\rm H}$, the atmosphere only extends out to the Hill radius, since material cannot be gravitationally bound to the protoplanet outside the Hill sphere. At the Hill radius, the temperature and pressure are given by the nebular temperature and pressure: $T(R_{\rm H})=T_{\rm d}$ and $P(R_{\rm H})=P_{\rm d}$. For a given core mass, the atmosphere profile and evolution are therefore uniquely determined by the outer boundary conditions. 
@@ -244,7 +244,7 @@ Here, $L$ is the total luminosity, $L_{\rm c}$ is the luminosity from the solid 
 
 %As a consequence of the equations above, both the atmosphere structure and the gas accretion rate are uniquely determined by the current atmosphere mass. As this mass accretion rate is slow compared to the time it takes to relax to this solution, we can make a quasi-static model of the atmosphere growth. 
 
-As such, we can obtain an evolutionary series for the atmosphere by connecting sets of subsequent static atmospheres through the cooling equation (\ref{eq:coolingglobal}). Details of our numerical procedure are described in PY13.
+We obtain an evolutionary series for the atmosphere by connecting sets of subsequent static atmospheres through the cooling equation (\ref{eq:coolingglobal}). Details of our numerical procedure are described in PY13.
 
 
 \section{Adiabatic Gradient for the Tabulated Equation of State}
@@ -255,7 +255,7 @@ As such, we can obtain an evolutionary series for the atmosphere by connecting s
 %\subsection{Interpretation of Adiabatic Gradient Table}
 %\label{deladinterp}
 
-In this section we explain the differences in behavior of thermodynamic variables between an ideal gas polytrope and a gas described by a realistic equation of state by studying the dependence of the adiabatic gradient (defined in equation \ref{eq:delad}) on temperature and pressure. Figure \ref{fig:deladmap} shows a contour plot of the adiabatic gradient as a function of gas temperature and pressure, which was obtained by interpolating and extending the \citet{saumon95} equation of state tables as referenced in section \ref{sec2} and described in \App{EOStables}.
+This section explains how non-ideal EOS effects influence the behavior of the thermodynamic variables when compared to an ideal gas polytrope. Figure \ref{fig:deladmap} shows a contour plot of the adiabatic gradient (defined in equation \ref{eq:delad})  as a function of gas temperature and pressure, which was obtained by interpolating and extending the \citet{saumon95} EOS tables as described in \App{EOStables}.
 
 We distinguish three separate temperature regimes:
 
@@ -263,18 +263,18 @@ We distinguish three separate temperature regimes:
 %In this section we aim to explain how the variable adiabatic index of the hydrogen-helium mixture described by a real equation of state affects the atmosphere evolution when compared to an ideal gas with constant $\delad$. A contour plot of the adiabatic gradient as extrapolated from the \citet{saumon95} EOS tables is shown in Figure \ref{fig:deladmap}. We distinguish three separate regimes:
 
 \begin{enumerate}
-\item Intermediate temperature regime (300 K $\lesssim T \lesssim 3000$ K), where the hydrogen-helium mixture behaves like an ideal gas characterized by a polytropic equation of state.
+\item Intermediate temperature regime (300 K $\lesssim T \lesssim 3000$ K), where the hydrogen-helium mixture behaves like an ideal gas with a polytropic EOS.
 \item High temperature regime ($T \gtrsim$ 3000 K), where dissociation of molecular hydrogen occurs, followed by ionization of atomic hydrogen.
-\item Low temperature regime ($T \lesssim 300$ K), where the temperature becomes low enough for rotational motion to reduce.
+\item Low temperature regime ($T \lesssim 300$ K), where the rotational states of the hydrogen molecule are not fully excited. % temperature is low enough for rotational motion to reduce.
 \end{enumerate}
 
-We note that helium behaves like an ideal monatomic gas in our regime of interest ($\delad=2/5$). As such, its presence in the atmosphere only causes a small, constant upper shift in the adiabatic gradient of the mixture.
+We note that helium behaves like an ideal monatomic gas with \delad=2/5$ in our regime of interest.  Its presence in the atmosphere thus only causes a small, constant upper shift in the adiabatic gradient of the mixture.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/delad_S_mixt.pdf}
 %%\vspace{-0.5in}
-\caption{Contour plot of the adiabatic gradient $\delad$ for a hydrogen-helium mixture as a function of gas temperature and pressure. The upper right rectangle encloses the region described by the original \citet{saumon95} EOS tables, while the rest of the plot is our extension to lower temperatures and pressures. The black curves represent constant entropy adiabats, with the labels the natural logarithm of the absolute entropy per unit mass. At high temperatures, hydrogen dissociates and ionizes, while at low temperatures the rotational states of the hydrogen molecule are only partially excited and it therefore no longer behaves like an ideal diatomic gas. The discontinuity between the original EOS tables and our extension is due to the fact that we did not take into account dissociation and ionization. However, in our regime of interest (encompassed by the constant entropy curves), the extension matches smoothly with the original tables.}
+\caption{Contour plot of the adiabatic gradient $\delad$ for a hydrogen-helium mixture as a function of gas temperature and pressure. The upper right rectangle encloses the region described by the original \citet{saumon95} EOS tables, while the rest of the plot is our extension to lower temperatures and pressures. The black curves represent constant entropy adiabats, with the labels the natural logarithm of the absolute entropy per unit mass. At high temperatures, hydrogen dissociates and ionizes, while at low temperatures the rotational states of the hydrogen molecule are only partially excited and it no longer behaves like an ideal diatomic gas. Our extension matches smoothly with the original tables in our regime of interest (encompassed by the constant entropy curves).}
 \label{fig:deladmap}
 \end{figure}
 
@@ -290,16 +290,18 @@ For temperatures less than $\sim 2000$ K but larger than $\sim 300$ K, the hydro
 
 \textbf{2. High T: Dissociation and Ionization of Hydrogen.}
 
-At low temperatures, hydrogen exists in molecular form, which has a stable configuration. As the temperature becomes higher than $T \sim 2000-3000$ K, the internal energy becomes large enough to break the covalent bond between the atoms, and hydrogen starts dissociating. At temperatures of the order of $10^4$ K, the internal energy becomes large enough to remove electrons from the atoms, and hydrogen ionizes. In stellar and giant planet interiors there is little overlap between the two processes: hydrogen is almost entirely dissociated into atoms by the time ionization becomes important. 
+At low temperatures, hydrogen exists in molecular form and has a stable configuration. As the temperature becomes higher than $T \sim 2000-3000$ K, the internal energy of the hydrogen molecule becomes large enough to break the covalent bond between the atoms, and hydrogen starts dissociating. Further energy increase at temperatures of $\sim 10^4$ K results in electrons being removed from atoms, i.e. hydrogen ionizes. In stellar and giant planet interiors there is little overlap between the two processes: hydrogen is almost entirely dissociated into atoms by the time ionization becomes important. 
 
-For a mixture of molecular and atomic hydrogen, we expect the adiabatic gradient to have an intermediate value between monatomic and diatomic gas, while for a mixture of protons and electrons the adiabatic index is just $2/5$ as for a monatomic ideal gas. However, we notice in Fig. \ref{fig:deladmap} that the adiabatic gradient decreases significantly in the regions where hydrogen is either partially dissociated or partially ionized. We further explain this behavior.
+We see in Figure \ref{fig:deladmap} that the adiabatic gradient decreases significantly in regions of partial dissociation and partial ionization. This behavior is different than that of a mixture of molecular and atomic hydrogen (a mixture of protons and electrons), where $2/7<\delad<2/5$ ($\delad=2/5$). We  explain this in what follows. % where hydrogen is either partially dissociated or partially ionized. 
 
-We first discuss ionization. For a mixture of ideal gases, the total internal energy is given by the sum of the internal energies of the individual gases. When a gas is ionized, however, the energy used to ionize the atoms has to also be taken into account. This energy depends on the ionization fraction and can be determined from the Saha equation (see e.g., \citealt{kippenhahn90}). The ionization fraction only depends on gas temperature and density (see \App{deladioniz}), and hence only on the equation of state. An expression of the adiabatic gradient as a function of the ionization fraction can be derived. We present this expression in \App{deladioniz}. The adiabatic gradient is $\delad=2/5$ when there is no ionization (i.e., only atomic hydrogen) or when the plasma is fully ionized, but decreases significantly during partial ionization, reaching a minimum when half of the gas is ionized. 
+%For a mixture of molecular and atomic hydrogen, we expect the adiabatic gradient to have an intermediate value between monatomic and diatomic gas, while for a mixture of protons and electrons the adiabatic index is just $2/5$ as for a monatomic ideal gas. However, we notice in Fig. \ref{fig:deladmap} that the adiabatic gradient decreases significantly in the regions where hydrogen is either partially dissociated or partially ionized. We further explain this behavior.
 
-This is consistent with the behavior we see in Figure \ref{fig:deladmap}. At constant entropy, we expect an increase in pressure to increase the internal energy of the system, thus causing the temperature to also rise significantly. In the case of partial ionization, however, part of the internal energy is used to remove the electrons from atoms, and therefore there is less energy available to increase the temperature of the system. This behavior of the constant entropy curves is seen in Figure \ref{fig:deladmap}. 
+For a mixture of ideal gases, the total internal energy is given by the sum of the internal energies of the individual gases. When a gas dissociates, however, the energy used to break down the molecules has to also be taken into account. This energy depends on the dissociation fraction and can be determined from the Saha equation (see e.g., \citealt{kippenhahn90}). The dissociation fraction only depends on gas temperature and density (see \App{deladioniz}), and hence only on the EOS. 
+An expression for the adiabatic gradient as a function of the dissociation fraction is presented in \App{deladioniz}. As expected, the adiabatic gradient is $\delad=2/7$ for pure molecular hydrogen and $\delad=2/5$ when hydrogen is fully dissociated, but decreases significantly during partial dissociation and it is smallest when half of the gas is dissociated. 
 
+This is consistent with the behavior we see in Figure \ref{fig:deladmap}. At constant entropy, an increase in pressure results in an increase in the internal energy of the system, which usually causes the temperature to rise significantly. During partial dissociation, however, part of the internal energy is used to remove the electrons from atoms, and therefore there is less energy available to increase the temperature of the system. This behavior of constant entropy curves is seen in Figure \ref{fig:deladmap}. 
 
-The dissociation of molecular hydrogen is dictated by an equation similar to the Saha equation, with the ionization energy replaced by dissociation energy (equal to 4.27 eV for molecular hydrogen, e.g. \citealt{mandl89}). The adiabatic gradient therefore has an analogous behavior, consistent with Fig. \ref{fig:deladmap}.
+The ionization of atomic hydrogen is also dictated by the Saha equation, with the dissociation energy replaced by ionization energy (equal to 13.6 eV for hydrogen, e.g. \citealt{mandl89}), hence the adiabatic gradient has an analogous behavior, consistent with Fig. \ref{fig:deladmap}.
 
 
 %We now investigate the effect of the low adiabatic index caused by hydrogen dissociation on the luminosity and cooling time evolution of the atmosphere. The left panel of Figure (x) shows the 
@@ -311,9 +313,9 @@ The dissociation of molecular hydrogen is dictated by an equation similar to the
 
 \textbf{3. Low T: Hydrogen Rotation and Spin Isomers}
 
-As a diatomic molecule, hydrogen has five degrees of freedom, three associated with translational motion and two associated with rotation. At room temperature, the rotational states are fully excited and the full rotational effects are seen. The excitation temperature for rotation is $\Theta_r \approx 85$ K for the hydrogen molecule (e.g., \citealt{kittel}); as the gas temperature becomes comparable to $\Theta_r$, fewer rotational states are excited and rotation entirely ceases as $T \rightarrow 0$. %Here we explore the quantum mechanical effects associated with rotation. %We present expressions for the partition function associated with rotation and derive relevant thermodynamic variables in \App{EOStables}. For $T \ll \Theta_r$, the partition function is just equal to one, and no rotational states are excited for very low temperatures and hydrogen behaves like a monatomic gas. On the other hand, if $T \gg \Theta_r$, the molecule is energetic enough for all the rotational states to be fully excited. 
+As a diatomic molecule, hydrogen has five degrees of freedom, three associated with translational motion and two associated with rotation. At room temperature, the rotational states are fully excited. The excitation temperature for rotation is $\Theta_r \approx 85$ K for the hydrogen molecule (e.g., \citealt{kittel}); as the gas temperature becomes comparable to $\Theta_r$, fewer rotational states are excited and rotation entirely ceases as $T \rightarrow 0$. %Here we explore the quantum mechanical effects associated with rotation. %We present expressions for the partition function associated with rotation and derive relevant thermodynamic variables in \App{EOStables}. For $T \ll \Theta_r$, the partition function is just equal to one, and no rotational states are excited for very low temperatures and hydrogen behaves like a monatomic gas. On the other hand, if $T \gg \Theta_r$, the molecule is energetic enough for all the rotational states to be fully excited. 
 
-In this section we discuss the quantum effects of the hydrogen isomeric forms and the way they affect the rotational energy and heat capacity of the hydrogen molecule at low temperatures, and hence the adiabatic gradient. 
+%In this section we discuss the quantum effects of the hydrogen isomeric forms and the way they affect the rotational energy and heat capacity of the hydrogen molecule at low temperatures, and hence the adiabatic gradient. 
 
  Molecular hydrogen occurs in two isomeric forms: orthohydrogen, with parallel proton spins, and parahydrogen, with antiparallel proton spins. The Pauli exclusion principle requires the total wavefunction of two fermions, such as protons, to be antisymmetric. As such, a symmetric spin wavefunction requires an antisymmetric rotational wavefunction, and vice-versa (\citealt{farkas35}). Parahydrogen has an antisymmetric spin wavefunction, which means that it can only occupy symmetric rotational states and hence the angular quantum number $j$ has to be even. By analogy, orthohydrogen must have an antisymmetric rotational wavefunction and can only occupy states with odd $j$. The partition functions for ortho- and parahydrogen are described in \App{EOStables}.
  At equilibrium, the relative abundance of the ortho and para states is given by the ratio of their partition functions. For very low temperatures there is only parahydrogen, as molecules are in the ground state with $j=0$, which corresponds to the para state. As the temperature is increased, parahydrogen starts converting into orthohydrogen, resulting in an ortho-para equilibrium ratio of 3:1 at room temperature.
@@ -344,7 +346,7 @@ The internal energy and specific heat per unit mass associated with rotation for
 \section{Equation of State Effects on Atmosphere Evolution}
 \label{EOSeffects}
 
-Variations in the adiabatic gradient $\delad$ have two competing effects on the atmosphere evolution: they yield a lower envelope luminosity when compared to an ideal gas, and a larger amount of energy that needs to be radiated per unit mass, which slows down accretion. Together, they result in changes in the growth time of the atmosphere, and therefore in the crossover time and critical core mass (both defined in section \ref{intro}). In this section we discuss how the variable adiabatic gradient discussed in section \ref{deladtable} affects the atmosphere evolution when compared to an ideal gas of constant $\delad$. We explore the effect of partial dissociation and hydrogen spin isomers (see section \ref{deladtable}) on the atmosphere luminosity and cooling time evolution. Due to the equation of state described in section \ref{deladtable}, a realistic atmosphere will not have a constant adiabatic gradient $\delad$, as was assumed in PY13. We thus first investigate the differences in atmosphere profiles and evolution for ideal gas polytropes with different adiabatic gradients in section \ref{deladpoly}. We then show how the variable adiabatic gradient affects the time evolution of the atmosphere in section \ref{deladeffect}.
+Variations in the adiabatic gradient $\delad$ have two competing effects on the atmosphere evolution: they yield a lower envelope luminosity when compared to an ideal gas, and a larger amount of energy that needs to be radiated per unit mass, which slows down accretion. Together, they result in changes in the growth time of the atmosphere, and therefore in the crossover time and critical core mass (both defined in section \ref{intro}). We explore the effect of partial dissociation and hydrogen spin isomers (see section \ref{deladtable}) on the atmosphere luminosity and cooling time evolution. Due to the equation of state described in section \ref{deladtable}, a realistic atmosphere will not have a constant adiabatic gradient $\delad$, as was assumed in PY13. We thus first investigate the differences in atmosphere profiles and evolution for ideal gas polytropes with different adiabatic gradients in section \ref{deladpoly}. We then show how the variable adiabatic gradient affects the time evolution of the atmosphere in section \ref{deladeffect}.
 
 \subsection{Ideal Gas Polytropes with Different Adiabatic Gradient}
 \label{deladpoly}
@@ -353,7 +355,9 @@ In this section we investigate the differences in luminosity and $dE/dM$, and th
 
 We generate atmosphere profiles for the two different adiabatic indices at $a=10$ AU and for a core mass $M_{\rm c}=10 M_{\oplus}$, and estimate the luminosity and cooling time evolution as described in section \ref{sec2}. The results are shown in Figure \ref{fig:Ltplotpoly}. We find that the polytrope with the lower adiabatic gradient has both a higher luminosity and a longer cooling time. We use instantaneous atmosphere profiles to explain these effects. 
 
-We first discuss the effect of the variable adiabatic gradient on luminosity. Figure \ref{fig:ETrplotpoly}, top panel, shows the temperature profile as well as the location of the radiative-convective boundary for the two polytropes at a fixed total mass $M_{\rm{tot}}=11.8 M_{\oplus}$. The polytrope with a larger adiabatic gradient has a more shallow convective zone, and hence a deeper radiative region, since a larger temperature gradient delays the onset of convection. As the luminosity in the radiative region is inversely proportional to the depth of the radiative zone, a deeper radiative region results in a lower luminosity, which explains the results in the top panel of Figure \ref{fig:Ltplotpoly}. 
+%We first discuss the effect of the variable adiabatic gradient on luminosity. 
+
+Figure \ref{fig:ETrplotpoly}, top panel, shows the temperature profile for the two polytropes at a fixed total mass $M_{\rm{tot}}=15 M_{\oplus}$. The polytrope with a larger adiabatic gradient, $\delad=2/5$, has a more shallow convective zone, and hence a deeper radiative region, since a larger temperature gradient delays the onset of convection. A deeper radiative layer increases the number of steps that photons need to diffuse, resulting in a lower luminosity as seen in the top panel of Figure \ref{fig:Ltplotpoly}. 
 
 \begin{figure}[h]
 \centering
@@ -367,11 +371,16 @@ We first discuss the effect of the variable adiabatic gradient on luminosity. Fi
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/TErplot_poly.pdf}
 %%\vspace{-0.5in}
-\caption{Instantaneous temperature and total energy profiles as a function of radius for polytropes with different adiabatic indices, for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=10 M_{\oplus}$. The total mass (core + atmosphere) is $11.8 M_{\oplus}$. The location of the radiative-convective boundary is marked. A lower adiabatic gradient results in a more shallow radiative region (upper panel), and in the total energy being concentrated at the bottom of the atmosphere (lower panel).}
+\caption{Instantaneous temperature and total energy profiles as a function of radius for polytropes with different adiabatic indices, for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=10 M_{\oplus}$. The total mass (core + atmosphere) is $15 M_{\oplus}$. The location of the radiative-convective boundary is marked. A lower adiabatic gradient results in a more shallow radiative region (upper panel), and in the total energy being concentrated at the bottom of the atmosphere (lower panel).}
 \label{fig:ETrplotpoly}
 \end{figure}
 
-In spite of the low luminosity of the atmosphere with $\delad=2/5$, the envelope still grows faster than in the case of a diatomic gas, as shown in the bottom panel of Figure \ref{fig:Ltplotpoly}. This is due to fact that the amount of energy per unit mass that needs to be radiated away, i.e. $|dE/dM|$, is lower for the $\delad=2/5$ polytrope. We have shown in PY13 that polytropes with $\delad=2/7$ have most of the energy concentrated at the bottom of the atmosphere, while polytropes with $\delad=2/5$ have the bulk of the energy towards the outer boundary. The bottom panel of Figure \ref{fig:ETrplotpoly} shows an instantaneous energy profile for the same total mass $M_{\rm{tot}} = 11.8 M_{\oplus}$, confirming this behavior. It takes more energy to bring in gas deep in the atmosphere for an envelope that has the bulk of its energy concentrated towards the bottom,  resulting in a larger $|dE/dM|$. The energy effect prevails over the luminosity effect, resulting in a longer cooling time for the envelope, as shown in the bottom panel of Figure \ref{fig:Ltplotpoly}.
+%In spite of the low luminosity of the atmosphere with $\delad=2/5$, the envelope still grows faster than in the case of a diatomic gas, as shown in the bottom panel of Figure \ref{fig:Ltplotpoly}. This is due to fact that the amount of energy per unit mass that needs to be radiated away, i.e. $|dE/dM|$, is lower for the $\delad=2/5$ polytrope. We have shown in PY13 that polytropes with $\delad=2/7$ have most of the energy concentrated at the bottom of the atmosphere, while polytropes with $\delad=2/5$ have the bulk of the energy towards the outer boundary. 
+
+
+The bottom panel of Figure \ref{fig:ETrplotpoly} shows an instantaneous energy profile for the same total mass $M_{\rm{tot}} = 15 M_{\oplus}$.  The bulk of the energy is concentrated deep in the atmosphere for the $\delad=2/7$ polytrope and towards the outer boundary for the $\delad=2/5$ polytrope. Qualitatively, this can be explained through a simple analytic argument: the density profile in an adiabatic, non-self gravitating atmosphere composed of an ideal gas scales as $\rho(r) \sim r^{1/(\gamma-1)}$ with $\gamma$ the adiabatic index (see PY13). Since the energy per unit mass scales as $e(r) \sim \rho(r) r^2$, we find that only polytropes with $\gamma<3/2$, i.e. $\delad<1/3$, have the total energy concentrated towards the core. This is satisfied by $\delad=2/7$ but not by $\delad=2/5$, in agreement with the results in the bottom panel of Figure \ref{fig:ETrplotpoly}.  It takes more energy to bring in gas deep in the atmosphere for an envelope that has the bulk of its energy concentrated towards the bottom,  which increases $|dE/dM|$ for the $\delad=2/7$ polytrope. 
+
+We find that the energy effect prevails over the luminosity effect, resulting in a longer cooling time for the polytrope with the lower adiabatic gradient (i.e., $\delad=2/7$), as shown in the bottom panel of Figure \ref{fig:Ltplotpoly}.
 
 
 %From the adiabatic gradient table shown in Figure \ref{fig:deladmap} we find that $\delad$ has the flattest behavior around $T=500$ K. In this region, the gas behaves like an ideal gas with constant polytropic index $\delad \approx 0.3$, with the shift from diatomic gas caused by the helium in the mixture. We generate three sets of atmosphere profiles. The first one corresponds to an ideal gas of constant adiabatic index $\delad=0.3$. The second one is described by the real EOS for temperatures larger than 500 K and by an ideal gas with $\delad=0.3$ for $T<500$ K. Finally, the third profile consists of an ideal gas polytrope with $\delad=0.3$ for $T>500$ K and a real gas in the low temperature regime. We compare the first two profiles to show the dissociation effects, and the first and third profile to show the effects of ortho- and parahydrogen. The resulting time evolution is shown in Figure \ref{fig:Ltplotall}. We see that both dissociation and spin isomers have a comparable effect on the atmosphere growth, and result in slower cooling, and therefore a longer crossover time, when compared to the polytropic ideal gas equation of state. In what follows we explore the two effects separately.
@@ -418,7 +427,7 @@ We have seen that the spin effect at the outer boundary dictates the location of
 
 \begin{figure*}[tb]
 \centering
-\includegraphics[width=\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/TLr_plot.pdf}
+\includegraphics[width=\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/all_plot.pdf}
 %%\vspace{-0.5in}
 \caption{Left panel: Instantaneous temperature profile as a function of radius for a variety of EOS combinations, for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=10 M_{\oplus}$. The total mass (core + atmosphere) is $11.8 M_{\oplus}$. The location of the radiative-convective boundary is marked. The effect of hydrogen spin isomers at low temperatures in the outer region of the atmosphere sets the location of the radiative-convective boundary.  Right panel: Luminosity evolution as a function of total mass (core + atmosphere) for a variety of EOS combinations, for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=5 M_{\oplus}$. The existence of the hydrogen spin isomers at low temperatures near the top of the atmosphere results in a lower luminosity. The two effects combined yield a lower luminosity for the realistic equation of state when compared to the polytrope. }
 \label{fig:TLrplot}
@@ -448,7 +457,7 @@ We have seen that the spin effect at the outer boundary dictates the location of
 %\textbf{Define what it is (also refer to paper I) and emphasize how it's different from $M_{crit}$ in standard calculations. Define the crossover mass and crossover time.}
 
 
-In this section we put together the results obtained in section \ref{EOSeffects} and determine the minimum core mass to initiate runaway gas accretion during the lifetime of the protoplanetary disk assuming that the nebular gas is described by a realistic equation of state as prescribed by the \citet{saumon95} EOS tables (see section \ref{EOSeffects}). As in PY13, we define this minimum core mass as the \textit{critical core mass}. Moreover, we define the time elapsed until runaway gas accretion is initiated when $M_{\rm{atm}} \sim M\co$ as the \textit{crossover time}. In this section we first explore the dependence of the crossover time on the core mass for a fixed semi-major axis. We then determine the critical core mass to form a giant planet before the dissipation of the gas in the protoplanetary disk, assuming that the nebular gas is described by a realistic hydrogen-helium mixture, and we compare this with the results from PY13 for an ideal diatomic gas. 
+In this section we put together the results obtained in section \ref{EOSeffects} and determine the minimum core mass to initiate runaway gas accretion during the lifetime of the protoplanetary disk assuming that the nebular gas is described by a realistic equation of state as prescribed by the \citet{saumon95} EOS tables (see section \ref{EOSeffects}). As in PY13, we define this minimum core mass as the \textit{critical core mass}. Moreover, we define the time elapsed until runaway gas accretion is initiated when $M_{\rm{atm}} \sim M\co$ as the \textit{crossover time}. In this section we first explore the dependence of the crossover time on the core mass for a fixed semi-major axis. We then determine the critical core mass to form a giant planet before the dissipation of the gas in the protoplanetary disk, assuming that the nebular gas is described by a realistic hydrogen-helium mixture, and we compare this with the results from PY13 for an ideal diatomic gas. Finally, we determine the critical core mass under more realistic opacity assumptions.
 
 %\subsection{Crossover Time as a Function of Core Mass}
 %\label{tvsM}
@@ -459,9 +468,9 @@ Figure \ref{fig:tvsMplot} displays the time evolution and the crossover time for
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/t_vs_M_10au.pdf}
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/tco_vs_Matm_10au.pdf}
 %%\vspace{-0.5in}
-\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $7 M_{\oplus}$ and $16 M_{\oplus}$ at $a=10$ AU in our fiducial disk. The circles mark the crossover time where $M_{\rm{atm}} \sim M_{\rm c}$. The numbers are labeling the core mass in Earth masses. A larger core mass results in a shorter crossover time.}
+\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $10 M_{\oplus}$ and $20 M_{\oplus}$ at $a=10$ AU in our fiducial disk. The circles mark the crossover time where $M_{\rm{atm}} \sim M_{\rm c}$. The numbers are labeling the core mass in Earth masses. A larger core mass results in a shorter crossover time.}
 \label{fig:tvsMplot}
 \end{figure}
 
@@ -480,11 +489,68 @@ Figure \ref{fig:Mvsaplot} shows the critical core mass for a massive atmosphere 
 \label{fig:Mvsaplot}
 \end{figure}
 
+The above results were obtained under the assumption that the dust opacity in the radiative region of the atmosphere is given by the standard ISM opacity (see also section \ref{struct}). However, our scenario of low planetesimal accretion is likely to favor lower dust opacities, due to grain growth and dust settling. Grain growth, in particular, lowers the absolute value of the opacity and changes the particle size distribution when compared to the standard ISM size distribution (e.g., \citealt{pollack85}).
 
-\section{Model Relevance in Planet Formation Theory}
+Although grain growth has been observed in protoplanetary disks (e.g., \citealt{beckwith90}, \citealt{beckwith91}, \citealt{perez12}), the size distribution of dust particles has not been observationally constrained. Typically, the grain size distribution is assumed to be a power law: 
+
+\begin{equation}
+\label{eq:graindistr}
+n \sim a^{-p},
+\end{equation}
+where $a$ is the particle radius and $p=3.5$ (corresponding to a ``normal'' collisional cascade) or $p=2.5$ (an approximation for coagulation). In this work we use the  \citet{dalessio01} frequency-dependent opacity tables to obtain the temperature-dependent Rosseland mean opacity $\kappa$,  assuming a maximum particle size of 1 cm and a grain size distribution given by equation (\ref{eq:graindistr}) with $p=3.5$.
+
+The \citet{dalessio01} opacities are only relevant at temperatures that are sufficiently low for dust grains to remain solid ($T \lesssim 1000$ K). In the temperature regime where dust sublimates we use the \citet{bell94} analytic opacity laws, ensuring smooth transition from the grain growth opacities. 
+
+The sharp drop in opacity ($\kappa \sim T^{-24}$) due to dust sublimation lowers the radiative temperature gradient significantly (see equation \ref{eq:delrad}), and may therefore generate radiative layers within the inner region of the atmosphere (see \App{radwindow}, Figure \ref{fig:delvsr}). This can potentially pose challenges for our model, since the additional luminosity generated in these radiative windows may be large enough to make our assumption of constant luminosity throughout the radiative layers invalid. However, the inner radiative windows are either very thin (Figure \ref{fig:delvsr}, middle panel), or the temperature gradient is flat enough to result in a roughly constant luminosity throughout the region (Figure \ref{fig:delvsr}, bottom panel; also see equation \ref{eq:structc}). This results in a negligible extra luminosity generated in the radiative windows. %moreover... (\textbf{add part about sigma T4/tau}). 
+
+Despite the existence of one or more radiative windows in the planet atmosphere, the luminosity that emerges at the outer boundary is set by the top radiative window, as is the case for the standard inner convective-outer radiative envelopes. The equation of radiative diffusion (\ref{eq:structc}) can be approximated in terms of the radiative flux $\mathcal{F}$ as 
+
+\begin{equation}
+\label{eq:sigmatau4}
+\mathcal{F} \sim \frac{\sigma T\cb^4}{\tau},
+\end{equation}
+where $\tau$ is the optical depth of the upper radiative layer. Furthermore, we find that $\tau$ is dominated by the optical depth of the first scale height, i.e. 
+
+\begin{equation}
+\label{eq:taucb}
+\tau \sim \tau\cb=\kappa\cb \rho\cb H\cb,
+\end{equation}
+where 
+\begin{equation}
+\label{eq:Hcb}
+H\cb=\frac{k_b T\cb}{\mu m_H} \frac{R\cb^2}{G M\cb},
+\end{equation}
+with $k_b$ the Boltzmann constant, $\mu$ the mean molecular weight of the gas, $m_H$ the proton mass, and all other quantities evaluated at the bottom of the radiative layer. By substituting equations (\ref{eq:Hcb}) and (\ref{eq:taucb}) into equation (\ref{eq:sigmatau4}), and noting that $\mathcal{F}=L/(4 \pi (R\cb+H\cb)^2) \approx L / (4 \pi R\cb^2)$, we recover equation (\ref{eq:delrad}) applied at the boundary between the uppermost convective region of the atmosphere and the outer radiative layer (where $\delrad=\delad$).
+
+Due to the variable number and position within the planet atmosphere of radiative windows, and therefore of radiative-convective boundaries, we cannot calculate the time evolution of different atmospheres if we evaluate our cooling equation (\ref{eq:coolingglobal}) at the RCB, as we do in our standard model. We choose to evaluate the cooling time at the Bondi radius instead (since our cooling model applies at any radius $R$, see section \ref{struct}). We note that our choice of $R$ does not change the estimate of the atmosphere evolution time, to order of magnitude, since the additional luminosity generated in all radiative regions is negligible (see PY13). 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/Mcrit_vs_a_gg.pdf}
+%%\vspace{-0.5in}
+\caption{Critical core mass as a function of semi-major axis for grain growth opacity.}
+\label{fig:Mcritvsagg}
+\end{figure}
+
+Figure \ref{fig:Mcritvsagg} shows the resulting critical core mass as a function of semi-major axis. The critical core mass is lower than in the standard case, and less sensitive to the distance in the disk, i.e. the boundary conditions (temperature and pressure). We have shown in PY13 that the critical core mass is highly dependent on disk temperature rather than pressure. The temperature dependence, however, is mainly due to opacity: for the simplified analytic model developed in PY13 we found that the crossover time $t_{\rm co} \sim T^{\beta+1/2}$, with $\beta$ the power-law exponent in equation (\ref{eq:opacitylaw}). Opacity is less sensitive to temperature variations for larger grains and has an almost flat profile (see Figure \ref{fig:opacity}), which results in $\beta \ll 1$ and a much weaker temperature (and therefore semi-major axis) dependence of the critical core mass, as seen in Figure \ref{fig:Mcritvsagg}. Moreover, grain growth reduces the absolute value of the opacity, which results in an overall lower crossover time and critical core mass. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/tco_vs_a_Mc4_comp.pdf}
+%%\vspace{-0.5in}
+\caption{Crossover time for different grain size distribution.}
+\label{fig:p25p35}
+\end{figure}
+
+In our calculation so far we assumed that the size distribution of dust grains is the power law (\ref{eq:graindistr}) with $p=3.5$, which corresponds to a normal collisional cascade. If, however, coagulation is taken into account, the exponent $p$ can be approximated as $p=2.5$ \citep{dalessio01}. This results in a flatter and significantly lower opacity, which may substantially reduce the critical core mass. However, we have found that our model breaks down for low core masses ($M_{\rm c} \lesssim 3 M_{\oplus}$) under this assumption, i.e. the outer radiative region becomes deep enough that the luminosity generated in this region can no longer be neglected. Figure \ref{fig:p25p35} shows the crossover time as a function of semi-major axis for the lowest core mass in which our model is valid, $M_{\rm c}=4 M_{\oplus}$. The crossover time is more than one order of magnitude lower when coagulation is accounted for, which implies that the critical core mass may be, in fact, significantly lower than presented in Figure \ref{fig:Mcritvsagg}. 
+
+
+
+%\section{Model Relevance in Planet Formation Theory}
+\section{Effects of Planetesimal Accretion}
 \label{acc}
 
-In this study we have considered atmospheres for which planetesimal accretion is negligible and Kelvin-Helmholtz contraction dominates the luminosity evolution of the atmosphere. This is different from standard calculations, in which the atmosphere is heated by planetesimal accretion. In this section we compare our results for the critical core mass to analogous results from the standard calculations. We discuss the core accretion rates that are necessary for our regime to be valid in section \ref{raf1}. We then compare our results with planetesimal accretion results under similar assumptions in section \ref{raf2}.
+In this study we have considered atmospheres for which planetesimal accretion is negligible and Kelvin-Helmholtz contraction dominates the luminosity evolution of the atmosphere. This is different from standard analytic calculations, in which the atmosphere is heated by planetesimal accretion. In this section we compare our results for the critical core mass to analogous results from the analytic calculations. We discuss the core accretion rates that are necessary for our regime to be valid in section \ref{raf1}. We then compare our results with planetesimal accretion results under similar assumptions in section \ref{raf2}.
 
  %In this section we investigate the core accretion rates that are necessary for our regime to be valid. We also discuss the conditions under which runaway gas accretion can be initiated due to the Kelvin-Helmholtz contraction of the atmosphere before it becomes critical due to planetesimal accretion.
 
@@ -498,17 +564,17 @@ We estimate the planetesimal accretion rate consistent with our assumptions that
 L_{acc}=G \frac{M_{\rm{c}} \dot{M_{\rm{c}}}}{R_{\rm{c}}},
 \end{equation}
 
-\noindent where $\dot{M_{\rm{c}}}$ is the planetesimal accretion rate, and $L_{\rm{KH}}$ is the luminosity of the atmosphere due to gas contraction obtained from our static model described in section \ref{sec2}. At the limit, $L_{\rm{acc}}=L_{\rm{KH}}$. For a given atmosphere model we can therefore estimate the maximum planetesimal accretion rate during the contraction of the envelope in order for the atmosphere to be dominated by gas contraction. We choose as a fiducial case an atmosphere forming at 40 AU and with a core mass of $10 M_{\oplus}$, described by a realistic equation of state. For this choice of parameters, the atmosphere crossover time is $t _{\rm{co}}\sim$ 2.7 Myrs, which is within the typical life time of a protoplanetary disk. The results are presented in Figure \ref{fig:accrates}. 
+\noindent where $\dot{M_{\rm{c}}}$ is the planetesimal accretion rate, and $L_{\rm{KH}}$ is the luminosity of the atmosphere due to gas contraction obtained from our static model described in section \ref{sec2}. At the limit, $L_{\rm{acc}}=L_{\rm{KH}}$. For a given atmosphere model we can therefore estimate the maximum planetesimal accretion rate during the contraction of the envelope in order for the atmosphere to be dominated by gas contraction. We choose as a fiducial case an atmosphere forming at 60 AU and with a core mass of $5 M_{\oplus}$. Since analytic studies assume an ideal gas EOS, our fiducial atmosphere is described by an ideal gas polytrope with constant adiabatic gradient $\delad=2/7$ and mean molecular weight $\mu=2.35$ (see also PY13). For this choice of parameters, the atmosphere crossover time is $t _{\rm{co}}\sim$ 2.1 Myrs, which is within the typical life time of a protoplanetary disk. The results are presented in Figure \ref{fig:accrates}. 
 
  \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/acc_rates_paper.pdf}
 %\vspace{-0.5in}
-\caption{Various relevant accretion rates in the case of a planet forming at 10 AU and with a core mass $M\co=10 M_{\oplus}$. The $\dot{M}_{\rm{atm}}$ curve represents the growth rate of the atmosphere as estimated by our model, and $\dot{M}_{\rm{c,KH}}$ is the maximum planetesimal accretion rate during the gas contraction phase in order for our regime to be valid. For comparison, we plot the core accretion rate $\dot{M}_{\rm{c,acc}}$ necessary to grow the core on the same time scale as the atmosphere $\tau \sim 2.7$ Myrs, and a typically planetesimal accretion rate $\dot{M}_{\rm{c,Hill}}$ where the random velocity of the planetesimals is given by the Hill velocity due to the core.}
+\caption{Various relevant accretion rates in the case of a planet forming at 60 AU and with a core mass $M\co=5 M_{\oplus}$. The $\dot{M}_{\rm{atm}}$ curve represents the growth rate of the atmosphere as estimated by our model, and $\dot{M}_{\rm{c,KH}}$ is the maximum planetesimal accretion rate during the gas contraction phase in order for our regime to be valid. For comparison, we plot the core accretion rate $\dot{M}_{\rm{c,acc}}$ necessary to grow the core on the same time scale as the atmosphere $\tau \sim 2.1$ Myrs, and a typically assumed planetesimal accretion rate $\dot{M}_{\rm{c,Hill}}$ where the random velocity of the planetesimals is given by the Hill velocity due to the core.}
 \label{fig:accrates}
 \end{figure}
 
-We label the resulting minimum core accretion rate as $\dot{M}_{\rm{c,KH}}$, with  $\dot{M}_{\rm{c,KH}}=\frac{L_{\rm{KH}} R\co}{G M\co}$ from equation (\ref{eq:Lacc}). The atmosphere growth rate $\dot{M}_{\rm{atm}}$ is also plotted for comparison. We see that the core accretion rate has to be $\sim2-3$ orders of magnitude lower than the atmosphere accretion rate for our assumptions to be valid.  If the core had accreted planetesimals at this constant rate since it started forming, then the formation of a core massive enough to attract an atmosphere would not have been possible within a typical disk lifetime, implying that planetesimal accretion must have been larger initially, then slowed down. Possible explanations for that include the core having formed in the inner part of the disk and later migrated outwards, or the core having been depleted of planetesimals due to a giant neighbor. We further estimate the core accretion rate needed for the core to form on the same timescale as our model atmosphere, $\tau=2.7$ Myrs:
+We label the resulting minimum core accretion rate as $\dot{M}_{\rm{c,KH}}$, with  $\dot{M}_{\rm{c,KH}}=\frac{L_{\rm{KH}} R\co}{G M\co}$ from equation (\ref{eq:Lacc}). The atmosphere growth rate $\dot{M}_{\rm{atm}}$ is also plotted for comparison. We see that the core accretion rate has to be $\sim2-3$ orders of magnitude lower than the atmosphere accretion rate for our assumptions to be valid.  If the core had accreted planetesimals at this constant rate since it started forming, then the formation of a core massive enough to attract an atmosphere would not have been possible within a typical disk lifetime, implying that planetesimal accretion must have been larger initially, then slowed down. Possible explanations for that include the core having formed in the inner part of the disk and later migrated outwards, or the core having been depleted of planetesimals due to a giant neighbor. We further estimate the core accretion rate needed for the core to form on the same timescale as our model atmosphere, $\tau=2.1$ Myrs:
 
 \begin{equation}
 \label{eq:Mcdot}
@@ -528,32 +594,41 @@ where $\Sigma_{\rm p}$ is the surface density of solids, assumed to satisfy $\Si
 \subsection{Comparison with Standard Results}
 \label{raf2}
 
-Next, we are interested in whether hydrodynamic gas accumulation due to planetesimal accretion can already commence before the atmosphere becomes unstable due to Kelvin-Helmholtz contraction, as our regime is no longer the relevant one under such conditions. A core that forms on the same timescale as our model atmosphere accretes planetesimals at a rate given by equation (\ref{eq:Mcdot}). This accretion rate is dependent on the core mass, which is steadily increasing. We therefore compare the critical core mass due to planetesimal accretion at this rate $M_{\rm{crit,acc}}$ to the critical core mass as defined in our estimates $M_{\rm{c,crit}}$ (see section \ref{critical}). If $M_{\rm{crit,acc}}<M{\rm_{c, crit}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
+Next, we are interested in whether hydrodynamic gas accumulation due to planetesimal accretion can already commence before the atmosphere becomes unstable due to Kelvin-Helmholtz contraction, as our regime is no longer the relevant one under such conditions. From equation (\ref{eq:Lacc}), the planetesimal accretion rate during the atmosphere evolution has to satisfy
+\begin{equation}
+\label{eq:McdotKH}
+\dot{M\co} \lesssim \frac{L_{\rm KH} R\co}{G M\co}
+\end{equation}
+for our regime to be valid, i.e. $L_{\rm acc} \lesssim L_{L_{\rm KH}}$. The maximum planetesimal accretion rate $\dot{M}_{\rm c, KH}$ that satisfies this condition (when $L_{\rm acc}=L_{\rm KH}$) is denoted by the dotted line in Figure \ref{fig:accrates} for $a=60$ AU and $M\co=5M_{\oplus}$. If unstable atmosphere collapse does not occur due to planetesimal accretion for the lowest value of $M_{\rm c, KH}$, then runway gas accretion can only occur in the KH dominated regime. In what follows we calculate the critical core mass $M_{\rm c, KH}$ corresponding to $\dot{M}_{\rm c, KH}$ and show that it is higher than our calculated critical core mass. 
+
+%A core that forms on the same timescale as our model atmosphere accretes planetesimals at a rate given by equation (\ref{eq:Mcdot}). 
+
+%This accretion rate is dependent on the core mass, which is steadily increasing. We therefore compare the critical core mass due to planetesimal accretion at this rate $M_{\rm{crit,acc}}$ to the critical core mass as defined in our estimates $M_{\rm{c,crit}}$ (see section \ref{critical}). If $M_{\rm{crit,acc}}<M{\rm_{c, crit}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
 
 %Specifically, we compare the critical core mass due to planetesimal accretion at the rate 
 
 %we compare the critical core mass $M_{\rm{c,acc}}$ due to planetesimal accretion, for an accretion rate that satisfies $L_{\rm{acc}}<L_{\rm{KH}}$ to the actual core mass $M_{\rm{c}}$ assumed fixed in our model. If $M_{\rm{c,acc}}<M{\rm{c}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
 
-In order to estimate the critical core mass due to planetesimal accretion $M_{\rm{crit,acc}}$, we use the results of \citet{rafikov06} for low luminosity atmospheres forming in the outer disk ($>2-5$ AU), consistent with our region of interest. \citet{rafikov06} assumes an ideal gas polytropic equation of state and a lower opacity than the standard ISM opacity that we use in our calculations (see equation \ref{eq:opacitylaw}), due to grain growth. In PY13 we showed that a reduction in opacity results in a shorter crossover time and therefore a lower critical core mass. In this section, we calculate the critical core mass for an ideal gas polytrope with the standard ISM opacity reduced by a factor of 100, which is comparable to the opacity law used by \citet{rafikov06}. 
+In order to estimate $M_{\rm c, KH}$, we use the results of \citet{rafikov06} for low luminosity atmospheres forming in the outer disk ($>2-5$ AU), consistent with our region of interest. \citet{rafikov06} assumes an ideal gas polytropic equation of state and a lower opacity than the standard ISM opacity that we use in our calculations (see equation \ref{eq:opacitylaw}). We thus calculate the critical core mass for an ideal gas polytrope with the standard ISM opacity reduced by a factor of 100, which is comparable to the opacity law used by \citet{rafikov06} (see PY13). 
 
 By relating his expression for the critical core mass to a given core mass dependent planetesimal accretion rate $\dot{M}(M_{\rm{c}})$, we find the following expression for the critical core mass when accretion luminosity dominates the evolution of the atmosphere:
 
 \begin{equation}
 \label{eq:critraf}
-M_{\rm{crit, acc}} \sim \Big[\frac{\dot{M}(M_{\rm{c}})}{64 \pi^2 C} \frac{\kappa_0}{\sigma G^3} \frac{1}{R\co M\co^{1/3}} \Big(\frac{k_b}{\mu}\Big)^4\Big]^{3/5},
+M_{\rm{crit, KH}} \sim \Big[\frac{\dot{M}(M_{\rm{c}})}{64 \pi^2 C} \frac{\kappa_0}{\sigma G^3} \frac{1}{R\co M\co^{1/3}} \Big(\frac{k_b}{\mu}\Big)^4\Big]^{3/5},
 \end{equation}
 
-\noindent with all the constants as defined in previous sections, and $C$ a constant depending on the adiabatic gradient and disk properties (see \citealt{rafikov06}, equation B3). We calculate $M_{\rm{crit,acc}}$ for a range of core masses. The result is displayed in Figure \ref{fig:raf2}. 
+\noindent with all the constants as defined in previous sections, and $C$ an order unity constant depending on the adiabatic gradient and disk properties (see \citealt{rafikov06}, equation B3). The result is displayed in Figure \ref{fig:raf2}; the critical core mass corresponding to planetesimal accretion at the rates displayed in Figure \ref{fig:accrates} is displayed for comparison.  
 
  \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/Mc_vs_a_poly_raf2_paper.pdf}
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/Mc_vs_a_poly_comp.pdf}
 %\vspace{-0.5in}
-\caption{Comparison between the critical core mass $M_{\rm{crit, acc}}$ due to planetesimal accretion and the assumed fixed core mass when gas contraction dominates, for a growth time of $\tau=2.6$ Myrs. Our results yield lower core masses than in the standard case.}
+\caption{Comparison between the critical core mass $M_{\rm{crit, KG}}$ due to planetesimal accretion and the assumed fixed core mass when gas contraction dominates, for a growth time of $\tau=2.1$ Myrs. Our results yield lower core masses than in the standard case.}
 \label{fig:raf2}
 \end{figure}
 
-We see that the critical core mass due to planetesimal accretion is smaller than in the case in which planetesimal accretion dominates the evolution of the atmosphere. This brings us to two conclusions. First, we confirm that planetesimal accretion can be safely ignored in our regime of interest. Secondly, this comparison tells us that it is easier and more efficient to form a planet by growing the core first, then accreting a massive envelope, rather than by growing the core and atmosphere in parallel. Moreover, our result represents a true, absolute minimum on the core mass that is needed to form a giant planet during the lifetime of the protoplanetary disk, as our core no longer grows.
+The critical core mass due to planetesimal accretion is smaller than in the case in which planetesimal accretion dominates the evolution of the atmosphere. This brings us to two conclusions. First, we confirm that planetesimal accretion can be safely ignored in our regime of interest. Secondly, this comparison tells us that it is easier and more efficient to form a planet by growing the core first, then accreting a massive envelope, rather than by growing the core and atmosphere in parallel. Moreover, our result represents a true, absolute minimum on the core mass that is needed to form a giant planet during the lifetime of the protoplanetary disk, as our core no longer grows.
 
 % \textbf{This works for this particular choice of core, disk etc. conditions, and I am expecting it to work for most of our parameter space, but it would probably be good to explore this numerically, at least to order of magnitude, with the estimates we have.} 
 
@@ -833,13 +908,29 @@ with $\Phi_H=\frac{5}{2}+\frac{\chi}{k T}$. Figure \ref{fig:deladion} shows the 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/delad_ionization.pdf}
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/delad_dissociation.pdf}
 %%\vspace{-0.5in}
 \caption{Adiabatic gradient as a function of the hydrogen ionization fraction $x$. The adiabatic gradient is $\delad=2/5$ for pure atomic hydrogen ($x=0$) and fully ionized hydrogen ($x=1$), and drops to low values during partial ionization.}
 \label{fig:deladion}
 \end{figure}
 
+\section{Radiative Windows} \label{radwindow}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/Opacity/del_vs_r.pdf}
+%%\vspace{-0.5in}
+\caption{Radiative and adiabatic gradient as a function of radius. The sharp drom in opacity due to dust sublimation can generate one or more radiative windows.}
+\label{fig:delvsr}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/kappa_grain_growth_SBL_paper.pdf}
+%%\vspace{-0.5in}
+\caption{Opacities...}
+\label{fig:opacity}
+\end{figure}
 
 \end{document}
 

@@ -1,5 +1,10 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{28}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Alibert} {et~al.}(2005){Alibert}, {Mordasini}, {Benz}, \&
+  {Winisdoerffer}}]{alibert05}
+{Alibert}, Y., {Mordasini}, C., {Benz}, W., \& {Winisdoerffer}, C. 2005, \aap,
+  434, 343
 
 \bibitem[{{Bell} \& {Lin}(1994)}]{bell94}
 {Bell}, K.~R. \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
@@ -19,6 +24,9 @@
 {D'Angelo}, G., {Durisen}, R.~H., \& {Lissauer}, J.~J. {Giant Planet
   Formation}, ed. S.~{Piper}, 319--346
 
+\bibitem[{{Dones} \& {Tremaine}(1993)}]{dones93}
+{Dones}, L. \& {Tremaine}, S. 1993, \icarus, 103, 67
+
 \bibitem[{{Goldreich} {et~al.}(2004){Goldreich}, {Lithwick}, \&
   {Sari}}]{goldreich04}
 {Goldreich}, P., {Lithwick}, Y., \& {Sari}, R. 2004, \araa, 42, 549
@@ -34,6 +42,9 @@
 \bibitem[{{Ikoma} {et~al.}(2000){Ikoma}, {Nakazawa}, \& {Emori}}]{ikoma00}
 {Ikoma}, M., {Nakazawa}, K., \& {Emori}, H. 2000, \apj, 537, 1013
 
+\bibitem[{{Kenyon} \& {Bromley}(2009)}]{kenyon09}
+{Kenyon}, S.~J. \& {Bromley}, B.~C. 2009, \apjl, 690, L140
+
 \bibitem[{{Kippenhahn} \& {Weigert}(1990)}]{kippenhahn90}
 {Kippenhahn}, R. \& {Weigert}, A. 1990, {Stellar Structure and Evolution}
 
@@ -46,6 +57,9 @@
   {Artymowicz}}]{lagrange00}
 {Lagrange}, A.-M., {Backman}, D.~E., \& {Artymowicz}, P. 2000, Protostars and
   Planets IV, 639
+
+\bibitem[{{Lambrechts} \& {Johansen}(2012)}]{lambrechts12}
+{Lambrechts}, M. \& {Johansen}, A. 2012, \aap, 544, A32
 
 \bibitem[{{Mizuno} {et~al.}(1978){Mizuno}, {Nakazawa}, \& {Hayashi}}]{mizuno78}
 {Mizuno}, H., {Nakazawa}, K., \& {Hayashi}, C. 1978, Progress of Theoretical
