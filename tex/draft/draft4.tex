@@ -381,9 +381,9 @@ Brackets indicate an average of, and ``$\Delta$" indicates a difference between,
 \section{Analytic Cooling Model}
 \label{sec:coolingan}
 
-This section develops the analytic version of our two-layer model, which is useful for predicting and explaining the results of numerical evolution models.  To obtain our analytic results, we neglect self-gravity.   As shown in Section \ref{sec:KH}, self-gravity becomes quantitatively important at surprisingly low atmospheric masses, $M_{\rm atm} \gtrsim 0.2 M\co$.  Thus the analytic model cannot accurately model the the later stages of evolution.  Nevertheless, the analytic model does successfully explain general trends with opacity and disk temperature and pressure, for example.
+This section develops the analytic version of our two-layer model, which is useful for predicting and explaining the results of numerical evolution models.  To obtain our analytic results, we neglect self-gravity.   As shown in Section \ref{sec:KH}, self-gravity becomes quantitatively important at surprisingly low atmospheric masses, $M_{\rm atm} \gtrsim 0.2 M\co$.  Thus the analytic model cannot accurately model the later stages of evolution.  Nevertheless, this model does explain general trends, including the dependence on opacity and disk temperature and pressure.
 
-The analytic model also assumes that the upper radiative radiative layer is thick, with a pressure depth $P\cb \gg P\di$.  This approximation limits the ability to study the initial cooling of very low mass atmospheres with thin outer radiative zones.  However since early evolution is quite rapid, this approximation negligibly affects total cooling times and criticial core masses, our main foci.
+The analytic model also assumes that the upper radiative radiative layer is thick, with a pressure depth $P\cb \gg P\di$.  This approximation limits the ability to study the initial cooling of very low mass atmospheres with thin outer radiative zones.  However since early evolution is quite rapid, this approximation negligibly affects total cooling times and critical core masses, our main foci.
 
 \subsection{Two Layer Structure}
 To apply the two layer cooling model analytically, we require expressions for the atmospheric structure.  Conditions at the RCB are crucial as they set the interior adiabat and the radiative losses. (Recall that luminosity generation in the radiative zone is neglected.)  We express the temperature and pressure of the RCB, at the radius $R\cb$, as 
@@ -392,48 +392,48 @@ T\cb &=& \chi T\di \slabel{eq:Tcb} \\
 P\cb &=& \theta P_{\rm d} e^{R_{\rm B}/R\cb} \, .\slabel{eq:PcbRcb}
 \end{subeqnarray}
 
-If the radiative zone were replaced by an isothermal layer, then hydrostatic balance would give $\chi = \theta = 1$.  Standard radiative structure calculations (see \App{RCBcorr} for details) give 
+The leading constants would be unity, $\chi = \theta = 1$, if the radiative zone were replaced by an isothermal layer.  In practice deviations from unity are modest.    Standard radiative structure calculations (see \App{RCBcorr} for details) give 
 \begin{equation}
 \label{eq:chi}
 \chi \simeq \Big(1-\frac{\delad}{\nabla_{\infty}} \Big)^{-\frac{1}{4-\beta}} \simeq 1.53 \, ,
 \end{equation}
-for $P\cb \gg P\di$, our regime of interest, and with the radiative temperature gradient at infinite depth, $\nabla_\infty = 1/2$, for our dust opacity.  The radiative zones are thus nearly isothermal, as also found by R06.  While  a simple closed form expression is not possible, the factor $\theta \simeq 0.556$ for our parameters.   According to \Eq{eq:PcbRcb} our pressure criterion also gives $R\cb \ll \RB$, but the inequality is logarithmically weaker.
+for $P\cb \gg P\di$, our regime of interest, and with the radiative temperature gradient at infinite depth, $\nabla_\infty = 1/2$, for our dust opacity.  The radiative zones are thus nearly isothermal, as also found by R06.  While  a simple closed form expression is not possible, the factor $\theta \simeq 0.556$ for our parameters.   
+%According to \Eq{eq:PcbRcb} our pressure criterion also gives $R\cb \ll \RB$, but the inequality is logarithmically weaker.
 
-Given the conditions at the RCB, hydrostatic balance gives the density and temperature profiles in the inner region along the adiabat,
+Given the conditions at the RCB,  the density and temperature profiles along the interior adiabat,
 \begin{subeqnarray}
 \rho &=& \rho\cb \left[ 1 + {\RB' \over r} - {\RB' \over R\cb}  \right]^{1/(\gamma -1)} \slabel{eq:rhoconv}  \\
-T	&=& T\cb \left[ 1 + {\RB' \over r} - {\RB' \over R\cb}  \right] \slabel{eq:Tconv}\, .
+T	&=& T\cb \left[ 1 + {\RB' \over r} - {\RB' \over R\cb}  \right] \slabel{eq:Tconv}\, ,
 \end{subeqnarray} 
 %Note (to self) that the "1+" is neglibible in Rcb << RB limit taken elsewhere. 
-The effective Bondi radius
+follow from hydrostatic balance.  We introduce an effective Bondi radius
 \begin{equation}
 \RB' \equiv {G M\co \over C_P T\cb} = {\delad \over \chi} \RB
 \end{equation} 
-simplifies expressions, with $C_P = \Rg / \delad$ the specific heat at constant pressure.
+to simplify expressions, with $C_P = \Rg / \delad$ the specific heat at constant pressure.
 
-Even simpler expressions hold deep in the adiabatic interior, where $r \ll R\cb \ll \RB'$ gives
+Deep in the adiabatic interior, where $r \ll R\cb \ll \RB'$, the profiles follow simple power laws,
 \begin{subeqnarray}\label{eq:deep}
 \rho &\simeq& \rho\cb \left[ {\RB' \over r}\right]^{1/(\gamma -1)} \propto r^{-5/2} \slabel{eq:rhoconvdeep}  \\
 T	&\simeq& T\cb {\RB' \over r} = {G M\co \over C_P r} \slabel{eq:Tconvdeep}\, .
 \end{subeqnarray} 
-While the radial density profile depends on the adiabatic index, the temperature scaling does not.  For reference, if self-gravity is included, the temperature profile satifies
+While the radial density profile depends on the adiabatic index, the $r^{-1}$ temperature scaling is universal.  For reference, if self-gravity is included, the temperature profile satisfies
 \begin{equation} \label{eq:TPsg}
 {dT \over dr} = - {G m(r) \over C_P r^2}\, .
 \end{equation} 
-Thus the enclosed mass in self-gravitating models gives a temperature profile flatter than $T \propto r^{-1}$.
+Thus in self-gravitating models, the enclosed mass gives a temperature profile flatter than $T \propto r^{-1}$.
 
-The total specific energy at depth
+Returning to our non-self-gravitating model, the total specific energy at depth
 \begin{equation}\label{eq:ean}
 e = e_g + u = -\delad {GM\co \over r} \, .
 \end{equation} 
-is thus generically proportional to the gravitational potential, $e_g = -GM\co/r$. 
-%AY: note $u$ introduced already in section 2.  Furthermore meaning obvious from context here.  e_G is good to restate in the non-self-grav limit which changed.
+is simply proportional to the gravitational potential, $e_g = -GM\co/r$. 
 
 \subsection{Mass, Energy and Luminosity}
 \label{MELan}
-The most relevant quantities for the global cooling model (equation \ref{eq:coolingglobal}) are the integrated energy, luminosity, and atmospheric mass.  In our non-self-gravitating limit, the mass of our nearly isothermal radiative zones is less than the convective interior, as shown in \App{iso}.
+The most relevant quantities for global cooling are the integrated energy, luminosity, and atmospheric mass.  In our non-self-gravitating limit, the mass of our nearly isothermal radiative zones is less than the convective interior, as shown in \App{iso}.
 
-\Eq{eq:rhoconv} thus integrates to give the atmospheric mass
+The atmospheric mass is thus given by the integration of \Eq{eq:rhoconv}, 
 \begin{eqnarray} 
 \label{eq:Matman}
 M_{\rm atm} %&=& 4 \pi \int_{R\co}^{R\cb} \rho r^2 dr \\  %AY: any interested reader knows this step, right?
@@ -442,7 +442,7 @@ M_{\rm atm} %&=& 4 \pi \int_{R\co}^{R\cb} \rho r^2 dr \\  %AY: any interested re
 % \approx 0.54 \rho\cb {\RB'}^{5/2} \sqrt{r\cb} \\
 %&=& 0.54{\RB'^{3} \sqrt{\chi} \over  \sqrt{ \ln[P\cb/(\theta P\di)]}} \, .
 \end{eqnarray}
-in the relevant limit $R\co \ll R\cb \ll \RB'$ and for $\gamma =  7/5$.  Mass is concentrated near the outer regions of the convective zone, a result that holds more generally for $\gamma > 4/3$.  
+in the relevant limit $R\co \ll R\cb \ll \RB'$ and for $\gamma =  7/5$.  Mass is concentrated near the outer regions of the convective zone, a result that holds for $\gamma > 4/3$.  
 
 Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the critical ratio of atmosphere to core mass becomes
 \begin{equation} \label{eq:crit}
@@ -461,7 +461,7 @@ P\cb = \xi P_M ,
 i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description, but since it remains order unity we simply hold it fixed in our scalings.
 
 
-The total energy is concentrated towards the core if $u \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ does not. 
+The total energy is concentrated towards the core if $|u| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ would not. 
 Integration of \Eq{eq:ean} over the mass of the atmosphere thus gives
 \begin{subeqnarray} 
 E &=& - 4 \pi \nabla_{\rm ad} G M\co \int_{R\co}^{R\cb} \rho r dr \\
@@ -472,17 +472,17 @@ E &=& - 4 \pi \nabla_{\rm ad} G M\co \int_{R\co}^{R\cb} \rho r dr \\
 \end{subeqnarray} 
 with $\gamma < 3/2$ and $\gamma = 7/5$ in \Eqs{eq:Ean}{eq:Eus}, respectively. % and then revert to the standard Bondi radius $\RB = G M\co/(\Rg T\di)$ in terms of the disk temperature.
 
-Applying marginal convective stability, $\delrad = \delad$, to \Eq{eq:delrad} gives the emergent luminosity from the radiative-convective boundary, 
+The emergent luminosity from the radiative-convective boundary, 
 \begin{equation} \label{eq:Lcb}
 L\cb = {64 \pi G M\cb \sigma T\cb^4 \over 3 \kappa P\cb } \nabla_{\rm ad} \approx L\di {P_{\rm d} \over P\cb}\, , % \left({P\di \over P\cb}\right)%^{1+\alpha}
 \end{equation} 
-where we define 
+follows from \Eq{eq:delrad} and marginal convective stability, $\delrad = \delad$, where we define 
 \begin{equation} 
 L\di \equiv {64 \pi G M\cb \sigma T_{\rm d}^4 \over 3 \kappa(T_{\rm d}) P_{\rm d}} \nabla_{\rm ad}\chi^{4-\beta}.
 \end{equation} 
-The inverse scaling $L\cb \propto 1/P\cb$ shows that luminosity drops as the atmosphere cools and $P\cb$ deepens.  This result relies on the pressure independence of  dust opacities.  For fully non-self-gravitating results, we replace $M\cb$, the mass up to the RCB, with the core mass, but the mass of the convective atmosphere could be included for a slightly higher order estimate.
+The inverse scaling $L\cb \propto 1/P\cb$ shows that luminosity drops as the atmosphere cools and $P\cb$ deepens.  This result relies on the pressure independence of  dust opacities.  For fully non-self-gravitating results, we replace $M\cb$, the mass up to the RCB, with the core mass, but the mass of the convective atmosphere can be included for a slightly higher order estimate.
 
-\subsection{Simplified Cooling Model}
+\subsection{Cooling Times \& Core Masses}
 \label{coolingan}
 %We can eliminate $R\cb$ from equation (\ref{eq:Matman}) using \Eq{eq:PcbRcb}.  The ratio of atmosphere to core mass is then  
 %\begin{equation} \label{eq:crit}
@@ -525,9 +525,9 @@ Setting $t_{\rm co} = t\di$ gives
 \MC \approx 100 {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus.
 \end{equation} 
 
-Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this Paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation must be applied with caution, an interesting result in itself.
+Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this Paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation can be misleading, an interesting result in itself.
 
-The analytic model is also useful because, despite the amplitude error, it explains the basic scaling of our (and other) numerical models.  As is well known, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass. Lower disk temperatures also decrease both $t_{\rm co}$ and $\MC$.  Furthermore the decline in both quantities with semimajor axis is completely generated by the disk temperature law (ignoring $\xi$).  The temperature dependence are a competition between two main effects.  The higher luminosity, $\propto T^{4-\beta}$, at higher temperatures gives faster cooling, which opposes the overall effect.  The larger Bondi radius, and the effectively stronger gravity of the core, is the dominant effect that gives faster cooling at lower temperatures.  For different $\beta$ values, $t_{\rm co} \propto F_T^{ \beta + 1/2}$, so the slope of the dust opacity is an important moderating effect on the cooling.
+Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass. Lower disk temperatures also decrease both $t_{\rm co}$ and $\MC$.  Furthermore the decline in both quantities with semimajor axis is completely generated by the disk temperature law (ignoring the logarithmic $\xi$).  The temperature dependence are a competition between two main effects.  The higher luminosity, $\propto T^{4-\beta}$, at higher temperatures gives faster cooling, which opposes the overall effect.  The larger Bondi radius, and the effectively stronger gravity of the core, is the dominant effect that gives faster cooling at lower temperatures.  For different $\beta$ values, $t_{\rm co} \propto F_T^{ \beta + 1/2}$, so the slope of the dust opacity is an important moderating effect on the cooling.
 
 The cooling timescale and critical core mass depend only weakly on the disk pressure, via the  logarithmic factor $\xi$.  Section \ref{sec:TPeffects} shows that these analytic predictions for disk temperature and pressure dependence compare favorably with numerical results.  %This weak dependence is a consequence of cooling coming from the radiative-convective boundary.  Note that the scaling laws do not reflect the changes to $\xi$ which remains order unity. % and is here given the appropriate value for the nominal parameters.
 
@@ -787,7 +787,7 @@ In this section we estimate the temperature and pressure corrections at the RCB 
 \end{equation}
 Here $M$ is the total planet mass. Since our analytic model neglects self-gravity, $M=M\co$ and therefore $\nabla\di$ is constant. From equation (\ref{eq:delradan}) and $\delrad=d \ln T / d\ln P$, the temperature profile in the radiative region integrates to
 \begin{equation}\label{eq:radTP}
-\left(T \over T_{\rm d}\right)^{4-\beta} - 1 = {\nabla\di \over \nabla_\infty} \left(\left{P \over P_{\rm d}}\right - 1 \right) \, ,
+\left(T \over T_{\rm d}\right)^{4-\beta} - 1 = {\nabla\di \over \nabla_\infty} \left( {P \over P_{\rm d}} - 1 \right) \, ,
 \end{equation} 
 where $\nabla_\infty = 1/(4-\beta)$ is the radiative temperature gradient for $T ,P \rightarrow \infty$.
 Applying \Eqs{eq:delradan}{eq:radTP} at the RCB (where $\delrad = \delad$) under the assumption that $P\cb \gg P_{\rm d}$ results in  $T\cb=\chi T\di$ as in \Eq{eq:Tcb}, with $\chi$ defined in \Eq{eq:chi}.
@@ -841,7 +841,7 @@ In this section we check the relevance of the neglected surface terms in \Eq{eq:
 \begin{equation}
 {G M \dot{M} \over R \dot{E}} = {G M  \over R}{dM \over dE} \sim {G M\co^2 \over R_B E}{P\cb \over P_M} \sim \sqrt{R\co \over R_B} \ll 1,
 \end{equation} 
-where we assume $P\cb \sim P_M$  for a massive atmosphere.  Accretion energy at the protoplanetary surface is thus very weak for marginally self-gravitating atmospheres, and even weaker for lower mass atmospheres.  A similar scaling analysis shows that the work term $P\surf \p V\surf/\p t$ is similarly weak.  Nevertheless, our numerical calculations include these surface terms in a more realistic and complete model of self-gravitating atmospheres.
+where we assume $P\cb \sim P_M$  for a massive atmosphere.  Accretion energy at the protoplanetary surface is thus very weak for marginally self-gravitating atmospheres, and even weaker for lower mass atmospheres.  A similar scaling analysis shows that the work term $P_M \p V_M/\p t$ is similarly weak.  Nevertheless, our numerical calculations include these surface terms in a more realistic and complete model of self-gravitating atmospheres.
 
 
 %\subsection{Hydrogen Dissociation}
