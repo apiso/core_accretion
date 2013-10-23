@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{30}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Beckwith} \& {Sargent}(1991)}]{beckwith91}
@@ -11,6 +11,9 @@
 
 \bibitem[{{Bell} \& {Lin}(1994)}]{bell94}
 {Bell}, K.~R. \& {Lin}, D.~N.~C. 1994, \apj, 427, 987
+
+\bibitem[{Blanksby \& {Ellison}(2003)}]{blanksby03}
+Blanksby, S.~J. \& {Ellison}, G.~B. 2003, Acc. Chem. Res., 36, 255
 
 \bibitem[{{Bodenheimer} \& {Pollack}(1986)}]{boden86}
 {Bodenheimer}, P. \& {Pollack}, J.~B. 1986, \icarus, 67, 391
@@ -35,8 +38,16 @@
   {Sari}}]{goldreich04}
 {Goldreich}, P., {Lithwick}, Y., \& {Sari}, R. 2004, \araa, 42, 549
 
+\bibitem[{{Ida} {et~al.}(2013){Ida}, {Lin}, \& {Nagasawa}}]{ida13}
+{Ida}, S., {Lin}, D.~N.~C., \& {Nagasawa}, M. 2013, \apj, 775, 42
+
 \bibitem[{{Ikoma} {et~al.}(2000){Ikoma}, {Nakazawa}, \& {Emori}}]{ikoma00}
 {Ikoma}, M., {Nakazawa}, K., \& {Emori}, H. 2000, \apj, 537, 1013
+
+\bibitem[{{Jayawardhana} {et~al.}(1999){Jayawardhana}, {Hartmann}, {Fazio},
+  {Fisher}, {Telesco}, \& {Pi{\~n}a}}]{jay99}
+{Jayawardhana}, R., {Hartmann}, L., {Fazio}, G., {Fisher}, R.~S., {Telesco},
+  C.~M., \& {Pi{\~n}a}, R.~K. 1999, \apjl, 521, L129
 
 \bibitem[{{Kippenhahn} \& {Weigert}(1990)}]{kippenhahn90}
 {Kippenhahn}, R. \& {Weigert}, A. 1990, {Stellar Structure and Evolution}
@@ -44,12 +55,21 @@
 \bibitem[{{Kittel} {et~al.}(1981){Kittel}, {Kroemer}, \& {Landsberg}}]{kittel}
 {Kittel}, C., {Kroemer}, H., \& {Landsberg}, P.~T. 1981, \nat, 289, 729
 
+\bibitem[{{Langmuir}(1912)}]{langmuir12}
+{Langmuir}, I. 1912, J. Am. Chem. Soc., 34, 860
+
 \bibitem[{{Mandl}(1989)}]{mandl89}
 {Mandl}, F. 1989, {Statistical Physics, 2nd Edition}
 
 \bibitem[{{Mizuno} {et~al.}(1978){Mizuno}, {Nakazawa}, \& {Hayashi}}]{mizuno78}
 {Mizuno}, H., {Nakazawa}, K., \& {Hayashi}, C. 1978, Progress of Theoretical
   Physics, 60, 699
+
+\bibitem[{{Ormel}(2013)}]{ormel13}
+{Ormel}, C.~W. 2013, \mnras, 428, 3526
+
+\bibitem[{{Papaloizou} \& {Nelson}(2005)}]{pn05}
+{Papaloizou}, J.~C.~B. \& {Nelson}, R.~P. 2005, \aap, 433, 247
 
 \bibitem[{{Papaloizou} \& {Terquem}(1999)}]{pap99}
 {Papaloizou}, J.~C.~B. \& {Terquem}, C. 1999, \apj, 521, 823
@@ -64,6 +84,11 @@
   {Kwon}, W., {Lazio}, J., {Linz}, H., {Mundy}, L.~G., {Sargent}, A.~I.,
   {Storm}, S., {Testi}, L., \& {Wilner}, D.~J. 2012, \apjl, 760, L17
 
+\bibitem[{{Pollack} {et~al.}(1996){Pollack}, {Hubickyj}, {Bodenheimer},
+  {Lissauer}, {Podolak}, \& {Greenzweig}}]{pollack96}
+{Pollack}, J.~B., {Hubickyj}, O., {Bodenheimer}, P., {Lissauer}, J.~J.,
+  {Podolak}, M., \& {Greenzweig}, Y. 1996, \icarus, 124, 62
+
 \bibitem[{{Pollack} {et~al.}(1985){Pollack}, {McKay}, \&
   {Christofferson}}]{pollack85}
 {Pollack}, J.~B., {McKay}, C.~P., \& {Christofferson}, B.~M. 1985, \icarus, 64,
@@ -76,13 +101,18 @@
   Horn}}]{saumon95}
 {Saumon}, D., {Chabrier}, G., \& {van Horn}, H.~M. 1995, \apjs, 99, 713
 
+\bibitem[{{Semenov} {et~al.}(2003){Semenov}, {Henning}, {Helling}, {Ilgner}, \&
+  {Sedlmayr}}]{semenov03}
+{Semenov}, D., {Henning}, T., {Helling}, C., {Ilgner}, M., \& {Sedlmayr}, E.
+  2003, \aap, 410, 611
+
 \bibitem[{{Stevenson}(1982)}]{stevenson82}
 {Stevenson}, D.~J. 1982, \planss, 30, 755
 
 \bibitem[{{Thompson}(2006)}]{thompson06}
 {Thompson}, M.~J. 2006, {An introduction to astrophysical fluid dynamics}
 
-\bibitem[{{Wuchterl}(1993)}]{wuchterl93}
-{Wuchterl}, G. 1993, \icarus, 106, 323
+\bibitem[{{Vardya}(1960)}]{vardya60}
+{Vardya}, M.~S. 1960, \apjs, 4, 281
 
 \end{thebibliography}
