@@ -661,7 +661,7 @@ The time to undergo atmospheric runaway growth, $t_{\rm run}$, sets a minimum ti
 \hspace{-.1in}
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/cumul_coolingtime_vs_Matm_10au_mu235.pdf}
 %\vspace{-0.5in}
-\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $5 M_{\oplus}$ and $14 M_{\oplus}$ (as labeled) at $10$ AU in our fiducial disk. Circles mark the runaway growth time, $t_{\rm run}$, which occurs at roughly the crossover mass, $M_{\rm{atm}} = M_{\rm c}$.  Both the time to reach a fixed atmosphere mass and the runaway growth time are shorter for larger cores. For larger $M\co$, runaway growth commences at higher $M_{\rm atm}/M\co$ values.}
+\caption{Time to grow an atmosphere of mass $M_{\rm{atm}}$ for cores with fixed masses between $5 M_{\oplus}$ and $14 M_{\oplus}$ (as labeled) at $10$ AU in our fiducial disk. Circles mark the runaway growth time, $t_{\rm run}$, which occurs at roughly the crossover mass, $M_{\rm{atm}} = M\co$.  Both the time to reach a fixed atmosphere mass and the runaway growth time are shorter for larger cores. For larger $M\co$, runaway growth commences at higher $M_{\rm atm}/M\co$ values.}
 \label{fig:tvsM}
 \end{figure}
 
@@ -681,7 +681,7 @@ The time to undergo atmospheric runaway growth, $t_{\rm run}$, sets a minimum ti
 
 \Fig{fig:tvsMcomp} shows how $t_{\rm run}$ varies with core mass, also at 10 AU.  The numerical results are plotted against our non-self-gravitating analytic model, described in \S\ref{sec:coolingan}.  The analytic model reproduces the general decline in $t_{\rm run}$ with core mass.  The numerical model, which includes self-gravity, has a somewhat steeper mass dependence.  A modest correction due to self-gravity is unsurprising, and consistent with the above-mentioned trend in $M_{\rm atm}/M\co$ ratios.  Moreover, in the analytic theory, crucial quantities like $M_{\rm atm}$ and $L$ (both roughly $\propto M\co^3$ near crossover) have non-linear dependence on core mass, offering plenty of opportunity for self-gravitational corrections.
 
-The effect of mean molecular weight is also shown in \Fig{fig:tvsMcomp}.  A lower $\mu$ gives longer growth times, as it results in a smaller atmosphere scale height and thus a weaker pressure gradient to oppose self-gravity, which accelerates growth.  For $\mu = 2.0$, which represents the idealized case of an H$_2$ atmosphere devoid of Helium, $t_{\rm run}$ increases by factors of $\sim 2 - 3$.  Thus fairly drastic changes in atmospheric composition are required for $\mu$ to significantly affect core accretion timescales.
+The effect of mean molecular weight is also shown in \Fig{fig:tvsMcomp}.  A lower $\mu$ gives longer growth times, because more cooling is required to compress the atmosphere.  This effect is explained by the increase in the atmospheric scale height $\propto 1/\mu$ while the Bondi radius decreases, $\RB \propto \mu$.  For $\mu = 2.0$, which represents the idealized case of an H$_2$ atmosphere completely devoid of Helium, $t_{\rm run}$ increases by factors of $\sim 2 - 3$.  Thus fairly drastic changes in atmospheric composition are required for $\mu$ to significantly affect core accretion timescales.
 
 %Looking ahead to our discussion of the critical core mass in \S\ref{sec:critcore}, \Fig{fig:tvsMcomp} shows that $t_{\rm run}$ equals a characteristic disk lifetime of 3 Myr for a core mass of  $M_{\rm crit} \approx 7 \, M_\oplus$  (for the standard case of $\mu = 2.35$).  
 
@@ -706,7 +706,7 @@ The decline in growth times at lower temperatures arises from a variety of compe
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mcrit_vs_a_3Myrs_new.pdf}
 %\vspace{-0.5in}
-\caption{The critical core mass as a function of semi-major axis, for a disk lifetime of $3$ Myrs and two values of the mean molecular weight ($\mu = 2.35$ is standard for a Hydrogen-Helium Solar mixture). The decline in $M_{\rm c,crit}$ with distance is a robust result for standard disk models.  The analytic model, which neglects self-gravity, over-predicts the steepness of the decline.}
+\caption{The critical core mass as a function of semi-major axis, for a disk lifetime of $3$ Myrs and two values of the mean molecular weight ($\mu = 2.35$ is for Solar abundances). The decline in $M_{\rm c,crit}$ with distance is a robust result for standard disk models.  The analytic model, which neglects self-gravity, over-predicts the steepness of the decline.}
 \label{fig:Mcvsa}
 \end{figure}
 
@@ -773,9 +773,9 @@ We study the formation of giant planets by the core accretion mechanism.  Our mo
 
 Rapid gas accretion onto low mass cores could explain the origin of distant directly imaged giant planets \citep{marois08, lagrange10}.  However, our model does not address the details of how solid cores grow, and many possibilities exist.  For a giant planet to form with a core near the minimum mass, the core's growth must  first be rapid and then slow significantly, as in phases I and II, respectively, of \cite{pollack96}.   
 
-Initial core growth must be fast, compared to the disk lifetime, to get a sufficiently massive core.  Subsequent slowing of core growth is required to allow the atmosphere to cool and contract.  To be more quantitative, the minimum cooling luminosity in \Fig{fig:Ltplot}, $L\approx 3.5 \times 10^{24}\;\mathrm{erg s}^{-1}$, could be cancelled by low levels of heating from solid accretion.  Specifically, a core mass doubling timescale of $\sim$$400$ Myr would provide enough heating to stall atmospheric cooling and growth.  
+Initial core growth must be fast, compared to the disk lifetime, to get a sufficiently massive core.  Subsequent slowing of core growth is required to allow the atmosphere to cool and contract.  To be more quantitative, the minimum cooling luminosity in \Fig{fig:Ltplot}, $L\approx 3.5 \times 10^{24}\;\mathrm{erg s}^{-1}$, could be cancelled by low levels of heating from solid accretion.  Specifically, a core mass doubling timescale of $\sim$$400$ Myr, or faster, would provide enough heating to stall atmospheric cooling and growth.  
 
-Thus for giant planets to form around cores near $M\crit$, core growth must stall quite severely.   The accretion and scattering of local planetesimals, combined with the inward migration of smaller solids past the core, offers a plausible means to sufficiently isolate the core.  On the other hand, non-negligible accretion of solids onto cores could continue for the lifetime of the gas disk.  In these cases, relatively high mass cores would remain as ice giants, akin to Uranus and Neptune.   Ongoing direct imaging surveys and their successors \citep{hinz12, macintosh12} will help discriminate among the various planet formation pathways in the outskirts of protoplanetary disks.
+Thus for giant planets to form around cores near $M\crit$, core growth must stall quite severely.   The accretion and scattering of local planetesimals, combined with the inward aerodynamic drift of smaller solids past the core, offers a plausible means to sufficiently isolate the core.  On the other hand, non-negligible accretion of solids onto cores could continue for the lifetime of the gas disk.  In these cases, relatively high mass cores would remain as ice giants, akin to Uranus and Neptune.   Ongoing direct imaging surveys and their successors \citep{hinz12, macintosh12} will help discriminate among the various planet formation pathways in the outskirts of protoplanetary disks.
 
 \bibliographystyle{apj}
 \bibliography{refs}
