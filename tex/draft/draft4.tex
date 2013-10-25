@@ -383,7 +383,7 @@ Brackets indicate an average of, and ``$\Delta$" indicates a difference between,
 \section{Analytic Cooling Model}
 \label{sec:coolingan}
 
-This section develops the analytic version of our two-layer model. This analytic model is less accurate, primarily because it neglects self-gravity, which we show (in \S\ref{sec:KH}) to be important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless, the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
+This section develops the analytic version of our two-layer model. This analytic model is less accurate than our numerical model, primarily because it neglects self-gravity, which we show (in \S\ref{sec:KH}) to be important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless, the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
 
 The analytic model also assumes that the upper radiative layer is thick enough that $P\cb \gg P\di$.  This approximation ignores the earliest stages of cooling, which are rapid enough to be negligible.  Finally, the analytic model ignores the surface terms in \Eq{eq:coolingglobal}, which we show to be a modest correction in \S\ref{sec:endoftime}.
 
@@ -445,7 +445,7 @@ M_{\rm atm} %&=& 4 \pi \int_{R\co}^{R\cb} \rho r^2 dr \\  %AY: any interested re
 \end{eqnarray}
 in the relevant limit $R\co \ll R\cb \ll \RB'$ and for $\gamma =  7/5$.  Mass is concentrated near the outer regions of the convective zone, a result that holds for $\gamma > 4/3$.  
 
-Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the critical ratio of atmosphere to core mass becomes
+Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the ratio of atmosphere to core mass becomes
 \begin{equation} \label{eq:crit}
 {M_{\rm atm} \over M\co} = {P\cb \over \xi P_M}\, ,
 \end{equation} 
@@ -459,7 +459,7 @@ The atmosphere mass increases as radiative losses lower the internal adiabat and
 \begin{equation} \label{eq:Pcbc}
 P\cb = \xi P_M ,
 \end{equation} 
-i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings, but not in plots.
+i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings, but not when plotting the results.
 
 
 The total energy is concentrated towards the core if $|u| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ (monatomic gas) would not. 
@@ -511,7 +511,7 @@ Setting $t_{\rm co} = t\di$ gives
 
 Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising, as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation can be misleading, an interesting result in itself.
 
-Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.
+Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known \citep{HubBod05}, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.
 
 Lower disk temperatures decrease both $t_{\rm co}$ and $\MC$.  The decline in both quantities with semimajor axis is completely explained by the temperature  profile (ignoring the logarithmic factor $\xi$).  The temperature dependence is a competition between two main effects.   The Bondi radius, which quantifies the strength of gravity, decreases for lower temperatures. On the other hand, the luminosity, $\propto T^{4-\beta}$, is lower at colder temperatures, which slows cooling and opposes the overall effect.  With $t_{\rm co} \propto F_T^{ \beta + 1/2}$, the slope of the dust opacity,  $\beta$, is an important factor in regulating the resulting growth time.
 
