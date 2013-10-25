@@ -115,7 +115,7 @@
 \begin{abstract}
 
 The core accretion hypothesis proposes that giant planets form by the accretion of gas onto a solid protoplanetary core. The minimum (or critical) core mass to form a gas giant is typically quoted as $10 M_{\oplus}$. This value, however, depends on several factors, such as the location in the disk, atmospheric opacity, and the accretion rate of solids.  Motivated by ongoing direct imaging searches for giant planets, this study focuses on core mass requirements in the outer disk.
-Our model investigates the growth of atmospheres around solid cores of fixed mass.  Without planetesimal accretion to heat the atmosphere, our limiting case gives the fastest possible atmospheric growth by Kelvin-Helmholtz contraction. We develop a two-layer, spherical atmosphere model with an inner convective region and an outer radiative zone that matches onto the protoplanetary disk.  For different locations in the disk, we determine the minimum core mass for a giant planet to form within a typical disk lifetime of 3 Myr.   The minimum core mass required to nucleate atmosphere collapse is $\sim$$8.5 M_{\oplus}$ at 5 AU and steadily decreases to $\sim$$3.5 M_{\oplus}$ at 100 AU, for a Solar composition atmosphere with a standard ISM dust opacity.   This trend is mainly explained by the cooler temperatures in the outer disk. Lower pressures and densities in the outer disk have a negligible effect on core mass requirements.  At all distances, decreasing the dust opacity and/or increasing the mean molecular weight of the atmosphere reduces the critical core mass.   The ongoing accretion of solids would delay or prevent atmospheric runaway growth.  Thus our low values for minimum core masses do not contradict the existence of ice giants, but emphasize the importance of the accretion history of solids.  We also develop a non-self-gravitating, analytic cooling model to help explain our numerical trends.  Additionally, this comparison reveals that self-gravity significantly affects atmospheric evolution even when the atmosphere is only $\sim$$20\%$ as massive as the core.
+Our model investigates the growth of atmospheres around solid cores of fixed mass.  Without planetesimal accretion to heat the atmosphere, our limiting case gives the fastest possible atmospheric growth by Kelvin-Helmholtz contraction. We develop a two-layer, spherical atmosphere model with an inner convective region and an outer radiative zone that matches onto the protoplanetary disk.  For different locations in the disk, we determine the minimum core mass for a giant planet to form within a typical disk lifetime of 3 Myr.   The minimum core mass required to nucleate atmosphere collapse is $\sim$$8.5 M_{\oplus}$ at 5 AU and steadily decreases to $\sim$$3.5 M_{\oplus}$ at 100 AU, for a Solar composition atmosphere with a standard dust opacity.   This trend is mainly explained by the cooler temperatures in the outer disk. Lower pressures and densities in the outer disk have a negligible effect on core mass requirements.  At all distances, decreasing the dust opacity and/or increasing the mean molecular weight of the atmosphere reduces the critical core mass.   The ongoing accretion of solids would delay or prevent atmospheric runaway growth.  Thus our low values for minimum core masses do not contradict the existence of ice giants, but emphasize the importance of the accretion history of solids.  We also develop a non-self-gravitating, analytic cooling model to help explain our numerical trends.  Additionally, this comparison reveals that self-gravity significantly affects atmospheric evolution even when the atmosphere is only $\sim$$20\%$ as massive as the core.
 
 \end{abstract}
 
@@ -237,7 +237,7 @@ H\di = {c\di / \varOmega} = 0.42 \sqrt{F_T}  \, \aun{10}^{9/7} \AU\, .
 \end{equation} 
 in terms of the Keplerian frequency $\varOmega = \sqrt{G M_\ast/a^3}$, with $G$ the gravitational constant and $M_\ast$ the stellar (in this work Solar) mass. 
 
-We assume a dust opacity following \citet{bell94}:
+We assume a dust opacity characteristic of interstellar grains, following \citet{bell94}:
 \begin{equation}
 \label{eq:opacitylaw}
 \kappa= 2 F_\kappa  \left(\frac{T}{100\; \rm{K}}\right)^{\beta} \; \mathrm{cm^2 ~ g^{-1}},
@@ -709,7 +709,7 @@ The decline in growth times at lower temperatures arises from a variety of compe
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mcrit_vs_a_3Myrs_new.pdf}
 %\vspace{-0.5in}
-\caption{The critical core mass as a function of semi-major axis, for a disk lifetime of $3$ Myrs and two values of the mean molecular weight ($\mu = 2.35$ is for Solar abundances). The decline in $M_{\rm c,crit}$ with distance is a robust result for standard disk models.  The analytic model, which neglects self-gravity, over-predicts the steepness of the decline.}
+\caption{The critical core mass as a function of semimajor axis, for a disk lifetime of $3$ Myrs and two values of the mean molecular weight ($\mu = 2.35$ is for Solar abundances). The decline in $M_{\rm c,crit}$ with distance is a robust result for standard disk models.  The analytic model, which neglects self-gravity, over-predicts the steepness of the decline.}
 \label{fig:Mcvsa}
 \end{figure}
 
@@ -757,10 +757,10 @@ Our model uses an ideal gas law and a polytropic EOS, given by \Eq{eq:idealEOS}.
 
 \section{Summary} \label{sec:conclusions}
 
-We study the formation of giant planets by the core accretion mechanism.  Our models start with a solid core that is embedded in a gas disk and no longer accreting solids.  We determine -- as a function of disk location, core mass, and the atmosphere's mean molecular weight and opacity -- whether runaway atmospheric growth can occur within a typical disk lifetime of 3 Myr.  By neglecting the accretion luminosity of planetesimals and smaller solids, we obtain the fastest allowed rate of gas accretion.  Of relevance to direct imaging surveys, we address core accretion in the outer disk.  Our model approximations, including spherical accretion and low mass radiative exteriors with opacities dominated by dust, are tuned to conditions in the outer disk.   Our main findings are as follows:
+We study the formation of giant planets by the core accretion mechanism.  Our models start with a solid core that is embedded in a gas disk and no longer accreting solids.  We determine -- as a function of disk location, core mass, and the atmosphere's mean molecular weight and opacity -- whether runaway atmospheric growth can occur within a typical disk lifetime of 3 Myr.  By neglecting the accretion luminosity of planetesimals and smaller solids, we obtain the fastest allowed rate of gas accretion.  We address core accretion in the outer disk, as it is relevant to direct imaging surveys.  Our model approximations, including spherical accretion and low mass radiative exteriors with opacities dominated by dust, are tuned to conditions in the outer disk.   Our main findings are as follows:
 
 \begin{enumerate}
-\item The minimum or critical core mass, $M\crit$, for giant planet formation declines with distance in standard protoplanetary disk models.  For our reference case, the critical mass is $\sim$$8.5 M_{\oplus}$ at $a = 5$ AU, decreasing to $\sim$$3.5 M_{\oplus}$ at $a =100$ AU.  This decline roughly follows $M\crit \propto a^{-0.3}$.
+\item The minimum or critical core mass, $M\crit$, for giant planet formation declines with stellocentric distance in standard protoplanetary disk models.  For our reference case, the critical mass is $\sim$$8.5 M_{\oplus}$ at $a = 5$ AU, decreasing to $\sim$$3.5 M_{\oplus}$ at $a =100$ AU.  This decline roughly follows $M\crit \propto a^{-0.3}$.
 
 \item The drop in disk temperature with radial distance explains the decrease in critical core masses.  The lower pressures and densities in the outer disk only weakly suppress atmospheric growth.
 
@@ -876,7 +876,7 @@ The mass of the atmosphere is determined by integrating equation (\ref{eq:struct
 M_{\rm iso} \approx 4 \pi \rho\di {R\cb^4 \over R_{\rm B}} e^{R_B/R\cb} = 4\pi \rho\cb \frac{R\cb^4}{R_{\rm B}}
 \end{equation}
 with $\rho\cb$ the density at the RCB.
-This result is the leading order term in a series expansion. By comparing the expression above and \Eq{eq:Matman} under the assumption that $R\cb \ll R_{\rm B}$, we see that the mass of the outer radiative region (which is nearly isothermal) is negligible when compared with the atmosphere mass in the convective layer, as stated in section \S\ref{sec:coolingan}.
+This result is the leading order term in a series expansion. By comparing the expression above and \Eq{eq:Matman} under the assumption that $R\cb \ll R_{\rm B}$, we see that the mass of the outer radiative region (which is nearly isothermal) is negligible when compared with the atmosphere mass in the convective layer, as stated in Section \ref{sec:coolingan}.
 % Furthermore, because the atmospheric scale-height at $R\co$ is $H_\rho = |dr /d\ln\rho| = R\co^2/R_B$, the result is intuitively the correct order of magnitude.
 %Planets can attract massive atmospheres if $\theta\co \equiv R_B/R\co \gg 1$.  
 
