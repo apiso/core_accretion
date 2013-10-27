@@ -361,12 +361,12 @@ Brackets indicate an average of, and ``$\Delta$" indicates a difference between,
 \section{Analytic Cooling Model}
 \label{sec:coolingan}
 
-This section develops the analytic version of our two-layer model. This analytic model is less accurate, primarily because it neglects self-gravity which we show (in \S\ref{sec:KH}) to be important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
+This section develops the analytic version of our two-layer model. This analytic model is less accurate than our numerical model, primarily because it neglects self-gravity, which we show (in \S\ref{sec:KH}) to be important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless, the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
 
-The analytic model also assumes that the upper radiative radiative layer is thick enough that $P\cb \gg P\di$.  This approximation ignores the earliest stages of cooling, which are rapid enough to be negligible.  Finally the analytic model ignores the surface terms in \Eq{eq:coolingglobal}, which we show to be a modest correction in \S\ref{sec:endoftime}.
+The analytic model also assumes that the upper radiative layer is thick enough that $P\cb \gg P\di$.  This approximation ignores the earliest stages of cooling, which are rapid enough to be negligible.  Finally, the analytic model ignores the surface terms in \Eq{eq:coolingglobal}, which we show to be a modest correction in \S\ref{sec:endoftime}.
 
 \subsection{Two Layer Structure}
-To apply the two-layer cooling model analytically, we require expressions for the atmospheric structure.  Conditions at the RCB are crucial as they set the interior adiabat and the radiative losses from the interior. (Recall that luminosity generation in the radiative zone is neglected.)  We express the temperature and pressure of the RCB, at the radius $R\cb$, as 
+In order to apply the two-layer cooling model analytically, we require expressions for the atmospheric structure.  Conditions at the RCB are crucial as they set the interior adiabat and the radiative losses from the interior. (Recall that luminosity generation in the radiative zone is neglected.)  We express the temperature and pressure of the RCB, at the radius $R\cb$, as 
 \begin{subeqnarray}\label{eq:cb2}
 T\cb &=& \chi T\di \slabel{eq:Tcb} \\
 P\cb &=& \theta P_{\rm d} e^{R_{\rm B}/R\cb} \, .\slabel{eq:PcbRcb}
@@ -387,7 +387,7 @@ T	&=& T\cb \left[ 1 + {\RB' \over r} - {\RB' \over R\cb}  \right] \slabel{eq:Tco
 %Note (to self) that the "1+" is neglibible in Rcb << RB limit taken elsewhere. 
 follow from hydrostatic balance.  We introduce an effective Bondi radius
 \begin{equation}
-\RB' \equiv {G M\co \over C_P T\cb} = {\delad \over \chi} \RB
+\RB' \equiv {G M\co \over C_PT\cb} = {\delad \over \chi} \RB
 \end{equation} 
 to simplify expressions, with $C_P = \Rg / \delad$ the specific heat at constant pressure.
 
@@ -423,7 +423,7 @@ M_{\rm atm} %&=& 4 \pi \int_{R\co}^{R\cb} \rho r^2 dr \\  %AY: any interested re
 \end{eqnarray}
 in the relevant limit $R\co \ll R\cb \ll \RB'$ and for $\gamma =  7/5$.  Mass is concentrated near the outer regions of the convective zone, a result that holds for $\gamma > 4/3$.  
 
-Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the critical ratio of atmosphere to core mass becomes
+Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the ratio of atmosphere to core mass becomes
 \begin{equation} \label{eq:crit}
 {M_{\rm atm} \over M\co} = {P\cb \over \xi P_M}\, ,
 \end{equation} 
@@ -437,7 +437,7 @@ The atmosphere mass increases as radiative losses lower the internal adiabat and
 \begin{equation} \label{eq:Pcbc}
 P\cb = \xi P_M ,
 \end{equation} 
-i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity we simply hold it fixed in our scalings, but not in plots.
+i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings, but not when plotting the results.
 
 
 The total energy is concentrated towards the core if $|u| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ (monatomic gas) would not. 
@@ -478,7 +478,7 @@ We expect runaway growth to begin around the crossover mass, $M_{\rm{atm}} = M_{
 \label{eq:tcoolan}
 t_{\rm co} &\approx & 2 \times 10^8 {F_T^{5/2}  F_\kappa \left(\xi \over 3.4\right)^2  \over \mcn{10}^{5/3} \aun{10}^{15 / 14}} \yr \, .
 \end{eqnarray} 
-We estimate critical core mass, $\MC$, by equating the crossover time with a typical protoplanetary disk lifetime,
+We estimate the critical core mass, $\MC$, by equating the crossover time with a typical protoplanetary disk lifetime,
 \begin{equation}
 t\di = 3 \times 10^6 ~{\rm yr} \,.
 \end{equation} 
@@ -487,18 +487,18 @@ Setting $t_{\rm co} = t\di$ gives
 \MC \approx 100 {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus.
 \end{equation} 
 
-Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation can be misleading, an interesting result in itself.
+Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising, as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation can be misleading, an interesting result in itself.
 
-Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.
+Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known \citep{HubBod05}, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.
 
-Lower disk temperatures decrease both $t_{\rm co}$ and $\MC$.  The decline in both quantities with semimajor axis is completely explained by the temperature  profile (ignoring the logarithmic factor $\xi$).  The temperature dependence is a competition between two main effects.   The Bondi radius, which quantifies the strength of gravity, decreases for colder temperatures. On the other hand, the luminosity, $\propto T^{4-\beta}$, is lower at colder temperatures, which slows cooling and opposes the overall effect.  With $t_{\rm co} \propto F_T^{ \beta + 1/2}$, the slope of the dust opacity,  $\beta$, is an important factor in regulating the resulting growth time.
+Lower disk temperatures decrease both $t_{\rm co}$ and $\MC$.  The decline in both quantities with semimajor axis is completely explained by the temperature  profile (ignoring the logarithmic factor $\xi$).  The temperature dependence is a competition between two main effects.   The Bondi radius, which quantifies the strength of gravity, decreases for lower temperatures. On the other hand, the luminosity, $\propto T^{4-\beta}$, is lower at colder temperatures, which slows cooling and opposes the overall effect.  With $t_{\rm co} \propto F_T^{ \beta + 1/2}$, the slope of the dust opacity,  $\beta$, is an important factor in regulating the resulting growth time.
 
-To facilitate comparison with our numerical results, we rescale the analytic results as a rough correction for the neglect of self gravity.  The goal of the rescaling is not to get a perfect agreement, but to aid in the interpretation of general trends.  To rescale, we simply assume that runaway occurs at a modified crossover mass, $M_{\rm atm} = f M\co$.  From \Eqs{eq:crit}{eq:Pcbc}, this change amounts to the replacing $\xi \rightarrow f\xi$. We require $f < 1$ to give the faster growth seen in numerical models.  We choose $f = 0.13$, which normalizes the analytic and numerical models at 10 AU, for standard paramters.  The revised scalings are
+To facilitate comparison with our numerical results, we rescale the analytic results as a rough correction for the neglect of self gravity.  The goal of the rescaling is not to get a perfect agreement, but to aid in the interpretation of general trends.  To rescale, we simply assume that runaway occurs at a modified crossover mass, $M_{\rm atm} = f M\co$.  From \Eqs{eq:crit}{eq:Pcbc}, this change amounts to the replacing $\xi \rightarrow f\xi$. We require $f < 1$ to give the faster growth seen in numerical models.  We choose $f = 0.13$, which normalizes the analytic and numerical models at 10 AU, for standard parameters.  The revised scalings are
 \begin{subeqnarray}
 t_{\rm run} & \approx & 3 \times 10^6 {F_T^{5/2}  F_\kappa \left(\xi \over 3.4\right)^2  \over \mcn{10}^{5/3} \aun{10}^{15 / 14}} \yr  \slabel{eq:tcoolanf} \\
 \MC & \approx & 8\, {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus\ \, ,  \slabel{eq:Mcritf}
 \end{subeqnarray} 
-now using $t_{\rm run}$ instead of $t_{\rm co}$ for the runaway growth timescale, which is no longer tied to the crossover mass.  The numerical models are more accurate and self-consistent because they measure runaway growth directly, instead of relying on any assumed $M_{\rm atm}/M\co$ threshold.  When plotting the analytic scalings we include the variations in $\xi$ from \Eq{eq:xidef}.
+now using $t_{\rm run}$ instead of $t_{\rm co}$ for the runaway growth timescale, which is no longer tied to the crossover mass.  The numerical models are more accurate and self-consistent because they measure runaway growth directly, instead of relying on any assumed $M_{\rm atm}/M\co$ threshold.  When plotting the analytic scalings, we include the variations in $\xi$ from \Eq{eq:xidef}.
 
 
 \section{Quasi-Static Kelvin-Helmholtz Contraction}
