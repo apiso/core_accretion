@@ -338,7 +338,7 @@ Brackets indicate an average of, and $\Delta$ indicates a difference between, th
 \section{Analytic Cooling Model}
 \label{sec:coolingan}
 
-This section develops the analytic version of our two-layer model. This analytic model is less accurate than our numerical model, primarily because it neglects self-gravity, which we show (in \S\ref{sec:KH}) to be important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless, the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
+This section develops the analytic version of our two-layer model. This analytic model is less accurate than our numerical model, primarily because it neglects self-gravity.  We we show (in \S\ref{sec:KH}) that self-gravity becomes important at rather low atmospheric masses, $M_{\rm atm} \gtrsim 0.1 M\co$.  Nevertheless, the analytic model is useful for understanding atmospheric evolution and interpreting the numerical results.
 
 The analytic model also assumes that the upper radiative layer is thick enough that $P\cb \gg P\di$.  This approximation ignores the earliest stages of cooling, which are rapid enough to be negligible.  Finally, the analytic model ignores the surface terms in \Eq{eq:coolingglobal}, which we show to be a modest correction in \S\ref{sec:endoftime}.
 
@@ -449,7 +449,7 @@ t_{\rm  cool} &=&- \int_{P\di}^{P\cb } {d E/d P\cb \over L \cb} dP\cb \\
 &\approx& 4 \pi {P\cb^{2} \over P\di} {\RB'^{7/2} \over L\di \sqrt{R\co}} \label{eq:tcool}\, .
 %&\approx& {0.16 }{P\cb^{2} \over P\di} {\RB'^{7/2} \over L\di \sqrt{R\co}}
 \end{subeqnarray} 
-The initial RCB depth, set to $P\di$ as a formality, is of little importance because the cooling slows as it proceeds with $t_{\rm cool} \propto P\cb^2$.  
+The initial RCB depth is set to $P\di$ as a formality.  The cooling slows as it proceeds with $t_{\rm cool} \propto P\cb^2$.  
 
 We expect runaway growth to begin around the crossover mass, $M_{\rm{atm}} = M_{\rm c}$. \Eqs{eq:tcool}{eq:Pcbc} give the time to crossover as
 \begin{eqnarray} 
@@ -465,9 +465,9 @@ Setting $t_{\rm co} = t\di$ gives
 \MC \approx 100 {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus.
 \end{equation} 
 
-Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  The magnitude of the discrepancy may be surprising, as one might expect self-gravity to be a modest factor for $M_{\rm atm} \leq M\co$.  Clearly this seemingly reasonable expectation can be misleading, an interesting result in itself.
+Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  One might expect self-gravity to be only a modest correction for $M_{\rm atm} \leq M\co$.   This seemingly reasonable expectation can be misleading, an interesting result in itself.
 
-Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known \citep{HubBod05}, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.
+Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known \citep{HubBod05}, a lower opacity, here scaling with $F_\kappa$, accelerates growth and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.  %AY: add density explanation? 
 
 Lower disk temperatures decrease both $t_{\rm co}$ and $\MC$.  The decline in both quantities with semimajor axis is completely explained by the temperature  profile (ignoring the logarithmic factor $\xi$).  The temperature dependence is a competition between two main effects.   The Bondi radius, which quantifies the strength of gravity, decreases for lower temperatures. On the other hand, the luminosity, $\propto T^{4-\beta}$, is lower at colder temperatures, which slows cooling and opposes the overall effect.  With $t_{\rm co} \propto F_T^{ \beta + 1/2}$, the slope of the dust opacity,  $\beta$, is an important factor in regulating the resulting growth time.
 
@@ -488,7 +488,7 @@ We present examples of the structure and evolution of our model atmospheres, cal
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/PTm_profiles_v2_smallM.pdf}
 %\vspace{-0.5in}
-\caption{Radial profiles of atmospheric pressure, temperature and enclosed mass (core included) for a $5 M_{\oplus}$ core at $a=60$ AU.   Solid, dotted, dashed and dot-dashed lines correspond to solutions with total mass (core and atmosphere) of $5.01 M_{\oplus}$, $5.10 M_{\oplus}$, $6.00 M_{\oplus}$ and $8.99 M_{\oplus}$, respectively (see text for an explanation of mass choices).  Circles and triangles mark the locations of the Bondi radii and of the radiative-convective boundaries, respectively.  The radial profiles extend from the core to the Hill radius.} %  (See text for a description of evolution to yet higher masses.) 
+\caption{Radial profiles of atmospheric pressure, temperature and enclosed mass (core included) for a $5 M_{\oplus}$ core at $a=60$ AU.   Solid, dotted, dashed and dot-dashed lines correspond to solutions with total mass (core and atmosphere) of $5.01 M_{\oplus}$, $5.10 M_{\oplus}$, $6.00 M_{\oplus}$ and $8.99 M_{\oplus}$, respectively (see text for significance of these masses).  Circles and triangles mark the locations of the Bondi radii and of the radiative-convective boundaries, respectively.  The radial profiles extend from the core to the Hill radius.} %  (See text for a description of evolution to yet higher masses.) 
 \label{fig:profiles}
 \end{figure}
 
@@ -617,9 +617,9 @@ The effect of mean molecular weight is also shown in \Fig{fig:tvsMcomp}.  A lowe
 \subsubsection{Effects of Disk Temperature and Pressure}
 \label{sec:TPeffects}
 
-\Fig{fig:TPeffects} shows how the runaway accretion time varies with disk temperature, $T\di$, or pressure, $P\di$, holding the other quantity fixed.   The analytic model roughly reproduces the temperature and pressure scalings, again with some discrepancies due mainly to the neglect of self-gravity.  Temperature variations are much more significant than pressure variations (note the difference in logarithmic and linear axes).  Since midplane disk conditions depend only on temperature and pressure in our model\footnote{See \Eq{eq:diskparam}.  When gap opening is considered in models of later growth stages, the orbital frequency and effective viscosity become relevant as well.}, the dominant effect of disk location is temperature.  
+\Fig{fig:TPeffects} shows how the runaway accretion time varies with disk temperature, $T\di$, or pressure, $P\di$, holding the other quantity fixed.   The analytic model roughly reproduces the temperature and pressure scalings, again with some discrepancies due mainly to the neglect of self-gravity.  Temperature variations are much more significant than pressure variations (note the difference in logarithmic and linear axes).  Since midplane disk conditions depend only on temperature and pressure in our model,\footnote{See \Eq{eq:diskparam}.  When gap opening is considered in models of later growth stages, the orbital frequency and effective viscosity become relevant as well.} the dominant effect of disk location is temperature.  
 
-The decline in growth times at lower temperatures arises from a variety of competing effects.  Briefly, the larger Bondi radius and lower dust opacity at lower temperatures accelerate growth, overpowering the inherently lower cooling luminosity at lower temperatures.  Growth times depend only weakly on, but do fall slightly with, pressure.  The nearly exponential increase in pressure and density with depth through the radiative zone means that cooling, which is regulated at the RCB, has only a logarithmic dependence on disk pressure.   Section \ref{sec:coolingan} explains these effects in more detail.
+The decline in growth times at lower temperatures arises from a balance of competing effects.  The larger Bondi radius and lower dust opacity at lower temperatures accelerate growth, overpowering the inherently lower cooling luminosity at lower temperatures.  Growth times depend only weakly on, but do fall slightly with, pressure.  The nearly exponential increase in pressure and density with depth through the radiative zone means that cooling, which is regulated at the RCB, has only a logarithmic dependence on disk pressure.   Section \ref{sec:coolingan} shows how these effects arise in our analytic model.
 
 
 \begin{figure}[htb]
@@ -697,7 +697,7 @@ Initial core growth must be fast, compared to the disk lifetime, to get a suffic
 
 Thus for giant planets to form around cores near $\MC$, core growth must stall quite severely.   The accretion and scattering of local planetesimals, combined with the inward aerodynamic drift of smaller solids past the core, offers a plausible means to sufficiently isolate the core.  On the other hand, non-negligible accretion of solids onto cores could continue for the lifetime of the gas disk.  In these cases, relatively high mass cores would remain as ice giants, akin to Uranus and Neptune.   Ongoing direct imaging surveys and their successors \citep{hinz12, macintosh12} will help discriminate among the various planet formation pathways in the outskirts of protoplanetary disks.
 
-\acknowledgements{We thank Ruth Murray-Clay for detailed feedback and skillful proof reading. We also thank Eugene Chiang for valuable comments.  ANY thanks Phil Armitage and Scott Kenyon for stimulating conversations.}
+\acknowledgements{We thank Ruth Murray-Clay for detailed feedback and skillful proof reading. We also thank Eugene Chiang for valuable comments.  ANY thanks Phil Armitage and Scott Kenyon for stimulating conversations.  ANY acknowledges partial grant support from NSF AST 1313021 and NASA NNX13AI58G.}
 
 \bibliographystyle{apj}
 \bibliography{refs}
