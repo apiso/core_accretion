@@ -160,6 +160,7 @@ Our main assumptions are summarized as follows:
 \end{enumerate}
 %The remainder of this section develops our model in more detail.
 
+The first assumption of spherical accretion breaks down early in the inner disk, as explained below.  However our focus is the outer disk, where this standard approximation is better justified.
 
 \subsection{Disk and Opacity Model}\label{sec:disk}
 
@@ -170,7 +171,7 @@ T\di &=& 45  \,F_T\, \aun{10}^{-3/7} ~{\rm K} \, .
 %\Sigma\di&=&2200 F_{\Sigma} a^{-3/2}\,\, \text{g cm}^{-2} \slabel{eq:diska}\\
 %T\di &=& 120 F_T a^{-3/7} \, \text{K}, \slabel{eq:diskb}
 \end{subeqnarray}
-The normalization factors $F_{\Sigma}$ and $F_T$  adjust the model relative to the fiducial MMSN.  We fix $F_{\varSigma}=F_T=1$ unless noted otherwise.
+The normalization factors $F_{\Sigma}$ and $F_T$  adjust the model relative to the fiducial MMSN.  We fix $F_{\varSigma}=F_T=1$ unless noted otherwise.  Some observations support a flatter surface density profile, $\varSigma \propto a^{-1}$ \citep{andrews10}.  We find that gas density and pressure are weak corrections to atmospheric growth.  However, a greater surface density of solids in the outer disk could favor the rapid growth of cores \citep{bromley11}.
 
 For a vertically isothermal disk in hydrostatic balance (with no self-gravity), the mid-plane pressure of disk gas is 
 \begin{equation}
@@ -209,7 +210,7 @@ The solid core has a radius
 \label{eq:rc}
 R\co \equiv \left(\frac{3 M\co}{4 \pi \rho\co}\right)^{1/3} \approx 10^{-4} \mcn{10}^{1/3} ~\text{AU},
 \end{equation}
-where the core mass, $M\co$, is normalized to 10 Earth masses as $\mcn{10} \equiv M\co/(10~M_\oplus)$. The core density is held fixed at $\rho\co=3.2$ g cm$^{-3}$.  We thus neglect  the detailed equation of state of the solid core \citep{fortney07}.
+where the core mass, $M\co$, is normalized to 10 Earth masses as $\mcn{10} \equiv M\co/(10~M_\oplus)$. The core density is held fixed at $\rho\co=3.2$ g cm$^{-3}$, representing a mixture of ice and rocky material \citep{pap99}.  We thus neglect  the detailed equation of state of the solid core \citep{fortney07}.
 
 A planet can bind a dense atmosphere if its escape velocity exceeds the sound speed.  This criterion is satisfied inside the Bondi radius
 \begin{equation}
@@ -465,13 +466,13 @@ Setting $t_{\rm co} = t\di$ gives
 \MC \approx 100 {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus.
 \end{equation} 
 
-Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity, as shown in Section \ref{sec:KH}.  One might expect self-gravity to be only a modest correction for $M_{\rm atm} \leq M\co$.   This seemingly reasonable expectation can be misleading, an interesting result in itself.
+Both $t_{\rm co}$ and $\MC$ are too large to be interesting, or to be correct based on previous results and the numerical results in this paper.  The main reason for this discrepancy is the neglect of self-gravity.  Section \ref{sec:KH} explores in detail the effects of self-gravity on atmospheric structure, luminosity and evolution.  One might expect self-gravity to be only a modest correction for $M_{\rm atm} \leq M\co$.   This seemingly reasonable expectation can be misleading, an interesting result in itself.
 
 Aside from this insight, the analytic model is useful because, despite the amplitude error, it explains the basic scaling of numerical cooling models.  As is well known \citep{HubBod05}, a lower opacity, here scaling with $F_\kappa$, allows faster cooling and gives a lower critical core mass.  The cooling timescale and critical core mass depend only weakly on the disk pressure, via the logarithmic factor $\xi$.   The almost exponential rise in radiative zone pressure with depth, see \Eq{eq:PcbRcb}, explains why disk pressure has only a weak effect on cooling at the RCB.  %AY: add density explanation? 
 
 Lower disk temperatures decrease both $t_{\rm co}$ and $\MC$.  The decline in both quantities with semimajor axis is completely explained by the temperature  profile (ignoring the logarithmic factor $\xi$).  The temperature dependence is a competition between two main effects.   The Bondi radius, which quantifies the strength of gravity, decreases for lower temperatures. On the other hand, the luminosity, $\propto T^{4-\beta}$, is lower at colder temperatures, which slows cooling and opposes the overall effect.  With $t_{\rm co} \propto F_T^{ \beta + 1/2}$, the slope of the dust opacity,  $\beta$, is an important factor in regulating the resulting growth time.
 
-To facilitate comparison with our numerical results, we rescale the analytic results as a rough correction for the neglect of self gravity.  The goal of the rescaling is not to get a perfect agreement, but to aid in the interpretation of general trends.  To rescale, we simply assume that runaway occurs at a modified crossover mass, $M_{\rm atm} = f M\co$.  From \Eqs{eq:crit}{eq:Pcbc}, this change amounts to the replacing $\xi \rightarrow f\xi$. We require $f < 1$ to give the faster growth seen in numerical models.  We choose $f = 0.13$, which normalizes the analytic and numerical models at 10 AU, for standard parameters.  The revised scalings are
+To facilitate comparison with our numerical results, we rescale the analytic results as a rough correction for the neglect of self gravity.  The goal of the rescaling is not to get a perfect agreement, but to aid in the interpretation of general trends.  To rescale, we simply assume that runaway occurs at a modified crossover mass, $M_{\rm atm} = f M\co$.  From \Eqs{eq:crit}{eq:Pcbc}, this change amounts to replacing $\xi \rightarrow f\xi$. We require $f < 1$ to give the faster growth seen in numerical models.  We choose $f = 0.13$, which normalizes the analytic and numerical models at 10 AU, for standard parameters.  The revised scalings are
 \begin{subeqnarray}
 t_{\rm run} & \approx & 3 \times 10^6 {F_T^{5/2}  F_\kappa \left(\xi \over 3.4\right)^2  \over \mcn{10}^{5/3} \aun{10}^{15 / 14}} \yr  \slabel{eq:tcoolanf} \\
 \MC & \approx & 8\, {F_T^{3/2} F_\kappa^{3/5}   \left(\xi \over 2.6 \right)^{6/5} \over \aun{10}^{9 / 14}} \; M_\oplus\ \, ,  \slabel{eq:Mcritf}
@@ -545,7 +546,7 @@ We quantify the runaway growth timescale, $t_{\rm run}$, as the time when $M_{\r
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/Mt_profile_temp.pdf}
 %\vspace{-0.5in}
-\caption{Evolution of the atmospheric growth timescale with mass around a $5 M_{\oplus}$ solid core  located at 10, 30 or 60 AU.  Growth is slowest for $M_{\mathrm{atm}} \sim 1 - 3 M_{\oplus}$, i.e.\ before the crossover mass at $M_{\rm atm} = M\co$.}
+\caption{Evolution of the atmospheric growth timescale with mass around a $5 M_{\oplus}$ solid core  located at 10, 30 or 60 AU for standard Solar opacities.  Growth is slowest for $M_{\mathrm{atm}} \sim 1 - 3 M_{\oplus}$, i.e.\ before the crossover mass at $M_{\rm atm} = M\co$.}
 \label{fig:growthtime}
 \end{figure}
 
@@ -706,7 +707,9 @@ Initial core growth must be fast, compared to the disk lifetime, to get a suffic
 
 Thus for giant planets to form around cores near $\MC$, core growth must stall quite severely.   The accretion and scattering of local planetesimals, combined with the inward aerodynamic drift of smaller solids past the core, offers a plausible means to sufficiently isolate the core.  On the other hand, non-negligible accretion of solids onto cores could continue for the lifetime of the gas disk.  In these cases, relatively high mass cores would remain as ice giants, akin to Uranus and Neptune.   Ongoing direct imaging surveys and their successors \citep{hinz12, macintosh12} will help discriminate among the various planet formation pathways in the outskirts of protoplanetary disks.
 
-\acknowledgements{We thank Ruth Murray-Clay for detailed feedback and skillful proof reading. We also thank Eugene Chiang for valuable comments.  ANY thanks Phil Armitage and Scott Kenyon for stimulating conversations.  ANY acknowledges partial grant support from NSF AST 1313021 and NASA NNX13AI58G.}
+\acknowledgements{We thank Ruth Murray-Clay for detailed feedback and skillful proof reading. We also thank Eugene Chiang and Scott Kenyon for valuable comments.  ANY thanks Phil Armitage for stimulating conversations. 
+
+ANY acknowledges support from the {\it NASA } {\it ATP} and {\it OSS} grant NNX10AF35G and the  {\it NASA} {\it OPR} grant NNX11AM37G while at the CfA, and from the {\it NSF AST}  grant 1313021 and the {\it NASA OSS}  grant NNX13AI58G while at JILA.}
 
 \bibliographystyle{apj}
 \bibliography{refs}
