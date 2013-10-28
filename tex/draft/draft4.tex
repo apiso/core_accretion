@@ -134,7 +134,7 @@ Quasi-static models include time-dependent atmospheric evolution due to KH contr
 
 Dynamical models are needed to understand how runaway growth ends and final planet masses are determined.  Relevant processes -- including gap opening in disks and the transition of accretion from spherical to planar -- can be simulated and then added to atmospheric evolution calculations \citep{LisHub09}.
 
-This work develops quasi-static models in which the core has a fixed mass and is no longer accreting solids.  By isolating the process of KH contraction, we determine the minimum timescale for runaway atmospheric growth, and thus for giant planet formation by core accretion.  Previous studies have considered this type of growth \citep{ikoma00, pn05}, which is an end-member case of phases 2 and 3 in more detailed quasi-static models.  Especially since phase 2 atmospheric growth is often the slowest stage of core accretion, understanding the fastest allowed rates of gas accretion is crucial importance.  Our study develops simplified cooling models for the purposes of broadly exploring parameter space -- especially in the outer disk -- and developing a more detailed understanding of atmospheric accretion.
+This work develops quasi-static models in which the core has a fixed mass and is no longer accreting solids.  By isolating the process of KH contraction, we determine the minimum timescale for runaway atmospheric growth, and thus for giant planet formation by core accretion.  Previous studies have considered this type of growth \citep{ikoma00, pn05}, which is an end-member case of phases 2 and 3 in more detailed quasi-static models.  Especially since phase 2 atmospheric growth is often the slowest stage of core accretion, understanding the fastest allowed rates of gas accretion is of crucial importance.  Our study develops simplified cooling models for the purposes of broadly exploring parameter space -- especially in the outer disk -- and developing a more detailed understanding of atmospheric accretion.
 
 This paper is organized as follows. Section \S\ref{sec:model} describes our model of atmospheric growth.  In Section \S\ref{sec:coolingan}, we develop a simplified analytic version of our atmospheric model.  We describe the structure and evolution of our atmosphere solutions in Section \S\ref{sec:KH}.   Section \S\ref{sec:critical} gives our final results for growth timescales and critical core masses.  We discuss some neglected effects in Section \S\ref{sec:neglected} and summarize our findings in Section \S\ref{sec:conclusions}.  Some detailed derivations are presented in the appendices.
 
@@ -275,14 +275,14 @@ To solve the equation set (\ref{eq:struct}), an EOS is required for closure. In 
 P &=& \rho \Rg T \, ,\slabel{eq:idealgas} \\
 S &=& \Rg \ln \left(T^{1/\delad} \over P \right) \, ,\slabel{eq:polyEOS}  % P &=&K \rho^{\gamma} \, , 
 \end{subeqnarray}
-with $S$ a relative entropy.  This work uses $\delad=2/7$, i.e.\  a polytropic index $\gamma \equiv 1/(1 - \delad) = 7/5$, for an ideal diatomic gas.\footnote{\Eq{eq:polyEOS} is equivalent to the standard polytropic relation,  $P =K \rho^{\gamma}$, if the polytropic index $K$ replaces $S$.}    We thus neglect the presence of monatomic Helium in our choice of polytropes, a common practice in idealized studies.  We do however account for Helium in our reference value of $\mu = 2.35$ proton masses. 
+with $S$ a relative entropy.  This work uses $\delad=2/7$, i.e.\  a polytropic index $\gamma \equiv 1/(1 - \delad) = 7/5$, for an ideal diatomic gas.\footnote{\Eq{eq:polyEOS} is equivalent to the standard polytropic relation,  $P =K \rho^{\gamma}$, if the polytropic index $K$ replaces $S$.}    We thus neglect the presence of monatomic Helium in our choice of polytropes, a common practice in idealized studies.  We do, however, account for Helium in our reference value of $\mu = 2.35$ proton masses. 
 
 Boundary conditions must be satisfied at both the base and the top of the atmosphere, with $m(R\co) = M\co$, $T(\RH) = T\di$ and $P(\RH) = P\di$.  Our model atmospheres also obey $L(R\co) = 0$. Along with \Eq{eq:structd}, this boundary condition is incorporated in the global cooling model described below.
 
 
 \subsection{Global Cooling of an Embedded Planet}\label{cooling}
 
-We now consider the global energy balance of a planet embedded in a gas disk.  More generally our derivation applies to any spherical, hydrostatic object in pressure equilibrium with a background medium.  The total atmospheric energy includes gravitational and internal energies, $E = E_G + U$, with
+We now consider the global energy balance of a planet embedded in a gas disk.  More generally, our derivation applies to any spherical, hydrostatic object in pressure equilibrium with a background medium.  The total atmospheric energy includes gravitational and internal energies, $E = E_G + U$, with
 \begin{subeqnarray}
 E_G&=&-\int_{M\co}^M \frac{G m}{r} dm \, , \label{eq:Eg} \\
 U&=&\int_{M\co}^M u dm \, .\slabel{eq:U}
@@ -296,7 +296,7 @@ L_M = L\co + \Gamma - \dot{E}.
 \end{equation}
 The surface luminosity, $L_M$, includes the core luminosity $L\co$ from e.g.\ planetesimal accretion or radioactive decay.   The total heat generation $\Gamma$  is the integral of $\epsilon$ over the atmosphere.  The rate of change of atmospheric energy, $\dot{E}$, is a loss term. 
 
-For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  When internal heat sources dominate, $L_M = \Gamma$, e.g.\ for nuclear burning in an main sequence star.
+For an object with no core luminosity (or no core) and no internal heat sources, the energy equation $L_M = -\dot{E}$ describes KH contraction in its simplest form.  When internal heat sources dominate, $L_M = \Gamma$, e.g.\ for nuclear burning in a main sequence star.
 
 A protoplanetary atmosphere embedded in a gas disk lacks a free surface.  For objects without a free surface (or interior to a free surface), the full energy equation, 
 \begin{equation}
@@ -330,7 +330,7 @@ To establish the time difference between neighboring solutions, we apply \Eq{eq:
 \Delta t = %\left(
 { -\Delta E + \brak{e} \Delta M - \brak{P}  \Delta V_{\brak{M}} \over \brak{L} }\, ,
 \end{equation} 
-using \Eq{eq:coolinggobal} with $\Gamma = L\co = 0$.
+using \Eq{eq:coolingglobal} with $\Gamma = L\co = 0$.
 Brackets indicate an average of, and $\Delta$ indicates a difference between, the two states.  All values are evaluated at the RCB.  Due to the partial derivative in \Eq{eq:coolingglobal}, the volume difference $\Delta V_{<M>}$ is performed at fixed mass, here the average of the masses at the RCB.  
 
 
@@ -488,7 +488,7 @@ We present examples of the structure and evolution of our model atmospheres, cal
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravPoly/PaperFigs/PTm_profiles_v2_smallM.pdf}
 %\vspace{-0.5in}
-\caption{Radial profiles of atmospheric pressure, temperature and enclosed mass (core included) for a $5 M_{\oplus}$ core at $a=60$ AU.   Solid, dotted, dashed and dot-dashed lines correspond to solutions with total mass (core and atmosphere) of $5.01 M_{\oplus}$, $5.10 M_{\oplus}$, $6.00 M_{\oplus}$ and $8.99 M_{\oplus}$, respectively.  Circles and triangles mark the locations of the Bondi radii and of the radiative-convective boundaries, respectively.  The radial profiles extend from the core to the Hill radius.} %  (See text for a description of evolution to yet higher masses.) 
+\caption{Radial profiles of atmospheric pressure, temperature and enclosed mass (core included) for a $5 M_{\oplus}$ core at $a=60$ AU.   Solid, dotted, dashed and dot-dashed lines correspond to solutions with total mass (core and atmosphere) of $5.01 M_{\oplus}$, $5.10 M_{\oplus}$, $6.00 M_{\oplus}$ and $8.99 M_{\oplus}$, respectively (see text for an explanation of mass choices).  Circles and triangles mark the locations of the Bondi radii and of the radiative-convective boundaries, respectively.  The radial profiles extend from the core to the Hill radius.} %  (See text for a description of evolution to yet higher masses.) 
 \label{fig:profiles}
 \end{figure}
 
