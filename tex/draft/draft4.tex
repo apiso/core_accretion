@@ -115,7 +115,7 @@
 
 \begin{abstract}
 
-The core accretion hypothesis proposes that giant planets form by the accretion of gas onto a solid protoplanetary core. The minimum (or critical) core mass to form a gas giant is typically quoted as $10 M_{\oplus}$. This value, however, depends on several factors, such as the location in the disk, atmospheric opacity, and the accretion rate of solids.  Motivated by ongoing direct imaging searches for giant planets, this study focuses on core mass requirements in the outer disk.
+The core accretion hypothesis proposes that giant planets form by the accretion of gas onto a solid protoplanetary core. The minimum (or critical) core mass to form a gas giant is typically quoted as $10 M_{\oplus}$. This value, however, depends on several factors, such as the location in the protoplanetary disk, atmospheric opacity, and the accretion rate of solids.  Motivated by ongoing direct imaging searches for giant planets, this study focuses on core mass requirements in the outer disk.
 Our model investigates the growth of atmospheres around solid cores of fixed mass.  Without planetesimal accretion to heat the atmosphere, our limiting case gives the fastest possible atmospheric growth by Kelvin-Helmholtz contraction. We develop a two-layer, spherical atmosphere model with an inner convective region and an outer radiative zone that matches onto the protoplanetary disk.  For different locations in the disk, we determine the minimum core mass for a giant planet to form within a typical disk lifetime of 3 Myr.   The minimum core mass required to nucleate atmosphere collapse is $\sim$$8.5 M_{\oplus}$ at 5 AU and steadily decreases to $\sim$$3.5 M_{\oplus}$ at 100 AU, for a Solar composition atmosphere with a standard dust opacity.   This trend is mainly explained by the cooler temperatures in the outer disk. Lower pressures and densities in the outer disk have a negligible effect on core mass requirements.  At all distances, decreasing the dust opacity and/or increasing the mean molecular weight of the atmosphere reduces the critical core mass.   The ongoing accretion of solids would delay or prevent atmospheric runaway growth.  Thus our low values for minimum core masses do not contradict the existence of ice giants, but emphasize the importance of the accretion history of solids.  We also develop a non-self-gravitating, analytic cooling model to help explain our numerical trends.  Additionally, this comparison reveals that self-gravity significantly affects atmospheric evolution even when the atmosphere is only $\sim$$20\%$ as massive as the core.
 
 \end{abstract}
@@ -154,14 +154,14 @@ Quasi-static models include time-dependent atmospheric evolution due to KH contr
 
 Dynamical models are needed to understand how runaway growth ends and final planet masses are determined.  Relevant processes -- including gap opening in disks and the transition of accretion from spherical to planar -- can be simulated and then added to atmospheric evolution calculations \citep{LisHub09}.
 
-This work develops quasi-static models in which the core mass is fixed and no longer accreting solids.  By isolating the process of KH contraction, we determine the minimum timescale for runaway atmospheric growth, and thus for giant planet formation by core accretion.  Previous studies have considered this type of growth \citep{ikoma00, pn05}, which is an end-member case of phase 2 and 3 growth in more detailed quasi-static models.  Our study develops simplified cooling models for the purposes of broadly exploring parameter space -- especially in the outer disk -- and developing a more detailed understanding of atmospheric accretion.
+This work develops quasi-static models in which the core has a fixed mass and is no longer accreting solids.  By isolating the process of KH contraction, we determine the minimum timescale for runaway atmospheric growth, and thus for giant planet formation by core accretion.  Previous studies have considered this type of growth \citep{ikoma00, pn05}, which is an end-member case of phase 2 and 3 growth in more detailed quasi-static models.  Our study develops simplified cooling models for the purposes of broadly exploring parameter space -- especially in the outer disk -- and developing a more detailed understanding of atmospheric accretion.
 
 
 %Full time-dependent simulations of giant planet evolution take into account the Kelvin-Helmholtz (KH) contraction of the gaseous envelope. As a result, the atmosphere is no longer in a steady state, but rather it accretes gas as it cools radiatively. In this scenario there are two main sources that contribute to the luminosity evolution of the envelope --- planetesimal accretion and gas contraction. These evolutionary models for core and atmosphere growth include time-dependent planetesimal accretion rates that are determined by the distribution of solids in the disk, as well as the planet mass and capture cross-section. This is is contrast with the static models in which the planetesimal accretion rate is usually constant with time. \citet{pollack96} find that the planet growth can be separated into three relatively well defined phases. Phase 1 is dominated by the growth of the core due to runaway planetesimal accretion, and ends when the planet's feeding zone has been depleted of solids. At this stage, planetesimal accretion can no longer balance radiative losses, and the atmosphere cools and contracts. This is phase 2, during which the envelope mass steadily increases, while core growth is no longer significant. Once the atmosphere mass becomes comparable to the core mass, growth is continually accelerated, leading to runaway gas accretion, i.e. phase 3. Phase 2 is found to be much longer than the other two phases (see also \citealt{alibert05}), hence the evolutionary timescale of the atmosphere is set by KH contraction.
 
 %Since KH contraction dominates the envelope accretion timescale in many core accretion models, it is useful to study atmospheric growth onto a core of fixed mass (\citealt{ikoma00}, \citealt{pn05}). This regime is the one considered in this work. We explore the atmosphere evolution around fully grown cores of different masses, and determine the minimum core mass to form a giant planet before disk dissipation for a variety of disk conditions and properties of the nebular gas. We note that our models are a special case of the time-dependent studies, with the planetesimal accretion rate set to zero. Our neglect of planetesimal accretion allows us to obtain absolute lower limits on the core mass needed to form a gas giant, as additional heat sources limit the ability of the atmosphere to cool and undergo KH contraction.
 
-This paper is organized as follows. Section \ref{sec:model} describes our model of atmospheric growth.  In Section \S\ref{sec:coolingan}, we develop a simplified analytic version of our atmospheric model.  We describe the structure and evolution of our atmosphere solutions in Section \S\ref{sec:KH}.   Section \S\ref{sec:critical} gives our final results for growth timescales and critical core masses.  We discuss some neglected effects in section \S\ref{sec:neglected} and summarize our findings in Section \S\ref{sec:conclusions}.  Some detailed derivations are presented in the appendices.
+This paper is organized as follows. Section \S\ref{sec:model} describes our model of atmospheric growth.  In Section \S\ref{sec:coolingan}, we develop a simplified analytic version of our atmospheric model.  We describe the structure and evolution of our atmosphere solutions in Section \S\ref{sec:KH}.   Section \S\ref{sec:critical} gives our final results for growth timescales and critical core masses.  We discuss some neglected effects in Section \S\ref{sec:neglected} and summarize our findings in Section \S\ref{sec:conclusions}.  Some detailed derivations are presented in the appendices.
 
 
 \section{Atmospheric Accretion Model} \label{sec:model}
@@ -208,11 +208,11 @@ for a molecular weight of $\mu=2.35$ proton masses and a Solar mass star.  %Chan
 
 The (thermodynamically isothermal) sound speed in the disk is
 \begin{equation}
-c\di = \sqrt{\Rg T\di} = 0.4 \sqrt{F_T} \aun{10}^{3/14} ~\text{km s}^{-1}
+c\di = \sqrt{\Rg T\di} = 0.4 \sqrt{F_T} \aun{10}^{3/14} ~\text{km s}^{-1} \,,
 \end{equation}  
 in terms of the specific gas constant $\Rg$.  The disk scale height is 
 \begin{equation}
-H\di = {c\di / \varOmega} = 0.42 \sqrt{F_T}  \, \aun{10}^{9/7} \AU\, .
+H\di = {c\di / \varOmega} = 0.42 \sqrt{F_T}  \, \aun{10}^{9/7} \AU\, ,
 \end{equation} 
 in terms of the Keplerian frequency $\varOmega = \sqrt{G M_\ast/a^3}$, with $G$ the gravitational constant and $M_\ast$ the stellar (in this work Solar) mass. 
 
@@ -221,7 +221,7 @@ We assume a dust opacity characteristic of interstellar grains, following \citet
 \label{eq:opacitylaw}
 \kappa= 2 F_\kappa  \left(\frac{T}{100\; \rm{K}}\right)^{\beta} \; \mathrm{cm^2 ~ g^{-1}},
 \end{equation}
-with a powerlaw index $\beta = 2$ and normalization $F_\kappa = 1$ unless noted otherwise. Grain growth tends to lower both $F_\kappa$ and $\beta$, while dust abundance scales with $F_\kappa$.   Section \S\ref{sec:op} discusses dust sublimation and more realistic opacity laws.
+with a power-law index $\beta = 2$ and normalization $F_\kappa = 1$ unless noted otherwise. Grain growth tends to lower both $F_\kappa$ and $\beta$, while dust abundance scales with $F_\kappa$.   Section \S\ref{sec:op} discusses dust sublimation and more realistic opacity laws.
 
 
 \subsection{Length Scales}
@@ -238,7 +238,7 @@ where the core mass, $M\co$, is normalized to 10 Earth masses as $\mcn{10} \equi
 A planet can bind a dense atmosphere if its escape velocity exceeds the sound speed.  This criterion is satisfied inside the Bondi radius
 \begin{equation}
 \label{eq:RB}
-\RB \equiv \frac{G M\pla}{c\di^2} \approx 0.17 \, {\mpn{10}  \, \aun{10}^{3/7} \over F_T} ~\AU
+\RB \equiv \frac{G M\pla}{c\di^2} \approx 0.17 \, {\mpn{10}  \, \aun{10}^{3/7} \over F_T} ~\AU,
 \end{equation}
 where the enclosed planet mass, $M\pla = M\co + M_\mathrm{atm}$, includes the core and any atmosphere within the Bondi radius.  The scalings thus use $\mpn{10} \equiv M\pla /(10~M_\oplus)$.   
 
@@ -247,20 +247,20 @@ Stellar tides dominate the planet's gravity beyond the Hill radius
 \label{eq:RHill}
 R_{\rm H} = \left(M\pla \over 3 M_\ast \right)^{1/3}a \approx 0.22 \, {\mpn{10}^{1/3} \, \aun{10} }~\AU ,
 \end{equation}
-where hydrostatic balance breaks down.  In \Eq{eq:RHill}, $M\pla$ includes mass enclosed within $\RH$.  During the early stages of evolution, $M\pla \sim M\co$, and the core mass can be used to get estimates of both $\RB$ and $\RH$. 
+where hydrostatic balance breaks down.  In \Eq{eq:RHill}, $M\pla$ includes the mass enclosed within $\RH$.  During the early stages of evolution, $M\pla \sim M\co$, and the core mass can be used to get estimates of both $\RB$ and $\RH$. 
 
 The relevant length scales of the atmosphere and disk satisfy the relation $\RB H\di^2 = 3 R_{\rm H}^3$.  The length scales are roughly equal at the ``thermal mass'' (e.g., \citealt{menou04})
 \begin{equation}\label{eq:Mth}
 M_{\rm th} > {c\di^{3} \over G \varOmega} \approx 25 \, {F_T^{3/2} \over \sqrt{m_\ast} } \, \aun{10}^{6/7}~ M_\oplus \, .
 \end{equation} 
 
-In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the length scales order as $\RB< \RH<H\di$ (\citealt{rafikov06}, hereafter R06).  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We, however, use $\RH$ as the matching radius in both this low mass and other higher mass regimes.  This choice is justified by the fact that, for hydrostatic solutions, the  density at $\RB$ exceeds the disk's background density by an order unity factor (R06).  Nevertheless, since the density change is modest, the choice of outer boundary condition has a similarly modest effect on our results. 
+In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the length scales order as $\RB< \RH<H\di$ (R06).  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We, however, use $\RH$ as the matching radius in both this low mass and other higher mass regimes.  This choice is justified by the fact that, for hydrostatic solutions, the  density at $\RB$ exceeds the disk's background density by an order unity factor (R06).  Nevertheless, since the density change is modest, the choice of outer boundary condition has a similarly modest effect on our results. 
 
 For a finite range of intermediate masses, $M_{\rm th}/\sqrt{3} < M\pla < 3 M_{\rm th}$, the Hill radius is the smallest scale, satisfying both $\RH < \RB$ and $\RH < H\di$.  Spherical symmetry remains a good, if imperfect, approximation because the disk is only weakly vertically stratified on  scales $\lesssim H\di$.  
 
-At higher planet masses where $M\pla > 3 M_{\rm th}$ and $H\di < \RH < \RB$, spherical symmetry is no longer a good approximation, due to both the vertical stratification of the disk and gap opening.   See \S\ref{sec:hydro} for discussion of neglected non-hydrostatic effects on all mass scales.
+At higher planet masses where $M\pla > 3 M_{\rm th}$ and $H\di < \RH < \RB$, spherical symmetry is no longer a good approximation, due to both the vertical stratification of the disk and gap opening (see \S\ref{sec:hydro} for a discussion of neglected non-hydrostatic effects on all mass scales).
 
-Note that while $\RH$ is the outer boundary of our structure calculations, we define planet masses to include only the mass inside the smaller of $\RB$ or $\RH$.    This conservative choice in quoting planet masses is usually a minor distinction because (when $\RB < \RH$) the gas between $\RB$ and $\RH$ is weakly compressed.
+Note that while $\RH$ is the outer boundary in our structure calculations, we define planet masses to include only the mass inside the smaller of $\RB$ or $\RH$.    This conservative choice in quoting planet masses is usually a minor distinction because (when $\RB < \RH$) the gas between $\RB$ and $\RH$ is weakly compressed.
 
 
 \subsection{Structure Equations and Boundary Conditions}
@@ -300,7 +300,7 @@ S = \Rg \ln \left(T^{1/\delad} \over P \right) ,
 \end{equation} 
 eliminating the need for $K$.
 
-Boundary conditions must be satisfied at both the base and the top of the atmosphere with $m(R\co) = M\co$, $T(\RH) = T\di$ and $P(\RH) = P\di$.  In principle, our solutions describe atmospheres with $L(R\co) = 0$. In practice, since we do not directly integrate \Eq{eq:structd} we need not directly impose this boundary condition, as described in \S\ref{sec:twolayer}.
+Boundary conditions must be satisfied at both the base and the top of the atmosphere, with $m(R\co) = M\co$, $T(\RH) = T\di$ and $P(\RH) = P\di$.  In principle, our solutions describe atmospheres with $L(R\co) = 0$. In practice, since we do not directly integrate \Eq{eq:structd} we need not directly impose this boundary condition, as described in \S\ref{sec:twolayer}.
 
 
 \subsection{Global Cooling of an Embedded Planet}\label{cooling}
@@ -340,7 +340,7 @@ is shorter than the actual evolutionary timescale.  Thus, $\tau_{\rm KH}$, which
 
 \subsection{The Two-Layer Model} \label{sec:twolayer}
 
-To simplify our calculations of atmospheric contraction we use a two-layer model with a bottom convective region and an upper radiative layer.   The existence of such a structure is well known from previous studies (e.g., R06) and can be readily understood.  Before the protoplanetary atmosphere can cool, it has the entropy of the disk.  As the atmosphere cools, the deep interior remains convective.  Convective interiors are a common feature of low mass cool objects (brown dwarfs and planets) that results from the behavior of $\delrad$ for realistic opacity laws.  However, the entropy of the deep interior decreases as the atmosphere cools.  A region of outwardly increasing entropy, i.e.\ a radiative layer, is required to connect the convective interior to the disk.  A more complicated structure, with radiative windows in the convection zone, is possible as discussed in \S\ref{sec:op}. 
+To simplify our calculations of atmospheric contraction, we use a two-layer model with a bottom convective region and an upper radiative layer.   The existence of such a structure is well known from previous studies (e.g., R06) and can be readily understood.  Before the protoplanetary atmosphere can cool, it has the entropy of the disk.  As the atmosphere cools, the deep interior remains convective.  Convective interiors are a common feature of low mass cool objects (brown dwarfs and planets) that results from the behavior of $\delrad$ for realistic opacity laws.  However, the entropy of the deep interior decreases as the atmosphere cools.  A region of outwardly increasing entropy, i.e.\ a radiative layer, is required to connect the convective interior to the disk.  A more complicated structure, with radiative windows in the convection zone, is possible as discussed in \S\ref{sec:op}. 
 
 In convective regions, the adiabatic structure is independent of luminosity and can be calculated without local energy balance, \Eq{eq:structd}.  Thus, for fully convective objects, a cooling sequence can be established by connecting a series of adiabatic solutions using a global energy equation, $L_M = -\dot{E}$ or \Eq{eq:coolingstar}.  Such methods are commonly used for their computational efficiency and are sometime referred to as ``following the adiabats," since the steady state solutions evolve in order of decreasing entropy \citep{marleau13}.
 
@@ -389,7 +389,7 @@ follow from hydrostatic balance.  We introduce an effective Bondi radius
 \begin{equation}
 \RB' \equiv {G M\co \over C_PT\cb} = {\delad \over \chi} \RB
 \end{equation} 
-to simplify expressions, with $C_P = \Rg / \delad$ the specific heat at constant pressure.
+to simplify expressions, with $C_P = \Rg / \delad$ the specific heat capacity at constant pressure.
 
 Deep in the adiabatic interior, where $r \ll R\cb \ll \RB'$, the profiles follow simple power laws,
 \begin{subeqnarray}\label{eq:deep}
@@ -437,15 +437,15 @@ The atmosphere mass increases as radiative losses lower the internal adiabat and
 \begin{equation} \label{eq:Pcbc}
 P\cb = \xi P_M ,
 \end{equation} 
-i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings, but not when plotting the results.
+i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings. %, but not when plotting the results.
 
 
-The total energy is concentrated towards the core if $|u| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ (monatomic gas) would not. 
+The total energy is concentrated towards the core if $|e| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ (monatomic gas) would not. 
 Integration of \Eq{eq:ean} over the mass of the atmosphere thus gives
 \begin{subeqnarray} 
 E &=& - 4 \pi \nabla_{\rm ad} G M\co \int_{R\co}^{R\cb} \rho r dr \\
 &\approx& - 4 \pi P\cb {\RB'}^{1 \over \nabla_{\rm ad}} \left(\gamma-1 \over 3 - 2 \gamma\right)  R\co^{2\gamma-3\over \gamma-1}  \slabel{eq:Ean} \\ 
-&\approx& - 8 \pi P\cb {\RB'^{7/2} \over \sqrt{R\co}} \slabel{eq:Eus}
+&\approx& - 8 \pi P\cb {\RB'^{7/2} \over \sqrt{R\co}} \slabel{eq:Eus} \, ,
 %&\approx& -0.31 P\cb {(\RB / \chi)^{7/2} \over \sqrt{R\co}}
 %&\approx& -0.31 P\cb {\RB'^{7/2} \over \sqrt{R\co}}
 \end{subeqnarray} 
@@ -504,7 +504,7 @@ now using $t_{\rm run}$ instead of $t_{\rm co}$ for the runaway growth timescale
 \section{Quasi-Static Kelvin-Helmholtz Contraction}
 \label{sec:KH}
 
-We present examples of the structure and evolution of our model atmospheres, calculated as described in \S\ref{sec:model}, with some comparisons to the non-self-gravitating analytic model of \S\ref{sec:coolingan}.  Radial structure is presented in \S\ref{sec:profiles}, time evolution is described in \S\ref{sec:timeev}, and validity of our two-layer cooling model is examined in \S\ref{sec:endoftime}.
+We present examples of the structure and evolution of our model atmospheres, calculated as described in \S\ref{sec:model}, with some comparisons to the non-self-gravitating analytic model of \S\ref{sec:coolingan}.  Radial structure is presented in \S\ref{sec:profiles}, time evolution is described in \S\ref{sec:timeev}, and the validity of our two-layer cooling model is examined in \S\ref{sec:endoftime}.
 
 \begin{figure}[tb]
 \centering
@@ -537,7 +537,7 @@ The atmospheric structure is well approximated by our non-self-gravitating, anal
 
 The cooling model of \S\ref{sec:twolayer} is used to connect solutions with different atmospheric masses into an evolutionary sequence.  \Fig{fig:Ltplot} shows the luminosity evolution and the elapsed time as a function of atmospheric mass for a $5 M_{\oplus}$ core at $60$ AU, i.e.\ the same parameters as in \Fig{fig:profiles}.  During the early stages of atmospheric growth, the luminosity drops sharply.  This behavior is seen in both the full numerical solutions (with solid lines) and the analytic model (with dashed lines).  With increasing atmospheric mass, the pressure depth of the RCB increases, along with the optical depth ($\propto \kappa P\cb)$.  Consequently, the radiative luminosity decreases.  This behavior is described in \Eqs{eq:crit}{eq:Lcb}.
 
-At later stages of evolution, the numerical model in \Fig{fig:Ltplot} shows a flat luminosity with increasing mass and also time (not shown).  By contrast, the non-self-gravitating analytic model gives a luminosity that continues to drop as the atmosphere becomes more massive.  To understand this difference, consider the scaling of \Eq{eq:Lcb}, $L\cb \propto M\cb T\cb^4/ (\kappa\cb  P\cb)$, which holds in both cases.   Accounting for the higher enclosed mass in the self-gravitating model gives a somewhat higher luminosity, as desired.  However, the main effect is that \Eq{eq:crit} -- which describes a nearly linear relation between atmospheric mass and RCB pressure --  breaks down for self-gravitating solutions.  This behavior can be seen in the top panel of \Fig{fig:profiles} where the $P\cb$ increases significantly from 5.10 to 6.0 $M_\oplus$, but only increases relatively modestly with further growth to 9.24 $M_\oplus$.   In the higher mass solutions, the relatively low $P\cb$ values (and thus the relatively high luminosities) require an outward shift in $R\cb$, as shown in \Fig{fig:profiles}.
+At later stages of evolution, the numerical model in \Fig{fig:Ltplot} shows a flat luminosity with increasing mass and also time (not shown).  By contrast, the non-self-gravitating analytic model gives a luminosity that continues to drop as the atmosphere becomes more massive.  To understand this difference, consider the scaling of \Eq{eq:Lcb}, $L\cb \propto M\cb T\cb^4/ (\kappa\cb  P\cb)$, which holds in both cases.   Accounting for the higher enclosed mass in the self-gravitating model gives a somewhat higher luminosity, as desired.  However, the main effect is that \Eq{eq:crit} -- which describes a nearly linear relation between atmospheric mass and RCB pressure --  breaks down for self-gravitating solutions.  This behavior can be seen in the top panel of \Fig{fig:profiles} where the $P\cb$ increases significantly from 5.10 to 6.0 $M_\oplus$, but only increases relatively modestly with further growth to 8.99 $M_\oplus$.   In the higher mass solutions, the relatively low $P\cb$ values (and thus the relatively high luminosities) require an outward shift in $R\cb$, as shown in \Fig{fig:profiles}.
 
 The accelerated growth in the numerical model, as shown in the bottom panel of \Fig{fig:Ltplot}, is also a direct result of the enhanced cooling (higher luminosities) in the self-gravitating models.  We see that self-gravity plays a very important role in atmospheric evolution, even well before the crossover mass, when $M_{\rm atm}=M\co$.
  
@@ -557,7 +557,7 @@ In \Fig{fig:LtvsMopacity}, the opacity normalization in \Eq{eq:opacitylaw} is re
 
 \Fig{fig:growthtime} plots the evolution of the atmospheric growth timescale, $M_{\rm atm}/\dot{M}$,  around a $5 M_{\oplus}$ core at several locations in our reference disk model.  This instantaneous growth time shows clearly that the atmosphere spends the bulk of its time growing though intermediate atmospheric masses, $\sim 1 -3$ $M_\oplus$ in this case.  Growth times are short both early -- when the radiative zone is transparent -- and late -- when self-gravity accelerates growth.  
 
-The fact that growth times have a well defined maximum is a characteristic of accelerating growth.  Unlike our analytic model, which must assume that runaway growth begins near the crossover mass, our numerical model allows us to measure when runaway accretion begins.  Runaway growth clearly does not begin at a universal value of $M_{\rm atm}/M\co$.  \Fig{fig:growthtime} shows that further from the star runaway growth begins at smaller $M_{\rm atm}/M\co$.  \Fig{fig:tvsM} (described in the next section) shows how the onset of runaway growth depends on core mass. 
+The fact that growth times have a well defined maximum is a characteristic of accelerating growth.  Unlike our analytic model, which must assume that runaway growth begins near the crossover mass, our numerical model allows us to measure when runaway accretion starts.  Runaway growth clearly does not begin at a universal value of $M_{\rm atm}/M\co$.  \Fig{fig:growthtime} shows that further from the star runaway growth begins at smaller $M_{\rm atm}/M\co$.  \Fig{fig:tvsM} (described in the next section) shows how the onset of runaway growth depends on core mass. 
 
 We quantify the runaway growth timescale, $t_{\rm run}$, as the time when $M_{\rm atm}/\dot{M}$ drops to 10\% of its maximum value.  The choice of 10\% is arbitrary; the precise threshold chosen is relatively unimportant because growth continues to accelerate.
 
@@ -586,7 +586,7 @@ We examine the  validity of our cooling model by comparing our model luminosity 
 
  \Fig{fig:coolingterms} shows that the neglected luminosity is indeed negligible during the early stages of evolution.  However, $L_{\rm negl}$ exceeds the model luminosity, $L$, at high masses, $M_{\rm atm} > 3 M_\oplus$ in this case.  Our cooling model is thus inaccurate at higher masses.  However, the model remains reasonably accurate up to the beginning stages of runaway growth, which is sufficient for our purposes of widely exploring parameter space and exploring trends.
  
-The individual terms in the global cooling model of \Eq{eq:coolingglobal}, evaluated at the RCB, are also plotted in \Fig{fig:coolingterms}.  At low masses, the change in energy, $- \dot{E}$, makes the dominant contribution to luminosity.  As the mass increases, the surface terms become more significant, led by the accretion energy.  However the surface terms are everywhere smaller than $L_{\rm negl}$.  Thus wherever our model is accurate -- including the crucial early phases of growth -- surface terms are a minor correction.  The neglect of surface terms in the analytic model is thus not a serious omission.
+The individual terms in the global cooling model of \Eq{eq:coolingglobal}, evaluated at the RCB, are also plotted in \Fig{fig:coolingterms}.  At low masses, the change in energy, $- \dot{E}$, makes the dominant contribution to luminosity.  As the mass increases, the surface terms become more significant, led by the accretion energy.  However, the surface terms are everywhere smaller than $L_{\rm negl}$.  Thus wherever our model is accurate -- including the crucial early phases of growth -- surface terms are a minor correction.  The neglect of surface terms in the analytic model is thus not a serious omission.
 
 %At even higher masses than shown in \Fig{fig:coolingterms}, our cooling model breaks down.  Mathematically, the breakdown manifests as a negative time step (due to an increase in internal entropy) when advancing to a higher atmospheric mass.  This unphysical result has no deep significance, as the neglected luminosity overwhelms the model luminosity by this point.    Effectively the model is telling us when to ignore it.  Our results are unaffected by the breakdown, which occurs comfortably after $t_{\rm run}$, our threshold for runaway growth.  
 
@@ -609,9 +609,9 @@ We now use our structure and evolution models to calculate the necessary conditi
 Our models focus on giant planet formation between 5 and 100 AU, as the outer disk is of particular interest for direct imaging searches.   The growth of atmospheres close to the star is also important, but spherical accretion models (including ours) are less applicable here.  In the inner disk, critical core masses increase, yet lower mass planets start to open gaps and outgrow the disk scale height, see \Eq{eq:Mth}.  These concerns prevent us from applying our model to the inner disk. 
 
 
-\subsection{Runaway Growth Time Scale}
+\subsection{Runaway Growth Timescale}
 \label{sec:tcross}
-The time to undergo atmospheric runaway growth, $t_{\rm run}$, sets a minimum timescale for the formation of giant planets.  Due to the accelerating nature of runaway growth, the precise threshold chosen for $t_{\rm run}$ (explained in \S ?) is of minor significance.
+The time to undergo atmospheric runaway growth, $t_{\rm run}$, sets a minimum timescale for the formation of giant planets.  Due to the accelerating nature of runaway growth, the precise threshold chosen for $t_{\rm run}$ (explained in \S\ref{sec:timeev}) is of minor significance.
 
 \begin{figure}[tb]
 %\centering
@@ -693,7 +693,7 @@ The neglect of hydrodynamical effects in our model is best discussed in terms of
 
 At higher masses, non-hydrostatic effects become more severe.  At $M\pla \gtrsim M_{\rm th}$ planets can open significant gaps \citep{zhu13}.  At yet higher masses accretion instabilities could occur \citep{AylBat12}.  However, in this high mass regime, the spherically symmetric approximation has already broken down. %, as does our approximate cooling model (\emph{discuss elsewhere and cite}).
 
-Thus by restricting our attention to low masses, neglected hydrodynamic effects should be minor.   Moreover since $M_{\rm th} \propto a^{6/7}$ increases with disk radius, spherical hydrostatic models like ours have a greater range of applicability in the outer regions of disks. 
+Thus by restricting our attention to low masses, neglected hydrodynamic effects should be minor.   Moreover, since $M_{\rm th} \propto a^{6/7}$ increases with disk radius, spherical hydrostatic models like ours have a greater range of applicability in the outer regions of disks. 
 
 
 \subsection{Realistic Opacities}\label{sec:op}
@@ -744,13 +744,13 @@ Thus for giant planets to form around cores near $\MC$, core growth must stall q
 \appendix
 \section{Derivation of the Global Energy Equation}\label{sec:globalderiv}
 
-To derive  the global energy equation (\ref{eq:coolingglobal}) for an embedded protoplanet, we generalize the analogous calculations in stellar structure theory, e.g.\ in \S4.3 of \citet{kippenhahn90}.  For our problem, we add the effects of finite core radius, surface pressure and mass accretion.We start with the local energy equation (\ref{eq:structd}) whose more natural form in Lagrangian (mass) coordinates is $\p L/ \p m = \epsilon - T \p S /\p t$.  Integrating from the core to a higher shell with enclosed mass $M$ gives:
+To derive  the global energy equation (\ref{eq:coolingglobal}) for an embedded protoplanet, we generalize the analogous calculations in stellar structure theory, e.g.\ in \S4.3 of \citet{kippenhahn90}.  For our problem, we add the effects of finite core radius, surface pressure and mass accretion. We start with the local energy equation (\ref{eq:structd}), whose more natural form in Lagrangian (mass) coordinates is $\p L/ \p m = \epsilon - T \p S /\p t$.  Integrating from the core to a higher shell with enclosed mass $M$ gives:
 \begin{subeqnarray}
 L - L\co &=& \int_{M\co}^M {\p L \over \p m} dm \\
 &=& \int_{M\co}^M \left(\epsilon - T {\p S \over \p t} \right)dm \\
 &=& \Gamma  - \int_{M\co}^M{\p u \over \p t} dm +  \int_{M\co}^M {P \over \rho^2} {\p \rho \over \p t} dm\slabel{eq:DLc}\, ,
 \end{subeqnarray} 
-with $\Gamma = \int \epsilon dm$ the integral of the direct heating rate and applying the first law of thermodynamics in the final step.
+with $\Gamma = \int \epsilon dm$ the integral of the direct heating rate, and applying the first law of thermodynamics in the final step.
 
 The global energy equation is derived by eliminating the partial time derivatives in \Eq{eq:DLc}, which are performed at a fixed mass,
 in favor of total time derivatives, denoted with overdots.  %The physical distinction is that total derivatives include mass  accreted through the outer boundary.  
@@ -765,7 +765,7 @@ Similarly, the volume $V = (4 \pi/3)R^3$ and pressure at the outer shell evolve 
 \dot{V}_M &=&  {\p V_{\rm M} \over \p t} + {\dot{M} \over \rho_{\rm M}}  \\
  \dot{P}_M &=& {\p P_{\rm M} \over \p t} + {\p P_M \over \p m}\dot{M} =  {\p P_{\rm M} \over \p t} - {G M  \over 4 \pi R^4} \dot{M}\, .
 \end{subeqnarray} 
-This derivation holds the core mass and radius fixed, $\dot{M}\co = \dot{R}\co = 0$.  Therefore the core pressure satisfies
+This derivation holds the core mass and radius fixed, $\dot{M}\co = \dot{R}\co = 0$.  Therefore, the core pressure satisfies
 \begin{equation}\label{eq:Pcdot}
  \dot{P}\co = \p P\co / \p t \, .
 \end{equation}
@@ -773,7 +773,7 @@ The internal energy integral follows simply from  Leibniz's rule as
 \begin{equation}\label{eq:udot}
 \int_{M\co}^{M(t)}{\p u \over \p t} dm = \dot{U}  -  \dot{M}u_M\, .
 \end{equation} 
-To make further progress we use the virial theorem:
+To make further progress, we use the virial theorem:
 \begin{equation}
 \label{eq:virial}
 E_G=-3 \int_{M\co}^M \frac{P}{\rho} dm + 4 \pi (R^3 P_M-R\co^3 P\co),
@@ -781,22 +781,22 @@ E_G=-3 \int_{M\co}^M \frac{P}{\rho} dm + 4 \pi (R^3 P_M-R\co^3 P\co),
 which follows from \Eqsss{eq:structb}{eq:structa}{eq:Eg} by integrating hydrostatic balance in Lagrangian coordinates.  As an aside, the integral in equation (\ref{eq:virial}) can be evaluated for a polytropic EOS to give simple expressions for the total energy:
 \begin{subeqnarray}
 E&=&(1-\zeta)U+4 \pi (R^3 P_M-R\co^3 P\co) \slabel{eq:vira} \\
-&=&\frac{\zeta-1}{\zeta}E_G+\frac{4 \pi}{\zeta} (R^3 P_M-R\co^3 P\co) \slabel{eq:virb}
+&=&\frac{\zeta-1}{\zeta}E_G+\frac{4 \pi}{\zeta} (R^3 P_M-R\co^3 P\co) \slabel{eq:virb} \, ,
 \end{subeqnarray}
 where $\zeta \equiv 3(\gamma - 1)$.  We will not make this assumption and will keep the EOS general.
 
-To express the work integral, the final term in \Eq{eq:DLc}, in terms of changes to gravitational energy we first take the
+To express the work integral, i.e. the final term in \Eq{eq:DLc}, in terms of changes to gravitational energy, we first take the
  time derivative of \Eq{eq:virial}:
 \begin{eqnarray}\label{eq:EGdot}
 \dot{E}_G = 3  \int_{M\co}^M {P \over \rho^2} {\p \rho \over \p t} dm -3 \int_{M\co}^M {\p P\over \p t}{dm \over \rho} 
  -  3{P_M \over \rho_M} \dot{M}+ 3 \dot{P}_M V_M -3 \dot{P}\co V\co  + 3  P_M {\dot{ V}_M} \, . 
 \end{eqnarray} 
 %where the volumes, $V_M = 4 \pi R^3/3$ and $V\co = 4 \pi R\co^3/3$. 
-The first integral in \Eq{eq:EGdot} is the one we want, but the next one must be eliminated.  The time derivative of \Eq{eq:Eg} (times four) gives
+The first integral in \Eq{eq:EGdot} is the one we want, but the second one must be eliminated.  The time derivative of \Eq{eq:Eg} (times four) gives
 \begin{subeqnarray}
  4 \dot{E}_G &=&  -4 {G M \dot{M} \over R} + 4 \int_{M\co}^M {G m \over r^2}{\p r \over \p t} dm\\ 
 &=&   -4 {G M \dot{M} \over R} + 4 \pi \int_{M\co}^M r^3{\p \over \p m}{\p P \over \p t} dm \slabel{eq:4EGb} \\
-&=&  -4 {G M \dot{M} \over R} -3  \int_{M\co}^M {\p P\over \p t}{dm \over \rho}  + 3 V_M {\p P_M \over \p t} -3 V\co {\p P\co \over \p t} \slabel{eq:4EGc}
+&=&  -4 {G M \dot{M} \over R} -3  \int_{M\co}^M {\p P\over \p t}{dm \over \rho}  + 3 V_M {\p P_M \over \p t} -3 V\co {\p P\co \over \p t} \slabel{eq:4EGc} \, ,
 \end{subeqnarray} 
 where \Eqs{eq:4EGb}{eq:4EGc} use hydrostatic balance  and integration by parts.
 
@@ -823,7 +823,7 @@ Combining \Eqsss{eq:DLc}{eq:udot}{eq:PdVint}, we reproduce \Eq{eq:coolingglobal}
 \subsection{Isothermal Atmosphere}
 \label{iso}
 
-We consider the structure of a non self-gravitating isothermal atmosphere that extends outward from the radiative-convective boundary RCB and matches onto the disk density, $\rho_{\rm d}$, at a distance $r_{\rm fit} = n_{\rm fit} \RB$, where $R_{\rm B}$ is the Bondi radius defined in equation (\ref{eq:RB}). From equation (\ref{eq:structa}) the resulting density profile is
+We consider the structure of a non-self-gravitating, isothermal atmosphere that extends outward from the radiative-convective boundary (RCB) and matches onto the disk density, $\rho_{\rm d}$, at a distance $r_{\rm fit} = n_{\rm fit} \RB$, where $R_{\rm B}$ is the Bondi radius defined in equation (\ref{eq:RB}). From equation (\ref{eq:structa}) the resulting density profile is
 \begin{equation} \label{eq:rhoiso}
 \rho = \rho_{\rm d} \exp \left({R_{\rm B} \over r} - {1 \over n_{\rm{fit}}} \right) \approx   \rho_{\rm{d}} \exp \left(R_{\rm B} \over r  \right),
 \end{equation} 
@@ -831,7 +831,7 @@ where the approximate inequality is valid deep inside the atmosphere ($r \ll \RB
 
 The mass of the atmosphere is determined by integrating equation (\ref{eq:structb}) from the RCB to the Bondi radius using the density profile (\ref{eq:rhoiso}) and can be approximated as
 \begin{equation} \label{eq:MatmISO}
-M_{\rm iso} \approx 4 \pi \rho\di {R\cb^4 \over R_{\rm B}} e^{R_B/R\cb} = 4\pi \rho\cb \frac{R\cb^4}{R_{\rm B}}
+M_{\rm iso} \approx 4 \pi \rho\di {R\cb^4 \over R_{\rm B}} e^{R_B/R\cb} = 4\pi \rho\cb \frac{R\cb^4}{R_{\rm B}} \, ,
 \end{equation}
 with $\rho\cb$ the density at the RCB.
 This result is the leading order term in a series expansion. By comparing the expression above and \Eq{eq:Matman} under the assumption that $R\cb \ll R_{\rm B}$, we see that the mass of the outer radiative region (which is nearly isothermal) is negligible when compared with the atmosphere mass in the convective layer, as stated in Section \ref{sec:coolingan}.
@@ -842,7 +842,7 @@ This result is the leading order term in a series expansion. By comparing the ex
 \label{RCBcorr}
 
 %\subsection{Temperature Contrast at Convective Boundary}
-In this section we estimate the temperature and pressure corrections at the RCB due to the fact that the radiative region is not purely isothermal. From equation (\ref{eq:delrad}), we express the radiative lapse rate
+We estimate the temperature and pressure corrections at the RCB due to the fact that the radiative region is not purely isothermal. From equation (\ref{eq:delrad}), we express the radiative lapse rate
 \begin{equation}\label{eq:delradan}
 \delrad = {3 \kappa P \over 64 \pi  G M \sigma T^4} L = \nabla\di {P/P_{\rm d} \over (T/T_{\rm d})^{4-\beta}},
 \end{equation}
@@ -870,7 +870,7 @@ The pressure at the RCB follows from \Eqs{eq:radTP}{eq:Tcb} as
  \begin{equation}\label{eq:TP}
 {T \over T_{\rm d}} = \left[1 + {1 \over {\nabla_\infty \over \delad} - 1} \left({P \over P\cb} -  {P_{\rm d} \over P\cb}\right) \right]^{1 \over 4-\beta}\, .
 \end{equation} 
- We can then determine the radius of the convective boundary $R\cb$ from the \Eq{eq:structa} as 
+ We can then determine the RCB radius $R\cb$ from \Eq{eq:structa} as 
 \begin{equation}\label{eq:RCBint}
 {R_B \over R\cb} = \int_{P\di}^{P\cb} {T \over T_{\rm d}} {dP \over P}\, .
 \end{equation}
@@ -893,7 +893,7 @@ with an extra correction term $\theta < 1$, when compared to an isothermal atmos
 
 \subsection{The Opacity Effect}
 \label{opacityan}
-A  lower opacity  decreases the critical core mass.  Reducing the opacity by a factor of one hundred results in a critical core mass one order of magnitude lower than in the standard ISM case, specifically  $\MC \approx9 M_\oplus$ for the parameters in \Eq{eq:Mcrit}.  The reduction is not  as strong as the nominal scaling would imply, $0.01^{3/5} \approx 0.06$, because $\xi$ increases.
+A  lower opacity  decreases the critical core mass.  Reducing the opacity by a factor of one hundred results in a critical core mass one order of magnitude lower than in the standard ISM case, for our analytic model. The reduction is not  as strong as the nominal scaling would imply, $0.01^{3/5} \approx 0.06$, because $\xi$ increases.
 
 Even with significantly lower opacities, radiative diffusion remains a good approximation at the RCB. For $\beta = 2$, we estimate the optical depth as
 \begin{equation}
