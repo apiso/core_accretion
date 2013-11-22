@@ -361,53 +361,157 @@ Similarly to the case of dissociation, as $T$ increases, part of the rotational 
 
 
 
-\section{Equation of State Effects on Atmosphere Evolution \\
-{\bf long section title.  Just "Role of EOS"?}}
+\section{Role of Equation of State}
 \label{EOSeffects}
 
-Variations in the adiabatic gradient $\delad$ due to partial dissociation and quantum {\bf (`Quantum' is not a useful descriptor (IMO).  All EOS effects are quantum, noting molecular or H$_2$ rotation would be more descriptive.)} rotational effects (see \S\ref{deladtable}) have two competing {\bf (Not `competing,' both contribute and can/do go in same direction)} effects on \sout{the} {\bf atmospheric} evolution \sout{of a core's atmosphere}.  {\bf Putting the equation $\dot{M} = -L/(dE/dM)$ early in the explanation would help.}
-They yield: (1) a lower envelope luminosity, and (2) a larger amount of radiated energy per unit of accreted mass, when compared to an ideal gas.  Both effects {\bf A bit confusing if you mean EOS effects or resulting evolution effects.  Maybe avoid reusing `effects`.)} combined slow down accretion and increase the growth time of the atmosphere and thus the critical core mass.  
+Variations in the adiabatic gradient $\delad$ due to partial dissociation and molecular rotational effects (see \S\ref{deladtable}) affect atmospheric evolution by yielding: (1) a lower envelope luminosity $L$, and (2) a larger amount of radiated energy per unit of accreted mass $-dE/dM$, when compared to an ideal gas. As a result, the rate of change in atmospheric mass,
 
-{\bf In what follows it may be clearer to start with the motivation: isolating the two EOS effects, i.e. dissociation and rotation.  Then introduce the two patched EOSs as how we do this.  Currently it's less clear and more drawn out where this is going.}
+\begin{equation}
+\label{eq:dMdt}
+\dot{M} = -\frac{L}{dE/dM},
+\end{equation}
+(cf. Equation \ref{eq:coolingglobal} and ignoring surface terms) is lower than in the ideal case. The $\delad$ variations thus slow down gas accretion and increase the growth time of the atmosphere, and hence the critical core mass.  
 
-In order to explain how quantum rotational states at low temperatures affect atmospheric growth, we perform the following thought experiment {\bf (I don't see how this is a thought experiment, or why we have to imagine.  I would just describe the EOSs)}: we imagine that the EOS deviates from a polytrope only in the upper atmosphere where temperatures are low, and that the gas is ideal and polytropic deep in the envelope. Conversely, we study the effects of dissociation at high temperatures by assuming that the EOS is realistic at the bottom of the atmosphere where temperatures are high, but that the gas is polytropic in the outer regions. {{\bf Finish the description of the EOSs first.  Then describe and interpret Fig. 2 starting in a new paragraph.  Starting the fig description at the end of a methods discussion lost me.)}  Figure \ref{fig:tplotall} shows the time evolution of atmospheres forming at 10 AU around cores of mass $M\co=10 M_{\oplus}$ and described by various equations of state, as follows:
+To understand the separate effects of dissociation and rotation on atmospheric growth, we consider the resulting EOS deviations from an ideal gas independently.  
+%{\bf In what follows it may be clearer to start with the motivation: isolating the two EOS effects, i.e. dissociation and rotation.  Then introduce the two patched EOSs as how we do this.  Currently it's less clear and more drawn out where this is going.}
+In order to explain how quantum rotational states at low temperatures affect atmospheric growth, we 
+% {\bf (I don't see how this is a thought experiment, or why we have to imagine.  I would just describe the EOSs)}: 
+imagine \textbf{(I used 'imagine' to make it clear that this is just an exercise to isolate the EOS effects, rather than a physically motivated assumption)} that the EOS deviates from a polytrope only in the upper atmosphere where temperatures are low, and that the gas is ideal and polytropic deep in the envelope. Conversely, we study the effects of dissociation at high temperatures by assuming that the EOS is realistic at the bottom of the atmosphere where temperatures are high, but that the gas is polytropic in the outer regions. We compare the behavior of each EOS described above with that of an ideal gas polytrope. Lastly, we use the realistic EOS at all temperatures to study the combined effects of dissociation and rotation. 
 
-{\bf I would make this list numbered and omit the reference to the curve styles, which is clear in figures.}
-\begin{itemize}
-\item Dashed curve (1) --- ideal gas polytrope with $\delad=0.3$.
-\item Dotted curve (2) --- ideal gas polytrope with $\delad=0.3$ for $T>500$ K and realistic EOS for $T<500$ K.
-\item Dash-dotted curve (3) --- ideal gas polytrope with $\delad=0.3$ for $T<500$ and realistic EOS for $T>500$ K.
-\item Solid curve (4) --- fully realistic EOS. ({\bf Here and elsewhere, I don't like ``fully" realistic, as it implies a perfect EOS.  I would just say realistic at all $T$.})
-\end{itemize}
-We choose $T=500$ K as the cutoff temperature because the hydrogen-helium mixture behaves like an ideal gas, with $\delad=0.3$, in this temperature regime (see Figure \ref{fig:deladmap}). {\bf (I find the references to curve numbers distracting in general.  I would try to do less of this and focus on describing the physical effects.  The reader still needs to look at the figure, and there the curves are clearly labelled.)} \sout{As such}, the time evolution difference between curves (1) and (2) shows the quantum rotational effects on the atmosphere evolution, while the difference between curves (1) and (3) accounts for hydrogen dissociation. We see that both dissociation and rotational states have a comparable effect {\bf (due to log scale, I would not call the effects comparable, just b/c they go in same direction)} on the atmosphere growth and result in slower cooling. The growth time is dependent on both the total energy that must be released (i.e., the rate at which energy is released) and on the luminosity of the atmosphere. {\bf `Rate of energy release' and luminosity are the same thing.  You may be calling $dE/dM$ a `rate' which is confusing.  Again, I think if you introduce and physically explain $\dot{M} = -L/(dE/dM)$ at the outset, then the resulting explanations can more compactly and clearly refer to the terms that matter.}  We explore the \sout{relative} influence of these two factors separately.  {\bf Haven't you already started exploring these factors separately?  Why say this again? Also perhaps worth a note (if not an explanation) that the combined effect is significantly greater than either individually (again noting log scale).}
+%{{\bf Finish the description of the EOSs first.  Then describe and interpret Fig. 2 starting in a new paragraph.  Starting the fig description at the end of a methods discussion lost me.)}  
+
+Figure \ref{fig:tplotall} shows the time evolution of atmospheres forming at 10 AU around cores of mass $M\co=10 M_{\oplus}$ and described by various equations of state, as follows:
+%{\bf I would make this list numbered and omit the reference to the curve styles, which is clear in figures.}
+\begin{enumerate}
+\item Ideal gas polytrope with $\delad=0.3$.
+\item Ideal gas polytrope with $\delad=0.3$ for $T>500$ K and realistic EOS for $T<500$ K (hereafter low-$T$ realistic EOS).
+\item Ideal gas polytrope with $\delad=0.3$ for $T<500$ and realistic EOS for $T>500$ K  (hereafter high-$T$ realistic EOS).
+\item Realistic EOS at all $T$. 
+%({\bf Here and elsewhere, I don't like ``fully" realistic, as it implies a perfect EOS.  I would just say realistic at all $T$.})
+\end{enumerate}
+We choose $T=500$ K as the cutoff temperature because the hydrogen-helium mixture behaves like an ideal gas, with $\delad=0.3$, in this temperature regime (see Figure \ref{fig:deladmap}). 
+%{\bf (I find the references to curve numbers distracting in general.  I would try to do less of this and focus on describing the physical effects.  The reader still needs to look at the figure, and there the curves are clearly labelled.)} \sout{As such}, 
+%By separately comparing curves (1) and (2), and (1) and (3)  while the difference between curves (1) and (3) accounts for hydrogen dissociation. 
+Both dissociation and rotation result in slower cooling for both the high-$T$ and low-$T$ realistic EOSs. 
+%decrease the atmospheric accretion rate $\dot{M}$ and thus
+%This follows from Equation (\ref{eq:dMdt}), with rotation decreasing $L$ and dissociation increasing $-dE/dM$, as we show further. 
+Noting the logarithmic scale in Figure \ref{fig:tplotall}, we see that the combined effect of rotation and dissociation is significantly greater than either individually. %consistent with Equation \ref{eq:dMdt}, since dissociation increases $-dE/dM$ while molecular rotation decreases $L$.
+  
+ %From Equation \ref{eq:dMdt}, the atmospheric growth time is dependent on 
+
+%The growth time is dependent on both the total energy that must be released (i.e., the rate at which energy is released) and on the luminosity of the atmosphere. {\bf `Rate of energy release' and luminosity are the same thing.  You may be calling $dE/dM$ a `rate' which is confusing.  Again, I think if you introduce and physically explain $\dot{M} = -L/(dE/dM)$ at the outset, then the resulting explanations can more compactly and clearly refer to the terms that matter.}  We explore the \sout{relative} influence of these two factors separately.  {\bf Haven't you already started exploring these factors separately?  Why say this again? Also perhaps worth a note (if not an explanation) that the combined effect is significantly greater than either individually (again noting log scale).}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.5\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/tplot.pdf}
 %%\vspace{-0.5in}
-\caption{Elapsed time to grow a planet of total mass (core + atmosphere) for a variety of EOS combinations (see text), for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=10 M_{\oplus}$. Both hydrogen dissociation at high temperatures deep in the atmosphere and quantum rotational effects at low temperatures in the outer envelope result in slower cooling when compared to an ideal gas polytrope.}
+\caption{Elapsed time to grow a planet of total mass (core + atmosphere) for a variety of EOS combinations (see text), for a planet forming at 10 AU and with a fixed core mass $M_{\rm c}=10 M_{\oplus}$. Both hydrogen dissociation at high temperatures deep in the atmosphere and molecular rotational effects at low temperatures in the outer envelope result in slower cooling when compared to an ideal gas polytrope.}
 \label{fig:tplotall}
 \end{figure}
 
 \begin{figure*}[tb]
 \centering
-\includegraphics[width=\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/all_plot.pdf}
+\includegraphics[width=\textwidth]{../../figs/ModelAtmospheres/RadSelfGravRealEOS/PaperFigs/all_plot_test.pdf}
 %%\vspace{-0.5in}
-\caption{{\bf (Left and right panels could be different figs.  The left panel could benefit from showing $P$ or $\rho$.  Also $E_{\rm tot}$ is not yet well defined; the local quantity $e \rho r^3$ might be more instructive.  A greater range of $E$ would show what the polytrope is doing better.  The right panel could benefit from adding $\dot{M}$.  We call $E_{\rm tot} \rightarrow E$ elsewhere, so should be consistent.  Why don't x-axes line up in right panel, are masses different?  What is the discontinuity in $dE/dM$ for the polytrope around 14 $M_\oplus$?  (A kink would be course resolution, but a discontinuity is harder to understand.)  I don't think you need an abs.\ val. around $-dE/dM$.)} We explore atmosphere growth around a core of $M\co=10 M_{\oplus}$ forming at 10 AU in our fiducial disk, for the EOS choices in Figure \ref{fig:tplotall}. Upper-left panel:  Instantaneous temperature profile as a function of the radial coordinate when the total mass (core + atmosphere) is $12 M_{\oplus}$. The location of the RCB is marked. Quantum rotational states at low temperatures in the outer region of the atmosphere result in a deeper RCB. Upper-right panel:  Luminosity evolution as a function of total mass. Quantum rotational effects at low temperatures near the top of the atmosphere result in a lower luminosity for the realistic EOS (see text). Lower-left panel: Instantaneous energy profiles as a function on radius for a total mass of $12 M_{\oplus}$. Hydrogen dissociation deep in the atmosphere causes the bulk of the energy to be concentrated at the bottom of the envelope. This increases the amount of energy per unit mass that needs to be radiated away ($|dE/dM|$) resulting in a longer crossover time for the realistic EOS when compared to the polytrope. Lower-right panel:  $|dE/dM|$ evolution as a function of total mass. Hydrogen dissociation deep in the atmosphere results in the bulk of the energy being concentrated at the bottom of the envelope, which increases the energy per unit mass that has to be radiated away when compared to an ideal gas polytrope. This results in slower growth.}
+\caption{
+%{\bf (Left and right panels could be different figs.  The left panel could benefit from showing $P$ or $\rho$.  Also $E_{\rm tot}$ is not yet well defined; the local quantity $e \rho r^3$ might be more instructive.  A greater range of $E$ would show what the polytrope is doing better.  The right panel could benefit from adding $\dot{M}$.  We call $E_{\rm tot} \rightarrow E$ elsewhere, so should be consistent.  Why don't x-axes line up in right panel, are masses different?  What is the discontinuity in $dE/dM$ for the polytrope around 14 $M_\oplus$?  (A kink would be course resolution, but a discontinuity is harder to understand.)  I don't think you need an abs.\ val. around $-dE/dM$.)} 
+We explore atmosphere growth around a core of $M\co=10 M_{\oplus}$ forming at 10 AU in our fiducial disk, for the EOS choices in Figure \ref{fig:tplotall}.  Upper-left panel: Radial pressure profile for a total mass (core + atmosphere) of $12 M_{\oplus}$. The location of the RCB is marked. Quantum rotational states at low temperatures in the outer region of the atmosphere result in a deeper RCB. Upper-right panel:  Luminosity evolution as a function of total mass. Rotational effects at low temperatures near the top of the atmosphere result in a lower luminosity for the realistic EOS (see text). Middle-left panel: Total local energy $e \rho r^3$ radial profile for a total mass of $12 M_{\oplus}$. Hydrogen dissociation deep in the atmosphere causes more of the energy to be concentrated at the bottom of the envelope when compared to an ideal gas polytrope. This increases the amount of energy per unit mass that needs to be radiated away, $-dE/dM$.  Middle-right panel:  $-dE/dM$ evolution as a function of total mass. Hydrogen dissociation deep in the atmosphere results in a more negative total energy $E$. Consequently, $-dE/dM$ is larger when compared to the ideal gas polytrope. Lower-left panel:  Radial temperature profile for a total mass of $12 M_{\oplus}$.  Hydrogen dissociation deep in the atmosphere decreases the temperature at the core. This lowers the internal energy and thus results in a more negative total energy $E$.   Lower-right panel: the atmospheric accretion rate $\dot{M}$ as a function of total mass. Both dissociation and rotation reduce $\dot{M}$ and thus slow down atmospheric growth.}
 \label{fig:all_plot}
 \end{figure*}
 
-The upper-right panel of Figure \ref{fig:all_plot} shows the luminosity evolution with mass for \sout{atmospheres (1)-(4)} {\bf our model EOSs}, for a\sout{n example core with} $M\co=10 M_{\oplus}$ {\bf core} \sout{forming} {\bf (as core isn't forming, this phrase is misleading in addition to being too lengthy)} at 10 AU. We see that the lower luminosity of the fully realistic EOS (4) when compared to the polytrope (1) is due to the realistic EOS in the outer atmosphere (2). This behavior is directly correlated to the depth of the radiative region of the envelope, which is shown in the upper-left panel of Figure \ref{fig:all_plot} for a total planet mass of $12 M_{\oplus}$. We see that the realistic EOS for low temperatures (2) results in a deeper location of the RCB when compared to the ideal gas polytrope (1). {\bf This is an accurate observation.  
-The deeper question is why does the EOS change result in a deeper RCB?  This should be possible to understand, right?}  This deeper RCB translates into a larger number of steps that photons need to diffuse to escape from the RCB, and therefore a lower luminosity (cf. Equation \ref{eq:delrad}).  {\bf Better to just say it's an optical depth effect than reexplaining how radiative diffusion works.  Also it's the pressure depth (not the radius) that correlates more closely with optical depth.  A plot of $P(r)$ might thus help as noted in fig caption.}
+The upper-right panel of Figure \ref{fig:all_plot} shows the luminosity evolution with mass for our model EOSs, for a $M\co=10 M_{\oplus}$ core at 10 AU. The realistic EOS effects in the outer envelope decrease the atmospheric luminosity $L$ when compared to an ideal gas polytrope. We can explain this analytically. By substituting Equation (\ref{eq:structa}) into Equation (\ref{eq:structc}) in the convective region of the atmosphere, and assuming the nebular gas obeys the ideal gas law, we can write hydrostatic balance along an adiabat as 
+
+\begin{equation}
+\label{eq:dTdr}
+\frac{d T}{d r}=-\frac{\delad G m(r)}{\mathcal{R} r^2},
+\end{equation}
+where $\mathcal{R}$ is the specific gas constant. This result is valid for the $\delad=0.3$ polytrope. As the low$-T$ realistic EOS only slightly (see Figure \ref{fig:deladmap}) deviates from an ideal gas in the outermost convective layers, we can assume that the gas described by the low-$T$ EOS can be approximated as ideal throughout the convective interior. The low-$T$ EOS thus also obeys Equation (\ref{eq:dTdr}) with $\delad \approx const.$. We further neglect self-gravity in Equation (\ref{eq:dTdr}) and set $m(r)=M\co$. Integrating Equation (\ref{eq:dTdr}) from the core to the RCB under these assumptions yields
+\begin{equation}
+\label{eq:dTdrint}
+T\cb=T\co - \frac{\delad G M\co}{\mathcal{R}} \Big(\frac{1}{R\co} - \frac{1}{R\cb}\Big).
+\end{equation}  
+Deep in the convective interior, $T \gg T\cb$ and $r \ll R\cb$. From virial equilibrium, the temperature in the inner atmosphere can thus be expressed as
+\begin{equation}
+\label{eq:virialT}
+T(r) \simeq \frac{\nabla_{\rm ad} G M\co}{\mathcal{R} r}.
+\end{equation}
+%The temperature scale height deep in the convective interior is $H_T \sim r$, with $dT/dr \sim -T/H_T \sim -T/r$. From Equation (\ref{eq:structc}) it immediately follows that the pressure scale height, for which $dP/dr \sim -P/H_P$, is $H_P \sim r \delad$. Deep in the interior and for $m(r)=M\co$, hydrostatic balance (\ref{eq:structa}) thus becomes
+
+%\begin{equation}
+%\label{eq:structint}
+%\frac{P}{r \delad} \sim -\frac{G M\co}{r^2}. 
+%\end{equation}
+%From this and the definition of the isothermal sound speed
+%\begin{equation}
+%\label{eq:cs}
+%c_s^2 = \frac{P}{\rho} =\mathcal{R} T, 
+%\end{equation} 
+%with both expressions applied at the core where $r=R\co$, $T=T\co$ and $\delad=\nabla_{\rm ad, c}$, we find
+Applying equation (\ref{eq:virialT}) at the core, where $T=T\co$, $r=R\co$ and $\delad=\nabla_{\rm ad, c}$, gives
+\begin{equation}
+\label{eq:Tc}
+T\co \simeq \frac{\nabla_{\rm ad, c} G M\co}{\mathcal{R} R\co}.
+\end{equation}
+As the adiabatic gradient at the core is the same for both the ideal gas polytrope and the low$-T$ realistic EOS, $T\co$ has the same value for both EOSs. This is shown in Figure \ref{fig:all_plot}, lower-left panel. Substituting Equation (\ref{eq:Tc}) into Equation (\ref{eq:dTdrint}) applied at the RCB gives
+\begin{equation}
+\label{eq:Tcb}
+T\cb \simeq \frac{\nabla_{\rm ad, RCB} G M\co}{\mathcal{R} R\cb},
+\end{equation}
+%We note that the expression above and the definition of the pressure scale height $H_P \equiv c_s^2 r^2/(G M\co)$ imply that the pressure scale height at the RCB is the same as in the deep interior, $H_P \sim \delad r$.
+and thus
+\begin{equation}
+\label{eq:rcb}
+R\cb \propto \frac{\nabla_{\rm ad, RCB}}{T\cb}.
+\end{equation}
+An approximate expression for $T\cb$ as a function of the adiabatic gradient and disk temperature can be derived using Equation (\ref{eq:delrad}) applied at the RCB (where $\delad=\delrad$) and $\delrad=d \ln T/ d \ln P$ (see Paper I for details). For $\beta=2$ in the opacity law (\ref{eq:opacitylaw}), $T\cb \simeq T\di (1- 2 \nabla_{\rm ad, RCB})^{-1/2}$, and thus
+\begin{equation}
+\label{eq:rcbdel}
+R\cb \propto \frac{\nabla_{\rm ad, RCB}}{(1- 2 \nabla_{\rm ad, RCB})^{-1/2}}.
+\end{equation}
+For the ideal gas polytrope $\nabla_{\rm ad, RCB}=0.3$, and for the low-$T$ realistic EOS $\nabla_{\rm ad, RCB}\approx 0.25$. For these particular choices, Equation (\ref{eq:rcbdel}) yields a smaller $R\cb$ for the low$-T$ realistic EOS. As such, molecular rotation increases the physical extent, and thus the optical depth of the radiative zone.
+%Qualitatively, this can be explained through a simple analytic argument: for a non-self-gravitating atmosphere composed of an ideal gas, the temperature profile in convective regions scales as $T(r) \propto \delad/r$ (see Paper I for details; it can also be derived from Equations \ref{eq:structa} and \ref{eq:structc} applied in convective regions). Applying the expression above at the RCB yields $T\cb \propto \delad\cb/ R\cb$. As the outer radiative layer of the atmosphere is nearly isothermal, $T\cb \approx T\di=const.$, to order unity corrections. It easily follows that $R\cb \propto \deladcb$   Figure \ref{fig:all_plot_temp}, middle-left panel shows 
+This is directly correlated to a larger pressure depth of the RCB for the low-$T$ realistic EOS, as shown in the upper-left panel of Figure \ref{fig:all_plot} for a total planet mass of $12 M_{\oplus}$. As $L \propto 1/P\cb$ (cf. Equation \ref{eq:delrad}), the deeper RCB results in a lower $L$ and thus $\dot{M}$ (Figure \ref{fig:all_plot}, lower-right panel).
+
+%directly correlated to the depth of the radiative region of the envelope, which is shown in the upper-left panel of Figure \ref{fig:all_plot} for a total planet mass of $12 M_{\oplus}$. We see that the realistic EOS for low temperatures (2) results in a deeper location of the RCB when compared to the ideal gas polytrope (1). {\bf This is an accurate observation.  
+%The deeper question is why does the EOS change result in a deeper RCB?  This should be possible to understand, right?}  This deeper RCB translates into a larger number of steps that photons need to diffuse to escape from the RCB, and therefore a lower luminosity (cf. Equation \ref{eq:delrad}).  {\bf Better to just say it's an optical depth effect than reexplaining how radiative diffusion works.  Also it's the pressure depth (not the radius) that correlates more closely with optical depth.  A plot of $P(r)$ might thus help as noted in fig caption.}
+
+%We see that the lower luminosity of the fully realistic EOS (4) when compared to the polytrope (1) is due to the realistic EOS in the outer atmosphere (2). T
 
 %We found that the RCB for the fully realistic EOS (4) is roughly at the same location as the RCB for the realistic EOS at low temperatures (2) for low atmosphere masses, and it moves further out relatively as the atmosphere mass increases. This explains our choice of $M_{\rm tot}=12 M_{\oplus}$ as a representative case to illustrate the effect of spin isomers. Envelope growth is slowest at this relative atmosphere-to-core mass (see PY13)... 
 
-Dissociation deep in the planet's atmosphere increases the amount of energy per unit mass that needs to be radiated by the envelope, which further slows down growth. 
-{\bf Why is this true?  Dissociation absorbs energy which by itself decreases the amount of energy that needs to be radiated.}  Figure \ref{fig:all_plot}, lower-left plot, shows the total energy (internal and gravitational) profile as a function of the radial coordinate, \sout{for the same example planet}. {\bf Two choices: (1) define this cumulative energy more clearly and give it a different symbol than $E_{\rm tot}$ that's already used, maybe $E(r)$, or (2) plot the local (noncumulative) quantity $e \rho r^3$, which should peak in the interesting places.} The bulk of the energy is concentrated deep in the atmosphere for the realistic EOS at high temperatures (3) and the fully realistic EOS curve (4), which shows that hydrogen dissociation in the inner atmosphere dictates the energy behavior of the envelope. In contrast, energy is concentrated towards the outer boundary for the $\delad=0.3$ polytrope (1). 
-{\bf The key question here is how does the slope of the energy affect the quantity that matters, $|dE/dM|$?  This is not clear yet.  I think the shift to lower temperatures, seen in the $T(r)$ plot is helpful, but perhaps the EOS plots should also include an internal energy map.}
-Qualitatively, this can be explained through a simple analytic argument: the density profile in an adiabatic, non-self-gravitating atmosphere composed of an ideal gas scales as $\rho(r) \sim r^{1/\delad-1}$ (see Paper I) {\bf (The sign is wrong here and the error propagates to the energy.  Should be $\propto$ not $\sim$.)}. Since the total energy scales as $E(r) \sim \rho(r) r^2 \sim r^{1/\delad+1}$, {\bf (This is a new/contradictory use of $E$, what is given here is $dE/d\ln(r)$.  Scaling is wrong as noted above.  Again $\propto$ not $\sim$.)} adiabats with lower $\delad$ have their energy more tightly packed towards the interior of the envelope, which is the case during dissociation when $\delad$ decreases significantly (see Section \S\ref{deladtable} and Figure \ref{fig:deladmap}).  It takes more energy to bring gas deep into the atmosphere for an envelope that has the bulk of its energy concentrated towards the bottom,  {\bf (This argument isn't clear, new gas isn't brought deep into the atmosphere, it is added at the surface.)} which increases the amount of energy per unit mass that needs to be radiated, i.e. $|dE/dM|$. The cooling time is therefore larger {\bf with dissociation} \sout{for the realistic EOS at high temperatures} (3) when compared to the ideal gas polytrope (1). This increase in $|dE/dM|$ is shown in the bottom-right panel of Figure \ref{fig:all_plot}.
+%Dissociation deep in the planet's atmosphere increases the amount of energy per unit mass that needs to be radiated by the envelope, which further slows down growth. 
 
-We have seen that quantum rotational states transitions due to the low temperatures at the top of the atmosphere {\bf (already too long and convoluted)} increase the thickness of the radiative zone, and decrease the luminosity of the envelope, while dissociation at high temperatures deep in the atmosphere increases the amount of energy needed to increase the atmosphere mass by a fixed amount. {\bf Way too long a sentence!} Overall, both effects result in a longer time for the atmosphere to evolve. 
+%{\bf Why is this true?  Dissociation absorbs energy which by itself decreases the amount of energy that needs to be radiated.}  
+
+
+Figure \ref{fig:all_plot}, middle-left panel, shows a radial profile of the total local energy $-e \rho r^3$, with $e$ the total specific energy, for the same example planet. \textbf{(the core + total mass choices need to be specified; "the same example planet" is shorter than "for a planet with Mc = ...", and clear enough I think.)}
+%the cumulative total energy (internal and gravitational) profile as a function of the radial coordinate, \sout{for the same example planet}. {\bf Two choices: (1) define this cumulative energy more clearly and give it a different symbol than $E_{\rm tot}$ that's already used, maybe $E(r)$, or (2) plot the local (noncumulative) quantity $e \rho r^3$, which should peak in the interesting places.} 
+The bulk of the energy is concentrated in the atmospheric interior for all EOSs. However, the energy of the high-$T$ realistic EOS and of the realistic EOS at all $T$ is much larger in magnitude (more negative) near the core when compared to an ideal gas polytrope. This is due to the fact that $\delad$ decreases in dissociation regions (Figure \ref{fig:deladmap}), which results in a shallower temperature gradient and thus lower temperatures near the core. Figure \ref{fig:all_plot}, bottom-left panel shows the radial temperature profile (for $M\co=10 M_{\oplus}$ and $M_{\rm tot}=12 M_{\oplus}$), with temperatures lower near the core for the high-$T$ realistic EOS. As the internal energy $U \propto T$, dissociation decreases $U$ and thus the total energy deep in the interior. This explains the local energy behavior shown in Figure \ref{fig:all_plot}, middle-left panel.  Note that, in some astrophysical contexts, this loss of thermal energy due to dissociation can be so large as to trigger dynamical instabilities and eventual collapse in higher mass objects, such as in protostars \citep{larson69} or during the runaway growth of giant planets \citep{bodenheimer80}.  
+
+The energy behavior can also be explained qualitatively through a simple analytic argument: the density profile in an adiabatic, non-self-gravitating atmosphere composed of an ideal gas scales as $\rho(r) \propto r^{-1/\delad+1}$, and the total specific energy is $e(r) \propto 1/r$ (see Paper I). Thus $e \rho r^3 \sim r^{-1/\delad+3}$. It follows that adiabats with lower $\delad$ have their energy more tightly packed towards the interior of the envelope, which is the case during dissociation. This is consistent with the energy behavior in Figure \ref{fig:all_plot}, middle-left panel. 
+
+We note that the amount of energy that needs to be released in order to accrete gas at the outer boundary is going to be roughly equal for all EOSs, as it has to match the outer boundary conditions of the nebula. However, a more negative total energy in the interior, as is the case for the high-$T$ EOS, requires a larger amount of energy to be radiated away to bind the next batch of gas. This implies a larger $-dE/dM$ during atmospheric evolution (middle-right panel of Figure \ref{fig:all_plot}), and thus a lower $\dot{M}$ for the high-T EOS (lower-right panel of Figure \ref{fig:all_plot}). 
+
+%The high-$T$ realistic EOS has a significantly higher binding energy than the ideal gas polytrope. 
+
+%which increases the amount of energy that needs to be radiated away in order to accrete more gas, i.e. $-dE/dM$. 
+
+
+ %Dissociation deep in the atmosphere reduces $\delad$, and thus the temperature gradient. Figure \ref{fig:all_plot}, bottom-left panel shows the radial temperature profile (for $M\co=10 M_{\oplus}$ and $M_{\rm tot}=12 M_{\oplus}$). A lower adiabatic gradient results in lower temperatures near the core for the high-$T$ EOS when compared to the ideal gas polytrope. As the internal energy $U \propto T$, dissociation decreases $U$. The total energy $E$ thus becomes more negative
+
+%The bulk of the energy for the high-$T$ realistic EOS and the realistic EOS at all $T$ is , which shows that hydrogen dissociation in the inner atmosphere dictates the energy behavior of the envelope. In contrast, energy is concentrated towards the outer boundary for the $\delad=0.3$ polytrope. 
+%{\bf The key question here is how does the slope of the energy affect the quantity that matters, $|dE/dM|$?  This is not clear yet.  I think the shift to lower temperatures, seen in the $T(r)$ plot is helpful, but perhaps the EOS plots should also include an internal energy map.}
+%Qualitatively, this can be explained through a simple analytic argument: the density profile in an adiabatic, non-self-gravitating atmosphere composed of an ideal gas scales as $\rho(r) \propto r^{-1/\delad+1}$, and the total specific energy is $e(r) \propto 1/r$ (see Paper I). Thus the total energy scales as $E(r) \propto e(r) \rho(r) r^3 \sim r^{-1/\delad+3}$. It follows that adiabats with lower $\delad$ have their energy more tightly packed towards the interior of the envelope, which is the case during dissociation when $\delad$ decreases significantly (see Section \S\ref{deladtable} and Figure \ref{fig:deladmap}). Dissociation thus causes the atmospheric interior to dominate the total binding energy, which increases the amount of energy that needs to be radiated away in order to accrete more gas, i.e. $-dE/dM$.   
+
+%The larger $-dE/dM$ due to dissociation can also be understood directly from the $\delad$ behavior. Dissociation deep in the atmosphere reduces $\delad$, and thus the temperature gradient. Figure \ref{fig:all_plot}, bottom-left panel shows the radial temperature profile (for $M\co=10 M_{\oplus}$ and $M_{\rm tot}=12 M_{\oplus}$). A lower adiabatic gradient results in lower temperatures near the core for the high-$T$ EOS when compared to the ideal gas polytrope. As the internal energy $U \propto T$, dissociation decreases $U$. The total energy $E$ thus becomes more negative, which translates into a larger $-dE/dM$ during atmospheric evolution (middle-right panel of Figure \ref{fig:all_plot}), and thus a lower $\dot{M}$ for the high-T EOS (lower-right panel of Figure \ref{fig:all_plot}). Note that, in some astrophysical contexts, this loss of thermal energy due to dissociation can be so large as to trigger dynamical instabilities and eventual collapse in higher mass objects, such as in protostars \citep{larson69} or during the runaway growth of giant planets \citep{bodenheimer80}.  
+
+% It takes more energy to bring gas deep into the atmosphere for an envelope that has the bulk of its energy concentrated towards the bottom,  {\bf (This argument isn't clear, new gas isn't brought deep into the atmosphere, it is added at the surface.)} which increases the amount of energy per unit mass that needs to be radiated, i.e. $|dE/dM|$. The cooling time is therefore larger {\bf with dissociation} \sout{for the realistic EOS at high temperatures} (3) when compared to the ideal gas polytrope (1). This increase in $|dE/dM|$ is shown in the bottom-right panel of Figure \ref{fig:all_plot}.
+
+From Equation (\ref{eq:dMdt}), realistic EOS effects reduce the atmosphere accretion rate $\dot{M}$ by decreasing $L$ and increasing $-dE/dM$. This results in slower atmospheric growth and therefore a larger critical core mass, as we show in Section \S\ref{critical}.
+
+%Molecular rotational effects at the top of the atmosphere increase the luminosity $L$, 
+%
+%We have seen that quantum rotational states transitions due to the low temperatures at the top of the atmosphere {\bf (already too long and convoluted)} increase the thickness of the radiative zone, and decrease the luminosity of the envelope, while dissociation at high temperatures deep in the atmosphere increases the amount of energy needed to increase the atmosphere mass by a fixed amount. {\bf Way too long a sentence!} Overall, both effects result in a longer time for the atmosphere to evolve. 
 
 %we find that only polytropes with $\gamma<3/2$, i.e. $\delad<1/3$, have the total energy concentrated towards the core. This is satisfied by $\delad=2/7$ but not by $\delad=2/5$, in agreement with the results in the bottom panel of Figure \ref{fig:ETrplotpoly}. 
 %
