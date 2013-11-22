@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Beckwith} \& {Sargent}(1991)}]{beckwith91}
@@ -16,7 +16,7 @@
 Blanksby, S.~J. \& {Ellison}, G.~B. 2003, Acc. Chem. Res., 36, 255
 
 \bibitem[{{Bodenheimer} \& {Pollack}(1986)}]{boden86}
-{Bodenheimer}, P. \& {Pollack}, J.~B. 1986, \icarus, 67, 391
+{Bodenheimer}, P. \& {Pollack}, J.~B. 1986, Icarus, 67, 391
 
 \bibitem[{{Chiang} \& {Youdin}(2010)}]{chiang10}
 {Chiang}, E. \& {Youdin}, A.~N. 2010, Annual Review of Earth and Planetary
@@ -68,9 +68,6 @@ Blanksby, S.~J. \& {Ellison}, G.~B. 2003, Acc. Chem. Res., 36, 255
 \bibitem[{{Ormel}(2013)}]{ormel13}
 {Ormel}, C.~W. 2013, \mnras, 428, 3526
 
-\bibitem[{{Papaloizou} \& {Nelson}(2005)}]{pn05}
-{Papaloizou}, J.~C.~B. \& {Nelson}, R.~P. 2005, \aap, 433, 247
-
 \bibitem[{{Papaloizou} \& {Terquem}(1999)}]{pap99}
 {Papaloizou}, J.~C.~B. \& {Terquem}, C. 1999, \apj, 521, 823
 
@@ -87,11 +84,11 @@ Blanksby, S.~J. \& {Ellison}, G.~B. 2003, Acc. Chem. Res., 36, 255
 \bibitem[{{Pollack} {et~al.}(1996){Pollack}, {Hubickyj}, {Bodenheimer},
   {Lissauer}, {Podolak}, \& {Greenzweig}}]{pollack96}
 {Pollack}, J.~B., {Hubickyj}, O., {Bodenheimer}, P., {Lissauer}, J.~J.,
-  {Podolak}, M., \& {Greenzweig}, Y. 1996, \icarus, 124, 62
+  {Podolak}, M., \& {Greenzweig}, Y. 1996, Icarus, 124, 62
 
 \bibitem[{{Pollack} {et~al.}(1985){Pollack}, {McKay}, \&
   {Christofferson}}]{pollack85}
-{Pollack}, J.~B., {McKay}, C.~P., \& {Christofferson}, B.~M. 1985, \icarus, 64,
+{Pollack}, J.~B., {McKay}, C.~P., \& {Christofferson}, B.~M. 1985, Icarus, 64,
   471
 
 \bibitem[{{Rafikov}(2006)}]{rafikov06}
