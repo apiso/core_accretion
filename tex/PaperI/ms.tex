@@ -139,12 +139,12 @@ Our main assumptions are summarized as follows:
 \item Cooling of the atmosphere is dominated by the convective interior.  Thus the luminosity in the radiative exterior is held spatially constant. \textbf{We justify this assumption in \S\ref{sec:twolayer} and confirm its validity in \S\ref{sec:endoftime}.} 
 %\item A global cooling model connects independent static solutions into a time-dependent sequence.
 \item A polytropic equation of state (EOS) is assumed for simplicity.
-\item Dust grains provide the opacity in the radiative zone. \textbf{For the cool temperatures in the outer disk, our assumption of an inner convective --- outer radiative structure self-consistently ensures that the radiative layer remains cool enough to avoid dust sublimation. \footnote{Other opacity choices are discussed in \S\ref{sec:op}}.} %which remains cool enough to avoid dust sublimation. \textbf{This follows self-consistently }
+\item Dust grains provide the opacity in the radiative zone. \textbf{For the cool temperatures in the outer disk, the radiative layer remains cool enough to avoid dust sublimation.} Other opacity choices are discussed in \S\ref{sec:op}.
 %\item Because gas accretion accelerates after the crossover mass, the time to reach the crossover mass, i.e. the crossover time, is a good approximation of the total time to form a gas giant.
 \end{enumerate}
 %The remainder of this section develops our model in more detail.
 
-The first assumption of spherical accretion breaks down early in the inner disk, as explained below.  However, our focus is the outer disk, where this standard approximation is better justified.
+The first assumption of spherical accretion breaks down early in the inner disk, as explained below.  However, our focus is on the outer disk, where this standard approximation is better justified.
 
 \subsection{Disk and Opacity Model}\label{sec:disk}
 
@@ -208,15 +208,15 @@ Stellar tides dominate the planet's gravity beyond the Hill radius
 \label{eq:RHill}
 R_{\rm H} = \left(M\pla \over 3 M_\ast \right)^{1/3}a \approx 0.22 \, {\mpn{10}^{1/3} \, \aun{10} }~\AU ,
 \end{equation}
-where hydrostatic balance breaks down.  (Here we use the same symbol, $M\pla$, to now mean the mass within $\RH$.) 
+where spherical symmetry and hydrostatic balance break down.  (Here we use the same symbol, $M\pla$, to now mean the mass within $\RH$.) 
 
 The relevant length scales of the atmosphere and disk satisfy the relation $\RB H\di^2 = 3 R_{\rm H}^3$.  The length scales are roughly equal at the ``thermal mass'' (e.g., \citealt{menou04})
 \begin{equation}\label{eq:Mth}
 M_{\rm th} > {c\di^{3} \over G \varOmega} \approx 25 \, {F_T^{3/2} \over \sqrt{m_\ast} } \, \aun{10}^{6/7}~ M_\oplus \, .
 \end{equation} 
 
-In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the length scales order as $\RB< \RH<H\di$.  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We use $\RH$ as the matching radius in all regimes.  
-\textbf{We believe $\RH$ to be the best outer boundary choice, as it allows us to include the density perturbations outside the Bondi radius in the structure calculations. This is also consistent with the fact that, in hydrostatic models, the density at $\RB$ is higher than the background density (see R06). Nevertheless, since the density change is modest, these two boundary conditions give similar results.}
+In the low mass regime, $M\pla < M_{\rm th}/\sqrt{3}$, the length scales order as $\RB< \RH<H\di$.  In this regime, many studies assume the atmosphere matches the disk conditions at $\RB$.  We use $\RH$ as the matching radius, i.e.\ outer boundary, in all regimes.  
+\textbf{This choice reflects the fact that, even outside the Bondi radius, hydrostatic densities exceed the background density (see R06). Nevertheless, since the density contrast is modest outside $\RB$, these two boundary conditions give similar results.  We do not extend our models past $\RH$ where tidal forces dominate. }
 
  %We are accounting for the fact that, in hydrostatic models, the density at 
  %$\RB$ is higher than the background density (see R06). Nevertheless, since the density change is modest, these two boundary conditions give similar results. 
@@ -225,7 +225,7 @@ For a finite range of intermediate masses, $M_{\rm th}/\sqrt{3} < M\pla < 3 M_{\
 
 At higher planet masses where $M\pla > 3 M_{\rm th}$ and $H\di < \RH < \RB$, spherical symmetry is no longer a good approximation, due to both the vertical stratification of the disk and gap opening.  See \S\ref{sec:hydro} for further discussion of neglected hydrodynamic effects.
 
-While $\RH$ is always the outer boundary in our structure calculations, we quote planet masses as the enclosed mass within the smaller of $\RB$ and $\RH$. \textbf{In contrast with the choice of outer boundary, which has physical consequences, we note that the choice of atmospheric mass is primarily a convention that does not affect atmospheric structure or evolution. Despite the possible confusion between two outer boundaries, we believe this to be the preferred location for several reasons.  Our choice of envelope mass is conservative, as it gives the smaller mass when $\RB < \RH$, and is consistent with previous works that use $\RB$ as the outer boundary (e.g., \citealt{ikoma00}, \citealt{pollack96}). The extra mass between $\RB$ and $\RH$, however large, is nebular gas weakly compressed at the disk midplane density, unlikely to remain bound to the planet if the disk were to dissipate quickly. }
+While $\RH$ is always the outer boundary in our structure calculations, we quote planet masses as the enclosed mass within the smaller of $\RB$ and $\RH$. \textbf{When $\RB < \RH$, this means that our enclosed mass extends to a smaller radius than the outer boundary.  This choice is motivated as follows.  First, we want to conservatively define planet mass in a way that does not exaggerate atmospheric growth and is more consistent with previous works that use $\RB$ as the outer boundary in this regime (e.g., \citealt{ikoma00}, \citealt{pollack96}).  Second, most of the gas outside $\RB$ is weakly bound, and unlikely to remain attached to planet if the disk suddenly dissipates.  Our convention for enclosed mass does not affect our structure and evolution calculations, which use the physical mass at every radius.}
 
  %  This conservative choice in quoting planet masses is usually a minor distinction because (when $\RB < \RH$) the gas between $\RB$ and $\RH$ is weakly compressed.
 
@@ -315,7 +315,9 @@ To simplify our evolutionary calculations, we develop a two-layer atmospheric mo
 
 In convective regions, the adiabatic structure is independent of luminosity and can be calculated without local energy balance, \Eq{eq:structd}.  Thus, for fully convective objects, a cooling sequence can be established by connecting a series of adiabatic solutions using a global energy equation, $L_M = -\dot{E}$ or \Eq{eq:coolingstar}.  Such methods are commonly used for their computational efficiency and are sometime referred to as ``following the adiabats," since the steady state solutions evolve in order of decreasing entropy \citep{marleau13}.
 
-In the radiative zone,  local energy balance, \Eq{eq:structd}, does affect the atmospheric structure.  We proceed by assuming that the majority of energy is lost from the convective interior, and thus the luminosity can be treated as constant in the outer radiative zone, \textbf{i.e. the RHS of \Eq{eq:structd} is set to zero. This assumption simplifies the numerical problem, as static solutions can now be found by simply integrating Equations (\ref{eq:struct}a -- c) with our choice of boundary conditions. We show in \S\ref{sec:endoftime} that the approximation of constant luminosity in the outer layer holds for our regime of interest. Under our assumptions, the  convective interior fully sets the atmospheric luminosity. We note, however, that the location and extent of the convective region is set by the matching of the upper radiative layer to the nebula.} %is set by the convective interior, and the radiative upper layer   luminosity  emerging from the convective interior   Since most of the luminosity emerges from the inner convective region of the atmosphere,   
+In the radiative zone,  local energy balance, \Eq{eq:structd}, does affect the atmospheric structure.  We proceed by assuming that the majority of energy is lost from the convective interior, and thus the luminosity can be treated as constant in the outer radiative zone, \textbf{i.e. the RHS of \Eq{eq:structd} is set to zero. This assumption simplifies the numerical problem, as static solutions can now be found by simply integrating Equations (\ref{eq:struct}a -- c) with our choice of boundary conditions. We show in \S\ref{sec:endoftime} that the approximation of constant luminosity in the outer layer holds for our regime of interest.   radiative luminosity is thus set by the location of, and physical conditions at, the ra ...} 
+
+{Under our assumptions, the  convective interior fully sets the atmospheric luminosity. We note, however, that the location and extent of the convective region is set by the matching of the upper radiative layer to the nebula.} %is set by the convective interior, and the radiative upper layer   luminosity  emerging from the convective interior   Since most of the luminosity emerges from the inner convective region of the atmosphere,   
 
 With this approximation for the radiative zone, we can construct an array of solutions to Equations (\ref{eq:struct}a -- c) in order of increasing atmospheric mass.  We then use global energy balance, \Eq{eq:coolingglobal}, to ``follow the mass" and place these solutions in a cooling sequence.  The validity of neglecting luminosity generation in the radiative zone can be checked \emph{a posteriori}, see \S\ref{sec:endoftime}.
 
