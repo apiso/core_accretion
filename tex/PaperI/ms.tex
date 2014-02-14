@@ -405,7 +405,7 @@ Using \Eq{eq:PcbRcb} to eliminate $R\cb$, the ratio of atmosphere to core mass b
 \end{equation} 
 where we define a characteristic pressure and a logarithmic factor:
 \begin{subeqnarray} 
-P_M &\equiv& {4 \delad^{3/2} \over 5 \pi^2 \sqrt{\chi} } {G M\co^2 \over {\RB'}^4}\,  \\
+P_M &\equiv& {4 \delad^{3/2} \over 5 \pi^2 \sqrt{\chi} } {G M\co^2 \over {\RB'}^4} \,  \label{eq:PM} \\
 \xi &\equiv& \sqrt{\ln[ P\cb/(\theta P_{\rm d})]} \slabel{eq:xidef}\, .%P_M \approx {1.85 \over \sqrt{\chi}} {G M\co^2 \over {\RB'}^4}\, .
 \end{subeqnarray} 
 
@@ -414,7 +414,6 @@ The atmosphere mass increases as radiative losses lower the internal adiabat and
 P\cb = \xi P_M ,
 \end{equation} 
 i.e.\ near the characteristic pressure $P_M$.  The critical value of the order unity factor $\xi$ is found by eliminating $P\cb$ from \Eqs{eq:xidef}{eq:Pcbc}.  This logarithmic factor complicates our analytic description.  Since it remains order unity, we simply hold it fixed in our scalings. %, but not when plotting the results.
-
 
 The total energy is concentrated towards the core if $|e| \rho  r^3 \propto \rho r^2$ drops with increasing $r$.  This condition requires $\gamma < 3/2$, which our choice of $\gamma = 7/5$ satisfies, but $\gamma = 5/3$ (monatomic gas) would not. 
 
@@ -619,7 +618,10 @@ The time to undergo atmospheric runaway growth, $t_{\rm run}$, sets a minimum ti
 
 \Fig{fig:tvsMcomp} shows how $t_{\rm run}$ varies with core mass, also at 10 AU.  The numerical results are plotted against our non-self-gravitating analytic model, described in \S\ref{sec:coolingan}.  The analytic model reproduces the general decline in $t_{\rm run}$ with core mass.  The numerical model, which includes self-gravity, has a somewhat steeper mass dependence.  A modest correction due to self-gravity is unsurprising, and consistent with the above-mentioned trend in $M_{\rm atm}/M\co$ ratios.  Moreover, in the analytic theory, crucial quantities like $M_{\rm atm}$ and $L$ (both roughly $\propto M\co^3$ near crossover) have non-linear dependence on core mass, offering plenty of opportunity for self-gravitational corrections.
 
-The effect of mean molecular weight is also shown in \Fig{fig:tvsMcomp}.  A lower $\mu$ gives longer growth times, because more cooling is required to compress the atmosphere.  \textbf{This effect is both well established in core accretion studies \citep{stevenson82} and intuitive since the atmospheric scale height $\propto 1/\mu$ is more extended for lower $\mu$.   The Bondi radius decreases as $\RB \propto \mu$, giving a smaller gravitational sphere of influence (and a weaker compression at $\RH$ when that is the more relevant scale). The larger atmospheric scale height due to a lower $\mu$ also results in a larger pressure depth at the RCB, $P\cb$, and thus a lower $R\cb$, cf. \Eq{eq:PcbRcb}.} For $\mu = 2.0$, which represents the idealized case of an H$_2$ atmosphere completely devoid of Helium, $t_{\rm run}$ increases by factors of $\sim 2 - 3$.  Thus fairly drastic changes in atmospheric composition are required for $\mu$ to significantly affect core accretion timescales. \textbf{In principle, changes in the mean molecular weight of the gas also affect the EOS, including $\delad$, but such effects are not considered here (see \S\ref{sec:EOS}).}
+The effect of mean molecular weight is also shown in \Fig{fig:tvsMcomp}.  A lower $\mu$ gives longer growth times, because more cooling is required to compress the atmosphere.  \textbf{This effect is both well established in core accretion studies \citep{stevenson82} and intuitive since the atmospheric scale height $\propto 1/\mu$ is more extended for lower $\mu$.   Moreover, the Bondi radius decreases as $\RB \propto \mu$, giving a smaller gravitational sphere of influence (and a weaker compression at $\RH$ when that is the more relevant scale).  To see how this affects cooling times, note that the characteristic RCB depth near runaway scales as $P\cb \sim P_{\rm M} \propto \mu^{-4}$ from \Eq{eq:PM}.  Thus $L \propto 1/P\cb \propto \mu^4$ explains the trend of slower cooling for lower $\mu$.}
+%he larger atmospheric scale height due to a lower $\mu$ also results in a larger pressure depth at the RCB, $P\cb$, and thus a lower $R\cb$, cf. \Eq{eq:PcbRcb}.} 
+
+For $\mu = 2.0$, which represents the idealized case of an H$_2$ atmosphere completely devoid of Helium, $t_{\rm run}$ increases by factors of $\sim 2 - 3$.  Thus fairly drastic changes in atmospheric composition are required for $\mu$ to significantly affect core accretion timescales. \textbf{In principle, changes in the mean molecular weight of the gas also affect the EOS, including $\delad$, but such effects are not considered here (see \S\ref{sec:EOS}).}
 
 
 
@@ -713,7 +715,7 @@ t_{\rm run} \sim 5 \times 10^8 \Big(\frac{M\co}{M_{\oplus}}\Big)^{-2.4} \,\,\, \
 
 
 \section{Neglected Effects}\label{sec:neglected}
-\textbf{Since one goal of this paper was to obtain a detailed understanding of atmospheric evolution with a simple model, we have necessarily ignored many  effects of potential significance.  We briefly address the most important of these and note that a followup work, Piso, Youdin \& Murray-Clay (in prep., hereafter Paper II), will extend out current models to address some of these effects.}
+\textbf{Since one goal of this paper was to obtain a detailed understanding of atmospheric evolution with a simple model, we have necessarily ignored   effects of potential significance.  We briefly address the most important of these and note that a followup work, Piso, Youdin \& Murray-Clay (in prep., hereafter Paper II), will extend our current models to address some of these effects.}
 
 \subsection{Hydrodynamic Effects}\label{sec:hydro}
 The neglect of hydrodynamical effects in our model is best discussed in terms of the thermal mass, $M_{\rm th}$, and the length scales introduced in \S\ref{sec:scales}.  In the low mass regime, $M\pla < M_{\rm th}/ \sqrt{3}$, where $\RB < \RH$, we assume that hydrostatic balance holds out to the outer boundary at $\RH$.   In this low mass regime, \citet[]{Orm13} calculated the flow patterns driven by stellar tides and disk headwinds.     On scales $\gtrsim \RB$ the flows no longer circulate the planet: they belong to the disk.  Nevertheless, the density structure outside $\RB$ remains spherically symmetric and hydrostatic.  Even if these flows do not destroy hydrostatic balance, they could affect the planet's cooling.  We expect such effects to be weak, as heat losses at greater depths dominate planetary cooling, but more study is needed.
