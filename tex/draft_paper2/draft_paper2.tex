@@ -148,7 +148,7 @@ An \textit{in situ} solution to this problem requires accelerating core growth t
  %If cores and their atmospheres grow simultaneously, fast core growth requires large planetesimal accretion rates and hence large critical core masses. Core growth to these critical masses is particularly challenging in the outer disk, where long dynamical times slow core growth, making production of a massive core within the disk lifetime less likely. 
 
 %Fast accretion implies large critical core masses. 
-In order to calculate the minimum value of $M_{\rm crit}$, we first need to understand how $M_{\rm crit}$ depends on the planetesimal accretion rate.
+In order to calculate the minimum value of $M_{\rm crit}$, we need to understand how $M_{\rm crit}$ depends on the planetesimal accretion rate.
 %the evolution of a core's atmosphere depends on the rate at which planetesimals are accreted. 
 For high planetesimal accretion rates, atmospheres are primarily heated by planetesimals (e.g., \citealt{rafikov06}). As a result, the core's envelope is in a steady state at all times, in which all the incoming energy due to planetesimals is radiated away.  As the envelope and core become comparable in mass, hydrostatic balance no longer holds and runaway gas accretion commences. In this case, $M_{\rm crit}$ is the maximum core mass for which the atmosphere is still in hydrostatic equilibrium. For a fixed planetesimal accretion rate and a set of disk conditions, $M_{\rm crit}$ is uniquely determined. 
 
@@ -179,24 +179,24 @@ This paper is organized as follows. In Section \S\ref{sec2} we review the quasi-
 
 
 
-\section{Model Review}
+\section{Atmospheric Model Review}
 \label{sec2}
 
 %\textbf{Describe the assumptions of the model: disk, BCs, structure equations, cooling model etc., but with less detail than in paper I (and obviously refer to paper I for more details); for the BCs, emphasize that for a given core, the atmosphere profile and evolution are determined by the outer boundary conditions, i.e. Pout, Tout, Rout --- this will be relevant for section 3.2, i.e. outer boundary effects.}
 
-We begin by reviewing the model developed in Paper I for the structure and evolution of a planetary atmosphere embedded in a protoplanetary disk. We describe the assumptions of the model and the properties of our assumed protoplanetary disk in \S\ref{model}, and we summarize the equations describing the structure and time evolution of the atmosphere in \S\ref{struct}.  
+In this section we review the model developed in Paper I for the structure and evolution of a planetary atmosphere embedded in a protoplanetary disk. We describe the assumptions of the model and the properties of our assumed protoplanetary disk in \S\ref{model}, and we summarize the equations describing the structure and time evolution of the atmosphere in \S\ref{struct}.  
 
 \subsection{Assumptions and Disk Model}
 \label{model}
 
-We assume that the planet consists of a solid core of fixed mass and a two-layer atmosphere composed of an inner convective region and an outer radiative zone that matches smoothly onto the disk. The two regions are separated by the Schwarzschild criterion for convective instability (see \S\ref{struct}) . We denote the surface between the two regions as the radiative-convective boundary (RCB), defined by a radius $r=R\cb$.  Moreover, we assume that the luminosity is constant throughout the outer radiative region (see Section \S\ref{critical} for additional discussion). We assume a low planetesimal accretion regime in which the atmosphere evolution is dominated by KH contraction.The atmosphere is spherically symmetric, self-gravitating and in hydrostatic balance. We note that spherical symmetry confines us to the outer regions of the disk ($a\gtrsim5$ AU), where the disk scale height is larger than the radius at which the planet matches onto the disk (see Paper I for further details). The nebular gas is composed of a hydrogen-helium mixture, with hydrogen and helium mass fractions of 0.7 and 0.3, respectively. We assume that the envelope evolves through stages of quasi-static equilibrium. 
+We assume that the planet consists of a solid core of fixed mass and a two-layer atmosphere composed of an inner convective region and an outer radiative zone that matches smoothly onto the disk. The two regions are separated by the Schwarzschild criterion for convective instability (see \S\ref{struct}). The surface between the two regions is the radiative-convective boundary (RCB), defined by a radius $r=R\cb$.  Moreover, we assume that the luminosity is constant throughout the radiative region (see Section \S\ref{critical} for additional discussion). We assume a low planetesimal accretion regime in which the atmosphere evolution is dominated by KH contraction.The atmosphere is spherically symmetric, self-gravitating and in hydrostatic balance. We note that spherical symmetry confines us to the outer regions of the disk ($a\gtrsim5$ AU), where the disk scale height is larger than the radius at which the planet matches onto the disk (see Paper I for further details). The nebular gas is composed of a hydrogen-helium mixture, with hydrogen and helium mass fractions of 0.7 and 0.3, respectively. We assume that the envelope evolves through stages of quasi-static equilibrium. 
 
 
 
 %The time dependence of the atmosphere structure equations may be neglected or explicitly taken into account. Some previous studies of atmosphere accretion (e.g., \citealt{stevenson82}, \citealt{wuchterl93}, \citealt{rafikov06}) consider static envelopes, in which the luminosity is solely supplied by planetesimal accretion and fully radiated away by the atmosphere. In other studies, the time evolution is explicitly taken into account and full time dependent models are developed (e.g., \citealt{ikoma00}). We follow an intermediate approach and consider quasi-static evolution. Our model for the atmosphere growth time is described in section \ref{cooling}. 
 
 
-The temperature and pressure at the outer boundary of the atmosphere are given by the nebular temperature and pressure. As a disk model, we use the minimum mass, passively irradiated model of  \citet{chiang10}. The surface density, mid-plane temperature and mid-plane pressure are given by 
+The temperature and pressure at the outer boundary of the atmosphere are given by the nebular temperature and pressure. We use the minimum mass, passively irradiated disk model of  \citet{chiang10}. The surface density, mid-plane temperature and mid-plane pressure are
 
 \begin{subeqnarray}
 \label{eq:diskparam}
@@ -204,8 +204,7 @@ The temperature and pressure at the outer boundary of the atmosphere are given b
 T\di &=& 120\, (a/\text{AU})^{-3/7} \,\,K \slabel{eq:diskb} \\
 P\di&=&110\,  (a/\text{AU})^{-45/14} \,\, \text{dyn cm}^{-2} \slabel{eq:Pd} \, ,
 \end{subeqnarray}
-
-\noindent with $a$ the semimajor axis and for a mean molecular weight $\mu=2.35$. 
+where $a$ is the semimajor axis and for a mean molecular weight $\mu=2.35$. 
 
 \subsection{Structure Equations and Cooling Model}
 \label{struct}
@@ -227,14 +226,13 @@ The structure of a static atmosphere is described by the standard equations of h
 \nabla = \delrad \equiv \frac{3 \kappa P}{64 \pi G m \sigma T^4} L,
 \end{equation}
 
-\noindent with $\sigma$ the Stefan-Boltzmann constant and $\kappa$ the dust opacity. In our models the atmosphere is optically thick throughout the outer boundary. Where energy is transported by convection, the temperature gradient is
+\noindent where $\sigma$ is the Stefan-Boltzmann constant and $\kappa$ is the dust opacity. In our models the atmosphere is optically thick throughout the outer boundary. Where energy is transported by convection, the temperature gradient is
 
 \begin{equation}
 \label{eq:delad}
 \nabla = \delad \equiv \Big(\frac{d \ln T}{d \ln P}\Big)_{\mathrm{ad}},
 \end{equation}
-
-\noindent with $\delad$ the adiabatic temperature gradient. The convective and radiative layers of the envelope are separated by the Schwarzschild criterion (e.g., \citealt{thompson06}): the atmosphere is stable against convection when $\nabla < \delad$ and convectively unstable when $\nabla > \delad$. Since convective energy transport is highly efficient,  $\nabla \approx \delad$ in convecting regions. The temperature gradient is thus given by $\nabla=\mathrm{min}(\delad, \delrad)$. 
+with $\delad$ the adiabatic temperature gradient. The convective and radiative layers of the envelope are separated by the Schwarzschild criterion (e.g., \citealt{thompson06}): the atmosphere is stable against convection when $\nabla < \delad$ and convectively unstable when $\nabla > \delad$. Since convective energy transport is highly efficient,  $\nabla \approx \delad$ in convecting regions. The temperature gradient is thus given by $\nabla=\mathrm{min}(\delad, \delrad)$. 
 
 The Equation set (\ref{eq:struct}) is supplemented by an equation of state (EOS) relating pressure, temperature and density, as well as an opacity law. Paper I assumes an ideal gas polytropic EOS, $P=K\rho^{\gamma}$, with $K$ the adiabatic constant and $\gamma$ the adiabatic index. In this study we use realistic EOS tables, as explained in Section \S\ref{deladtable}. Furthermore, Paper I assumes a power-law opacity given by
 
@@ -336,11 +334,11 @@ For $300$ K $\lesssim T \lesssim 2000$ K, the hydrogen molecule is not energetic
 
 \textbf{2. High T: Dissociation and Ionization of Hydrogen.}
 
-At low temperatures, hydrogen exists in molecular form and has a stable configuration. As the temperature becomes higher than $T \sim 2000-3000$ K, the internal energy of the hydrogen molecule becomes large enough to break the covalent bond between the atoms, and hydrogen starts dissociating. At $T \gtrsim 10,000$ K, hydrogen ionizes. In stellar and giant planet interiors there is little overlap between the two processes: hydrogen is almost entirely dissociated into atoms by the time ionization becomes important. 
+At low temperatures, hydrogen is molecular and has a stable configuration. At temperatures higher than $T \sim 2000-3000$ K, the internal energy of the hydrogen molecule becomes large enough to break the covalent bond between the atoms, and hydrogen starts dissociating. At $T \gtrsim 10,000$ K, hydrogen ionizes. In stellar and giant planet interiors there is little overlap between the two processes: hydrogen is almost entirely dissociated into atoms by the time ionization becomes important. 
 
 As displayed in Figure \ref{fig:deladmap}, the adiabatic gradient decreases significantly in regions of partial dissociation and partial ionization. This behavior is different than that of a mixture of molecular and atomic hydrogen, for which $2/7<\delad<2/5$, or a mixture of protons and electrons, for which $\delad=2/5$. For a mixture of ideal gases, the total internal energy is given by the sum of the internal energies of the individual gases. When a gas dissociates, however, part of the internal energy of the system is used to break down molecules, which reduces the amount of energy available to increase the temperature of the system, thus lowering the adiabatic gradient. The energy required to dissociate depends on the dissociation fraction, which can be determined from the Saha equation (see e.g., \citealt{kippenhahn90}). The dissociation fraction only depends on gas temperature and density, and hence only on the EOS. 
 
-An expression for the adiabatic gradient as a function of the dissociation fraction is presented in \App{deladdiss}. As expected, the adiabatic gradient is $\delad=2/7$ for pure molecular hydrogen and $\delad=2/5$ when hydrogen is fully dissociated, but decreases significantly during partial dissociation and is smallest when half of the gas is dissociated. This is consistent with the behavior we see in Figure \ref{fig:deladmap}. 
+An expression for the adiabatic gradient as a function of the dissociation fraction is presented in \App{deladdiss}. As expected, the adiabatic gradient is $\delad=2/7$ for pure molecular hydrogen and $\delad=2/5$ when hydrogen is fully dissociated, but decreases significantly during partial dissociation and is smallest when half of the gas is dissociated. This is consistent with the behavior shown in Figure \ref{fig:deladmap}. 
 
 The ionization of atomic hydrogen is also dictated by the Saha equation, with the dissociation energy replaced by ionization energy, hence the adiabatic gradient behaves analogously, consistent with Fig. \ref{fig:deladmap}.
 
@@ -357,7 +355,7 @@ As a diatomic molecule, hydrogen has five degrees of freedom, three associated w
  
 %During the para-to-ortho conversion, part of the internal energy of the hydrogen molecule is used 
 
-Similarly to the case of dissociation, as $T$ increases, part of the rotational energy $U_{\rm r}$ of the hydrogen molecule is used to convert parahydrogen to orthohydrogen rather than to only increase the temperature, so $U_{\rm r} \propto T$ no longer holds. The adiabatic gradient $\delad$ thus varies with temperature. \App{deladspin} explores the temperature dependence in detail. These $\delad$ variations, which occur for $T \lesssim 300$ K, are displayed in Figure \ref{fig:deladmap}. At higher temperatures, the ortho-para 3:1 equilibrium ratio is reached; no further isomer conversion occurs, and thus $\delad$ remains relatively constant until dissociation temperatures are reached. 
+Similarly to the case of dissociation, as $T$ increases, part of the rotational energy of the hydrogen molecule is used to convert parahydrogen to orthohydrogen rather than to only increase the temperature. Thus $u_{\rm r} \propto T$, where $u_{\rm r}$ is the rotational energy per unit mass, no longer holds, and the adiabatic gradient $\delad$ is temperature dependent. These $\delad$ variations, which occur for $T \lesssim 300$ K, are explored in \App{deladspin} and displayed in Figure \ref{fig:deladmap}. At higher temperatures, the ortho-para 3:1 equilibrium ratio is reached; no further isomer conversion occurs, and thus $\delad$ remains relatively constant until dissociation temperatures are reached. 
 
 
 
@@ -709,7 +707,7 @@ From Equation (\ref{eq:dMdt}), realistic EOS effects reduce the atmosphere accre
 \label{sec:opacity}
 
 
-So far in our model we have assumed that the dust opacity in the radiative region of the atmosphere is given by the standard ISM opacity. However, our scenario of low planetesimal accretion is likely to favor lower dust opacities, due to grain growth and dust settling. Grain growth, in particular, changes the particle size distribution when compared to the standard ISM size distribution (e.g., \citealt{pollack85}) and lowers the absolute value of the opacity. Enhanced metallicity due to planetesimal accretion, by construction not present during our atmosphere's growth, cannot make up for this reduction.
+Our calculations so far have assumed that the dust opacity in the radiative region of the atmosphere is given by the standard ISM opacity. However, our scenario of low planetesimal accretion is likely to favor lower dust opacities, due to grain growth and dust settling. Grain growth, in particular, changes the particle size distribution when compared to the standard ISM size distribution (e.g., \citealt{pollack85}) and lowers the absolute value of the opacity. Enhanced metallicity due to planetesimal accretion, by construction not present during our atmosphere's growth, cannot make up for this reduction.
 
 %Observations of dust in protoplanetary disks (e.g., \citealt{beckwith90}, \citealt{beckwith91}, \citealt{perez12}) have shown evidence for grain growth and that the particle size distribution is not interstellar. 
 
@@ -719,11 +717,11 @@ Although grain growth and evidence for a non-ISM size distribution have been obs
 \label{eq:graindistr}
 n(a) \sim a^{-p},
 \end{equation}
-where $n(a)$ is the number density of particles of size $a$ and $p=3.5$ (corresponding to a ``normal'' collisional cascade) or $p=2.5$ (an approximation for coagulation). In this work we use the  \citet{dalessio01} frequency-dependent opacity tables to obtain the temperature-dependent Rosseland mean opacity $\kappa$. We take as a fiducial case a maximum particle size of 1 cm and a grain size distribution given by Equation (\ref{eq:graindistr}) with $p=3.5$. Other choices for the power-law coefficient $p$ are discussed later in this section. 
+where $n(a)$ is the number density of particles of size $a$ and $p=3.5$ (corresponding to a ``normal'' collisional cascade) or $p=2.5$ (an approximation for coagulation). In this work we use the  \citet{dalessio01} frequency-dependent opacity tables to obtain the temperature-dependent Rosseland mean opacity $\kappa$. We take as a fiducial case a maximum particle size $a_{\rm max}=1$ cm and a grain size distribution given by Equation (\ref{eq:graindistr}) with $p=3.5$. Other choices for the power-law coefficient $p$ are discussed later in this section. 
 
-The \citet{dalessio01} opacities are only relevant at temperatures that are sufficiently low for dust grains to remain solid ($T \lesssim 1000$ K). In the temperature regime where dust sublimates we use the \citet{bell94} analytic opacity laws, ensuring smooth transition from the grain growth opacities. 
+The \citet{dalessio01} opacities are only relevant at temperatures that are sufficiently low for dust grains to remain solid ($T \lesssim 1000$ K). At higher temperatures, we use the \citet{bell94} analytic opacity laws, ensuring smooth transition from the grain growth opacities. 
 
-The sharp drop in opacity ($\kappa \sim T^{-24}$, see Figure \ref{fig:delvsr}) due to dust sublimation lowers the radiative temperature gradient significantly (see Equation \ref{eq:delrad}), and may therefore generate radiative layers within the inner region of the atmosphere (see \App{radwindow}, Figure \ref{fig:delvsr}). This could in principle pose challenges for our model, since the additional luminosity generated in these radiative windows may be large enough to make our assumption of constant luminosity throughout the radiative layers invalid. In practice, however, the inner radiative windows are either very thin (Figure \ref{fig:delvsr}, middle panel), or the temperature gradient is flat enough to result in a roughly constant luminosity throughout the region (Figure \ref{fig:delvsr}, bottom panel; also see Equation \ref{eq:structc}). This results in a negligible extra luminosity generated in the radiative windows. However, the radiative windows may become non-negligible for other opacity choices and sufficiently low core masses, as we show later in this section. We note that despite the existence of one or more radiative windows in the planet's atmosphere, the luminosity that emerges at the outer boundary is set by the outer radiative layer. In fact, a simple estimate of the luminosity emerging at the RCB can be found as follows. 
+The sharp drop in opacity ($\kappa \sim T^{-24}$, see Figure \ref{fig:delvsr}) due to dust sublimation lowers the radiative temperature gradient significantly (see Equation \ref{eq:delrad}), and may thus generate radiative layers within the inner region of the atmosphere (see \App{radwindow}, Figure \ref{fig:delvsr}). This could in principle pose challenges for our model, since the additional luminosity generated in these radiative windows may be large enough to make our assumption of constant luminosity throughout the radiative layers invalid. In practice, however, the inner radiative windows are either very thin (Figure \ref{fig:delvsr}, middle panel), or the temperature gradient is flat enough to result in a roughly constant luminosity throughout the region (Figure \ref{fig:delvsr}, bottom panel; also see Equation \ref{eq:structc}). This results in a negligible extra luminosity generated in the radiative windows. However, the radiative windows may become non-negligible for other opacity choices and sufficiently low core masses, as we show later in this section. Despite the existence of one or more radiative windows in the planet's atmosphere, the luminosity that emerges at the outer boundary is set by the outer radiative layer. A simple estimate of the luminosity emerging at the RCB can be found as follows. 
 
 The equation of radiative diffusion (\ref{eq:structc}) can be approximated in terms of the radiative flux $\mathcal{F}$ as 
 
@@ -767,7 +765,7 @@ Due to the variable number and position of radiative windows, and therefore radi
 %\textbf{Define what it is (also refer to paper I) and emphasize how it's different from $M_{crit}$ in standard calculations. Define the crossover mass and crossover time.}
 
 
-In this section we put together the results obtained in Sections \S\ref{EOSeffects}  and \S\ref{sec:opacity}, and determine the minimum core mass to initiate runaway gas accretion during the lifetime of the protoplanetary disk, i.e. the critical core mass. As in Paper I, we quantify the runaway growth timescale $t_{\rm run}$ as the time at which the atmosphere growth time $M_{\rm atm}/\dot{M}$ drops to 10\% of its maximum value (see Paper I for details). We first explore the dependence of the runaway growth time on the core mass for a fixed semimajor axis. We then determine the critical core mass to form a giant planet from a gas composed of a realistic hydrogen-helium mixture, and we compare this with the results from Paper I for an ideal diatomic gas. Finally, we determine the critical core mass under more realistic opacity assumptions.
+In this section we put together the results obtained in Sections \S\ref{EOSeffects}  and \S\ref{sec:opacity}, and determine the minimum core mass to initiate runaway gas accretion during the lifetime of the protoplanetary disk, i.e. the critical core mass. As in Paper I, we quantify the runaway growth timescale $t_{\rm run}$ as the time at which the atmosphere growth time $M_{\rm atm}/\dot{M}$ drops to 10\% of its maximum value (see Paper I for details). We first explore the dependence of the runaway growth time on the core mass for a fixed semimajor axis. We then determine the critical core mass $M_{\rm crit}$ to form a giant planet from a gas composed of a realistic hydrogen-helium mixture, and we compare this with the results from Paper I for an ideal diatomic gas. Finally, we determine $M_{\rm crit}$ under more realistic opacity assumptions.
 
 %\subsection{Crossover Time as a Function of Core Mass}
 %\label{tvsM}
@@ -789,7 +787,7 @@ Figure \ref{fig:tvsMplot} displays the time evolution and the runaway growth tim
 
 %\textbf{Mcrit vs. a plot, realistic EOS and polytrope. Discuss the larger critical core mass for the real EOS in light of the effects from section 4.}
 
-Figure \ref{fig:Mvsaplot} shows the critical core mass for a massive atmosphere to form during a typical lifetime of a protoplanetary disk $t=3$ Myrs (e.g., \citealt{jay99}), for a gas described by a realistic EOS and an ISM dust opacity given by Equation (\ref{eq:opacitylaw}) with $F_{\kappa}=1$ and $\beta=2$. The results of Paper I for an ideal diatomic gas are plotted for comparison. The use of a realistic EOS results in a critical core mass more than twice as large as that produced by a polytrope. As such, non-ideal effects substantially increase the core mass needed to form a giant planet  before the dissipation of the protoplanetary disk.   
+Figure \ref{fig:Mvsaplot} shows the critical core mass for a massive atmosphere to form during a typical lifetime of a protoplanetary disk $t=3$ Myrs (e.g., \citealt{jay99}), for a gas described by a realistic EOS and an ISM dust opacity given by Equation (\ref{eq:opacitylaw}) with $F_{\kappa}=1$ and $\beta=2$. The results of Paper I for an ideal diatomic gas are plotted for comparison. The inclusion of realistic EOS effects increases $M_{\rm crit}$ by more than a factor of two when compared to an ideal gas polytrope. As such, non-ideal effects substantially increase the core mass needed to form a giant planet  before the dissipation of the protoplanetary disk.   
 
 \begin{figure}[h!]
 \centering
@@ -808,7 +806,7 @@ Figure \ref{fig:Mvsaplot} shows the critical core mass for a massive atmosphere 
 \label{fig:Mcritvsagg}
 \end{figure}
 
-Figure \ref{fig:Mcritvsagg} shows the critical core mass as a function of semimajor axis, for a grain growth opacity with a size distribution given by the power-law (\ref{eq:graindistr}) with $p=3.5$ and maximum particle size of 1 cm. The critical core mass is lower than in the standard case, and less sensitive to location in the disk, i.e. the boundary conditions (temperature and pressure). We have shown in Paper I that the critical core mass is highly dependent on disk temperature rather than pressure. The temperature dependence, however, is mainly due to opacity. For the simplified analytic model developed in Paper I we found that the crossover time $t_{\rm co} \sim T_{\rm d}^{\beta+1/2}$, with $\beta$ the power-law exponent in Equation (\ref{eq:opacitylaw}) and $t_{\rm co}$ a proxy for $t_{\rm run}$, defined as the time when $M_{\rm atm}=M\co$, as $t_{\rm run}$ cannot be determined self-consistently for the analytic model. Opacity is less sensitive to temperature variations for larger grains and has an almost flat profile (see Figure \ref{fig:opacity}), which results in $\beta \ll 1$ and a much weaker temperature (and therefore semimajor axis) dependence of the critical core mass, as seen in Figure \ref{fig:Mcritvsagg}. Moreover, grain growth reduces the absolute value of the opacity, which results in an overall lower runaway accretion time and critical core mass. % As noted in Section \S\ref{sec:opacity}, the critical core mass may be significantly lower if coagulation is taken into account, i.e. $p=2.5$.
+Figure \ref{fig:Mcritvsagg} shows $M_{\rm crit}$ as a function of semimajor axis, for a grain growth opacity with a size distribution given by the power-law (\ref{eq:graindistr}) with $p=3.5$ and maximum particle size $a_{\rm max}=1$ cm. The critical core mass is lower than in the standard interstellar opacity case, and less sensitive to location in the disk, i.e. the boundary conditions (temperature and pressure). We have shown in Paper I that the critical core mass is highly dependent on disk temperature rather than pressure. The temperature dependence, however, is mainly due to opacity. For the simplified analytic model developed in Paper I we found that the crossover time $t_{\rm co} \sim T_{\rm d}^{\beta+1/2}$, with $\beta$ the power-law exponent in Equation (\ref{eq:opacitylaw}) and $t_{\rm co}$ a proxy for $t_{\rm run}$, defined as the time when $M_{\rm atm}=M\co$, as $t_{\rm run}$ cannot be determined self-consistently for the analytic model. Opacity is less sensitive to temperature variations for larger grains and has an almost flat profile (see Figure \ref{fig:opacity}), which results in $\beta \ll 1$ and a much weaker temperature (and therefore semimajor axis) dependence of the critical core mass, as seen in Figure \ref{fig:Mcritvsagg}. Moreover, grain growth reduces the absolute value of the opacity, which results in an overall lower runaway accretion time and critical core mass. % As noted in Section \S\ref{sec:opacity}, the critical core mass may be significantly lower if coagulation is taken into account, i.e. $p=2.5$.
 
 \begin{figure}[h!]
 \centering
@@ -818,7 +816,7 @@ Figure \ref{fig:Mcritvsagg} shows the critical core mass as a function of semima
 \label{fig:p25p35}
 \end{figure}
 
-So far we have assumed that the size distribution of dust grains is a power-law (\ref{eq:graindistr}) with $p=3.5$ which corresponds to a normal collisional cascade. If, however, coagulation is taken into account, the exponent $p$ can be approximated as $p=2.5$ \citep{dalessio01}. This results in a flatter and significantly lower opacity, which may substantially reduce the critical core mass. However, we have found that our model breaks down for low core masses ($M\co \lesssim 3 M_{\oplus}$) under our assumption of constant luminosity in the outer radiative layer. Figure \ref{fig:p25p35} shows the crossover time $t_{\rm co}$ as a function of semimajor axis for the lowest core mass for which our model is valid, $M\co=4 M_{\oplus}$. The crossover time is more than one order of magnitude lower for $p=2.5$, which implies that the critical core mass may be, in fact, significantly lower than presented in Figure \ref{fig:Mcritvsagg}.
+In the grain size distribution (\ref{eq:graindistr}), the coefficient $p=3.5$ corresponds to a normal collisional cascade. If coagulation is taken into account, the exponent $p$ can be approximated as $p=2.5$ \citep{dalessio01}. This results in a flatter and significantly lower opacity, which may substantially reduce $M_{\rm crit}$. However, we have found that our model breaks down for low core masses ($M\co \lesssim 3 M_{\oplus}$) under our assumption of constant luminosity in the outer radiative layer. Figure \ref{fig:p25p35} shows the crossover time $t_{\rm co}$ as a function of semimajor axis for the lowest core mass for which our model is valid, $M\co=4 M_{\oplus}$. The crossover time is more than one order of magnitude lower for $p=2.5$, which implies that $M_{\rm crit}$ may be, in fact, significantly lower than presented in Figure \ref{fig:Mcritvsagg}.
 
 %Figure \ref{fig:p25p35} shows the crossover time $t_{\rm co}$ as a function of semimajor axis for a core of mass $M\co=4 M_{\oplus}$ and for two choices of the exponent $p$ in the power-law (\ref{eq:graindistr}): $p=3.5$, which corresponds to a normal collisional cascade, and $p=2.5$, which accounts for coagulation \citep{dalessio01}. We choose $M\co=4 M_{\oplus}$ as our model breaks down for lower core masses ($M\co \lesssim 3 M_{\oplus}$) under our assumption of constant luminosity in the outer radiative layer. The crossover time is lower for both choices of $p$ when compared to $t_{\rm co}$ when an ISM opacity is assumed. Moreover, $t_{\rm co}$ is more than one order of magnitude lower for $p=2.5$ than for $p=3.5$. As $t_{\rm co}$ is lower than the typical disk lifetime of a few Myrs for $M\co=4 M_{\oplus}$ and $p=2.5$, the critical core mass under these assumptions is lower than the core mass for which our model is valid. We thus cannot accurately calculate $M_{\rm crit}$ for $p=2.5$ and choose $p=3.5$ as our fiducial case. We note, however, that the critical core mass may be, in fact, significantly lower that the results we present in \S\ref{critical}.
 
@@ -832,7 +830,7 @@ So far we have assumed that the size distribution of dust grains is a power-law 
 \section{Effects of Planetesimal Accretion}
 \label{acc}
 
-In this study we have considered protoplanets with fully formed cores for which planetesimal accretion is negligible and KH contraction dominates the luminosity evolution of the atmosphere. This is different from calculations that assume high planetesimal accretion rates and find that the atmosphere is in steady state and solely heated due to accretion of solids. In this section we compare our results for the critical core mass to analogous results from steady-state fast planetesimal accretion calculations. We discuss the core accretion rates that are necessary for our regime to be valid in \S\ref{raf1}. In \S\ref{raf3}, we estimate core growth during atmosphere evolution at the maximum rate for which the KH regime is valid, and show it is negligible. Finally, we compare our results with those assuming fast planetesimal accretion in \S\ref{raf2}.
+This study considers protoplanets with fully formed cores for which planetesimal accretion is negligible and KH contraction dominates the luminosity evolution of the atmosphere. This is different from calculations that assume high planetesimal accretion rates and find that the atmosphere is in steady state and solely heated due to accretion of solids. In this section we compare our results for the critical core mass to analogous results from steady-state fast planetesimal accretion calculations. We discuss the core accretion rates that are necessary for our regime to be valid in \S\ref{raf1}. In \S\ref{raf3}, we estimate core growth during atmosphere evolution at the maximum rate for which the KH regime is valid, and show it is indeed negligible. Finally, we compare our results with those assuming fast planetesimal accretion in \S\ref{raf2}.
 
  %In this section we investigate the core accretion rates that are necessary for our regime to be valid. We also discuss the conditions under which runaway gas accretion can be initiated due to the Kelvin-Helmholtz contraction of the atmosphere before it becomes critical due to planetesimal accretion.
 
@@ -851,12 +849,11 @@ and $L_{\rm KH}$ is given by Equation (\ref{eq:coolingglobal}) with $L\co=\Gamma
 \label{eq:McdotKH}
 \dot{M\co}<\dot{M}_{\rm c, KH} \equiv \frac{L_{\rm KH} R\co}{G M\co}.
 \end{equation} 
-
-To illustrate the magnitude of $\dot{M}_{\rm c, KH}$, we choose as a fiducial case an atmosphere forming at 10 AU and with a core mass of $10 M_{\oplus}$. Since analytic studies of critical core masses at high planetesimal accretion rates assume an ideal gas EOS, for ease of comparison we choose an ideal gas polytrope with constant adiabatic gradient $\delad=2/7$ and mean molecular weight $\mu=2.35$ (see also Paper I). For this choice of parameters, the runaway accretion time is $t _{\rm run}\sim$ 1.3 Myrs, which is within the typical lifetime of a protoplanetary disk. We also estimate two reference accretion rates. The first one is the core accretion rate $\dot{M}_{\rm c, acc}$ needed to grow the core to $M\co=10 M_{\oplus}$ on the same timescale as our model atmosphere, $\tau=1.3$ Myrs:
+To illustrate the magnitude of $\dot{M}_{\rm c, KH}$, we choose as a fiducial case an atmosphere forming at 10 AU and with a core mass of $10 M_{\oplus}$. Since analytic studies of critical core masses at high planetesimal accretion rates assume an ideal gas EOS, for ease of comparison we choose an ideal gas polytropic EOS with constant adiabatic gradient $\delad=2/7$ and mean molecular weight $\mu=2.35$ (see also Paper I). For this choice of parameters, the runaway accretion time is $t _{\rm run}\sim$ 1.3 Myrs, which is within the typical lifetime of a protoplanetary disk. We also estimate two reference accretion rates. The first one is the core accretion rate $\dot{M}_{\rm c, acc}$ needed to grow the core to $M\co=10 M_{\oplus}$ on the same timescale as our model atmosphere, $\tau=1.3$ Myrs:
 
 \begin{equation}
 \label{eq:Mcdot}
-\dot{M}_{\rm{c,acc}}(M_{\rm{c}}) \equiv \frac{M_{\rm{c}}}{\tau}.
+\dot{M}_{\rm{c,acc}}(M_{\rm{c}}) \sim \frac{M_{\rm{c}}}{\tau}.
 \end{equation}
 The second reference planetesimal accretion rate is $\dot{M}_{\rm c, Hill}$, a typically assumed planetesimal accretion rate for which the random velocities of the planetesimals are of the order of the Hill velocity around the protoplanetary core (for a review, see \citealt{goldreich04}). Following R06 (equation A1),
 
@@ -886,7 +883,7 @@ This motivates our requirement  that planetesimal accretion must have slowed dow
 \subsection{Core Growth during KH Contraction}
 \label{raf3}
 
-Planetesimal accretion during the KH contraction phase of atmosphere growth at a rate $\dot{M}<\dot{M\co}_{\rm{KH}}$  cannot alter the core mass enough to affect the time evolution of the atmosphere. We can quantitatively estimate the increase in core mass as 
+Planetesimal accretion during the KH contraction phase of atmosphere growth at a rate $\dot{M}_{\rm c}<\dot{M}_{\rm{c,KH}}$  cannot alter the core mass enough to affect the time evolution of the atmosphere. We can quantitatively estimate the increase in core mass as 
 
 \begin{equation}
 \label{eq:cminc}
@@ -900,7 +897,7 @@ Planetesimal accretion during the KH contraction phase of atmosphere growth at a
  \dot{M_{\rm{c}}}_i =\frac{L_i R\co}{G M_{\rm{c}}} 
  \end{equation}
  
- \noindent from Equation (\ref{eq:Lacc}), with $L_i$ the luminosity of the atmosphere at time $t_i$ in our model. For $M_{\rm{c}}=10 M_{\oplus}$, we find $\Delta M_{\rm{c}} \approx 0.05 M_{\oplus} \ll 10 M_{\oplus}$. It follows that a significant increase in core mass that could potentially alter the time evolution of the atmosphere would occur on a much longer timescale then the crossover time for the unperturbed atmosphere. The time evolution of the atmosphere is thus insensitive to core mass changes at a rate imposed by the assumption that $L_{\rm{acc}}<L_{\rm{KH}}$.
+ \noindent from Equation (\ref{eq:Lacc}), with $L_i$ the luminosity of the atmosphere at time $t_i$ in our model. For $M_{\rm{c}}=10 M_{\oplus}$, we find $\Delta M_{\rm{c}} \approx 0.05 M_{\oplus} \ll 10 M_{\oplus}$. Core growth is negligible in our regime, and the time evolution of the atmosphere is thus insensitive to core mass changes at a rate imposed by the assumption that $L_{\rm{acc}}<L_{\rm{KH}}$.
 
 
  %It is easy to see that  $\dot{M}_{\rm{c,typical}}$ is more than one order of magnitude lower than the gas accretion rate of our model atmosphere $\dot{M}_{\rm{atm}}$, and lower than the core accretion rate $\dot{M}_{\rm{c,acc}}$ needed to grow the core and the atmosphere at the same time within the disk life time. As such, the formation of a giant planet by growing the core first, then letting the atmosphere cool is faster than growing the core and the atmosphere at the same time at a steady planetesimal accretion rate.
@@ -908,7 +905,7 @@ Planetesimal accretion during the KH contraction phase of atmosphere growth at a
 \subsection{Comparison with Steady-State Results}
 \label{raf2}
 
-We compare our results for the critical core mass $M_{\rm crit}$ with those of studies that assume large planetesimal accretion rates. These studies find that the atmosphere is in steady state at all times and that static solutions only exist up to a maximum core mass, which they define as the critical core mass. If the $M_{\rm crit}$ found by static studies were lower than the $M_{\rm crit}$ in our regime of negligible solids accretion, the atmosphere would undergo runaway gas accretion before KH contraction became dominant, and our regime would not be relevant. We show, however, that our model yields lower core masses than those found when fast planetesimal accretion is considered. 
+We compare our results for $M_{\rm crit}$ with those of studies that assume large planetesimal accretion rates. These studies find that the atmosphere is in steady state at all times and that static solutions only exist up to a maximum (critical) core mass. If the $M_{\rm crit}$ found by static studies were lower than the $M_{\rm crit}$ in our regime of negligible solids accretion, the atmosphere would undergo runaway gas accretion before KH contraction became dominant, and our regime would not be relevant. We show, however, that our model yields lower core masses than those found when fast planetesimal accretion is considered. 
 
 In static studies, the critical core mass is larger for higher planetesimal accretion, as additional heating increases the core mass required for collapse. As such, if atmosphere collapse does not occur due to planetesimal accretion for the lowest value of $\dot{M}_{\rm c, KH}$ over the course of the atmosphere's growth (see, e.g., Figure \ref{fig:accrates}), then it can only occur in the KH dominated regime. %In what follows we calculate the critical core mass $M_{\rm crit, KH}$ corresponding to $\min(\dot{M}_{\rm c, KH})$ and show that it is higher that the critical core mass we determined in the KH dominated regime. 
 
@@ -924,7 +921,7 @@ In static studies, the critical core mass is larger for higher planetesimal accr
 
 %we compare the critical core mass $M_{\rm{c,acc}}$ due to planetesimal accretion, for an accretion rate that satisfies $L_{\rm{acc}}<L_{\rm{KH}}$ to the actual core mass $M_{\rm{c}}$ assumed fixed in our model. If $M_{\rm{c,acc}}<M{\rm{c}}$, then the atmosphere has already initiated unstable gas accretion by the time Kelvin-Helmholtz contraction starts dominating. 
 
-In order to estimate the critical core mass $M_{\rm crit, KH}$ corresponding to planetesimal accretion at the rate $\dot{M}_{\rm c, KH}$, we use the results of R06 for low luminosity atmospheres forming in the outer disk ($>2-5$ AU), consistent with our region of interest. R06 assumes an ideal gas polytropic EOS and a lower opacity than the standard ISM (see Equation \ref{eq:opacitylaw}). We thus calculate the critical core mass for an ideal gas polytrope with the normalization factor $F_{\kappa}$ reduced by a hundred, which is comparable to the opacity law used by R06 \footnote{The power-law opacity of R06 is scaled to the (semimajor axis dependent) disk temperature, while our opacity is scaled to an absolute reference temperature. We thus cannot directly use the R06 opacities for our comparison.}. %(see Paper I). 
+In order to estimate the critical core mass $M_{\rm crit, KH}$ corresponding to planetesimal accretion at the rate $\dot{M}_{\rm c, KH}$, we use the results of R06 for low luminosity atmospheres forming in the outer disk ($>2-5$ AU), consistent with our region of interest. R06 assumes an ideal gas polytropic EOS and a lower opacity than the standard ISM (see Equation \ref{eq:opacitylaw}). We thus calculate $M_{\rm crit}$ for an ideal gas polytrope with the normalization factor $F_{\kappa}$ reduced by a hundred, which is comparable to the opacity law used by R06 \footnote{The power-law opacity of R06 is scaled to the (semimajor axis dependent) disk temperature, while our opacity is scaled to an absolute reference temperature. We thus cannot directly use the R06 opacities for our comparison.}. %(see Paper I). 
 
 Following R06, we find that the critical core mass when accretion luminosity dominates the evolution of the atmosphere can be expressed as
 
@@ -1089,7 +1086,7 @@ If the partition function of a system particles is known in terms of $(V, T)$, t
 
 \begin{equation}
 \label{eq:u}
-U=\mathcal{R} T^2 \Big(\frac{\partial \log{Z}}{\partial T}\Big)_{V}
+u=\mathcal{R} T^2 \Big(\frac{\partial \log{Z}}{\partial T}\Big)_{V}
 \end{equation}
 \begin{equation}
 \label{eq:s}
@@ -1099,7 +1096,7 @@ S=\mathcal{R} \log{Z} + \frac{U}{T}
 \label{eq:cv}
 C_v=\Big(\frac{\partial U}{\partial T}\Big)_{V}.
 \end{equation}
-Since $Z=Z_t Z_r Z_v$, we may write $U=U_t+U_r+U_v$ and $S=S_t+S_r+S_v$, where $U_t$, $U_r$, $U_v$, $S_t$, $S_r$, $S_v$ are the quantities corresponding to the individual translation, rotation and vibration partition functions, respectively.
+Since $Z=Z_t Z_r Z_v$, we may write $u=u_t+u_r+u_v$ and $S=S_t+S_r+S_v$, where $u_t$, $u_r$, $u_v$, $S_t$, $S_r$, $S_v$ are the quantities corresponding to the individual translation, rotation and vibration partition functions, respectively.
 
 The entropy per mass due to translational motion can be expressed as:
 
@@ -1112,7 +1109,7 @@ S_t=\mathcal{R} \Big[ \frac{5}{2} \ln{T} - \ln{P} + \ln \Big( \frac{(2 \pi)^{3/2
 
 \begin{equation}
 \label{eq:ut}
-U_t=\frac{3}{2} \mathcal{R} T
+u_t=\frac{3}{2} \mathcal{R} T
 \end{equation}
 
 Putting all of the above together, we can now evaluate the thermodynamic quantities needed to extend the \cite{saumon95} EOS tables to low temperatures and pressures.
@@ -1120,8 +1117,8 @@ Putting all of the above together, we can now evaluate the thermodynamic quantit
 \begin{enumerate}
 
 \item{\textbf{Density.}} In the low temperature, low pressure regime, hydrogen is molecular and behaves like an ideal gas. As such, the density in this region follows the ideal gas law $P=\rho \mathcal{R} T$.
-\item{\textbf{Internal energy per mass.}} $U=U_t+U_r+U_v$, where $U_t$ is given by Equation(\ref{eq:ut}), and $U_r$ and $U_v$ are determined using equations (\ref{eq:u}), (\ref{eq:Zrspin}) and (\ref{eq:Zv}) above.
-\item{\textbf{Entropy per unit mass}}. Similarly, $S=S_t+S_r+S_v$, where $S_t$ is given by Equation (\ref{eq:st}), and $S_r$ and $S_v$ can be determined from Equation (\ref{eq:s}) and the calculated expressions for $U_r$ and $U_v$, respectively.
+\item{\textbf{Internal energy per mass.}} $u=u_t+u_r+u_v$, where $u_t$ is given by Equation(\ref{eq:ut}), and $u_r$ and $u_v$ are determined using equations (\ref{eq:u}), (\ref{eq:Zrspin}) and (\ref{eq:Zv}) above.
+\item{\textbf{Entropy per unit mass}}. Similarly, $S=S_t+S_r+S_v$, where $S_t$ is given by Equation (\ref{eq:st}), and $S_r$ and $S_v$ can be determined from Equation (\ref{eq:s}) and the calculated expressions for $u_r$ and $u_v$, respectively.
 \item{\textbf{Entropy logarithmic derivatives}}. The logarithmic derivatives $S_T$ and $S_P$ are given by:
 
 \begin{equation}
